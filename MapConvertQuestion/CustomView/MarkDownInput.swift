@@ -13,6 +13,7 @@ class MarkDownInput: UIView {
     @IBOutlet weak var inputTextView: UITextView!
     @IBOutlet weak var indentAndLineButton: UIButton!
     @IBOutlet weak var lineButton: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,5 +30,24 @@ class MarkDownInput: UIView {
             view.frame = self.bounds
             self.addSubview(view)
         }
+        self.inputTextView.delegate = self
+    }
+    
+    @IBAction func submitAction(_ sender: Any) {
+        print("submit action")
+    }
+    
+}
+
+extension MarkDownInput:UITextViewDelegate{
+    func textViewDidEndEditing(_ textView: UITextView){
+        print("did end editing")
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
 }

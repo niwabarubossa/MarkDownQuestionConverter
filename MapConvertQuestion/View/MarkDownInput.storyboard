@@ -15,13 +15,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1z8-CR-Ks9" customClass="MarkDownInput" customModule="MapConvertQuestion" customModuleProvider="target">
-                                <rect key="frame" x="20" y="266" width="179" height="97"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1z8-CR-Ks9" customClass="MarkDownInput" customModule="MapConvertQuestion" customModuleProvider="target">
+                                <rect key="frame" x="20" y="298" width="374" height="300"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="O1H-XD-h67"/>
+                                </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1z8-CR-Ks9" firstAttribute="centerY" secondItem="AGp-xk-ERF" secondAttribute="centerY" id="ayq-Co-DJm"/>
+                            <constraint firstItem="1z8-CR-Ks9" firstAttribute="leading" secondItem="gJo-SX-kMZ" secondAttribute="leading" constant="20" id="hOR-U6-B7I"/>
+                            <constraint firstItem="gJo-SX-kMZ" firstAttribute="trailing" secondItem="1z8-CR-Ks9" secondAttribute="trailing" constant="20" id="xx9-mG-1PJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gJo-SX-kMZ"/>
                     </view>
                 </viewController>
