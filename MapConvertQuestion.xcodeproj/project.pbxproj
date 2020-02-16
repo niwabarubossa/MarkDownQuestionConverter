@@ -13,6 +13,7 @@
 		54F45E2723F90AB5002981C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54F45E2523F90AB5002981C8 /* Main.storyboard */; };
 		54F45E2923F90AC3002981C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54F45E2823F90AC3002981C8 /* Assets.xcassets */; };
 		54F45E2C23F90AC3002981C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54F45E2A23F90AC3002981C8 /* LaunchScreen.storyboard */; };
+		54F45E3623F9111B002981C8 /* QuestionDidsplay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54F45E3523F9111B002981C8 /* QuestionDidsplay.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		54F45E2823F90AC3002981C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54F45E2B23F90AC3002981C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54F45E2D23F90AC3002981C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54F45E3523F9111B002981C8 /* QuestionDidsplay.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionDidsplay.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,8 @@
 		54F45E1E23F90AB5002981C8 /* MapConvertQuestion */ = {
 			isa = PBXGroup;
 			children = (
+				54F45E3423F91104002981C8 /* XibFile */,
+				54F45E3323F910F1002981C8 /* View */,
 				54F45E1F23F90AB5002981C8 /* AppDelegate.swift */,
 				54F45E2123F90AB5002981C8 /* SceneDelegate.swift */,
 				54F45E2323F90AB5002981C8 /* ViewController.swift */,
@@ -65,6 +69,21 @@
 				54F45E2D23F90AC3002981C8 /* Info.plist */,
 			);
 			path = MapConvertQuestion;
+			sourceTree = "<group>";
+		};
+		54F45E3323F910F1002981C8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		54F45E3423F91104002981C8 /* XibFile */ = {
+			isa = PBXGroup;
+			children = (
+				54F45E3523F9111B002981C8 /* QuestionDidsplay.xib */,
+			);
+			path = XibFile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +147,7 @@
 				54F45E2C23F90AC3002981C8 /* LaunchScreen.storyboard in Resources */,
 				54F45E2923F90AC3002981C8 /* Assets.xcassets in Resources */,
 				54F45E2723F90AB5002981C8 /* Main.storyboard in Resources */,
+				54F45E3623F9111B002981C8 /* QuestionDidsplay.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
