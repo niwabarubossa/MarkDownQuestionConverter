@@ -14,7 +14,22 @@
                     <view key="view" contentMode="scaleToFill" id="rda-qe-YJQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N58-YI-o1j" customClass="QuestionDidsplay" customModule="MapConvertQuestion" customModuleProvider="target">
+                                <rect key="frame" x="20" y="348" width="374" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="2RM-E3-xv3"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="2s6-8J-VHq" firstAttribute="trailing" secondItem="N58-YI-o1j" secondAttribute="trailing" constant="20" id="AH3-Uj-05K"/>
+                            <constraint firstItem="N58-YI-o1j" firstAttribute="leading" secondItem="2s6-8J-VHq" secondAttribute="leading" constant="20" id="k6M-0c-wbr"/>
+                            <constraint firstItem="N58-YI-o1j" firstAttribute="centerY" secondItem="rda-qe-YJQ" secondAttribute="centerY" id="pTy-er-Dl5"/>
+                            <constraint firstItem="N58-YI-o1j" firstAttribute="centerX" secondItem="rda-qe-YJQ" secondAttribute="centerX" id="vLF-iR-lll"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="2s6-8J-VHq"/>
                     </view>
                 </viewController>
