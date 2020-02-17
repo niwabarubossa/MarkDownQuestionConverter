@@ -14,6 +14,7 @@ class MarkDownInput: UIView {
     @IBOutlet weak var indentAndLineButton: UIButton!
     @IBOutlet weak var lineButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
+    var myDelegate:MarkDownInputViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,6 +36,7 @@ class MarkDownInput: UIView {
     
     @IBAction func submitAction(_ sender: Any) {
         print("submit action")
+        self.myDelegate?.submitAction(text: inputTextView.text!)
     }
     
 }
