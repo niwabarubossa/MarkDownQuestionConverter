@@ -18,6 +18,8 @@ class MarkDownInput: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+//        let customView = MarkDownInput(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+        //これが表示される
         loadNib()
     }
 
@@ -35,13 +37,13 @@ class MarkDownInput: UIView {
     }
     
     @IBAction func submitAction(_ sender: Any) {
-        print("submit action")
         self.myDelegate?.submitAction(text: inputTextView.text!)
     }
     
 }
 
 extension MarkDownInput:UITextViewDelegate{
+    
     func textViewDidEndEditing(_ textView: UITextView){
         print("did end editing")
     }

@@ -6,7 +6,7 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     override func viewDidLoad(){
         super.viewDidLoad()
         initializePresenter()
-        let customView = MarkDownInput(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        let customView = MarkDownInput(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
         customView.myDelegate = self
         view.addSubview(customView)
     }
