@@ -6,9 +6,13 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     override func viewDidLoad(){
         super.viewDidLoad()
         initializePresenter()
+        layout()
+    }
+    
+    func layout(){
         let customView = MarkDownInput(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
         customView.myDelegate = self
-        view.addSubview(customView)
+        self.view.addSubview(customView)
     }
     
     func initializePresenter() {
@@ -19,9 +23,18 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     }
     
     func submitAction(text:String) {
-        print("text")
-        print("\(text)")
+        var lines = [String]()
+        text.enumerateLines { (line, stop) -> () in
+            lines.append(line)
+        }
+        print("lines")
+        print("\(lines)")
+        presenter.submitButtonTapped()
     }
+    
+//    func convertToNode(parent_){
+        
+//    }
     
 }
 

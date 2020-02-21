@@ -1,19 +1,26 @@
 import Foundation
 import UIKit
 
-class MarkDownInputPresenter{
+class MarkDownInputPresenter:MarkDownInputModelDelegate{
     //自分用のモデルの宣言
-//    let authModel: AuthModel
+    let markDownInputModel: MarkDownInputModel
     
     //オリジナルのクラス型にすること
     weak var view: MarkDownInputViewController?
     
     init(view: MarkDownInputViewController) {
         self.view = view
-        //modelの代入
-//        self.authModel = AuthModel()
-//        modelのdelegate = self
-//        authModel.delegate = self
+        self.markDownInputModel = MarkDownInputModel()
+        markDownInputModel.delegate = self
+    }
+    
+    func submitButtonTapped(){
+        print(" submit button tapped recognized")
+        markDownInputModel.submitInput()
+    }
+    
+    func didSubmitInput(){
+        print("did submit")
     }
 
     func signUpButtonTapped() {
