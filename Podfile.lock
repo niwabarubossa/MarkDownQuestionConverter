@@ -110,12 +110,18 @@ PODS:
   - R.swift (5.1.0):
     - R.swift.Library (~> 5.1.0)
   - R.swift.Library (5.1.0)
+  - Realm (4.3.2):
+    - Realm/Headers (= 4.3.2)
+  - Realm/Headers (4.3.2)
+  - RealmSwift (4.3.2):
+    - Realm (= 4.3.2)
 
 DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Core
   - Firebase/Firestore
   - R.swift
+  - RealmSwift
 
 SPEC REPOS:
   trunk:
@@ -139,6 +145,8 @@ SPEC REPOS:
     - Protobuf
     - R.swift
     - R.swift.Library
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
@@ -161,7 +169,9 @@ SPEC CHECKSUMS:
   Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
   R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9
   R.swift.Library: fa85ce1e0d0b7e818cd9e080df910ba54d2776cc
+  Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
+  RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
 
-PODFILE CHECKSUM: 3981d6947a97e897b479aee6bf92b5f7f2d6d818
+PODFILE CHECKSUM: 2d9a38d45fff2498f43f1a5aced4ea3644f7f221
 
 COCOAPODS: 1.8.4
