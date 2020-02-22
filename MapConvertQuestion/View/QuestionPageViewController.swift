@@ -47,5 +47,9 @@ class QuestionPageViewController: UIViewController {
     func changeQuizDisplay(question: QuestionStruct){
         self.customView.questionDisplayLabel.text = question.question
     }
+    
+    func changeQuizButtonTapped(){
+        presenter.changeQuiz()
+    }
 
 }

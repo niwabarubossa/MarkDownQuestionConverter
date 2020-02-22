@@ -42,11 +42,19 @@ class QuestionPagePresenter:QuestionModelDelegate{
     
     func didGetTestQuestionFromModel(question: [QuestionStruct]){
         self.quizDataSource = question
+        self.changeQuiz()
     }
     
     func renderingQuizData(question: [QuestionStruct]){
         let randomInt = Int.random(in: 0..<self.quizDataSource.count)
         view?.changeQuizDisplay(question: self.quizDataSource[randomInt])
     }
+    
+    func changeQuiz(){
+        let randomInt = Int.random(in: 0..<self.quizDataSource.count)
+        view?.changeQuizDisplay(question: self.quizDataSource[randomInt])
+    }
+    
+    
 }
 

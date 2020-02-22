@@ -29,5 +29,9 @@ class QuestionDidsplay: UIView {
             self.addSubview(view)
         }
     }
-
+    
+    @IBAction func tappedChangeButton(_ sender: Any) {
+        self.delegate?.changeQuizButtonTapped()
+    }
+    
 }
