@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol MarkDownInputModelDelegate: class {
     func didSubmitInput()
@@ -42,6 +43,10 @@ class MarkDownInputModel {
     }
     
     private func saveToRealm(data: QuestionStruct){
-        
+        let realm = try! Realm()
+        let testRealmData = MindNode(myNodeId: 0, content: "test", parentNodeId: 0, childNodeIdArray: [000])
+        try! realm.write {
+              realm.add(testRealmData)
+        }
     }
 }
