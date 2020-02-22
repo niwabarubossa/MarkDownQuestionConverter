@@ -4,10 +4,11 @@
 target 'MapConvertQuestion' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-pod 'R.swift'
+  pod 'R.swift'
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
+  pod 'RealmSwift'
   # Pods for MapConvertQuestion
 
 end
