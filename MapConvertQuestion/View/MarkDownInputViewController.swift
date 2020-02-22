@@ -29,7 +29,7 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
         }
         print("lines")
         print("\(lines)")
-        presenter.submitButtonTapped()
+        presenter.submitButtonTapped(input: text)
     }
     
 //    func convertToNode(parent_){

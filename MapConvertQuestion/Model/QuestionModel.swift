@@ -8,10 +8,13 @@
 
 import Foundation
 
-struct QuestionModel{
-    var data:String
-    
-    init(data:String){
-        self.data = data
+struct QuestionData{
+    var question:String
+    var answer_array:[String]
+    var score:Int
+    init(question:String,answer_array:[String],score:Int){
+        self.question = question
+        self.answer_array = answer_array
+        self.score = score
     }
 }

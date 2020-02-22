@@ -14,9 +14,9 @@ class MarkDownInputPresenter:MarkDownInputModelDelegate{
         markDownInputModel.delegate = self
     }
     
-    func submitButtonTapped(){
+    func submitButtonTapped(input:String){
         print(" submit button tapped recognized")
-        markDownInputModel.submitInput()
+        markDownInputModel.submitInput(input:input)
     }
     
     func didSubmitInput(){

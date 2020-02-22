@@ -15,8 +15,33 @@ protocol MarkDownInputModelDelegate: class {
 class MarkDownInputModel {
     weak var delegate: MarkDownInputModelDelegate?
     
-    func submitInput(){
+    func submitInput(input:String){
         print("submit input")
+        //realm処理
+        let inputLineArray = convertInputToLines(input:input)
+        let mindNodeGroup:[MindNode] = convertStringLinesToMindNode(inputArray:inputLineArray)
+        let test_data = QuestionData(question: "test_question", answer_array: ["asnwer1","answer2"], score: 0)
+        saveToRealm(data: test_data)
         self.delegate?.didSubmitInput()
+    }
+    
+    private func convertInputToLines(input:String) ->[String]{
+        //テキストを行ごとに
+        var inputLineArray:[String] = ["line1","line2"]
+        //変換処理
+        return inputLineArray
+    }
+    
+    private func convertStringLinesToMindNode(inputArray:[String]) -> [MindNode]{
+        var mindNodeGroup:[MindNode] = [
+            MindNode(myNodeId: 0, content: "test", parentNodeId: 0, childNodeIdArray: [000]),
+            MindNode(myNodeId: 0, content: "test", parentNodeId: 0, childNodeIdArray: [000])
+        ]
+        //変換処理
+        return mindNodeGroup
+    }
+    
+    private func saveToRealm(data: QuestionData){
+        
     }
 }
