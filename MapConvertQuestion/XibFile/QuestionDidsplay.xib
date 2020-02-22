@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,14 +19,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7j-49-LFd">
-                    <rect key="frame" x="10" y="54" width="390" height="264"/>
-                    <mutableString key="text">;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</mutableString>
+                    <rect key="frame" x="10" y="54" width="390" height="287"/>
+                    <string key="text">;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cXX-6o-mgS">
-                    <rect key="frame" x="80" y="318" width="250" height="50"/>
+                    <rect key="frame" x="80" y="346" width="250" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5M4-cc-6cr">
                             <rect key="frame" x="0.0" y="0.0" width="83.5" height="50"/>
@@ -49,11 +50,12 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="R7j-49-LFd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ap8-Gj-dYd"/>
-                <constraint firstItem="cXX-6o-mgS" firstAttribute="top" secondItem="R7j-49-LFd" secondAttribute="bottom" id="IEx-JD-6F0"/>
                 <constraint firstItem="R7j-49-LFd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="IWf-yG-9du"/>
                 <constraint firstItem="cXX-6o-mgS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="O31-d9-DvY"/>
                 <constraint firstItem="R7j-49-LFd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="dUc-Rj-Qht"/>
                 <constraint firstAttribute="trailing" secondItem="R7j-49-LFd" secondAttribute="trailing" constant="10" id="gXU-cl-mKs"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="cXX-6o-mgS" secondAttribute="bottom" constant="5" id="s6Y-wK-EQL"/>
+                <constraint firstItem="cXX-6o-mgS" firstAttribute="top" secondItem="R7j-49-LFd" secondAttribute="bottom" constant="5" id="vZG-aC-cj0"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

@@ -11,6 +11,7 @@ import UIKit
 class QuestionDidsplay: UIView {
 
     @IBOutlet weak var questionDisplayLabel: UILabel!
+    var delegate:QuestionPageViewController?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
