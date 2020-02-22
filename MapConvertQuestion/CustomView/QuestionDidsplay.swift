@@ -30,6 +30,12 @@ class QuestionDidsplay: UIView {
         }
     }
     
+    @IBAction func tappedAnswerButton(_ sender: Any) {
+    }
+    
+    @IBAction func tappedQuestionButton(_ sender: Any) {
+    }
+    
     @IBAction func tappedChangeButton(_ sender: Any) {
         self.delegate?.changeQuizButtonTapped()
     }
