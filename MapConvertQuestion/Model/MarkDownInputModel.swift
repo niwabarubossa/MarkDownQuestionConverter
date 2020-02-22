@@ -19,7 +19,7 @@ class MarkDownInputModel {
         print("submit input")
         //realm処理
         let inputLineArray = convertInputToLines(input:input)
-        let mindNodeGroup:[MindNode] = convertStringLinesToMindNode(inputArray:inputLineArray)
+        let _:[MindNode] = convertStringLinesToMindNode(inputArray:inputLineArray)
         let test_data = QuestionData(question: "test_question", answer_array: ["asnwer1","answer2"], score: 0)
         saveToRealm(data: test_data)
         self.delegate?.didSubmitInput()
@@ -27,13 +27,13 @@ class MarkDownInputModel {
     
     private func convertInputToLines(input:String) ->[String]{
         //テキストを行ごとに
-        var inputLineArray:[String] = ["line1","line2"]
+        let inputLineArray:[String] = ["line1","line2"]
         //変換処理
         return inputLineArray
     }
     
     private func convertStringLinesToMindNode(inputArray:[String]) -> [MindNode]{
-        var mindNodeGroup:[MindNode] = [
+        let mindNodeGroup:[MindNode] = [
             MindNode(myNodeId: 0, content: "test", parentNodeId: 0, childNodeIdArray: [000]),
             MindNode(myNodeId: 0, content: "test", parentNodeId: 0, childNodeIdArray: [000])
         ]
