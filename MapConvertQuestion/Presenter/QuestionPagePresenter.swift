@@ -11,6 +11,7 @@ import UIKit
 class QuestionPagePresenter:QuestionModelDelegate{
     //自分用のモデルの宣言
     let questionModel: QuestionModel
+    var quizDataSource = [QuestionStruct]()
     
     //オリジナルのクラス型にすること
     weak var view: QuestionPageViewController?
@@ -33,6 +34,19 @@ class QuestionPagePresenter:QuestionModelDelegate{
 
     func myfunc() {
         print("notify from view")
+    }
+    
+    func getTestQuestionFromModel(){
+        questionModel.createTestQuestion()
+    }
+    
+    func didGetTestQuestionFromModel(question: [QuestionStruct]){
+        self.quizDataSource = question
+    }
+    
+    func renderingQuizData(question: [QuestionStruct]){
+        let randomInt = Int.random(in: 0..<self.quizDataSource.count)
+        view?.changeQuizDisplay(question: self.quizDataSource[randomInt])
     }
 }
 
