@@ -1,3 +1,5 @@
 *.generated.swift
 MapConvertQuestion.xcworkspace/xcuserdata/Niwa.xcuserdatad/UserInterfaceState.xcuserstate
-/Pods
+Pods/*
+MapConvertQuestion.xcworkspace
+MapConvertQuestion.xcworkspace/xcuserdata/*
