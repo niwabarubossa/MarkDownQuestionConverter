@@ -20,7 +20,7 @@ class MarkDownInputModel {
         //realm処理
         let inputLineArray = convertInputToLines(input:input)
         let _:[MindNode] = convertStringLinesToMindNode(inputArray:inputLineArray)
-        let test_data = QuestionData(question: "test_question", answer_array: ["asnwer1","answer2"], score: 0)
+        let test_data = QuestionStruct(question: "test_question", answer_array: ["asnwer1","answer2"], score: 0)
         saveToRealm(data: test_data)
         self.delegate?.didSubmitInput()
     }
@@ -41,7 +41,7 @@ class MarkDownInputModel {
         return mindNodeGroup
     }
     
-    private func saveToRealm(data: QuestionData){
+    private func saveToRealm(data: QuestionStruct){
         
     }
 }

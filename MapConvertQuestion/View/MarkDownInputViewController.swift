@@ -9,18 +9,19 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
         layout()
     }
     
-    func layout(){
+    private func layout(){
         let customView = MarkDownInput(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
         customView.center = self.view.center
         customView.myDelegate = self
         self.view.addSubview(customView)
     }
     
-    func initializePresenter() {
+    private func initializePresenter() {
        presenter = MarkDownInputPresenter(view: self)
     }
+    
     // Presenter ← View
-    func signUpButtonTapped() {
+    private func signUpButtonTapped() {
     }
     
     func submitAction(text:String) {
