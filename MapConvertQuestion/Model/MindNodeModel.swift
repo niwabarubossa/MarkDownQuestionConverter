@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct MindNode{
     var myNodeId:Int
