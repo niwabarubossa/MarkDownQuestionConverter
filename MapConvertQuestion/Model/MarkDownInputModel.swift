@@ -26,7 +26,7 @@ class MarkDownInputModel {
         convertStringLinesToMindNode(myNodeId: 0, myIndent: 0, parentNodeId: 0)
         print("mindNodeGroup")
         print("\(mindNodeGroup)")
-        let test_data = QuestionStruct(question: "test_question", answer_array: ["asnwer1","answer2"], score: 0)
+        _ = QuestionStruct(question: "test_question", answer_array: ["asnwer1","answer2"], score: 0)
 //        saveToRealm(data: test_data)
         self.delegate?.didSubmitInput()
     }
@@ -63,7 +63,7 @@ class MarkDownInputModel {
     }
 
     private func saveToRealm(data: QuestionStruct){
-        let realm = try! Realm()
+        _ = try! Realm()
 //        let testRealmData = RealmMindNodeModel()
 //        try! realm.write {
 //              realm.add(testRealmData)
