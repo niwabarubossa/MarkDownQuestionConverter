@@ -10,8 +10,8 @@ import Foundation
 import RealmSwift
 
 class RealmMindNodeModel:Object{
-    dynamic var myNodeId:Int = 0
-    dynamic var content:String = ""
-    dynamic var parentNodeId:Int = 0
-    dynamic var childNodeIdArray:[Int] = [0000]
+    @objc dynamic var myNodeId:Int = 0
+    @objc dynamic var content:String = ""
+    @objc dynamic var parentNodeId:Int = 0
+    @objc dynamic var childNodeIdArray:[Int] = [0000]
 }

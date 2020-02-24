@@ -27,9 +27,7 @@ class MarkDownInputModel {
         
         print("mindNodeGroup")
         testDisplay(mindNodeGroup: mindNodeGroup)
-        
-        _ = QuestionStruct(question: "test_question", answer_array: ["asnwer1","answer2"], score: 0)
-//        saveToRealm(data: test_data)
+        saveToRealm(data: "")
         self.delegate?.didSubmitInput()
     }
     
@@ -70,11 +68,15 @@ class MarkDownInputModel {
         return count
     }
 
-    private func saveToRealm(data: QuestionStruct){
-        _ = try! Realm()
-//        let testRealmData = RealmMindNodeModel()
-//        try! realm.write {
-//              realm.add(testRealmData)
-//        }
+    private func saveToRealm(data: String){
+        let realm = try! Realm()
+        let testRealmData = RealmMindNodeModel()
+        testRealmData.childNodeIdArray = []
+        testRealmData.content = "test"
+        testRealmData.myNodeId = 0
+        testRealmData.parentNodeId = 9
+        try! realm.write {
+              realm.add(testRealmData)
+        }
     }
 }
