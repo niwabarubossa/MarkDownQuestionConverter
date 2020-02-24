@@ -69,14 +69,27 @@ class MarkDownInputModel {
     }
 
     private func saveToRealm(data: String){
-        let realm = try! Realm()
-        let testRealmData = RealmMindNodeModel()
-        testRealmData.childNodeIdArray = []
-        testRealmData.content = "test"
-        testRealmData.myNodeId = 0
-        testRealmData.parentNodeId = 9
-        try! realm.write {
-              realm.add(testRealmData)
+        do {
+            let realm = try Realm()
+            let dictionary: [String: Any] = [
+                "content": "test",
+                "myNodeId": 0,
+                "parentNodeId": 9,
+                "childNodeIdArray":[
+                    [0:0],
+                    [1:1],
+                    [2:2]
+                ]
+            ]
+            let mindMapNode = RealmMindNodeModel(value: dictionary)
+            try! realm.write {
+                realm.add(mindMapNode)
+                print("成功だよ", dictionary)
+            }
+        } catch {
+            print("want_to_print")
+            print("\(error)")
+            print("エラーだよ")
         }
     }
 }

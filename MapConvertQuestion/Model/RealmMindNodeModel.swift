@@ -13,5 +13,9 @@ class RealmMindNodeModel:Object{
     @objc dynamic var myNodeId:Int = 0
     @objc dynamic var content:String = ""
     @objc dynamic var parentNodeId:Int = 0
-    @objc dynamic var childNodeIdArray:[Int] = [0000]
+    let childNodeIdArray = List<MindNodeChildId>()
+}
+
+class MindNodeChildId: Object {
+    @objc dynamic var MindNodeChildId: Int = 0
 }
