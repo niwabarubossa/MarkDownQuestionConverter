@@ -72,13 +72,13 @@ class MarkDownInputModel {
         do {
             let realm = try Realm()
             let dictionary: [String: Any] = [
-                "content": "test",
-                "myNodeId": 0,
-                "parentNodeId": 9,
+                "content": "test2",
+                "myNodeId": 1,
+                "parentNodeId": 0,
                 "childNodeIdArray":[
-                    [0:0],
-                    [1:1],
-                    [2:2]
+                    [0:101],
+                    [1:102],
+                    [2:103]
                 ]
             ]
             let mindMapNode = RealmMindNodeModel(value: dictionary)
@@ -87,9 +87,7 @@ class MarkDownInputModel {
                 print("成功だよ", dictionary)
             }
         } catch {
-            print("want_to_print")
             print("\(error)")
-            print("エラーだよ")
         }
     }
 }
