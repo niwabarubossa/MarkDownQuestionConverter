@@ -24,11 +24,19 @@ class MarkDownInputModel {
         //realm処理
         convertInputToLines(input:input)
         convertStringLinesToMindNode(myNodeId: 0, myIndent: 0, parentNodeId: 0)
+        
         print("mindNodeGroup")
-        print("\(mindNodeGroup)")
+        testDisplay(mindNodeGroup: mindNodeGroup)
+        
         _ = QuestionStruct(question: "test_question", answer_array: ["asnwer1","answer2"], score: 0)
 //        saveToRealm(data: test_data)
         self.delegate?.didSubmitInput()
+    }
+    
+    private func testDisplay(mindNodeGroup:[MindNode]){
+        for item in mindNodeGroup {
+            print("\(item)")
+        }
     }
     
     private func convertInputToLines(input:String){

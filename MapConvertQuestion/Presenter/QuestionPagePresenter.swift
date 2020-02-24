@@ -12,6 +12,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
     //自分用のモデルの宣言
     let questionModel: QuestionModel
     var quizDataSource = [QuestionStruct]()
+    var displayingQustion:QuestionStruct = QuestionStruct(question: "", answer_array: [], score: 0)
     
     //オリジナルのクラス型にすること
     weak var view: QuestionPageViewController?
@@ -47,12 +48,20 @@ class QuestionPagePresenter:QuestionModelDelegate{
     
     func renderingQuizData(question: [QuestionStruct]){
         let randomInt = Int.random(in: 0..<self.quizDataSource.count)
-        view?.changeQuizDisplay(question: self.quizDataSource[randomInt])
+        view?.changeQuizDisplay(question: self.quizDataSource[randomInt].question)
     }
     
     func changeQuiz(){
         let randomInt = Int.random(in: 0..<self.quizDataSource.count)
-        view?.changeQuizDisplay(question: self.quizDataSource[randomInt])
+        self.displayingQustion = quizDataSource[randomInt]
+        let questionWithTab = self.displayingQustion.question
+        view?.changeQuizDisplay(question: questionWithTab.trimmingCharacters(in: .whitespacesAndNewlines)
+        )
+    }
+    
+    func showAnswer(){
+        let answer = displayingQustion.answer_array.joined(separator: "\n")
+        view?.changeDisplayToAnswer(answer: answer)
     }
     
     
