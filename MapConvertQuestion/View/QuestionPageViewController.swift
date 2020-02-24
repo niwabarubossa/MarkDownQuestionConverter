@@ -44,12 +44,20 @@ class QuestionPageViewController: UIViewController {
         print("done from presenter function")
     }
     
-    func changeQuizDisplay(question: QuestionStruct){
-        self.customView.questionDisplayLabel.text = question.question
+    func changeQuizDisplay(question: String){
+        self.customView.questionDisplayLabel.text = question
     }
     
     func changeQuizButtonTapped(){
         presenter.changeQuiz()
+    }
+    
+    func showAnswerButtonTapped(){
+        presenter.showAnswer()
+    }
+    
+    func changeDisplayToAnswer(answer:String){
+        self.customView.questionDisplayLabel.text = answer
     }
 
 }

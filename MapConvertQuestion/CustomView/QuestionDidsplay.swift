@@ -31,6 +31,7 @@ class QuestionDidsplay: UIView {
     }
     
     @IBAction func tappedAnswerButton(_ sender: Any) {
+        self.delegate?.showAnswerButtonTapped()
     }
     
     @IBAction func tappedQuestionButton(_ sender: Any) {
