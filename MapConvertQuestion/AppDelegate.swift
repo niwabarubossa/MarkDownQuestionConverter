@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             })
 
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         // Tell Realm to use this new configuration object for the default Realm
         Realm.Configuration.defaultConfiguration = config
 
