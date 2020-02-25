@@ -49,15 +49,34 @@ class QuestionPageViewController: UIViewController {
     }
     
     func changeQuizButtonTapped(){
+        self.customView.questionDisplayLabel.isHidden = false
+        self.customView.myStackView.isHidden = true
         presenter.changeQuiz()
     }
     
     func showAnswerButtonTapped(){
+        self.customView.questionDisplayLabel.isHidden = true
+        self.customView.myStackView.isHidden = false
         presenter.showAnswer()
     }
     
-    func changeDisplayToAnswer(answer:String){
-        self.customView.questionDisplayLabel.text = answer
+    func changeDisplayToAnswer(answer_array:[String]){
+//        self.customView.questionDisplayLabel.text = answer
+        //add arranged sub view
+
+        for answer in answer_array {
+            let answerButton = createAnswerUIButton(answer: answer)
+            self.customView.myStackView.addArrangedSubview(answerButton)
+        }
+    }
+    
+    func createAnswerUIButton(answer:String) -> UIButton{
+        let answerButton = UIButton()
+        // 緑のビューの高さは、青のビューの高さと同じ大きさ
+        answerButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        answerButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        answerButton.setTitle(answer, for: .normal)
+        return answerButton
     }
 
 }

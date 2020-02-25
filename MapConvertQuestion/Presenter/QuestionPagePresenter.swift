@@ -60,8 +60,9 @@ class QuestionPagePresenter:QuestionModelDelegate{
     }
     
     func showAnswer(){
-        let answer = displayingQustion.answer_array.joined(separator: "\n")
-        view?.changeDisplayToAnswer(answer: answer)
+//        let answer = displayingQustion.answer_array.joined(separator: "\n")
+        let answer_array = displayingQustion.answer_array
+        view?.changeDisplayToAnswer(answer_array: answer_array)
     }
     
     
