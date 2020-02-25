@@ -24,7 +24,12 @@ class MarkDownInputModel {
         //realm処理
         convertInputToLines(input:input)
         convertStringLinesToMindNode(myNodeId: 0, myIndent: 0, parentNodeId: 0)
-        saveToRealm(data: "")
+        var realmMindNodeArray = [MindNode]()
+        for mindNode in mindNodeGroup {
+            let fitToRealmData = convertMindNodeDataToRealmData(mindNode: mindNode)
+            realmMindNodeArray.append(fitToRealmData)
+        }
+//        saveToRealm(data: fitToRealmData)
         self.delegate?.didSubmitInput()
     }
     
@@ -58,24 +63,31 @@ class MarkDownInputModel {
         }
         return count
     }
+    
+    private func convertMindNodeDataToRealmData(mindNode:MindNode) -> Any{
+        var realmConvertedData:Any = mindNode
+        var mindNodeChildIdArray = List<MindNodeChildId>()
+        let childNodeIdArray = mindNode.childNodeIdArray
+        for childNodeId in childNodeIdArray {
+            mindNodeChildIdArray.append(MindNodeChildId(value: childNodeId))
+        }
+//        realmConvertedData.childNodeIdArray = mindNodeChildIdArray
+        return realmConvertedData
+    }
+    
+    private func createChildNodeIdArray(childNodeIdArray:[Int]) -> [[Int:Int]] {
+        var childNodeIdArrayldRealm = [[Int:Int]]()
+        for (nodeId,index) in childNodeIdArray.enumerated() {
+            childNodeIdArrayldRealm.append([index:nodeId])
+        }
+        return childNodeIdArrayldRealm
+    }
 
-    private func saveToRealm(data: String){
+    private func saveToRealm(data: [[String: Any]]){
         do {
             let realm = try Realm()
-            let dictionary: [String: Any] = [
-                "content": "test2",
-                "myNodeId": 1,
-                "parentNodeId": 0,
-                "childNodeIdArray":[
-                    [0:101],
-                    [1:102],
-                    [2:103]
-                ]
-            ]
-            let mindMapNode = RealmMindNodeModel(value: dictionary)
             try! realm.write {
-                realm.add(mindMapNode)
-                print("成功だよ", dictionary)
+                realm.add(data)
             }
         } catch {
             print("\(error)")
