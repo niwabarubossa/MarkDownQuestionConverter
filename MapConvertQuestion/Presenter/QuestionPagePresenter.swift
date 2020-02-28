@@ -13,11 +13,6 @@ class QuestionPagePresenter:QuestionModelDelegate{
     let questionModel: QuestionModel
     var quizDataSource = [QuestionStruct]()
     var displayingQustion:QuestionStruct = QuestionStruct(question: "", answer_array: [], score: 0)
-    var dataSource:[Dictionary<String,String>] = [
-        ["test":"test"],
-        ["test":"test"],
-        ["test":"test"],
-    ]
     
     //オリジナルのクラス型にすること
     weak var view: QuestionPageViewController?
