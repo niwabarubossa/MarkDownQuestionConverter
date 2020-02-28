@@ -86,4 +86,10 @@ extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("indexPath.row")
+        print("\(indexPath.row)")
+        //notify to presenter
+    }
 }

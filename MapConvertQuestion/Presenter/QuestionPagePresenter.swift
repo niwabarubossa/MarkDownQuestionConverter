@@ -64,6 +64,10 @@ class QuestionPagePresenter:QuestionModelDelegate{
         )
     }
     
+    func changeToSelectedAnswerQuiz(){
+        
+    }
+    
     func showAnswer(){
         let answer_array = displayingQustion.answer_array
         view?.changeDisplayToAnswer(answer_array: answer_array)
