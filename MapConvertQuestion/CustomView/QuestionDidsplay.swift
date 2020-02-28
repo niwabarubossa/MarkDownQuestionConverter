@@ -11,7 +11,6 @@ import UIKit
 class QuestionDidsplay: UIView {
 
     @IBOutlet weak var questionDisplayLabel: UILabel!
-    @IBOutlet weak var myStackView: UIStackView!
     
     var delegate:QuestionPageViewController?
     

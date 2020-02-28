@@ -10,7 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuestionDidsplay" customModule="MapConvertQuestion" customModuleProvider="target">
             <connections>
-                <outlet property="myStackView" destination="Vd6-TE-cUi" id="MxS-UL-RNC"/>
                 <outlet property="questionDisplayLabel" destination="Sy8-Ch-l2O" id="qSa-Qf-DW9"/>
             </connections>
         </placeholder>
@@ -65,30 +64,15 @@
                         <constraint firstAttribute="height" constant="50" id="qen-vH-Hd6"/>
                     </constraints>
                 </stackView>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AQJ-Zo-Rne">
-                    <rect key="frame" x="10" y="10" width="390" height="326"/>
-                </scrollView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vd6-TE-cUi">
-                    <rect key="frame" x="0.0" y="44" width="410" height="302"/>
-                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Sy8-Ch-l2O" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="8au-ZK-QTY"/>
-                <constraint firstItem="AQJ-Zo-Rne" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="EYb-7B-j8M"/>
                 <constraint firstItem="Sy8-Ch-l2O" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Glu-S0-gKO"/>
-                <constraint firstItem="AQJ-Zo-Rne" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="HEE-ay-N03"/>
-                <constraint firstItem="Vd6-TE-cUi" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="L5u-T2-5Km"/>
-                <constraint firstItem="AQJ-Zo-Rne" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="LjC-j3-f7t"/>
                 <constraint firstItem="cXX-6o-mgS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="O31-d9-DvY"/>
-                <constraint firstItem="cXX-6o-mgS" firstAttribute="top" secondItem="Vd6-TE-cUi" secondAttribute="bottom" id="SEZ-AV-N8D"/>
-                <constraint firstItem="Vd6-TE-cUi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="aaB-3j-mDQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Sy8-Ch-l2O" secondAttribute="trailing" constant="10" id="bgf-M4-W6h"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Vd6-TE-cUi" secondAttribute="trailing" id="bgr-Ln-bP6"/>
-                <constraint firstItem="cXX-6o-mgS" firstAttribute="top" secondItem="AQJ-Zo-Rne" secondAttribute="bottom" constant="10" id="blY-x1-j4J"/>
                 <constraint firstItem="Sy8-Ch-l2O" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="nkG-fC-K7t"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="cXX-6o-mgS" secondAttribute="bottom" constant="5" id="s6Y-wK-EQL"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="AQJ-Zo-Rne" secondAttribute="trailing" constant="10" id="uMy-BQ-c9T"/>
                 <constraint firstItem="cXX-6o-mgS" firstAttribute="top" secondItem="Sy8-Ch-l2O" secondAttribute="bottom" constant="10" id="z0U-qp-tcH"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
