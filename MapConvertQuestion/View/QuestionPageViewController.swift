@@ -10,9 +10,9 @@ import UIKit
 
 class QuestionPageViewController: UIViewController {
     
-    
     @IBOutlet weak var questionAnswerTableView: UITableView!
     
+    var dataSource = [String]()
     var presenter:QuestionPagePresenter!
     var customView = QuestionDidsplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     
@@ -21,8 +21,9 @@ class QuestionPageViewController: UIViewController {
         initializePresenter()
         layout()
         getQuestion()
-        self.questionAnswerTableView.delegate = self.presenter
-        self.questionAnswerTableView.dataSource = self.presenter
+        self.questionAnswerTableView.register(QuestionAnswerTableViewCell.createXib(), forCellReuseIdentifier: QuestionAnswerTableViewCell.className)
+        self.questionAnswerTableView.delegate = self
+        self.questionAnswerTableView.dataSource = self
     }
     
     private func initializePresenter() {
@@ -55,22 +56,34 @@ class QuestionPageViewController: UIViewController {
     
     func changeQuizButtonTapped(){
         self.customView.questionDisplayLabel.isHidden = false
-//        self.customView.myStackView.isHidden = true
+        self.questionAnswerTableView.isHidden = true
         presenter.changeQuiz()
     }
     
     func showAnswerButtonTapped(){
         self.customView.questionDisplayLabel.isHidden = true
-//        self.customView.myStackView.isHidden = false
+        self.questionAnswerTableView.isHidden = false
         presenter.showAnswer()
     }
     
     func changeDisplayToAnswer(answer_array:[String]){
-        for answer in answer_array {
-//            self.customView.myStackView.addArrangedSubview(answerButton)
-            print("answer")
-            print("\(answer)")
-        }
+        print("answer_array")
+        print("\(answer_array)")
+        self.dataSource = answer_array
+        self.questionAnswerTableView.reloadData()
     }
     
+}
+
+extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
+    //本来これはPresenterに書くべきとの２つの意見があるが、こちらの方が都合が良いのでtableViewのみ特例。
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: QuestionAnswerTableViewCell.className, for: indexPath ) as! QuestionAnswerTableViewCell
+        cell.questionLabel.text = self.dataSource[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource.count
+    }
 }
