@@ -9,7 +9,10 @@
 import UIKit
 
 class QuestionPageViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var questionAnswerTableView: UITableView!
+    
     var presenter:QuestionPagePresenter!
     var customView = QuestionDidsplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     
@@ -18,6 +21,8 @@ class QuestionPageViewController: UIViewController {
         initializePresenter()
         layout()
         getQuestion()
+        self.questionAnswerTableView.delegate = self.presenter
+        self.questionAnswerTableView.dataSource = self.presenter
     }
     
     private func initializePresenter() {
@@ -63,6 +68,8 @@ class QuestionPageViewController: UIViewController {
     func changeDisplayToAnswer(answer_array:[String]){
         for answer in answer_array {
 //            self.customView.myStackView.addArrangedSubview(answerButton)
+            print("answer")
+            print("\(answer)")
         }
     }
     
