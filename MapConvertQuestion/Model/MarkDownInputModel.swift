@@ -17,22 +17,22 @@ class MarkDownInputModel {
     weak var delegate: MarkDownInputModelDelegate?
     var inputLineArray = [String]()
     var doneNum = [Int]()
-    var mindNodeGroup = [MindNode]()
+    //インプットされたマークダウンがmindNodeに変換されている
+    var mindNodeArray = [MindNode]()
     
     func submitInput(input:String){
         print("submit input")
         //realm処理
         convertInputToLines(input:input)
         convertStringLinesToMindNode(myNodeId: 0, myIndent: 0, parentNodeId: 0)
-        
-        print("mindNodeGroup")
-        testDisplay(mindNodeGroup: mindNodeGroup)
-        saveToRealm(data: "")
+        print("mindNodeArray")
+        testDisplay(mindNodeArray: mindNodeArray)
+        saveToRealm(data: mindNodeArray)
         self.delegate?.didSubmitInput()
     }
     
-    private func testDisplay(mindNodeGroup:[MindNode]){
-        for item in mindNodeGroup {
+    private func testDisplay(mindNodeArray:[MindNode]){
+        for item in mindNodeArray {
             print("\(item)")
         }
     }
@@ -48,7 +48,7 @@ class MarkDownInputModel {
                 if( myIndent >= getIndent(str: inputLineArray[i]) ){
                     doneNum.append(myNodeId)
                     let myNode = MindNode(myNodeId: myNodeId, content: inputLineArray[myNodeId], parentNodeId: parentNodeId, childNodeIdArray: childNodeIdArray)
-                    mindNodeGroup.append(myNode)
+                    mindNodeArray.append(myNode)
                     return
                 }
                 convertStringLinesToMindNode(myNodeId: i, myIndent: getIndent(str: inputLineArray[i]), parentNodeId: myNodeId)
@@ -68,7 +68,7 @@ class MarkDownInputModel {
         return count
     }
 
-    private func saveToRealm(data: String){
+    private func saveToRealm(data: [MindNode]){
         do {
             let realm = try Realm()
             let dictionary: [String: Any] = [
