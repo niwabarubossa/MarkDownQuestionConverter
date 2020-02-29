@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1EC269601B1577FE15F7310F /* Pods_MapConvertQuestion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849D1477E77B3F5C13DCCE54 /* Pods_MapConvertQuestion.framework */; };
+		54B466A72408B90700813800 /* QuestionAnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B466A52408B90700813800 /* QuestionAnswerTableViewCell.swift */; };
+		54B466A82408B90700813800 /* QuestionAnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54B466A62408B90700813800 /* QuestionAnswerTableViewCell.xib */; };
+		54B466AA2408BA3C00813800 /* ObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B466A92408BA3C00813800 /* ObjectExtension.swift */; };
 		54BFEE352400F58800B55A8C /* QuestionPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BFEE342400F58800B55A8C /* QuestionPagePresenter.swift */; };
 		54BFEE372400F61100B55A8C /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BFEE362400F61100B55A8C /* QuestionModel.swift */; };
 		54BFEE392400F7E400B55A8C /* QuestionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BFEE382400F7E400B55A8C /* QuestionPageViewController.swift */; };
@@ -34,6 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		54B466A52408B90700813800 /* QuestionAnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerTableViewCell.swift; sourceTree = "<group>"; };
+		54B466A62408B90700813800 /* QuestionAnswerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = QuestionAnswerTableViewCell.xib; path = ../CustomView/QuestionAnswerTableViewCell.xib; sourceTree = "<group>"; };
+		54B466A92408BA3C00813800 /* ObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ObjectExtension.swift; path = MapConvertQuestion/CustomView/ObjectExtension.swift; sourceTree = SOURCE_ROOT; };
 		54BFEE342400F58800B55A8C /* QuestionPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPagePresenter.swift; sourceTree = "<group>"; };
 		54BFEE362400F61100B55A8C /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		54BFEE382400F7E400B55A8C /* QuestionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPageViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +146,7 @@
 		54F45E3423F91104002981C8 /* XibFile */ = {
 			isa = PBXGroup;
 			children = (
+				54B466A62408B90700813800 /* QuestionAnswerTableViewCell.xib */,
 				54F45E3523F9111B002981C8 /* QuestionDidsplay.xib */,
 				54F45E3723F917C5002981C8 /* MarkDownInput.xib */,
 			);
@@ -151,6 +158,7 @@
 			children = (
 				54F45E3A23F918E6002981C8 /* QuestionDidsplay.swift */,
 				54F45E3C23F918F5002981C8 /* MarkDownInput.swift */,
+				54B466A52408B90700813800 /* QuestionAnswerTableViewCell.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -186,6 +194,7 @@
 		54F45E4323F91A8B002981C8 /* ExtensionUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				54B466A92408BA3C00813800 /* ObjectExtension.swift */,
 			);
 			path = ExtensionUIKit;
 			sourceTree = "<group>";
@@ -270,6 +279,7 @@
 				54F45E3823F917C5002981C8 /* MarkDownInput.xib in Resources */,
 				54F45E2C23F90AC3002981C8 /* LaunchScreen.storyboard in Resources */,
 				54F45E2923F90AC3002981C8 /* Assets.xcassets in Resources */,
+				54B466A82408B90700813800 /* QuestionAnswerTableViewCell.xib in Resources */,
 				54F45E2723F90AB5002981C8 /* Main.storyboard in Resources */,
 				54F45E4823F9437F002981C8 /* MarkDownInput.storyboard in Resources */,
 				54F45E4A23F944DB002981C8 /* QuestionPage.storyboard in Resources */,
@@ -348,6 +358,7 @@
 			files = (
 				54F45E5123FAA177002981C8 /* MarkDownInputViewController.swift in Sources */,
 				54F45E2423F90AB5002981C8 /* ViewController.swift in Sources */,
+				54B466AA2408BA3C00813800 /* ObjectExtension.swift in Sources */,
 				54F45E5323FAA263002981C8 /* MarkDownInputPresenter.swift in Sources */,
 				54BFEE3B2402701000B55A8C /* RealmMindNodeModel.swift in Sources */,
 				54BFEE392400F7E400B55A8C /* QuestionPageViewController.swift in Sources */,
@@ -357,6 +368,7 @@
 				54F45E4623F91ABC002981C8 /* QuestionStruct.swift in Sources */,
 				54BFEE372400F61100B55A8C /* QuestionModel.swift in Sources */,
 				54EE8B0E23FE337300CF342F /* MarkDownInputModel.swift in Sources */,
+				54B466A72408B90700813800 /* QuestionAnswerTableViewCell.swift in Sources */,
 				54FF62C42400D68F0009B721 /* FirestoreProtocolExtension.swift in Sources */,
 				54F4854923FF781900D7962C /* R.generated.swift in Sources */,
 				54FF62C62400E1640009B721 /* MindNodeModel.swift in Sources */,
