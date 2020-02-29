@@ -17,24 +17,16 @@ class MarkDownInputModel {
     weak var delegate: MarkDownInputModelDelegate?
     var inputLineArray = [String]()
     var doneNum = [Int]()
-    var mindNodeGroup = [MindNode]()
+    //インプットされたマークダウンがmindNodeに変換されている
+    var mindNodeArray = [MindNode]()
     
     func submitInput(input:String){
-        print("submit input")
         //realm処理
         convertInputToLines(input:input)
         convertStringLinesToMindNode(myNodeId: 0, myIndent: 0, parentNodeId: 0)
-        
-        print("mindNodeGroup")
-        testDisplay(mindNodeGroup: mindNodeGroup)
-        saveToRealm(data: "")
+        let realmDataArray = convertMindNodeToRealmDictionary(mindNodeArray: mindNodeArray)
+        saveToRealm(realmDataArray: realmDataArray)
         self.delegate?.didSubmitInput()
-    }
-    
-    private func testDisplay(mindNodeGroup:[MindNode]){
-        for item in mindNodeGroup {
-            print("\(item)")
-        }
     }
     
     private func convertInputToLines(input:String){
@@ -48,7 +40,7 @@ class MarkDownInputModel {
                 if( myIndent >= getIndent(str: inputLineArray[i]) ){
                     doneNum.append(myNodeId)
                     let myNode = MindNode(myNodeId: myNodeId, content: inputLineArray[myNodeId], parentNodeId: parentNodeId, childNodeIdArray: childNodeIdArray)
-                    mindNodeGroup.append(myNode)
+                    mindNodeArray.append(myNode)
                     return
                 }
                 convertStringLinesToMindNode(myNodeId: i, myIndent: getIndent(str: inputLineArray[i]), parentNodeId: myNodeId)
@@ -67,27 +59,43 @@ class MarkDownInputModel {
         }
         return count
     }
+    
+    private func convertMindNodeToRealmDictionary(mindNodeArray: [MindNode]) -> [[String: Any]] {
+        var dictionaryArray = [[String: Any]]()
+        for mindNode in mindNodeArray {
+            let dictionary: [String: Any] = [
+                "content": mindNode.content,
+                "myNodeId": mindNode.myNodeId,
+                "parentNodeId": mindNode.parentNodeId,
+                "childNodeIdArray":getChildNodeIdArray(mindNode: mindNode)
+            ]
+            dictionaryArray.append(dictionary)
+        }
+        return dictionaryArray
+    }
+    
+    private func getChildNodeIdArray(mindNode: MindNode) -> [Dictionary<String,Int>]{
+        var childNodeIdArray = [Dictionary<String,Int>]()
+        for childNodeId in mindNode.childNodeIdArray {
+            let childNodeIdInt: Int = childNodeId
+            childNodeIdArray.append(["MindNodeChildId":childNodeIdInt])
+        }
+        return childNodeIdArray
+    }
 
-    private func saveToRealm(data: String){
+    private func saveToRealm(realmDataArray: [[String: Any]]){
         do {
             let realm = try Realm()
-            let dictionary: [String: Any] = [
-                "content": "test",
-                "myNodeId": 0,
-                "parentNodeId": 9,
-                "childNodeIdArray":[
-                    [0:0],
-                    [1:1],
-                    [2:2]
-                ]
-            ]
-            let mindMapNode = RealmMindNodeModel(value: dictionary)
+            print(Realm.Configuration.defaultConfiguration.fileURL!)
+            var saveDataArray = [RealmMindNodeModel]()
+            for item in realmDataArray.enumerated() {
+                saveDataArray.append( RealmMindNodeModel(value: item.element) )
+            }
             try! realm.write {
-                realm.add(mindMapNode)
-                print("成功だよ", dictionary)
+                realm.add(saveDataArray)
+                print("成功だよ", saveDataArray)
             }
         } catch {
-            print("want_to_print")
             print("\(error)")
             print("エラーだよ")
         }
