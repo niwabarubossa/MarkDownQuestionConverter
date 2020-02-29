@@ -36,10 +36,10 @@
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="62.946428571428569"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Question Map Select Page Table View Controller-->
         <scene sceneID="TSI-Hh-8e0">
             <objects>
-                <tableViewController id="dYv-Rj-fW2" sceneMemberID="viewController">
+                <tableViewController id="dYv-Rj-fW2" customClass="QuestionMapSelectPageTableViewController" customModule="MapConvertQuestion" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xnR-2d-4Zb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,7 +52,8 @@
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="RNQ-af-OMt"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="Hw6-0L-hB2" kind="show" id="1t7-UL-HKB"/>
+                        <outlet property="tableVIew" destination="xnR-2d-4Zb" id="DS3-hg-XMb"/>
+                        <segue destination="Hw6-0L-hB2" kind="show" identifier="goToQuestionPage" id="1t7-UL-HKB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MoP-FE-j5X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
