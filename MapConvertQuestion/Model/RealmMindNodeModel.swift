@@ -9,7 +9,13 @@
 import Foundation
 import RealmSwift
 
+class MapGroup:Object{
+    @objc dynamic var mapId:String = ""
+    let childNodeIdArray = List<RealmMindNodeModel>()
+}
+
 class RealmMindNodeModel:Object{
+    @objc dynamic var mapId:String = ""
     @objc dynamic var myNodeId:Int = 0
     @objc dynamic var content:String = ""
     @objc dynamic var parentNodeId:Int = 0

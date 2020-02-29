@@ -62,8 +62,10 @@ class MarkDownInputModel {
     
     private func convertMindNodeToRealmDictionary(mindNodeArray: [MindNode]) -> [[String: Any]] {
         var dictionaryArray = [[String: Any]]()
+        let mapId = NSUUID().uuidString
         for mindNode in mindNodeArray {
             let dictionary: [String: Any] = [
+                "mapId": mapId,
                 "content": mindNode.content,
                 "myNodeId": mindNode.myNodeId,
                 "parentNodeId": mindNode.parentNodeId,
