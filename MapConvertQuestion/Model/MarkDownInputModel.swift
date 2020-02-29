@@ -21,21 +21,12 @@ class MarkDownInputModel {
     var mindNodeArray = [MindNode]()
     
     func submitInput(input:String){
-        print("submit input")
         //realm処理
         convertInputToLines(input:input)
         convertStringLinesToMindNode(myNodeId: 0, myIndent: 0, parentNodeId: 0)
-        print("mindNodeArray")
-        testDisplay(mindNodeArray: mindNodeArray)
         let realmDataArray = convertMindNodeToRealmDictionary(mindNodeArray: mindNodeArray)
         saveToRealm(realmDataArray: realmDataArray)
         self.delegate?.didSubmitInput()
-    }
-    
-    private func testDisplay(mindNodeArray:[MindNode]){
-        for item in mindNodeArray {
-            print("\(item)")
-        }
     }
     
     private func convertInputToLines(input:String){
@@ -71,11 +62,11 @@ class MarkDownInputModel {
     
     private func convertMindNodeToRealmDictionary(mindNodeArray: [MindNode]) -> [[String: Any]] {
         var dictionaryArray = [[String: Any]]()
-        for mindNode in mindNodeArray.enumerated() {
+        for mindNode in mindNodeArray {
             let dictionary: [String: Any] = [
-                "content": "test",
-                "myNodeId": 0,
-                "parentNodeId": 9,
+                "content": mindNode.content,
+                "myNodeId": mindNode.myNodeId,
+                "parentNodeId": mindNode.parentNodeId,
                 "childNodeIdArray":getChildNodeIdArray(mindNode: mindNode)
             ]
             dictionaryArray.append(dictionary)
@@ -83,22 +74,22 @@ class MarkDownInputModel {
         return dictionaryArray
     }
     
-    private func getChildNodeIdArray(mindNode: MindNode) -> [[Int:Int]]{
-        var childNodeIdArray = [Int:Int]()
-        for childNodeId in mindNode.childNodeIdArray.enumerated() {
-            childNodeIdArray.updateValue(childNodeId as! Int, forKey: "\(String(childNodeId))")
+    private func getChildNodeIdArray(mindNode: MindNode) -> [Dictionary<String,Int>]{
+        var childNodeIdArray = [Dictionary<String,Int>]()
+        for childNodeId in mindNode.childNodeIdArray {
+            let childNodeIdInt: Int = childNodeId
+            childNodeIdArray.append(["MindNodeChildId":childNodeIdInt])
         }
-        return [childNodeIdArray]
+        return childNodeIdArray
     }
-    
-    
 
     private func saveToRealm(realmDataArray: [[String: Any]]){
         do {
             let realm = try Realm()
+            print(Realm.Configuration.defaultConfiguration.fileURL!)
             var saveDataArray = [RealmMindNodeModel]()
             for item in realmDataArray.enumerated() {
-                saveDataArray.append( RealmMindNodeModel(value: item) )
+                saveDataArray.append( RealmMindNodeModel(value: item.element) )
             }
             try! realm.write {
                 realm.add(saveDataArray)
