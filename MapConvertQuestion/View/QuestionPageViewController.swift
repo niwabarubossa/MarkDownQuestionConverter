@@ -40,6 +40,10 @@ class QuestionPageViewController: UIViewController {
         presenter.getTestQuestionFromModel()
     }
     
+    func setQuestion(){
+        
+    }
+    
     //presenter ← view
     func notifyToPresenter(){
         presenter.myfunc()

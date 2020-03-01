@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol QuestionModelDelegate: class {
     func myfunc()

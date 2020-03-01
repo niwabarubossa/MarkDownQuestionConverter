@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class QuestionMapSelectPageTableViewController: UITableViewController {
 
@@ -15,8 +16,23 @@ class QuestionMapSelectPageTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(SelectQuestionMapPageTableViewCell.createXib(), forCellReuseIdentifier: SelectQuestionMapPageTableViewCell.className)
+        self.dataSource = getMapTitleData()
+    }
+    
+    private func getMapTitleData() -> [String]{
+        let realm = try! Realm()
+        let mapTitleData = realm.objects(MapGroup.self)
+        var mapTitleDataArray = [String]()
+        for mapTitle in mapTitleData {
+            mapTitleDataArray.append(mapTitle.mapId)
+        }
+        
+        return mapTitleDataArray
     }
 
+}
+
+extension QuestionMapSelectPageTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -33,5 +49,4 @@ class QuestionMapSelectPageTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: SelectQuestionMapPageTableViewCell.className, for: indexPath ) as! SelectQuestionMapPageTableViewCell
         return cell
     }
-
 }
