@@ -28,6 +28,13 @@ class MarkDownInputModel {
         let realmDataArray = convertMindNodeToRealmDictionary(mindNodeArray: mindNodeArray,mapId: mapId)
         saveToRealm(realmDataArray: realmDataArray,mapId: mapId)
         self.delegate?.didSubmitInput()
+        initData()
+    }
+    
+    private func initData(){
+        self.inputLineArray.removeAll()
+        self.doneNum.removeAll()
+        self.mindNodeArray.removeAll()
     }
     
     private func convertInputToLines(input:String){
