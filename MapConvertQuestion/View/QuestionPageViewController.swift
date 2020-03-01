@@ -23,7 +23,7 @@ class QuestionPageViewController: UIViewController {
         print("\(questionMapId)")
         initializePresenter()
         layout()
-        getQuestion()
+        getQuestion(mapId:self.questionMapId)
         self.questionAnswerTableView.register(QuestionAnswerTableViewCell.createXib(), forCellReuseIdentifier: QuestionAnswerTableViewCell.className)
         self.questionAnswerTableView.delegate = self
         self.questionAnswerTableView.dataSource = self
@@ -39,8 +39,8 @@ class QuestionPageViewController: UIViewController {
         self.view.addSubview(customView)
     }
     
-    private func getQuestion(){
-        presenter.getTestQuestionFromModel()
+    private func getQuestion(mapId:String){
+        presenter.getQuestionFromModel(mapId:mapId)
     }
     
     func setQuestion(){
