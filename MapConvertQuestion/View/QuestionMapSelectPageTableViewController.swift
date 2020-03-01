@@ -17,9 +17,7 @@ class QuestionMapSelectPageTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(SelectQuestionMapPageTableViewCell.createXib(), forCellReuseIdentifier: SelectQuestionMapPageTableViewCell.className)
-        
         self.dataSource = getMapTitleData()
-        
         self.tableView.reloadData()
     }
     
