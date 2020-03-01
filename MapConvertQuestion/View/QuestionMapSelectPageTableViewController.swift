@@ -12,22 +12,42 @@ import RealmSwift
 class QuestionMapSelectPageTableViewController: UITableViewController {
 
     @IBOutlet var tableVIew: UITableView!
-    var dataSource:[String] = ["first","second","third"]
+    var dataSource = [Dictionary<String,String>]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(SelectQuestionMapPageTableViewCell.createXib(), forCellReuseIdentifier: SelectQuestionMapPageTableViewCell.className)
+        
         self.dataSource = getMapTitleData()
+        
+        self.tableView.reloadData()
     }
     
-    private func getMapTitleData() -> [String]{
+    private func getMapTitleData() -> [Dictionary<String,String>]{
         let realm = try! Realm()
-        let mapTitleData = realm.objects(MapGroup.self)
-        var mapTitleDataArray = [String]()
-        for mapTitle in mapTitleData {
-            mapTitleDataArray.append(mapTitle.mapId)
+        let mapIdAllData = realm.objects(MapGroup.self)
+        var mapIdArray = [String]()
+        for item in mapIdAllData {
+            mapIdArray.append(item.mapId)
         }
-        
-        return mapTitleDataArray
+        var titleDataArray = [String]()
+        for mapId in mapIdArray {
+            let mapFirstNodeContentResult = realm.objects(RealmMindNodeModel.self).filter("myNodeId == 0").filter("mapId == %@",mapId)
+            if mapFirstNodeContentResult.count > 0 {
+                titleDataArray.append(mapFirstNodeContentResult[0].content)
+            }else{
+                print("search result not exist")
+            }
+        }
+        var mapAndTitleData = [Dictionary<String,String>]()
+
+        for i in 0..<titleDataArray.count {
+            let data = [
+                "mapId": mapIdArray[i],
+                "mapFirstNodeContent": titleDataArray[i]
+            ]
+            mapAndTitleData.append(data)
+        }
+        return mapAndTitleData
     }
 
 }
@@ -47,6 +67,7 @@ extension QuestionMapSelectPageTableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SelectQuestionMapPageTableViewCell.className, for: indexPath ) as! SelectQuestionMapPageTableViewCell
+            cell.mapTitleLabel.text = self.dataSource[indexPath.row]["mapFirstNodeContent"]
         return cell
     }
 }

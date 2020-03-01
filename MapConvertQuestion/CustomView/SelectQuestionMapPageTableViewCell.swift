@@ -10,6 +10,8 @@ import UIKit
 
 class SelectQuestionMapPageTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var mapTitleLabel:UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
