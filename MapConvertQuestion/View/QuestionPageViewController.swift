@@ -44,7 +44,6 @@ class QuestionPageViewController: UIViewController {
     }
     
     func setQuestion(){
-        
     }
     
     //presenter ← view
@@ -62,14 +61,22 @@ class QuestionPageViewController: UIViewController {
     }
     
     func changeQuizButtonTapped(){
-        self.customView.questionDisplayLabel.isHidden = false
-        self.questionAnswerTableView.isHidden = true
+        changeToQuestionMode()
         presenter.changeQuiz()
     }
     
-    func showAnswerButtonTapped(){
+    func changeToQuestionMode(){
+        self.customView.questionDisplayLabel.isHidden = false
+        self.questionAnswerTableView.isHidden = true
+    }
+    
+    func changeToAnswerMode(){
         self.customView.questionDisplayLabel.isHidden = true
         self.questionAnswerTableView.isHidden = false
+    }
+    
+    func showAnswerButtonTapped(){
+        changeToAnswerMode()
         presenter.showAnswer()
     }
     
@@ -97,6 +104,5 @@ extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.row)")
         presenter.changeToSelectedAnswerQuiz(row: indexPath.row)
-        //notify to presenter
     }
 }

@@ -65,11 +65,12 @@ class QuestionPagePresenter:QuestionModelDelegate{
     
     func changeToSelectedAnswerQuiz(row:Int){
         let searchNodeId = self.answerNodeArray[row].myNodeId
-        self.displayingQustion = self.quizDataSource.filter({ $0.myNodeId == searchNodeId }).first ?? RealmMindNodeModel()
+        let nextQuestionNode = self.quizDataSource.filter({ $0.myNodeId == searchNodeId }).first ?? RealmMindNodeModel()
+        self.displayingQustion = nextQuestionNode
         let questionWithTab = self.displayingQustion.content
         view?.changeQuizDisplay(question: questionWithTab.trimmingCharacters(in: .whitespacesAndNewlines)
         )
-        self.showAnswer()
+        view?.changeToQuestionMode()
     }
     
     private func initAnswerNodeArray(){
