@@ -14,6 +14,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
     let questionModel: QuestionModel
     var quizDataSource = [RealmMindNodeModel]()
     var displayingQustion:RealmMindNodeModel = RealmMindNodeModel()
+    var answerNodeArray = [RealmMindNodeModel]()
     
     //オリジナルのクラス型にすること
     weak var view: QuestionPageViewController?
@@ -62,16 +63,27 @@ class QuestionPagePresenter:QuestionModelDelegate{
         )
     }
     
-    func changeToSelectedAnswerQuiz(){
-        
+    func changeToSelectedAnswerQuiz(row:Int){
+        let searchNodeId = self.answerNodeArray[row].myNodeId
+        self.displayingQustion = self.quizDataSource.filter({ $0.myNodeId == searchNodeId }).first ?? RealmMindNodeModel()
+        let questionWithTab = self.displayingQustion.content
+        view?.changeQuizDisplay(question: questionWithTab.trimmingCharacters(in: .whitespacesAndNewlines)
+        )
+        self.showAnswer()
+    }
+    
+    private func initAnswerNodeArray(){
+        self.answerNodeArray.removeAll()
     }
     
     func showAnswer(){
+        initAnswerNodeArray()
         var answerArray = [String]()
         let answerNodeIdArray = displayingQustion.childNodeIdArray
         for answerNodeId in answerNodeIdArray {
             let nodeId = answerNodeId.MindNodeChildId
             let answerNode = self.quizDataSource.filter({ $0.myNodeId == nodeId }).first
+            self.answerNodeArray.append(answerNode ?? RealmMindNodeModel())
             answerArray.append(answerNode?.content ?? "no answer")
         }
         view?.changeDisplayToAnswer(answer_array: answerArray)
