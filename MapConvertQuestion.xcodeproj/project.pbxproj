@@ -146,7 +146,6 @@
 				54F45E5023FAA177002981C8 /* MarkDownInputViewController.swift */,
 				54BFEE382400F7E400B55A8C /* QuestionPageViewController.swift */,
 				5404BD02240A62F100B3C6EC /* QuestionMapSelectPageTableViewController.swift */,
-				5404BD04240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -165,6 +164,7 @@
 		54F45E3923F918C6002981C8 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				5404BD04240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift */,
 				54F45E3A23F918E6002981C8 /* QuestionDidsplay.swift */,
 				54F45E3C23F918F5002981C8 /* MarkDownInput.swift */,
 				54B466A52408B90700813800 /* QuestionAnswerTableViewCell.swift */,
