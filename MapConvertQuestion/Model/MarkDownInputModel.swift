@@ -93,7 +93,7 @@ class MarkDownInputModel {
             mapGroup.mapId = mapId
             for item in realmDataArray.enumerated() {
                 let node = RealmMindNodeModel(value: item.element)
-                mapGroup.childNodeIdArray.append(node)
+                mapGroup.realmMindNodeModel.append(node)
             }
             try! realm.write {
                 realm.add(mapGroup)

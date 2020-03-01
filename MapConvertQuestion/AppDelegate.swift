@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                }
 //            })
 //        Realm.Configuration.defaultConfiguration = config
-        let migSchemaVersion: UInt64 = 2
+        let migSchemaVersion: UInt64 = 3
         // マイグレーション設定
         let config = Realm.Configuration(
             schemaVersion: migSchemaVersion,

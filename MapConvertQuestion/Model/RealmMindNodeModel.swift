@@ -11,7 +11,7 @@ import RealmSwift
 
 class MapGroup:Object{
     @objc dynamic var mapId:String = ""
-    let childNodeIdArray = List<RealmMindNodeModel>()
+    let realmMindNodeModel = List<RealmMindNodeModel>()
 }
 
 class RealmMindNodeModel:Object{
