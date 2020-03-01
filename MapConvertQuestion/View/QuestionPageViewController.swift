@@ -66,8 +66,6 @@ class QuestionPageViewController: UIViewController {
     }
     
     func changeDisplayToAnswer(answer_array:[String]){
-        print("answer_array")
-        print("\(answer_array)")
         self.dataSource = answer_array
         self.questionAnswerTableView.reloadData()
     }
