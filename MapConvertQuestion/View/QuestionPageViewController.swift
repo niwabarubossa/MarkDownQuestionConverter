@@ -19,8 +19,6 @@ class QuestionPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("questionMapId")
-        print("\(questionMapId)")
         initializePresenter()
         layout()
         getQuestion(mapId:self.questionMapId)
@@ -42,20 +40,7 @@ class QuestionPageViewController: UIViewController {
     private func getQuestion(mapId:String){
         presenter.getQuestionFromModel(mapId:mapId)
     }
-    
-    func setQuestion(){
-    }
-    
-    //presenter ← view
-    func notifyToPresenter(){
-        presenter.myfunc()
-    }
-    
-    //presenter → view
-    func testfunc(){
-        print("done from presenter function")
-    }
-    
+        
     func changeQuizDisplay(question: String){
         self.customView.questionDisplayLabel.text = question
     }

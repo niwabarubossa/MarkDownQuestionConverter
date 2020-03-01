@@ -10,7 +10,6 @@ import Foundation
 import RealmSwift
 
 protocol QuestionModelDelegate: class {
-    func myfunc()
     func didGetMapQuestion(question:Results<RealmMindNodeModel>)
 }
 
@@ -20,11 +19,7 @@ class QuestionModel {
     let testMindNodeArray:[MindNode] = [
         MindNode(myNodeId: 3, content: "\t\t\t2", parentNodeId: 2, childNodeIdArray: [])
     ]
-    
-    func testfunc(){
-        self.delegate?.myfunc()
-    }
-    
+        
     func getMapQuestion(mapId:String){
         let realm = try! Realm()
         let allQuestionNodeArray = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId)

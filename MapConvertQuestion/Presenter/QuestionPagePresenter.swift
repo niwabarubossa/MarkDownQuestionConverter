@@ -25,20 +25,6 @@ class QuestionPagePresenter:QuestionModelDelegate{
         questionModel.delegate = self
     }
 
-    func signUpButtonTapped() {
-        // Presenter → Model
-        questionModel.testfunc()
-    }
-
-    func loginButtonTapped() {
-        //Presenter → View の操作
-        view?.testfunc()
-    }
-
-    func myfunc() {
-        print("notify from view")
-    }
-    
     func getQuestionFromModel(mapId:String){
         questionModel.getMapQuestion(mapId:mapId)
     }
