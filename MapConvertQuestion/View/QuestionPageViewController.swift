@@ -15,9 +15,12 @@ class QuestionPageViewController: UIViewController {
     var dataSource = [String]()
     var presenter:QuestionPagePresenter!
     var customView = QuestionDidsplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+    var questionMapId:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("questionMapId")
+        print("\(questionMapId)")
         initializePresenter()
         layout()
         getQuestion()

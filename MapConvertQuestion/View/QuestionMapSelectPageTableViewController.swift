@@ -13,6 +13,7 @@ class QuestionMapSelectPageTableViewController: UITableViewController {
 
     @IBOutlet var tableVIew: UITableView!
     var dataSource = [Dictionary<String,String>]()
+    var didSelectRowAt:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(SelectQuestionMapPageTableViewCell.createXib(), forCellReuseIdentifier: SelectQuestionMapPageTableViewCell.className)
@@ -49,8 +50,17 @@ class QuestionMapSelectPageTableViewController: UITableViewController {
         }
         return mapAndTitleData
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == R.segue.questionMapSelectPageTableViewController.goToQuestionPage.identifier {
+            let nextVC = segue.destination as! QuestionPageViewController
+            nextVC.questionMapId = self.dataSource[didSelectRowAt]["mapId"] ?? "error"
+            print("\(self.dataSource[didSelectRowAt]["mapId"] ?? "error")")
+        }
+    }
 
 }
+
 
 extension QuestionMapSelectPageTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -62,6 +72,7 @@ extension QuestionMapSelectPageTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.didSelectRowAt = indexPath.row
         self.performSegue(withIdentifier: R.segue.questionMapSelectPageTableViewController.goToQuestionPage, sender: nil)
     }
 
