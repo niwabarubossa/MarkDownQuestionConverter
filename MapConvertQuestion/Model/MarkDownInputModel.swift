@@ -22,11 +22,19 @@ class MarkDownInputModel {
     
     func submitInput(input:String){
         //realm処理
+        let mapId = NSUUID().uuidString
         convertInputToLines(input:input)
         convertStringLinesToMindNode(myNodeId: 0, myIndent: 0, parentNodeId: 0)
-        let realmDataArray = convertMindNodeToRealmDictionary(mindNodeArray: mindNodeArray)
-        saveToRealm(realmDataArray: realmDataArray)
+        let realmDataArray = convertMindNodeToRealmDictionary(mindNodeArray: mindNodeArray,mapId: mapId)
+        saveToRealm(realmDataArray: realmDataArray,mapId: mapId)
         self.delegate?.didSubmitInput()
+        initData()
+    }
+    
+    private func initData(){
+        self.inputLineArray.removeAll()
+        self.doneNum.removeAll()
+        self.mindNodeArray.removeAll()
     }
     
     private func convertInputToLines(input:String){
@@ -60,9 +68,8 @@ class MarkDownInputModel {
         return count
     }
     
-    private func convertMindNodeToRealmDictionary(mindNodeArray: [MindNode]) -> [[String: Any]] {
+    private func convertMindNodeToRealmDictionary(mindNodeArray: [MindNode],mapId: String) -> [[String: Any]] {
         var dictionaryArray = [[String: Any]]()
-        let mapId = NSUUID().uuidString
         for mindNode in mindNodeArray {
             let dictionary: [String: Any] = [
                 "mapId": mapId,
@@ -85,17 +92,19 @@ class MarkDownInputModel {
         return childNodeIdArray
     }
 
-    private func saveToRealm(realmDataArray: [[String: Any]]){
+    private func saveToRealm(realmDataArray: [[String: Any]],mapId: String){
         do {
             let realm = try Realm()
             print(Realm.Configuration.defaultConfiguration.fileURL!)
-            var saveDataArray = [RealmMindNodeModel]()
+            let mapGroup = MapGroup()
+            mapGroup.mapId = mapId
             for item in realmDataArray.enumerated() {
-                saveDataArray.append( RealmMindNodeModel(value: item.element) )
+                let node = RealmMindNodeModel(value: item.element)
+                mapGroup.realmMindNodeModel.append(node)
             }
             try! realm.write {
-                realm.add(saveDataArray)
-                print("成功だよ", saveDataArray)
+                realm.add(mapGroup)
+                print("成功だよ", mapGroup)
             }
         } catch {
             print("\(error)")

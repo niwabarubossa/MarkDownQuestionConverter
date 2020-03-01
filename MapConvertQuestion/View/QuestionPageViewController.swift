@@ -15,12 +15,15 @@ class QuestionPageViewController: UIViewController {
     var dataSource = [String]()
     var presenter:QuestionPagePresenter!
     var customView = QuestionDidsplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+    var questionMapId:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("questionMapId")
+        print("\(questionMapId)")
         initializePresenter()
         layout()
-        getQuestion()
+        getQuestion(mapId:self.questionMapId)
         self.questionAnswerTableView.register(QuestionAnswerTableViewCell.createXib(), forCellReuseIdentifier: QuestionAnswerTableViewCell.className)
         self.questionAnswerTableView.delegate = self
         self.questionAnswerTableView.dataSource = self
@@ -36,8 +39,11 @@ class QuestionPageViewController: UIViewController {
         self.view.addSubview(customView)
     }
     
-    private func getQuestion(){
-        presenter.getTestQuestionFromModel()
+    private func getQuestion(mapId:String){
+        presenter.getQuestionFromModel(mapId:mapId)
+    }
+    
+    func setQuestion(){
     }
     
     //presenter ← view
@@ -55,14 +61,22 @@ class QuestionPageViewController: UIViewController {
     }
     
     func changeQuizButtonTapped(){
-        self.customView.questionDisplayLabel.isHidden = false
-        self.questionAnswerTableView.isHidden = true
+        changeToQuestionMode()
         presenter.changeQuiz()
     }
     
-    func showAnswerButtonTapped(){
+    func changeToQuestionMode(){
+        self.customView.questionDisplayLabel.isHidden = false
+        self.questionAnswerTableView.isHidden = true
+    }
+    
+    func changeToAnswerMode(){
         self.customView.questionDisplayLabel.isHidden = true
         self.questionAnswerTableView.isHidden = false
+    }
+    
+    func showAnswerButtonTapped(){
+        changeToAnswerMode()
         presenter.showAnswer()
     }
     
@@ -88,8 +102,7 @@ extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("indexPath.row")
         print("\(indexPath.row)")
-        //notify to presenter
+        presenter.changeToSelectedAnswerQuiz(row: indexPath.row)
     }
 }

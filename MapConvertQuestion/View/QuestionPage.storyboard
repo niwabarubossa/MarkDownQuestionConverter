@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hw6-0L-hB2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dYv-Rj-fW2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -13,7 +13,7 @@
             <objects>
                 <viewController id="Hw6-0L-hB2" customClass="QuestionPageViewController" customModule="MapConvertQuestion" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rda-qe-YJQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9JA-s2-sfD">
@@ -26,6 +26,7 @@
                         <viewLayoutGuide key="safeArea" id="2s6-8J-VHq"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="QiY-ab-qVX"/>
+                    <navigationItem key="navigationItem" id="yoy-Vq-8Vf"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="questionAnswerTableView" destination="9JA-s2-sfD" id="sgk-Bq-AQS"/>
@@ -34,6 +35,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Mx-eB-scL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="62.946428571428569"/>
+        </scene>
+        <!--Question Map Select Page Table View Controller-->
+        <scene sceneID="TSI-Hh-8e0">
+            <objects>
+                <tableViewController id="dYv-Rj-fW2" customClass="QuestionMapSelectPageTableViewController" customModule="MapConvertQuestion" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xnR-2d-4Zb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="dYv-Rj-fW2" id="Ec1-XZ-kut"/>
+                            <outlet property="delegate" destination="dYv-Rj-fW2" id="vCz-QG-caO"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="RNQ-af-OMt"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableVIew" destination="xnR-2d-4Zb" id="DS3-hg-XMb"/>
+                        <segue destination="Hw6-0L-hB2" kind="show" identifier="goToQuestionPage" id="1t7-UL-HKB"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MoP-FE-j5X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-813" y="63"/>
         </scene>
     </scenes>
 </document>

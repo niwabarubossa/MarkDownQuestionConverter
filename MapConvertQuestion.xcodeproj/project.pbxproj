@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1EC269601B1577FE15F7310F /* Pods_MapConvertQuestion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849D1477E77B3F5C13DCCE54 /* Pods_MapConvertQuestion.framework */; };
+		5404BD03240A62F100B3C6EC /* QuestionMapSelectPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5404BD02240A62F100B3C6EC /* QuestionMapSelectPageTableViewController.swift */; };
+		5404BD06240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5404BD04240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift */; };
+		5404BD07240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5404BD05240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.xib */; };
 		54B466A72408B90700813800 /* QuestionAnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B466A52408B90700813800 /* QuestionAnswerTableViewCell.swift */; };
 		54B466A82408B90700813800 /* QuestionAnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54B466A62408B90700813800 /* QuestionAnswerTableViewCell.xib */; };
 		54B466AA2408BA3C00813800 /* ObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B466A92408BA3C00813800 /* ObjectExtension.swift */; };
@@ -37,6 +40,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5404BD02240A62F100B3C6EC /* QuestionMapSelectPageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionMapSelectPageTableViewController.swift; sourceTree = "<group>"; };
+		5404BD04240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectQuestionMapPageTableViewCell.swift; sourceTree = "<group>"; };
+		5404BD05240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectQuestionMapPageTableViewCell.xib; sourceTree = "<group>"; };
 		54B466A52408B90700813800 /* QuestionAnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerTableViewCell.swift; sourceTree = "<group>"; };
 		54B466A62408B90700813800 /* QuestionAnswerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = QuestionAnswerTableViewCell.xib; path = ../CustomView/QuestionAnswerTableViewCell.xib; sourceTree = "<group>"; };
 		54B466A92408BA3C00813800 /* ObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ObjectExtension.swift; path = MapConvertQuestion/CustomView/ObjectExtension.swift; sourceTree = SOURCE_ROOT; };
@@ -139,6 +145,7 @@
 				54F45E4923F944DB002981C8 /* QuestionPage.storyboard */,
 				54F45E5023FAA177002981C8 /* MarkDownInputViewController.swift */,
 				54BFEE382400F7E400B55A8C /* QuestionPageViewController.swift */,
+				5404BD02240A62F100B3C6EC /* QuestionMapSelectPageTableViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -146,6 +153,7 @@
 		54F45E3423F91104002981C8 /* XibFile */ = {
 			isa = PBXGroup;
 			children = (
+				5404BD05240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.xib */,
 				54B466A62408B90700813800 /* QuestionAnswerTableViewCell.xib */,
 				54F45E3523F9111B002981C8 /* QuestionDidsplay.xib */,
 				54F45E3723F917C5002981C8 /* MarkDownInput.xib */,
@@ -156,6 +164,7 @@
 		54F45E3923F918C6002981C8 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				5404BD04240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift */,
 				54F45E3A23F918E6002981C8 /* QuestionDidsplay.swift */,
 				54F45E3C23F918F5002981C8 /* MarkDownInput.swift */,
 				54B466A52408B90700813800 /* QuestionAnswerTableViewCell.swift */,
@@ -279,6 +288,7 @@
 				54F45E3823F917C5002981C8 /* MarkDownInput.xib in Resources */,
 				54F45E2C23F90AC3002981C8 /* LaunchScreen.storyboard in Resources */,
 				54F45E2923F90AC3002981C8 /* Assets.xcassets in Resources */,
+				5404BD07240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.xib in Resources */,
 				54B466A82408B90700813800 /* QuestionAnswerTableViewCell.xib in Resources */,
 				54F45E2723F90AB5002981C8 /* Main.storyboard in Resources */,
 				54F45E4823F9437F002981C8 /* MarkDownInput.storyboard in Resources */,
@@ -357,8 +367,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				54F45E5123FAA177002981C8 /* MarkDownInputViewController.swift in Sources */,
+				5404BD06240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift in Sources */,
 				54F45E2423F90AB5002981C8 /* ViewController.swift in Sources */,
 				54B466AA2408BA3C00813800 /* ObjectExtension.swift in Sources */,
+				5404BD03240A62F100B3C6EC /* QuestionMapSelectPageTableViewController.swift in Sources */,
 				54F45E5323FAA263002981C8 /* MarkDownInputPresenter.swift in Sources */,
 				54BFEE3B2402701000B55A8C /* RealmMindNodeModel.swift in Sources */,
 				54BFEE392400F7E400B55A8C /* QuestionPageViewController.swift in Sources */,
