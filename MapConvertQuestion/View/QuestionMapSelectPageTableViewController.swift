@@ -16,9 +16,16 @@ class QuestionMapSelectPageTableViewController: UITableViewController {
     var didSelectRowAt:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        setRefreshReload()
         self.tableView.register(SelectQuestionMapPageTableViewCell.createXib(), forCellReuseIdentifier: SelectQuestionMapPageTableViewCell.className)
         self.dataSource = getMapTitleData()
         self.tableView.reloadData()
+    }
+    
+    private func setRefreshReload(){
+        let refreshCtl = UIRefreshControl()
+        self.tableView.refreshControl = refreshCtl
+        refreshCtl.addTarget(self, action: #selector(self.refresh(sender:)), for: .valueChanged)
     }
     
     private func getMapTitleData() -> [Dictionary<String,String>]{
@@ -78,5 +85,11 @@ extension QuestionMapSelectPageTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: SelectQuestionMapPageTableViewCell.className, for: indexPath ) as! SelectQuestionMapPageTableViewCell
             cell.mapTitleLabel.text = self.dataSource[indexPath.row]["mapFirstNodeContent"]
         return cell
+    }
+    
+    @objc func refresh(sender: UIRefreshControl) {
+        self.dataSource = getMapTitleData()
+        self.tableView.reloadData()
+        self.tableView.refreshControl?.endRefreshing()
     }
 }
