@@ -21,4 +21,15 @@ class QuestionModel {
         let allQuestionNodeArray = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId)
         self.delegate?.didGetMapQuestion(question: allQuestionNodeArray)
     }
+    
+    func updateMapQuestion(learningIntervalStruct:LearningIntervalStruct,focusNode:RealmMindNodeModel){
+        let realm = try! Realm()
+        let focusNode = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", focusNode.mapId).filter("myNodeId == %@", focusNode.myNodeId).first
+
+        try! realm.write {
+        focusNode?.setValue(learningIntervalStruct.ifSuccessNextInterval, forKey: "ifSuccessInterval")
+        
+            focusNode?.setValue(learningIntervalStruct.nextLearningDate, forKey: "nextDate")
+        }
+    }
 }

@@ -85,7 +85,43 @@ extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(indexPath.row)")
         presenter.changeToSelectedAnswerQuiz(row: indexPath.row)
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let swipedAction = UIContextualAction(
+            style: .normal,
+            title: "間違えた",
+            handler: {(action: UIContextualAction, view: UIView, completion: (Bool) -> Void) in
+                print("間違えました")
+                self.presenter.wrongAnswer(row: indexPath.row)
+                tableView.reloadData()
+                completion(true)
+        })
+        swipedAction.backgroundColor = UIColor.red
+//        swipedAction.image = UIImage(named: "something") あるいは R.swift
+        return UISwipeActionsConfiguration(actions: [swipedAction])
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let swipedAction = UIContextualAction(
+            style: .normal,
+            title: "正解",
+            handler: {(action: UIContextualAction, view: UIView, completion: (Bool) -> Void) in
+                print("正解です")
+                self.presenter.correctAnswer(row: indexPath.row)
+                tableView.reloadData()
+                completion(true)
+        })
+        swipedAction.backgroundColor = UIColor.green
+        //        swipedAction.image = UIImage(named: "something") あるいは R.swift
+        return UISwipeActionsConfiguration(actions: [swipedAction])
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
+            return true
+    }
+
+        
+    
 }

@@ -15,16 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow? // これを追加
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-//        let config = Realm.Configuration(
-//            schemaVersion: 1,
-//            migrationBlock: { migration, oldSchemaVersion in
-//                if (oldSchemaVersion < 1) {
-//                }
-//            })
-//        Realm.Configuration.defaultConfiguration = config
-        let migSchemaVersion: UInt64 = 3
-        // マイグレーション設定
+        let migSchemaVersion: UInt64 = 5
         let config = Realm.Configuration(
             schemaVersion: migSchemaVersion,
             migrationBlock: { migration, oldSchemaVersion in
@@ -32,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }})
         Realm.Configuration.defaultConfiguration = config
         return true
-        
     }
 
     // MARK: UISceneSession Lifecycle

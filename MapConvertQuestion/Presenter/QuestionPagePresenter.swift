@@ -42,11 +42,12 @@ class QuestionPagePresenter:QuestionModelDelegate{
     }
     
     func changeQuiz(){
-        let randomInt = Int.random(in: 0..<self.quizDataSource.count)
-        self.displayingQustion = quizDataSource[randomInt]
-        let questionWithTab = self.displayingQustion.content
-        view?.changeQuizDisplay(question: questionWithTab.trimmingCharacters(in: .whitespacesAndNewlines)
-        )
+        if self.quizDataSource.count > 0 {
+            let randomInt = Int.random(in: 0..<self.quizDataSource.count)
+            self.displayingQustion = quizDataSource[randomInt]
+            let questionWithTab = self.displayingQustion.content
+            view?.changeQuizDisplay(question: questionWithTab.trimmingCharacters(in: .whitespacesAndNewlines))
+        }
     }
     
     func changeToSelectedAnswerQuiz(row:Int){
@@ -76,4 +77,60 @@ class QuestionPagePresenter:QuestionModelDelegate{
         view?.changeDisplayToAnswer(answer_array: answerArray)
     }
     
+    func correctAnswer(row:Int){
+        let swipedAnswer = self.answerNodeArray[row]
+        let learningIntervalStruct = calculateNextDateWhenCorrect(question: swipedAnswer)
+        questionModel.updateMapQuestion(learningIntervalStruct:learningIntervalStruct,focusNode:swipedAnswer)
+    }
+    
+    private func calculateNextDateWhenCorrect(question:RealmMindNodeModel) -> LearningIntervalStruct{
+        var learningIntervalStruct = LearningIntervalStruct(ifSuccessNextInterval: 0, nextLearningDate: 0)
+        let nextInterval = question.ifSuccessInterval
+        switch nextInterval {
+            case Interval.first.rawValue:
+                learningIntervalStruct.ifSuccessNextInterval = Interval.second.rawValue
+                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.second.rawValue, to: Date())!.millisecondsSince1970
+            case Interval.second.rawValue:
+                learningIntervalStruct.ifSuccessNextInterval = Interval.third.rawValue
+                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.third.rawValue, to: Date())!.millisecondsSince1970
+            case Interval.third.rawValue:
+                learningIntervalStruct.ifSuccessNextInterval = Interval.fourth.rawValue
+                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.fourth.rawValue, to: Date())!.millisecondsSince1970
+            case Interval.fourth.rawValue:
+                learningIntervalStruct.ifSuccessNextInterval = Interval.fifth.rawValue
+                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.fifth.rawValue, to: Date())!.millisecondsSince1970
+            case Interval.fifth.rawValue:
+                learningIntervalStruct.ifSuccessNextInterval = Interval.sixth.rawValue
+                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.sixth.rawValue, to: Date())!.millisecondsSince1970
+            case Interval.sixth.rawValue:
+                learningIntervalStruct.ifSuccessNextInterval = Interval.sixth.rawValue
+                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.sixth.rawValue, to: Date())!.millisecondsSince1970
+            case 0:
+                learningIntervalStruct.ifSuccessNextInterval = 1
+                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.first.rawValue, to: Date())!.millisecondsSince1970
+            default:
+                print("interval error")
+        }
+        return learningIntervalStruct
+    }
+    
+    func wrongAnswer(row:Int){
+        let swipedAnswer = self.answerNodeArray[row]
+        let learningIntervalStruct = calculateNextDateWhenWrong()
+       questionModel.updateMapQuestion(learningIntervalStruct:learningIntervalStruct,focusNode:swipedAnswer)
+    }
+    
+    private func calculateNextDateWhenWrong() -> LearningIntervalStruct{
+        return LearningIntervalStruct(ifSuccessNextInterval: 1, nextLearningDate: Calendar.current.date(byAdding: .day, value: 0, to: Date())!.millisecondsSince1970)
+    }
+    
+}
+
+struct LearningIntervalStruct{
+    var ifSuccessNextInterval:Int
+    var nextLearningDate:Int64
+    init(ifSuccessNextInterval:Int,nextLearningDate:Int64){
+        self.ifSuccessNextInterval = ifSuccessNextInterval
+        self.nextLearningDate = nextLearningDate
+    }
 }
