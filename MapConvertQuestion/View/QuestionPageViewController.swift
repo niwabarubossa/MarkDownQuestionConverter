@@ -24,9 +24,7 @@ class QuestionPageViewController: UIViewController {
         initializePresenter()
         layout()
         getQuestion(mapId:self.questionMapId)
-        self.questionAnswerTableView.register(QuestionAnswerTableViewCell.createXib(), forCellReuseIdentifier: QuestionAnswerTableViewCell.className)
-        self.questionAnswerTableView.delegate = self
-        self.questionAnswerTableView.dataSource = self
+        tableViewSetup()
     }
     
     private func initializePresenter() {
@@ -42,10 +40,18 @@ class QuestionPageViewController: UIViewController {
     private func getQuestion(mapId:String){
         presenter.getQuestionFromModel(mapId:mapId)
     }
+    
+    private func tableViewSetup(){
+        self.questionAnswerTableView.register(QuestionAnswerTableViewCell.createXib(), forCellReuseIdentifier: QuestionAnswerTableViewCell.className)
+        self.questionAnswerTableView.delegate = self
+        self.questionAnswerTableView.dataSource = self
+
+    }
         
     func changeQuizDisplay(questionNode: RealmMindNodeModel){
         self.displayingNode = questionNode
         self.customView.questionDisplayLabel.text = questionNode.content
+        self.changeToQuestionMode()
     }
     
     func changeQuizButtonTapped(){
@@ -67,12 +73,12 @@ class QuestionPageViewController: UIViewController {
         return nextIndexDelta
     }
     
-    func changeToQuestionMode(){
+    private func changeToQuestionMode(){
         self.customView.questionDisplayLabel.isHidden = false
         self.questionAnswerTableView.isHidden = true
     }
     
-    func changeToAnswerMode(){
+    private func changeToAnswerMode(){
         self.customView.questionDisplayLabel.isHidden = true
         self.questionAnswerTableView.isHidden = false
     }

@@ -61,7 +61,6 @@ class QuestionPagePresenter:QuestionModelDelegate{
         let nextQuestionNode = self.quizDataSource.filter({ $0.myNodeId == searchNodeId }).first ?? RealmMindNodeModel()
         self.displayingQustion = nextQuestionNode
         view?.changeQuizDisplay(questionNode: self.displayingQustion)
-        view?.changeToQuestionMode()
     }
     
     private func initAnswerNodeArray(){
