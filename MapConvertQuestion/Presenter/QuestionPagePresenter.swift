@@ -79,7 +79,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
             self.answerNodeArray.append(answerNode ?? RealmMindNodeModel())
             answerArray.append(answerNode?.content ?? "no answer")
         }
-        view?.changeDisplayToAnswer(answer_array: answerArray)
+        view?.changeDisplayToAnswer(answerNodeArray: answerNodeArray)
     }
     
     func correctAnswer(row:Int){

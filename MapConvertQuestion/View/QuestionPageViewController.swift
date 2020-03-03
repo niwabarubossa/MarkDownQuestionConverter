@@ -12,11 +12,12 @@ class QuestionPageViewController: UIViewController {
     
     @IBOutlet weak var questionAnswerTableView: UITableView!
     
-    var dataSource = [String]()
+    var dataSource = [RealmMindNodeModel]()
     var presenter:QuestionPagePresenter!
     var customView = QuestionDidsplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     var questionMapId:String = ""
     var displayingNode:RealmMindNodeModel = RealmMindNodeModel()
+    var answerMindNodeArray = [RealmMindNodeModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,12 +51,20 @@ class QuestionPageViewController: UIViewController {
     func changeQuizButtonTapped(){
         changeToQuestionMode()
         let displayingNodeId:Int = self.displayingNode.myNodeId
+//        let nextIndex:Int = calculateNextIndex(num: self.answerMindNodeArray)
         if
             presenter.dataSourceIndexCheck(index: displayingNodeId + 1) {
             presenter.changeQuiz(nodeId: displayingNodeId + 1)
         }else{
             presenter.changeQuiz(nodeId: 0)
         }
+    }
+    
+    private func calculateNextIndex(num:[RealmMindNodeModel]) -> Int{
+        //answerChildNodeID の nodeIdの最大のものに+1をする
+//        var maxAnswerArrayNodeId:Int = 0
+        var nextIndexDelta:Int = 0
+        return nextIndexDelta
     }
     
     func changeToQuestionMode(){
@@ -73,8 +82,8 @@ class QuestionPageViewController: UIViewController {
         presenter.showAnswer()
     }
     
-    func changeDisplayToAnswer(answer_array:[String]){
-        self.dataSource = answer_array
+    func changeDisplayToAnswer(answerNodeArray:[RealmMindNodeModel]){
+        self.dataSource = answerNodeArray
         self.questionAnswerTableView.reloadData()
     }
     
@@ -84,7 +93,7 @@ extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
     //本来これはPresenterに書くべきとの２つの意見があるが、こちらの方が都合が良いのでtableViewのみ特例。
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionAnswerTableViewCell.className, for: indexPath ) as! QuestionAnswerTableViewCell
-        cell.questionLabel.text = self.dataSource[indexPath.row]
+        cell.questionLabel.text = self.dataSource[indexPath.row].content
         return cell
     }
     
@@ -93,7 +102,11 @@ extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.changeToSelectedAnswerQuiz(row: indexPath.row)
+        if self.dataSource[indexPath.row].childNodeIdArray.count > 0 {
+            presenter.changeToSelectedAnswerQuiz(row: indexPath.row)
+        }else{
+            print("i have no answer")
+        }
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
