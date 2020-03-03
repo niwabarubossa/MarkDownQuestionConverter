@@ -48,9 +48,9 @@ class QuestionPageViewController: UIViewController {
 
     }
         
-    func changeQuizDisplay(questionNode: RealmMindNodeModel){
-        self.displayingNode = questionNode
-        self.customView.questionDisplayLabel.text = questionNode.content
+    func changeQuizDisplay(displayingQustion: RealmMindNodeModel){
+        self.displayingNode = displayingQustion
+        self.customView.questionDisplayLabel.text = displayingQustion.content
     }
     
     func changeQuizButtonTapped(){

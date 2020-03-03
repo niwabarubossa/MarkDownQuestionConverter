@@ -46,13 +46,13 @@ class QuestionPagePresenter:QuestionModelDelegate{
     
     func changeQuiz(nodeId:Int){
         if self.quizDataSource.count > 0 {
-            self.displayingQustion = selectNodeByNodeId(nodeId: nodeId)
-            view?.changeQuizDisplay(questionNode: self.displayingQustion)
+            self.displayingQustion = self.selectNodeByNodeId(nodeId: nodeId)
+            view?.changeQuizDisplay(displayingQustion: self.displayingQustion)
             self.changeToQuestionMode()
         }
     }
     
-    func selectNodeByNodeId(nodeId:Int) -> RealmMindNodeModel{
+    private func selectNodeByNodeId(nodeId:Int) -> RealmMindNodeModel{
         let selectedNode:RealmMindNodeModel = self.quizDataSource.filter({ $0.myNodeId == nodeId }).first ?? RealmMindNodeModel()
         return selectedNode
     }
@@ -61,7 +61,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
         let searchNodeId = self.answerNodeArray[row].myNodeId
         let nextQuestionNode = self.quizDataSource.filter({ $0.myNodeId == searchNodeId }).first ?? RealmMindNodeModel()
         self.displayingQustion = nextQuestionNode
-        view?.changeQuizDisplay(questionNode: self.displayingQustion)
+        view?.changeQuizDisplay(displayingQustion: self.displayingQustion)
         self.changeToQuestionMode()
     }
     
@@ -81,6 +81,12 @@ class QuestionPagePresenter:QuestionModelDelegate{
     
     func showAnswer(){
         initAnswerNodeArray()
+        self.setAnswerNodeArray()
+        view?.changeDisplayToAnswer(answerNodeArray: answerNodeArray)
+        self.changeToAnswerMode()
+    }
+    
+    private func setAnswerNodeArray(){
         var answerArray = [String]()
         let answerNodeIdArray = self.displayingQustion.childNodeIdArray
         for answerNodeId in answerNodeIdArray {
@@ -89,8 +95,6 @@ class QuestionPagePresenter:QuestionModelDelegate{
             self.answerNodeArray.append(answerNode ?? RealmMindNodeModel())
             answerArray.append(answerNode?.content ?? "no answer")
         }
-        view?.changeDisplayToAnswer(answerNodeArray: answerNodeArray)
-        self.changeToAnswerMode()
     }
     
     func correctAnswer(row:Int){
