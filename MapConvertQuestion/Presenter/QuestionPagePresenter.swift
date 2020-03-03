@@ -71,7 +71,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
     func showAnswer(){
         initAnswerNodeArray()
         var answerArray = [String]()
-        let answerNodeIdArray = displayingQustion.childNodeIdArray
+        let answerNodeIdArray = self.displayingQustion.childNodeIdArray
         for answerNodeId in answerNodeIdArray {
             let nodeId = answerNodeId.MindNodeChildId
             let answerNode = self.quizDataSource.filter({ $0.myNodeId == nodeId }).first
