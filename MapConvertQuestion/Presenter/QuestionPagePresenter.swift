@@ -129,12 +129,3 @@ class QuestionPagePresenter:QuestionModelDelegate{
     }
     
 }
-
-struct LearningIntervalStruct{
-    var ifSuccessNextInterval:Int
-    var nextLearningDate:Int64
-    init(ifSuccessNextInterval:Int,nextLearningDate:Int64){
-        self.ifSuccessNextInterval = ifSuccessNextInterval
-        self.nextLearningDate = nextLearningDate
-    }
-}
