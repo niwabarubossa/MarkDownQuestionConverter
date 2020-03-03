@@ -42,11 +42,12 @@ class QuestionPagePresenter:QuestionModelDelegate{
     }
     
     func changeQuiz(){
-        let randomInt = Int.random(in: 0..<self.quizDataSource.count)
-        self.displayingQustion = quizDataSource[randomInt]
-        let questionWithTab = self.displayingQustion.content
-        view?.changeQuizDisplay(question: questionWithTab.trimmingCharacters(in: .whitespacesAndNewlines)
-        )
+        if self.quizDataSource.count > 0 {
+            let randomInt = Int.random(in: 0..<self.quizDataSource.count)
+            self.displayingQustion = quizDataSource[randomInt]
+            let questionWithTab = self.displayingQustion.content
+            view?.changeQuizDisplay(question: questionWithTab.trimmingCharacters(in: .whitespacesAndNewlines))
+        }
     }
     
     func changeToSelectedAnswerQuiz(row:Int){
