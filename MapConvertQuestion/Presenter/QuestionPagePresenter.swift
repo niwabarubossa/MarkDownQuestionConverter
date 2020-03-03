@@ -48,6 +48,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
         if self.quizDataSource.count > 0 {
             self.displayingQustion = selectNodeByNodeId(nodeId: nodeId)
             view?.changeQuizDisplay(questionNode: self.displayingQustion)
+            self.changeToQuestionMode()
         }
     }
     
@@ -61,6 +62,17 @@ class QuestionPagePresenter:QuestionModelDelegate{
         let nextQuestionNode = self.quizDataSource.filter({ $0.myNodeId == searchNodeId }).first ?? RealmMindNodeModel()
         self.displayingQustion = nextQuestionNode
         view?.changeQuizDisplay(questionNode: self.displayingQustion)
+        self.changeToQuestionMode()
+    }
+    
+    private func changeToQuestionMode(){
+        view?.customView.questionDisplayLabel.isHidden = false
+        view?.questionAnswerTableView.isHidden = true
+    }
+    
+    private func changeToAnswerMode(){
+        view?.customView.questionDisplayLabel.isHidden = true
+        view?.questionAnswerTableView.isHidden = false
     }
     
     private func initAnswerNodeArray(){
@@ -78,6 +90,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
             answerArray.append(answerNode?.content ?? "no answer")
         }
         view?.changeDisplayToAnswer(answerNodeArray: answerNodeArray)
+        self.changeToAnswerMode()
     }
     
     func correctAnswer(row:Int){

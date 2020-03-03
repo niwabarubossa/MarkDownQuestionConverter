@@ -51,11 +51,9 @@ class QuestionPageViewController: UIViewController {
     func changeQuizDisplay(questionNode: RealmMindNodeModel){
         self.displayingNode = questionNode
         self.customView.questionDisplayLabel.text = questionNode.content
-        self.changeToQuestionMode()
     }
     
     func changeQuizButtonTapped(){
-        changeToQuestionMode()
         let displayingNodeId:Int = self.displayingNode.myNodeId
 //        let nextIndex:Int = calculateNextIndex(num: self.answerMindNodeArray)
         if
@@ -73,18 +71,7 @@ class QuestionPageViewController: UIViewController {
         return nextIndexDelta
     }
     
-    private func changeToQuestionMode(){
-        self.customView.questionDisplayLabel.isHidden = false
-        self.questionAnswerTableView.isHidden = true
-    }
-    
-    private func changeToAnswerMode(){
-        self.customView.questionDisplayLabel.isHidden = true
-        self.questionAnswerTableView.isHidden = false
-    }
-    
     func showAnswerButtonTapped(){
-        changeToAnswerMode()
         presenter.showAnswer()
     }
     
