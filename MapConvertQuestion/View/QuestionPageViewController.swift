@@ -16,6 +16,7 @@ class QuestionPageViewController: UIViewController {
     var presenter:QuestionPagePresenter!
     var customView = QuestionDidsplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     var questionMapId:String = ""
+    var displayingNode:RealmMindNodeModel = RealmMindNodeModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,13 +42,20 @@ class QuestionPageViewController: UIViewController {
         presenter.getQuestionFromModel(mapId:mapId)
     }
         
-    func changeQuizDisplay(question: String){
-        self.customView.questionDisplayLabel.text = question
+    func changeQuizDisplay(questionNode: RealmMindNodeModel){
+        self.displayingNode = questionNode
+        self.customView.questionDisplayLabel.text = questionNode.content
     }
     
     func changeQuizButtonTapped(){
         changeToQuestionMode()
-        presenter.changeQuiz()
+        let displayingNodeId:Int = self.displayingNode.myNodeId
+        if
+            presenter.dataSourceIndexCheck(index: displayingNodeId + 1) {
+            presenter.changeQuiz(nodeId: displayingNodeId + 1)
+        }else{
+            presenter.changeQuiz(nodeId: 0)
+        }
     }
     
     func changeToQuestionMode(){

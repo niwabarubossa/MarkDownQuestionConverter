@@ -24,6 +24,14 @@ class QuestionPagePresenter:QuestionModelDelegate{
         self.questionModel = QuestionModel()
         questionModel.delegate = self
     }
+    
+    func dataSourceIndexCheck(index:Int) -> Bool{
+        if index > self.quizDataSource.count {
+            return false
+        }else{
+            return true
+        }
+    }
 
     func getQuestionFromModel(mapId:String){
         questionModel.getMapQuestion(mapId:mapId)
@@ -33,30 +41,27 @@ class QuestionPagePresenter:QuestionModelDelegate{
         for item in question {
             self.quizDataSource.append(item)
         }
-        self.changeQuiz()
+        //最初はタイトルからのクイズで
+        self.changeQuiz(nodeId:0)
     }
     
-    func renderingQuizData(question: [QuestionStruct]){
-        let randomInt = Int.random(in: 0..<self.quizDataSource.count)
-        view?.changeQuizDisplay(question: self.quizDataSource[randomInt].content)
-    }
-    
-    func changeQuiz(){
+    func changeQuiz(nodeId:Int){
         if self.quizDataSource.count > 0 {
-            let randomInt = Int.random(in: 0..<self.quizDataSource.count)
-            self.displayingQustion = quizDataSource[randomInt]
-            let questionWithTab = self.displayingQustion.content
-            view?.changeQuizDisplay(question: questionWithTab.trimmingCharacters(in: .whitespacesAndNewlines))
+            self.displayingQustion = selectNodeByNodeId(nodeId: nodeId)
+            view?.changeQuizDisplay(questionNode: self.displayingQustion)
         }
+    }
+    
+    func selectNodeByNodeId(nodeId:Int) -> RealmMindNodeModel{
+        let selectedNode:RealmMindNodeModel = self.quizDataSource.filter({ $0.myNodeId == nodeId }).first ?? RealmMindNodeModel()
+        return selectedNode
     }
     
     func changeToSelectedAnswerQuiz(row:Int){
         let searchNodeId = self.answerNodeArray[row].myNodeId
         let nextQuestionNode = self.quizDataSource.filter({ $0.myNodeId == searchNodeId }).first ?? RealmMindNodeModel()
         self.displayingQustion = nextQuestionNode
-        let questionWithTab = self.displayingQustion.content
-        view?.changeQuizDisplay(question: questionWithTab.trimmingCharacters(in: .whitespacesAndNewlines)
-        )
+        view?.changeQuizDisplay(questionNode: self.displayingQustion)
         view?.changeToQuestionMode()
     }
     
