@@ -41,14 +41,14 @@ class QuestionPagePresenter:QuestionModelDelegate{
         for item in question {
             self.quizDataSource.append(item)
         }
-        //最初はタイトルからのクイズで
-        self.changeQuiz(nodeId:0)
+        self.changeQuiz(nodeId:0) //最初はタイトルからのクイズで
     }
     
     func changeQuiz(nodeId:Int){
         if self.quizDataSource.count > 0 {
             self.displayingQustion = selectNodeByNodeId(nodeId: nodeId)
             view?.changeQuizDisplay(questionNode: self.displayingQustion)
+            self.changeToQuestionMode()
         }
     }
     
@@ -62,7 +62,17 @@ class QuestionPagePresenter:QuestionModelDelegate{
         let nextQuestionNode = self.quizDataSource.filter({ $0.myNodeId == searchNodeId }).first ?? RealmMindNodeModel()
         self.displayingQustion = nextQuestionNode
         view?.changeQuizDisplay(questionNode: self.displayingQustion)
-        view?.changeToQuestionMode()
+        self.changeToQuestionMode()
+    }
+    
+    private func changeToQuestionMode(){
+        view?.customView.questionDisplayLabel.isHidden = false
+        view?.questionAnswerTableView.isHidden = true
+    }
+    
+    private func changeToAnswerMode(){
+        view?.customView.questionDisplayLabel.isHidden = true
+        view?.questionAnswerTableView.isHidden = false
     }
     
     private func initAnswerNodeArray(){
@@ -72,7 +82,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
     func showAnswer(){
         initAnswerNodeArray()
         var answerArray = [String]()
-        let answerNodeIdArray = displayingQustion.childNodeIdArray
+        let answerNodeIdArray = self.displayingQustion.childNodeIdArray
         for answerNodeId in answerNodeIdArray {
             let nodeId = answerNodeId.MindNodeChildId
             let answerNode = self.quizDataSource.filter({ $0.myNodeId == nodeId }).first
@@ -80,6 +90,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
             answerArray.append(answerNode?.content ?? "no answer")
         }
         view?.changeDisplayToAnswer(answerNodeArray: answerNodeArray)
+        self.changeToAnswerMode()
     }
     
     func correctAnswer(row:Int){
@@ -129,13 +140,4 @@ class QuestionPagePresenter:QuestionModelDelegate{
         return LearningIntervalStruct(ifSuccessNextInterval: 1, nextLearningDate: Calendar.current.date(byAdding: .day, value: 0, to: Date())!.millisecondsSince1970)
     }
     
-}
-
-struct LearningIntervalStruct{
-    var ifSuccessNextInterval:Int
-    var nextLearningDate:Int64
-    init(ifSuccessNextInterval:Int,nextLearningDate:Int64){
-        self.ifSuccessNextInterval = ifSuccessNextInterval
-        self.nextLearningDate = nextLearningDate
-    }
 }
