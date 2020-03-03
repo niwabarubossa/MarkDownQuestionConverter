@@ -41,8 +41,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
         for item in question {
             self.quizDataSource.append(item)
         }
-        //最初はタイトルからのクイズで
-        self.changeQuiz(nodeId:0)
+        self.changeQuiz(nodeId:0) //最初はタイトルからのクイズで
     }
     
     func changeQuiz(nodeId:Int){
