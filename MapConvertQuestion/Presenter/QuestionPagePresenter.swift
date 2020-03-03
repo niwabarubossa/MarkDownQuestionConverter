@@ -77,4 +77,45 @@ class QuestionPagePresenter:QuestionModelDelegate{
         view?.changeDisplayToAnswer(answer_array: answerArray)
     }
     
+    func correctAnswer(row:Int){
+        let tappedAnswer = self.answerNodeArray[row]
+        let nextifSuccessInterval = calculateNextDateWhenCorrect(question: tappedAnswer)
+        updateMindNodeData(nextifSuccessInterval:nextifSuccessInterval)
+    }
+    
+    private func calculateNextDateWhenCorrect(question:RealmMindNodeModel) -> Int{
+        let nextInterval = question.ifSuccessInterval
+        var nextifSuccessInterval:Int = 1
+        switch nextInterval {
+            case Interval.first.rawValue:
+                nextifSuccessInterval = Interval.second.rawValue
+            case Interval.second.rawValue:
+                nextifSuccessInterval = Interval.third.rawValue
+            case Interval.third.rawValue:
+                nextifSuccessInterval = Interval.fourth.rawValue
+            case Interval.fourth.rawValue:
+                    nextifSuccessInterval = Interval.fifth.rawValue
+            case Interval.fifth.rawValue:
+                nextifSuccessInterval = Interval.sixth.rawValue
+            case Interval.sixth.rawValue:
+                nextifSuccessInterval = Interval.sixth.rawValue
+            default:
+                print("interval error")
+        }
+        return nextifSuccessInterval
+    }
+    
+    func wrongAnswer(){
+        let nextifSuccessInterval = calculateNextDateWhenWrong()
+        updateMindNodeData(nextifSuccessInterval:nextifSuccessInterval)
+    }
+    
+    private func calculateNextDateWhenWrong() -> Int{
+        return 1
+    }
+    
+    private func updateMindNodeData(nextifSuccessInterval:Int){
+        //realm dataをアップデート
+    }
+    
 }

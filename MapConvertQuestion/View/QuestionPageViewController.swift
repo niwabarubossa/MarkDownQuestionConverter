@@ -94,6 +94,7 @@ extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
             title: "間違えた",
             handler: {(action: UIContextualAction, view: UIView, completion: (Bool) -> Void) in
                 print("間違えました")
+                self.presenter.wrongAnswer()
                 tableView.reloadData()
                 completion(true)
         })
@@ -108,6 +109,7 @@ extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
             title: "正解",
             handler: {(action: UIContextualAction, view: UIView, completion: (Bool) -> Void) in
                 print("正解です")
+                self.presenter.correctAnswer()
                 tableView.reloadData()
                 completion(true)
         })
