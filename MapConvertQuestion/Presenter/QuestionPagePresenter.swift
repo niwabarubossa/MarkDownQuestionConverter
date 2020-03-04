@@ -90,11 +90,6 @@ class QuestionPagePresenter:QuestionModelDelegate{
         self.reloadQAPair(questionNodeId: nextQuestionNodeId)
         self.changeToQuestionMode()
     }
-        
-    private func haveAnswerChild(node:RealmMindNodeModel) -> Bool{
-        if (node.childNodeIdArray.count > 0){ return true }
-        return false
-    }
     
     func changeToSelectedAnswerQuiz(tappedNodeId:Int){
         let nextQuestionId = tappedNodeId
