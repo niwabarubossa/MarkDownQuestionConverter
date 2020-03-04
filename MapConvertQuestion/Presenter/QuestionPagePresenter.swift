@@ -112,41 +112,10 @@ class QuestionPagePresenter:QuestionModelDelegate{
     
     func correctAnswer(row:Int){
         let swipedAnswer = self.answerNodeArray[row]
-        let learningIntervalStruct = calculateNextDateWhenCorrect(question: swipedAnswer)
+        let learningIntervalStruct = nodeFactory.calculateNextDateWhenCorrect(question: swipedAnswer)
         questionModel.updateMapQuestion(learningIntervalStruct:learningIntervalStruct,focusNode:swipedAnswer)
         //reload data
         //rendering...
-    }
-    
-    private func calculateNextDateWhenCorrect(question:RealmMindNodeModel) -> LearningIntervalStruct{
-        var learningIntervalStruct = LearningIntervalStruct(ifSuccessNextInterval: 0, nextLearningDate: 0)
-        let nextInterval = question.ifSuccessInterval
-        switch nextInterval {
-            case Interval.first.rawValue:
-                learningIntervalStruct.ifSuccessNextInterval = Interval.second.rawValue
-                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.second.rawValue, to: Date())!.millisecondsSince1970
-            case Interval.second.rawValue:
-                learningIntervalStruct.ifSuccessNextInterval = Interval.third.rawValue
-                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.third.rawValue, to: Date())!.millisecondsSince1970
-            case Interval.third.rawValue:
-                learningIntervalStruct.ifSuccessNextInterval = Interval.fourth.rawValue
-                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.fourth.rawValue, to: Date())!.millisecondsSince1970
-            case Interval.fourth.rawValue:
-                learningIntervalStruct.ifSuccessNextInterval = Interval.fifth.rawValue
-                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.fifth.rawValue, to: Date())!.millisecondsSince1970
-            case Interval.fifth.rawValue:
-                learningIntervalStruct.ifSuccessNextInterval = Interval.sixth.rawValue
-                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.sixth.rawValue, to: Date())!.millisecondsSince1970
-            case Interval.sixth.rawValue:
-                learningIntervalStruct.ifSuccessNextInterval = Interval.sixth.rawValue
-                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.sixth.rawValue, to: Date())!.millisecondsSince1970
-            case 0:
-                learningIntervalStruct.ifSuccessNextInterval = 1
-                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.first.rawValue, to: Date())!.millisecondsSince1970
-            default:
-                print("interval error")
-        }
-        return learningIntervalStruct
     }
     
     func wrongAnswer(row:Int){
