@@ -12,6 +12,7 @@ import RealmSwift
 class QuestionPagePresenter:QuestionModelDelegate{
     //自分用のモデルの宣言
     let questionModel: QuestionModel
+    var nodeFactory:RealmMindNodeModelFactory = RealmMindNodeModelFactory(allNodeData: [])
     var quizDataSource = [RealmMindNodeModel]()
     var displayingQustion:RealmMindNodeModel = RealmMindNodeModel()
     var answerNodeArray = [RealmMindNodeModel]()
@@ -38,13 +39,15 @@ class QuestionPagePresenter:QuestionModelDelegate{
         for item in question {
             self.quizDataSource.append(item)
         }
+//        RealmMindNodeModelFactory
+        self.nodeFactory = RealmMindNodeModelFactory(allNodeData: self.quizDataSource)
         self.reloadQAPair(questionNodeId:0) //最初はタイトルからのクイズで
         self.notifyNodeToView()
         self.changeToQuestionMode()
     }
     
     func reloadQAPair(questionNodeId:Int){
-        self.displayingQustion = selectNodeByNodeId(nodeId: questionNodeId)
+        self.displayingQustion = nodeFactory.selectNodeByNodeId(nodeId: questionNodeId)
         self.answerNodeArray = getAnswerNodeArray(childNodeIdList: self.displayingQustion.childNodeIdArray)
         self.notifyNodeToView()
         self.renderingView()
@@ -56,7 +59,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
         let diplayingNodeId = self.displayingQustion.myNodeId
         var nextQuestionNodeId:Int = 0
         for nodeId in diplayingNodeId+1..<self.quizDataSource.count {
-            let node = selectNodeByNodeId(nodeId: nodeId)
+            let node = nodeFactory.selectNodeByNodeId(nodeId: nodeId)
             if (node.childNodeIdArray.count > 0){
                 nextQuestionNodeId = nodeId
                 return nextQuestionNodeId
@@ -74,7 +77,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
         var localAnswerNodeArray = [RealmMindNodeModel]()
         for answerNodeId in childNodeIdList {
             let nodeId = answerNodeId.MindNodeChildId
-            let answerNode = selectNodeByNodeId(nodeId: nodeId)
+            let answerNode = nodeFactory.selectNodeByNodeId(nodeId: nodeId)
             localAnswerNodeArray.append(answerNode)
         }
         return localAnswerNodeArray
@@ -102,11 +105,6 @@ class QuestionPagePresenter:QuestionModelDelegate{
     private func haveAnswerChild(node:RealmMindNodeModel) -> Bool{
         if (node.childNodeIdArray.count > 0){ return true }
         return false
-    }
-    
-    private func selectNodeByNodeId(nodeId:Int) -> RealmMindNodeModel{
-        let selectedNode:RealmMindNodeModel = self.quizDataSource.filter({ $0.myNodeId == nodeId }).first ?? RealmMindNodeModel()
-        return selectedNode
     }
     
     func changeToSelectedAnswerQuiz(tappedNodeId:Int){
