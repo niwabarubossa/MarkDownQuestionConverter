@@ -21,8 +21,10 @@ class ToDoQuestionModel {
     
     func getToDoQuestion(){
         let realm = try! Realm()
-        let results = realm.objects(RealmMindNodeModel.self)
-        //filter  user have to solve for today
+        let todayStart = Calendar.current.startOfDay(for: Date()).millisecondsSince1970
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
+        let todayEnd = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
+        let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {\(todayStart), \(todayEnd)}")
         var questionArray = [RealmMindNodeModel]()
         for question in results {
             questionArray.append(question)

@@ -14,6 +14,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate{
     let myModel: ToDoQuestionModel
     //オリジナルのクラス型にすること
     weak var view:ToDoQuestionPageViewController?
+    var questionArray = [RealmMindNodeModel]()
 
     init(view: ToDoQuestionPageViewController) {
         self.view = view
@@ -39,7 +40,17 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate{
         print("nextQuestionButtonTapped in presenter")
     }
     
+    func initializePage(){
+        myModel.getToDoQuestion()
+    }
+    
     func didGetToDoQuestion(questionArray: [RealmMindNodeModel]) {
         print("questionArray")
+        print("\(questionArray)")
+        self.setQuestionArray(questionArray: questionArray)
+    }
+    
+    private func setQuestionArray(questionArray: [RealmMindNodeModel]){
+        self.questionArray = questionArray
     }
 }

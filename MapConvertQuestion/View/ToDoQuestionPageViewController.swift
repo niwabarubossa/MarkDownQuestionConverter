@@ -11,18 +11,26 @@ class ToDoQuestionPageViewController: UIViewController,ToDoQuestionDisplayDelega
 
     var presenter:ToDoQuestionPresenter!
     let customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+    var displayingQuestion:RealmMindNodeModel = RealmMindNodeModel()
+    var answerMindNodeArray = [RealmMindNodeModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializePresenter()
         // Do any additional setup after loading the view.
         layout()
+        initializePage()
     }
     
     private func layout(){
         customView.center = self.view.center
         customView.myDelegate = self
         self.view.addSubview(customView)
+    }
+    
+    private func initializePage(){
+        //get question func
+        presenter.initializePage()
     }
     
     func answerButtonTapped() {
