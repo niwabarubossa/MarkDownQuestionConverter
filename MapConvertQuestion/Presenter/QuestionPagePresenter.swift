@@ -47,7 +47,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
     
     func reloadQAPair(questionNodeId:Int){
         self.displayingQustion = nodeFactory.selectNodeByNodeId(nodeId: questionNodeId)
-        self.answerNodeArray = getAnswerNodeArray(childNodeIdList: self.displayingQustion.childNodeIdArray)
+        self.answerNodeArray = nodeFactory.getAnswerNodeArray(childNodeIdList: self.displayingQustion.childNodeIdArray)
         self.notifyNodeToView()
         self.renderingView()
         self.changeToQuestionMode()
@@ -70,16 +70,6 @@ class QuestionPagePresenter:QuestionModelDelegate{
         }
         print("もうクイズないよ")
         return nextQuestionNodeId
-    }
-    
-    private func getAnswerNodeArray(childNodeIdList:List<MindNodeChildId>) -> [RealmMindNodeModel]{
-        var localAnswerNodeArray = [RealmMindNodeModel]()
-        for answerNodeId in childNodeIdList {
-            let nodeId = answerNodeId.MindNodeChildId
-            let answerNode = nodeFactory.selectNodeByNodeId(nodeId: nodeId)
-            localAnswerNodeArray.append(answerNode)
-        }
-        return localAnswerNodeArray
     }
     
     func notifyNodeToView(){

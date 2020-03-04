@@ -38,4 +38,14 @@ class RealmMindNodeModelFactory{
         let selectedNode:RealmMindNodeModel = self.allNodeData.filter({ $0.myNodeId == nodeId }).first ?? RealmMindNodeModel()
         return selectedNode
     }
+    
+    func getAnswerNodeArray(childNodeIdList:List<MindNodeChildId>) -> [RealmMindNodeModel]{
+        var localAnswerNodeArray = [RealmMindNodeModel]()
+        for answerNodeId in childNodeIdList {
+            let nodeId = answerNodeId.MindNodeChildId
+            let answerNode = self.selectNodeByNodeId(nodeId: nodeId)
+            localAnswerNodeArray.append(answerNode)
+        }
+        return localAnswerNodeArray
+    }
 }
