@@ -38,7 +38,29 @@ class QuestionPagePresenter:QuestionModelDelegate{
         for item in question {
             self.quizDataSource.append(item)
         }
-        self.changeQuiz(nodeId:0) //最初はタイトルからのクイズで
+        self.reloadQAPair(questionNodeId:0) //最初はタイトルからのクイズで
+        self.notifyNodeToView()
+    }
+    
+    func reloadQAPair(questionNodeId:Int){
+        self.displayingQustion = selectNodeByNodeId(nodeId: questionNodeId)
+        self.answerNodeArray = getAnswerNodeArray(childNodeIdList: self.displayingQustion.childNodeIdArray)
+        self.notifyNodeToView()
+    }
+    
+    private func getAnswerNodeArray(childNodeIdList:List<MindNodeChildId>) -> [RealmMindNodeModel]{
+        var localAnswerNodeArray = [RealmMindNodeModel]()
+        for answerNodeId in childNodeIdList {
+            let nodeId = answerNodeId.MindNodeChildId
+            let answerNode = selectNodeByNodeId(nodeId: nodeId)
+            localAnswerNodeArray.append(answerNode)
+        }
+        return localAnswerNodeArray
+    }
+    
+    func notifyNodeToView(){
+        self.view?.displayingNode = self.displayingQustion
+        self.view?.answerMindNodeArray = self.answerNodeArray
     }
     
     func changeQuiz(nodeId:Int){
@@ -77,21 +99,11 @@ class QuestionPagePresenter:QuestionModelDelegate{
     
     func showAnswer(){
         initAnswerNodeArray()
-        self.setAnswerNodeArray()
+//        self.setAnswerNodeArray()
         view?.changeDisplayToAnswer(answerNodeArray: answerNodeArray)
         self.changeToAnswerMode()
     }
     
-    private func setAnswerNodeArray(){
-        var answerArray = [String]()
-        let answerNodeIdArray = self.displayingQustion.childNodeIdArray
-        for answerNodeId in answerNodeIdArray {
-            let nodeId = answerNodeId.MindNodeChildId
-            let answerNode = self.quizDataSource.filter({ $0.myNodeId == nodeId }).first
-            self.answerNodeArray.append(answerNode ?? RealmMindNodeModel())
-            answerArray.append(answerNode?.content ?? "no answer")
-        }
-    }
     
     func correctAnswer(row:Int){
         let swipedAnswer = self.answerNodeArray[row]
