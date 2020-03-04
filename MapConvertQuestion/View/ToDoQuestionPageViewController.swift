@@ -29,7 +29,6 @@ class ToDoQuestionPageViewController: UIViewController,ToDoQuestionDisplayDelega
         print("delegate")
     }
 
-    
     private func initializePresenter() {
        presenter = ToDoQuestionPresenter(view: self)
     }
