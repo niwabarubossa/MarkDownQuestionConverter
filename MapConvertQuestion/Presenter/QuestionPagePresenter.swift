@@ -39,7 +39,6 @@ class QuestionPagePresenter:QuestionModelDelegate{
         for item in question {
             self.quizDataSource.append(item)
         }
-//        RealmMindNodeModelFactory
         self.nodeFactory = RealmMindNodeModelFactory(allNodeData: self.quizDataSource)
         self.reloadQAPair(questionNodeId:0) //最初はタイトルからのクイズで
         self.notifyNodeToView()
