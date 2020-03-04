@@ -53,26 +53,12 @@ class QuestionPageViewController: UIViewController {
         self.customView.questionDisplayLabel.text = displayingQustion.content
     }
     
-    func changeQuizButtonTapped(){
-        let displayingNodeId:Int = self.displayingNode.myNodeId
-//        let nextIndex:Int = calculateNextIndex(num: self.answerMindNodeArray)
-        if
-            presenter.dataSourceIndexCheck(index: displayingNodeId + 1) {
-            presenter.changeQuiz(nodeId: displayingNodeId + 1)
-        }else{
-            presenter.changeQuiz(nodeId: 0)
-        }
-    }
-    
-    private func calculateNextIndex(num:[RealmMindNodeModel]) -> Int{
-        //answerChildNodeID の nodeIdの最大のものに+1をする
-//        var maxAnswerArrayNodeId:Int = 0
-        var nextIndexDelta:Int = 0
-        return nextIndexDelta
+    func nextButtonTapped(){
+        presenter.nextButtonTapped()
     }
     
     func showAnswerButtonTapped(){
-        presenter.showAnswer()
+        presenter.showAnswerButtonTapped()
     }
     
     func changeDisplayToAnswer(answerNodeArray:[RealmMindNodeModel]){
@@ -96,7 +82,8 @@ extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.dataSource[indexPath.row].childNodeIdArray.count > 0 {
-            presenter.changeToSelectedAnswerQuiz(row: indexPath.row)
+            let tappedNodeId = self.dataSource[indexPath.row].myNodeId
+            presenter.changeToSelectedAnswerQuiz(tappedNodeId: tappedNodeId)
         }else{
             print("i have no answer")
         }

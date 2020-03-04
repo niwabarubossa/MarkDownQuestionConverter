@@ -26,11 +26,8 @@ class QuestionPagePresenter:QuestionModelDelegate{
     }
     
     func dataSourceIndexCheck(index:Int) -> Bool{
-        if index > self.quizDataSource.count {
-            return false
-        }else{
-            return true
-        }
+        if index > self.quizDataSource.count { return false }
+        return true
     }
 
     func getQuestionFromModel(mapId:String){
@@ -41,15 +38,71 @@ class QuestionPagePresenter:QuestionModelDelegate{
         for item in question {
             self.quizDataSource.append(item)
         }
-        self.changeQuiz(nodeId:0) //最初はタイトルからのクイズで
+        self.reloadQAPair(questionNodeId:0) //最初はタイトルからのクイズで
+        self.notifyNodeToView()
+        self.changeToQuestionMode()
     }
     
-    func changeQuiz(nodeId:Int){
-        if self.quizDataSource.count > 0 {
-            self.displayingQustion = self.selectNodeByNodeId(nodeId: nodeId)
-            view?.changeQuizDisplay(displayingQustion: self.displayingQustion)
-            self.changeToQuestionMode()
+    func reloadQAPair(questionNodeId:Int){
+        self.displayingQustion = selectNodeByNodeId(nodeId: questionNodeId)
+        self.answerNodeArray = getAnswerNodeArray(childNodeIdList: self.displayingQustion.childNodeIdArray)
+        self.notifyNodeToView()
+        self.renderingView()
+        self.changeToQuestionMode()
+    }
+    
+    private func searchNextQuestionNodeId() -> Int{
+        //have childなnodeつまり、questionとなりうるnodeを表示する。 answer持たない奴はquestionになれないので、ここでスキップ
+        let diplayingNodeId = self.displayingQustion.myNodeId
+        var nextQuestionNodeId:Int = 0
+        for nodeId in diplayingNodeId+1..<self.quizDataSource.count {
+            let node = selectNodeByNodeId(nodeId: nodeId)
+            if (node.childNodeIdArray.count > 0){
+                nextQuestionNodeId = nodeId
+                return nextQuestionNodeId
+            }
+            if (nodeId == self.quizDataSource.count - 1 ){
+                print("もうクイズはありません。")
+                return 0
+            }
         }
+        print("もうクイズないよ")
+        return nextQuestionNodeId
+    }
+    
+    private func getAnswerNodeArray(childNodeIdList:List<MindNodeChildId>) -> [RealmMindNodeModel]{
+        var localAnswerNodeArray = [RealmMindNodeModel]()
+        for answerNodeId in childNodeIdList {
+            let nodeId = answerNodeId.MindNodeChildId
+            let answerNode = selectNodeByNodeId(nodeId: nodeId)
+            localAnswerNodeArray.append(answerNode)
+        }
+        return localAnswerNodeArray
+    }
+    
+    func notifyNodeToView(){
+        self.view?.displayingNode = self.displayingQustion
+        self.view?.answerMindNodeArray = self.answerNodeArray
+    }
+    
+    private func renderingView(){
+        self.view?.customView.questionDisplayLabel.text = self.displayingQustion.content
+        self.view?.answerMindNodeArray = self.answerNodeArray
+        self.view?.dataSource = self.answerNodeArray
+        print("reload data")
+        self.view?.questionAnswerTableView.reloadData()
+    }
+    
+    func nextButtonTapped(){
+        if (self.quizDataSource.count < 1) { return }
+        let nextQuestionNodeId:Int = self.searchNextQuestionNodeId()
+        self.reloadQAPair(questionNodeId: nextQuestionNodeId)
+        self.changeToQuestionMode()
+    }
+        
+    private func haveAnswerChild(node:RealmMindNodeModel) -> Bool{
+        if (node.childNodeIdArray.count > 0){ return true }
+        return false
     }
     
     private func selectNodeByNodeId(nodeId:Int) -> RealmMindNodeModel{
@@ -57,12 +110,12 @@ class QuestionPagePresenter:QuestionModelDelegate{
         return selectedNode
     }
     
-    func changeToSelectedAnswerQuiz(row:Int){
-        let searchNodeId = self.answerNodeArray[row].myNodeId
-        let nextQuestionNode = self.quizDataSource.filter({ $0.myNodeId == searchNodeId }).first ?? RealmMindNodeModel()
-        self.displayingQustion = nextQuestionNode
-        view?.changeQuizDisplay(displayingQustion: self.displayingQustion)
-        self.changeToQuestionMode()
+    func changeToSelectedAnswerQuiz(tappedNodeId:Int){
+        let tappedNode = self.selectNodeByNodeId(nodeId: tappedNodeId)
+        print("tappedNode")
+        print("\(tappedNode)")
+        let nextQuestionId = tappedNodeId
+        self.reloadQAPair(questionNodeId: nextQuestionId)
     }
     
     private func changeToQuestionMode(){
@@ -75,26 +128,8 @@ class QuestionPagePresenter:QuestionModelDelegate{
         view?.questionAnswerTableView.isHidden = false
     }
     
-    private func initAnswerNodeArray(){
-        self.answerNodeArray.removeAll()
-    }
-    
-    func showAnswer(){
-        initAnswerNodeArray()
-        self.setAnswerNodeArray()
-        view?.changeDisplayToAnswer(answerNodeArray: answerNodeArray)
+    func showAnswerButtonTapped(){
         self.changeToAnswerMode()
-    }
-    
-    private func setAnswerNodeArray(){
-        var answerArray = [String]()
-        let answerNodeIdArray = self.displayingQustion.childNodeIdArray
-        for answerNodeId in answerNodeIdArray {
-            let nodeId = answerNodeId.MindNodeChildId
-            let answerNode = self.quizDataSource.filter({ $0.myNodeId == nodeId }).first
-            self.answerNodeArray.append(answerNode ?? RealmMindNodeModel())
-            answerArray.append(answerNode?.content ?? "no answer")
-        }
     }
     
     func correctAnswer(row:Int){
