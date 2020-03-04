@@ -11,6 +11,8 @@ import UIKit
 class ToDoQuestionDisplay: UIView {
 
     var myDelegate:ToDoQuestionDisplayDelegate?
+    @IBOutlet weak var questionLabel: UILabel!
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,6 +29,17 @@ class ToDoQuestionDisplay: UIView {
             view.frame = self.bounds
             self.addSubview(view)
         }
+        layout()
     }
 
+    private func layout(){
+        questionLabel.numberOfLines = 0
+    }
+    
+    @IBAction func answerButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func nextQuestionButtonTapped(_ sender: Any) {
+    }
+    
 }
