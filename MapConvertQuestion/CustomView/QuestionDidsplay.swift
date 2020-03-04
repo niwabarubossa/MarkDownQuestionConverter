@@ -38,8 +38,8 @@ class QuestionDidsplay: UIView {
     @IBAction func tappedQuestionButton(_ sender: Any) {
     }
     
-    @IBAction func tappedChangeButton(_ sender: Any) {
-        self.delegate?.changeQuizButtonTapped()
+    @IBAction func tappedNextButton(_ sender: Any) {
+        self.delegate?.changeNextButtonTapped()
     }
     
 }
