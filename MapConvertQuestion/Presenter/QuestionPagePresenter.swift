@@ -45,11 +45,10 @@ class QuestionPagePresenter:QuestionModelDelegate{
     }
     
     func changeQuiz(nodeId:Int){
-        if self.quizDataSource.count > 0 {
-            self.displayingQustion = self.selectNodeByNodeId(nodeId: nodeId)
-            view?.changeQuizDisplay(displayingQustion: self.displayingQustion)
-            self.changeToQuestionMode()
-        }
+        if (self.quizDataSource.count < 1) { return }
+        self.displayingQustion = self.selectNodeByNodeId(nodeId: nodeId)
+        view?.changeQuizDisplay(displayingQustion: self.displayingQustion)
+        self.changeToQuestionMode()
     }
     
     private func selectNodeByNodeId(nodeId:Int) -> RealmMindNodeModel{
