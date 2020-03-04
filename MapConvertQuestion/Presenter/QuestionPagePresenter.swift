@@ -26,11 +26,8 @@ class QuestionPagePresenter:QuestionModelDelegate{
     }
     
     func dataSourceIndexCheck(index:Int) -> Bool{
-        if index > self.quizDataSource.count {
-            return false
-        }else{
-            return true
-        }
+        if index > self.quizDataSource.count { return false }
+        return true
     }
 
     func getQuestionFromModel(mapId:String){
