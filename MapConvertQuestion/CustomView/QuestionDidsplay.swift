@@ -39,7 +39,7 @@ class QuestionDidsplay: UIView {
     }
     
     @IBAction func tappedNextButton(_ sender: Any) {
-        self.delegate?.changeNextButtonTapped()
+        self.delegate?.nextButtonTapped()
     }
     
 }

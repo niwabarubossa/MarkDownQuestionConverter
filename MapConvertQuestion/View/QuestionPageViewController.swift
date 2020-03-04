@@ -53,7 +53,7 @@ class QuestionPageViewController: UIViewController {
         self.customView.questionDisplayLabel.text = displayingQustion.content
     }
     
-    func changeNextButtonTapped(){
+    func nextButtonTapped(){
         let displayingNodeId:Int = self.displayingNode.myNodeId
 //        let nextIndex:Int = calculateNextIndex(num: self.answerMindNodeArray)
         if
