@@ -39,7 +39,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate{
         print("nextQuestionButtonTapped in presenter")
     }
     
-    func delegateFunc() {
-         print("delegate func")
+    func didGetToDoQuestion(questionArray: [RealmMindNodeModel]) {
+        print("questionArray")
     }
 }
