@@ -89,7 +89,6 @@ class QuestionPagePresenter:QuestionModelDelegate{
         self.view?.customView.questionDisplayLabel.text = self.displayingQustion.content
         self.view?.answerMindNodeArray = self.answerNodeArray
         self.view?.dataSource = self.answerNodeArray
-        print("reload data")
         self.view?.questionAnswerTableView.reloadData()
     }
     
@@ -133,6 +132,8 @@ class QuestionPagePresenter:QuestionModelDelegate{
         let swipedAnswer = self.answerNodeArray[row]
         let learningIntervalStruct = calculateNextDateWhenCorrect(question: swipedAnswer)
         questionModel.updateMapQuestion(learningIntervalStruct:learningIntervalStruct,focusNode:swipedAnswer)
+        //reload data
+        //rendering...
     }
     
     private func calculateNextDateWhenCorrect(question:RealmMindNodeModel) -> LearningIntervalStruct{
@@ -170,6 +171,8 @@ class QuestionPagePresenter:QuestionModelDelegate{
         let swipedAnswer = self.answerNodeArray[row]
         let learningIntervalStruct = calculateNextDateWhenWrong()
        questionModel.updateMapQuestion(learningIntervalStruct:learningIntervalStruct,focusNode:swipedAnswer)
+        //reload data
+        //rendering...
     }
     
     private func calculateNextDateWhenWrong() -> LearningIntervalStruct{
