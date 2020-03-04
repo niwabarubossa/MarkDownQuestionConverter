@@ -111,7 +111,6 @@ class QuestionPagePresenter:QuestionModelDelegate{
     }
     
     func changeToSelectedAnswerQuiz(tappedNodeId:Int){
-        let tappedNode = self.selectNodeByNodeId(nodeId: tappedNodeId)
         let nextQuestionId = tappedNodeId
         self.reloadQAPair(questionNodeId: nextQuestionId)
     }
