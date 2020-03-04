@@ -27,3 +27,15 @@ class RealmMindNodeModel:Object{
 class MindNodeChildId: Object {
     @objc dynamic var MindNodeChildId: Int = 0
 }
+
+class RealmMindNodeModelFactory{
+    var allNodeData = [RealmMindNodeModel]()
+    init(allNodeData:[RealmMindNodeModel]) {
+        self.allNodeData = allNodeData
+    }
+    
+    func selectNodeByNodeId(nodeId:Int) -> RealmMindNodeModel{
+        let selectedNode:RealmMindNodeModel = self.allNodeData.filter({ $0.myNodeId == nodeId }).first ?? RealmMindNodeModel()
+        return selectedNode
+    }
+}
