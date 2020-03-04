@@ -25,17 +25,18 @@ class ToDoQuestionPageViewController: UIViewController,ToDoQuestionDisplayDelega
         self.view.addSubview(customView)
     }
     
-    func delegateFunction() {
-        print("delegate")
+    func answerButtonTapped() {
+        print("answerButtonTapped")
+        presenter.answerButtonTapped()
+    }
+    
+    func nextQuestionButtonTapped(){
+        print("nextQuestionButtonTapped")
+        presenter.nextQuestionButtonTapped()
     }
 
     private func initializePresenter() {
        presenter = ToDoQuestionPresenter(view: self)
-    }
-    
-    //presenter ← view
-    func notifyToPresenter(){
-        presenter.delegateFunc()
     }
     
     //presenter → view
@@ -46,5 +47,6 @@ class ToDoQuestionPageViewController: UIViewController,ToDoQuestionDisplayDelega
 }
 
 protocol ToDoQuestionDisplayDelegate {
-    func delegateFunction() -> Void
+    func answerButtonTapped() -> Void
+    func nextQuestionButtonTapped() -> Void
 }

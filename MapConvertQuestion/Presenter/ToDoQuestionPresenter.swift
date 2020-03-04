@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class ToDoQuestionPresenter:ToDoQuestionModelDelegate{
+
     //自分用のモデルの宣言
     let myModel: ToDoQuestionModel
     //オリジナルのクラス型にすること
@@ -29,9 +30,16 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate{
     func toViewFromPresenter() {
         view?.testfunc()
     }
-
-    // prsenter ← Viewの操作     操作されるやつ
+    
+    func answerButtonTapped(){
+        print("answerButtonTapped in presenter")
+    }
+    
+    func nextQuestionButtonTapped(){
+        print("nextQuestionButtonTapped in presenter")
+    }
+    
     func delegateFunc() {
-        print("notify from view")
+         print("delegate func")
     }
 }

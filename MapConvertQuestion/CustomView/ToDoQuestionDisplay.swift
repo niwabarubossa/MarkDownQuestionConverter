@@ -37,9 +37,11 @@ class ToDoQuestionDisplay: UIView {
     }
     
     @IBAction func answerButtonTapped(_ sender: Any) {
+        myDelegate?.answerButtonTapped()
     }
     
     @IBAction func nextQuestionButtonTapped(_ sender: Any) {
+        myDelegate?.nextQuestionButtonTapped()
     }
     
 }
