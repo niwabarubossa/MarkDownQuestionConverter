@@ -26,6 +26,20 @@ class QuestionModel {
         self.delegate?.didGetMapQuestion(question: allNodeData)
     }
     
+    func getToDoQuestion(){
+        let realm = try! Realm()
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
+        let todayEnd = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
+        let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(todayEnd)}")
+        print("results.count")
+        print("\(results.count) 件あります。")
+        var questionArray = [RealmMindNodeModel]()
+        for question in results {
+            questionArray.append(question)
+        }
+        self.delegate?.didGetMapQuestion(question: questionArray)
+    }
+    
     func updateMapQuestion(learningIntervalStruct:LearningIntervalStruct,focusNode:RealmMindNodeModel){
         let realm = try! Realm()
         let focusNode = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", focusNode.mapId).filter("myNodeId == %@", focusNode.myNodeId).first
