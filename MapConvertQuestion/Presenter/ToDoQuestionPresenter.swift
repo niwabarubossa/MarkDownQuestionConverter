@@ -13,7 +13,9 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     let myModel: QuestionModel
     //オリジナルのクラス型にすること
     weak var view:ToDoQuestionPageViewController?
-    var questionArray = [RealmMindNodeModel]()
+    var quizDataSource = [RealmMindNodeModel]()
+    var displayingQustion:RealmMindNodeModel = RealmMindNodeModel()
+    var answerNodeArray = [RealmMindNodeModel]()
 
     init(view: ToDoQuestionPageViewController) {
         self.view = view
@@ -56,7 +58,47 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         self.setQuestionArray(questionArray: questionArray)
     }
     
+    func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
+        
+    }
+    
+    func leadingSwipeQuestion(swipedQuestion:RealmMindNodeModel){
+        
+    }
+    
+    func changeToSelectedAnswerQuiz(tappedNodeId:Int){
+        let nextQuestionId = tappedNodeId
+        self.reloadQAPair(questionNodeId: nextQuestionId)
+    }
+    
     private func setQuestionArray(questionArray: [RealmMindNodeModel]){
-        self.questionArray = questionArray
+        self.quizDataSource = questionArray
+    }
+}
+
+extension ToDoQuestionPresenter {
+    func reloadQAPair(questionNodeId:Int){
+        self.displayingQustion = myModel.selectNodeByNodeId(nodeId: questionNodeId)
+        self.answerNodeArray = myModel.getAnswerNodeArray(childNodeIdList: self.displayingQustion.childNodeIdArray)
+        self.notifyNodeToView()
+        self.renderingView()
+        self.changeToQuestionMode()
+    }
+    
+    func notifyNodeToView(){
+        self.view?.displayingNode = self.displayingQustion
+        self.view?.answerNodeArrayDataSource = self.answerNodeArray
+    }
+    
+    private func renderingView(){
+        self.view?.customView.questionLabel.text = self.displayingQustion.content
+        self.view?.answerNodeArrayDataSource = self.answerNodeArray
+        self.view?.answerNodeArrayDataSource = self.answerNodeArray
+        self.view?.answerTableView.reloadData()
+    }
+    
+    private func changeToQuestionMode(){
+        view?.customView.questionLabel.isHidden = false
+        view?.answerTableView.isHidden = true
     }
 }

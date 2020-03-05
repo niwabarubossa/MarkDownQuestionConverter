@@ -9,10 +9,12 @@ import UIKit
 
 class ToDoQuestionPageViewController: UIViewController,ToDoQuestionDisplayDelegate {
 
+    
+    @IBOutlet weak var answerTableView: UITableView!
     var presenter:ToDoQuestionPresenter!
     let customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
-    var displayingQuestion:RealmMindNodeModel = RealmMindNodeModel()
-    var answerMindNodeArray = [RealmMindNodeModel]()
+    var displayingNode:RealmMindNodeModel = RealmMindNodeModel()
+    var answerNodeArrayDataSource = [RealmMindNodeModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,7 @@ class ToDoQuestionPageViewController: UIViewController,ToDoQuestionDisplayDelega
         // Do any additional setup after loading the view.
         layout()
         initializePage()
+        tableViewSetup()
     }
     
     private func layout(){
@@ -31,6 +34,12 @@ class ToDoQuestionPageViewController: UIViewController,ToDoQuestionDisplayDelega
     private func initializePage(){
         //get question func
         presenter.initializePage()
+    }
+    
+    private func tableViewSetup(){
+        self.answerTableView.register(QuestionAnswerTableViewCell.createXib(), forCellReuseIdentifier: QuestionAnswerTableViewCell.className)
+        self.answerTableView.delegate = self
+        self.answerTableView.dataSource = self
     }
     
     func answerButtonTapped() {
@@ -52,6 +61,62 @@ class ToDoQuestionPageViewController: UIViewController,ToDoQuestionDisplayDelega
         print("done from presenter function")
     }
 
+}
+
+extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        answerNodeArrayDataSource.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: QuestionAnswerTableViewCell.className, for: indexPath ) as! QuestionAnswerTableViewCell
+         cell.questionLabel.text = self.answerNodeArrayDataSource[indexPath.row].content
+         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.answerNodeArrayDataSource[indexPath.row].childNodeIdArray.count > 0 {
+            let tappedNodeId = self.answerNodeArrayDataSource[indexPath.row].myNodeId
+            presenter.changeToSelectedAnswerQuiz(tappedNodeId: tappedNodeId)
+        }else{
+            print("i have no answer")
+        }
+    }
+        
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+            let swipedAction = UIContextualAction(
+                style: .normal,
+                title: "間違えた",
+                handler: {(action: UIContextualAction, view: UIView, completion: (Bool) -> Void) in
+                    print("間違えました")
+                    self.presenter.trailingSwipeQuestion(swipedAnswer: self.answerNodeArrayDataSource[indexPath.row])
+                    tableView.reloadData()
+                    completion(true)
+            })
+            swipedAction.backgroundColor = UIColor.red
+    //        swipedAction.image = UIImage(named: "something") あるいは R.swift
+            return UISwipeActionsConfiguration(actions: [swipedAction])
+        }
+        
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+            let swipedAction = UIContextualAction(
+                style: .normal,
+                title: "正解",
+                handler: {(action: UIContextualAction, view: UIView, completion: (Bool) -> Void) in
+                    print("正解です")
+                    self.presenter.trailingSwipeQuestion(swipedAnswer:
+                        self.answerNodeArrayDataSource[indexPath.row])
+                    tableView.reloadData()
+                    completion(true)
+            })
+            swipedAction.backgroundColor = UIColor.green
+            //        swipedAction.image = UIImage(named: "something") あるいは R.swift
+            return UISwipeActionsConfiguration(actions: [swipedAction])
+        }
+        
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
+        return true
+    }
+    
 }
 
 protocol ToDoQuestionDisplayDelegate {
