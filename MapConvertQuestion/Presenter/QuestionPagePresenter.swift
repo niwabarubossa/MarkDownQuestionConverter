@@ -12,7 +12,6 @@ import RealmSwift
 class QuestionPagePresenter:QuestionModelDelegate{
     //自分用のモデルの宣言
     let questionModel: QuestionModel
-    var nodeFactory:RealmMindNodeModelFactory = RealmMindNodeModelFactory(allNodeData: [])
     var quizDataSource = [RealmMindNodeModel]()
     var displayingQustion:RealmMindNodeModel = RealmMindNodeModel()
     var answerNodeArray = [RealmMindNodeModel]()
@@ -35,19 +34,20 @@ class QuestionPagePresenter:QuestionModelDelegate{
         questionModel.getMapQuestion(mapId:mapId)
     }
     
-    func didGetMapQuestion(question: Results<RealmMindNodeModel>){
-        for item in question {
-            self.quizDataSource.append(item)
-        }
-        self.nodeFactory = RealmMindNodeModelFactory(allNodeData: self.quizDataSource)
+    func didGetMapQuestion(question: [RealmMindNodeModel]){
+//        for item in question {
+//            self.quizDataSource.append(item)
+//        }
+        self.quizDataSource = question
+        
         self.reloadQAPair(questionNodeId:0) //最初はタイトルからのクイズで
         self.notifyNodeToView()
         self.changeToQuestionMode()
     }
     
     func reloadQAPair(questionNodeId:Int){
-        self.displayingQustion = nodeFactory.selectNodeByNodeId(nodeId: questionNodeId)
-        self.answerNodeArray = nodeFactory.getAnswerNodeArray(childNodeIdList: self.displayingQustion.childNodeIdArray)
+        self.displayingQustion = questionModel.selectNodeByNodeId(nodeId: questionNodeId)
+        self.answerNodeArray = questionModel.getAnswerNodeArray(childNodeIdList: self.displayingQustion.childNodeIdArray)
         self.notifyNodeToView()
         self.renderingView()
         self.changeToQuestionMode()
@@ -58,7 +58,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
         let diplayingNodeId = self.displayingQustion.myNodeId
         var nextQuestionNodeId:Int = 0
         for nodeId in diplayingNodeId+1..<self.quizDataSource.count {
-            let node = nodeFactory.selectNodeByNodeId(nodeId: nodeId)
+            let node = questionModel.selectNodeByNodeId(nodeId: nodeId)
             if (node.childNodeIdArray.count > 0){
                 nextQuestionNodeId = nodeId
                 return nextQuestionNodeId
@@ -112,22 +112,14 @@ class QuestionPagePresenter:QuestionModelDelegate{
     
     func correctAnswer(row:Int){
         let swipedAnswer = self.answerNodeArray[row]
-        let learningIntervalStruct = nodeFactory.calculateNextDateWhenCorrect(question: swipedAnswer)
-        questionModel.updateMapQuestion(learningIntervalStruct:learningIntervalStruct,focusNode:swipedAnswer)
-        //reload data
-        //rendering...
+        print("swipedAnswer")
+        print("\(swipedAnswer)")
     }
     
     func wrongAnswer(row:Int){
         let swipedAnswer = self.answerNodeArray[row]
-        let learningIntervalStruct = calculateNextDateWhenWrong()
-       questionModel.updateMapQuestion(learningIntervalStruct:learningIntervalStruct,focusNode:swipedAnswer)
-        //reload data
-        //rendering...
+        print("swipedAnswer")
+        print("\(swipedAnswer)")
     }
-    
-    private func calculateNextDateWhenWrong() -> LearningIntervalStruct{
-        return LearningIntervalStruct(ifSuccessNextInterval: 1, nextLearningDate: Calendar.current.date(byAdding: .day, value: 0, to: Date())!.millisecondsSince1970)
-    }
-    
+
 }
