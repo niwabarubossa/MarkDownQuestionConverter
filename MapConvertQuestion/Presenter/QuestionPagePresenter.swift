@@ -12,7 +12,6 @@ import RealmSwift
 class QuestionPagePresenter:QuestionModelDelegate{
     //自分用のモデルの宣言
     let questionModel: QuestionModel
-    var nodeFactory:RealmMindNodeModelFactory = RealmMindNodeModelFactory(allNodeData: [])
     var quizDataSource = [RealmMindNodeModel]()
     var displayingQustion:RealmMindNodeModel = RealmMindNodeModel()
     var answerNodeArray = [RealmMindNodeModel]()
@@ -39,15 +38,14 @@ class QuestionPagePresenter:QuestionModelDelegate{
         for item in question {
             self.quizDataSource.append(item)
         }
-        self.nodeFactory = RealmMindNodeModelFactory(allNodeData: self.quizDataSource)
         self.reloadQAPair(questionNodeId:0) //最初はタイトルからのクイズで
         self.notifyNodeToView()
         self.changeToQuestionMode()
     }
     
     func reloadQAPair(questionNodeId:Int){
-        self.displayingQustion = nodeFactory.selectNodeByNodeId(nodeId: questionNodeId)
-        self.answerNodeArray = nodeFactory.getAnswerNodeArray(childNodeIdList: self.displayingQustion.childNodeIdArray)
+//        self.displayingQustion = nodeFactory.selectNodeByNodeId(nodeId: questionNodeId)
+//        self.answerNodeArray = nodeFactory.getAnswerNodeArray(childNodeIdList: self.displayingQustion.childNodeIdArray)
         self.notifyNodeToView()
         self.renderingView()
         self.changeToQuestionMode()
@@ -58,7 +56,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
         let diplayingNodeId = self.displayingQustion.myNodeId
         var nextQuestionNodeId:Int = 0
         for nodeId in diplayingNodeId+1..<self.quizDataSource.count {
-            let node = nodeFactory.selectNodeByNodeId(nodeId: nodeId)
+//            let node = nodeFactory.selectNodeByNodeId(nodeId: nodeId)
             if (node.childNodeIdArray.count > 0){
                 nextQuestionNodeId = nodeId
                 return nextQuestionNodeId
@@ -112,8 +110,8 @@ class QuestionPagePresenter:QuestionModelDelegate{
     
     func correctAnswer(row:Int){
         let swipedAnswer = self.answerNodeArray[row]
-        let learningIntervalStruct = nodeFactory.calculateNextDateWhenCorrect(question: swipedAnswer)
-        questionModel.updateMapQuestion(learningIntervalStruct:learningIntervalStruct,focusNode:swipedAnswer)
+//        let learningIntervalStruct = nodeFactory.calculateNextDateWhenCorrect(question: swipedAnswer)
+//        questionModel.updateMapQuestion(learningIntervalStruct:learningIntervalStruct,focusNode:swipedAnswer)
         //reload data
         //rendering...
     }
