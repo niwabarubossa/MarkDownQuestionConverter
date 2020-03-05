@@ -35,11 +35,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
     }
     
     func didGetMapQuestion(question: [RealmMindNodeModel]){
-//        for item in question {
-//            self.quizDataSource.append(item)
-//        }
         self.quizDataSource = question
-        
         self.reloadQAPair(questionNodeId:0) //最初はタイトルからのクイズで
         self.notifyNodeToView()
         self.changeToQuestionMode()
