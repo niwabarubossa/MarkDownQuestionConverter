@@ -6,9 +6,10 @@
 //  Copyright © 2020 ryogo.niwa. All rights reserved.
 //
 import Foundation
+import RealmSwift
 
 protocol ToDoQuestionModelDelegate: class {
-    func delegateFunc()
+    func didGetToDoQuestion(questionArray: [RealmMindNodeModel])
 }
 
 class ToDoQuestionModel {
@@ -16,6 +17,21 @@ class ToDoQuestionModel {
     
     func toPresenterFromView(input:String){
         print("test function")
-        self.delegate?.delegateFunc()
     }
+    
+    func getToDoQuestion(){
+        let realm = try! Realm()
+        let todayStart = Calendar.current.startOfDay(for: Date()).millisecondsSince1970
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
+        let todayEnd = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
+        let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(todayEnd)}")
+        print("results.count")
+        print("\(results.count)")
+        var questionArray = [RealmMindNodeModel]()
+        for question in results {
+            questionArray.append(question)
+        }
+        self.delegate?.didGetToDoQuestion(questionArray: questionArray)
+    }
+    
 }

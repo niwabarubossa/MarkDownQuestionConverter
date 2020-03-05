@@ -11,12 +11,15 @@ class ToDoQuestionPageViewController: UIViewController,ToDoQuestionDisplayDelega
 
     var presenter:ToDoQuestionPresenter!
     let customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+    var displayingQuestion:RealmMindNodeModel = RealmMindNodeModel()
+    var answerMindNodeArray = [RealmMindNodeModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializePresenter()
         // Do any additional setup after loading the view.
         layout()
+        initializePage()
     }
     
     private func layout(){
@@ -25,17 +28,23 @@ class ToDoQuestionPageViewController: UIViewController,ToDoQuestionDisplayDelega
         self.view.addSubview(customView)
     }
     
-    func delegateFunction() {
-        print("delegate")
+    private func initializePage(){
+        //get question func
+        presenter.initializePage()
+    }
+    
+    func answerButtonTapped() {
+        print("answerButtonTapped")
+        presenter.answerButtonTapped()
+    }
+    
+    func nextQuestionButtonTapped(){
+        print("nextQuestionButtonTapped")
+        presenter.nextQuestionButtonTapped()
     }
 
     private func initializePresenter() {
        presenter = ToDoQuestionPresenter(view: self)
-    }
-    
-    //presenter ← view
-    func notifyToPresenter(){
-        presenter.delegateFunc()
     }
     
     //presenter → view
@@ -46,5 +55,6 @@ class ToDoQuestionPageViewController: UIViewController,ToDoQuestionDisplayDelega
 }
 
 protocol ToDoQuestionDisplayDelegate {
-    func delegateFunction() -> Void
+    func answerButtonTapped() -> Void
+    func nextQuestionButtonTapped() -> Void
 }

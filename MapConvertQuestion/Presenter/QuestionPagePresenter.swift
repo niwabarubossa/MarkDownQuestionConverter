@@ -34,18 +34,16 @@ class QuestionPagePresenter:QuestionModelDelegate{
         questionModel.getMapQuestion(mapId:mapId)
     }
     
-    func didGetMapQuestion(question: Results<RealmMindNodeModel>){
-        for item in question {
-            self.quizDataSource.append(item)
-        }
+    func didGetMapQuestion(question: [RealmMindNodeModel]){
+        self.quizDataSource = question
         self.reloadQAPair(questionNodeId:0) //最初はタイトルからのクイズで
         self.notifyNodeToView()
         self.changeToQuestionMode()
     }
     
     func reloadQAPair(questionNodeId:Int){
-        self.displayingQustion = selectNodeByNodeId(nodeId: questionNodeId)
-        self.answerNodeArray = getAnswerNodeArray(childNodeIdList: self.displayingQustion.childNodeIdArray)
+        self.displayingQustion = questionModel.selectNodeByNodeId(nodeId: questionNodeId)
+        self.answerNodeArray = questionModel.getAnswerNodeArray(childNodeIdList: self.displayingQustion.childNodeIdArray)
         self.notifyNodeToView()
         self.renderingView()
         self.changeToQuestionMode()
@@ -56,7 +54,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
         let diplayingNodeId = self.displayingQustion.myNodeId
         var nextQuestionNodeId:Int = 0
         for nodeId in diplayingNodeId+1..<self.quizDataSource.count {
-            let node = selectNodeByNodeId(nodeId: nodeId)
+            let node = questionModel.selectNodeByNodeId(nodeId: nodeId)
             if (node.childNodeIdArray.count > 0){
                 nextQuestionNodeId = nodeId
                 return nextQuestionNodeId
@@ -68,16 +66,6 @@ class QuestionPagePresenter:QuestionModelDelegate{
         }
         print("もうクイズないよ")
         return nextQuestionNodeId
-    }
-    
-    private func getAnswerNodeArray(childNodeIdList:List<MindNodeChildId>) -> [RealmMindNodeModel]{
-        var localAnswerNodeArray = [RealmMindNodeModel]()
-        for answerNodeId in childNodeIdList {
-            let nodeId = answerNodeId.MindNodeChildId
-            let answerNode = selectNodeByNodeId(nodeId: nodeId)
-            localAnswerNodeArray.append(answerNode)
-        }
-        return localAnswerNodeArray
     }
     
     func notifyNodeToView(){
@@ -97,16 +85,6 @@ class QuestionPagePresenter:QuestionModelDelegate{
         let nextQuestionNodeId:Int = self.searchNextQuestionNodeId()
         self.reloadQAPair(questionNodeId: nextQuestionNodeId)
         self.changeToQuestionMode()
-    }
-        
-    private func haveAnswerChild(node:RealmMindNodeModel) -> Bool{
-        if (node.childNodeIdArray.count > 0){ return true }
-        return false
-    }
-    
-    private func selectNodeByNodeId(nodeId:Int) -> RealmMindNodeModel{
-        let selectedNode:RealmMindNodeModel = self.quizDataSource.filter({ $0.myNodeId == nodeId }).first ?? RealmMindNodeModel()
-        return selectedNode
     }
     
     func changeToSelectedAnswerQuiz(tappedNodeId:Int){
@@ -130,53 +108,14 @@ class QuestionPagePresenter:QuestionModelDelegate{
     
     func correctAnswer(row:Int){
         let swipedAnswer = self.answerNodeArray[row]
-        let learningIntervalStruct = calculateNextDateWhenCorrect(question: swipedAnswer)
-        questionModel.updateMapQuestion(learningIntervalStruct:learningIntervalStruct,focusNode:swipedAnswer)
-        //reload data
-        //rendering...
-    }
-    
-    private func calculateNextDateWhenCorrect(question:RealmMindNodeModel) -> LearningIntervalStruct{
-        var learningIntervalStruct = LearningIntervalStruct(ifSuccessNextInterval: 0, nextLearningDate: 0)
-        let nextInterval = question.ifSuccessInterval
-        switch nextInterval {
-            case Interval.first.rawValue:
-                learningIntervalStruct.ifSuccessNextInterval = Interval.second.rawValue
-                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.second.rawValue, to: Date())!.millisecondsSince1970
-            case Interval.second.rawValue:
-                learningIntervalStruct.ifSuccessNextInterval = Interval.third.rawValue
-                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.third.rawValue, to: Date())!.millisecondsSince1970
-            case Interval.third.rawValue:
-                learningIntervalStruct.ifSuccessNextInterval = Interval.fourth.rawValue
-                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.fourth.rawValue, to: Date())!.millisecondsSince1970
-            case Interval.fourth.rawValue:
-                learningIntervalStruct.ifSuccessNextInterval = Interval.fifth.rawValue
-                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.fifth.rawValue, to: Date())!.millisecondsSince1970
-            case Interval.fifth.rawValue:
-                learningIntervalStruct.ifSuccessNextInterval = Interval.sixth.rawValue
-                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.sixth.rawValue, to: Date())!.millisecondsSince1970
-            case Interval.sixth.rawValue:
-                learningIntervalStruct.ifSuccessNextInterval = Interval.sixth.rawValue
-                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.sixth.rawValue, to: Date())!.millisecondsSince1970
-            case 0:
-                learningIntervalStruct.ifSuccessNextInterval = 1
-                learningIntervalStruct.nextLearningDate = Calendar.current.date(byAdding: .day, value: Interval.first.rawValue, to: Date())!.millisecondsSince1970
-            default:
-                print("interval error")
-        }
-        return learningIntervalStruct
+        print("swipedAnswer")
+        print("\(swipedAnswer)")
     }
     
     func wrongAnswer(row:Int){
         let swipedAnswer = self.answerNodeArray[row]
-        let learningIntervalStruct = calculateNextDateWhenWrong()
-       questionModel.updateMapQuestion(learningIntervalStruct:learningIntervalStruct,focusNode:swipedAnswer)
-        //reload data
-        //rendering...
+        print("swipedAnswer")
+        print("\(swipedAnswer)")
     }
-    
-    private func calculateNextDateWhenWrong() -> LearningIntervalStruct{
-        return LearningIntervalStruct(ifSuccessNextInterval: 1, nextLearningDate: Calendar.current.date(byAdding: .day, value: 0, to: Date())!.millisecondsSince1970)
-    }
-    
+
 }

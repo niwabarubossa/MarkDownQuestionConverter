@@ -8,18 +8,30 @@
 import Foundation
 import UIKit
 
-class ToDoQuestionPresenter:ToDoQuestionModelDelegate{
+class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     //自分用のモデルの宣言
-    let myModel: ToDoQuestionModel
+    let myModel: QuestionModel
     //オリジナルのクラス型にすること
     weak var view:ToDoQuestionPageViewController?
+    var questionArray = [RealmMindNodeModel]()
 
     init(view: ToDoQuestionPageViewController) {
         self.view = view
-        self.myModel = ToDoQuestionModel()
+        self.myModel = QuestionModel()
         myModel.delegate = self
     }
-
+    
+    //勝手に呼ばれる　from presenter
+    func initializePage(){
+        myModel.getToDoQuestion()
+    }
+    
+    func didGetMapQuestion(question: [RealmMindNodeModel]) {
+        if question.count > 0 {
+            print("question")
+            print("\(question[0])")
+        }
+    }
     // Presenter → Model 操作する側
     func toModelFromPresenter() {
 //        myModel.testfunc()
@@ -29,9 +41,22 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate{
     func toViewFromPresenter() {
         view?.testfunc()
     }
-
-    // prsenter ← Viewの操作     操作されるやつ
-    func delegateFunc() {
-        print("notify from view")
+    
+    func answerButtonTapped(){
+        print("answerButtonTapped in presenter")
+    }
+    
+    func nextQuestionButtonTapped(){
+        print("nextQuestionButtonTapped in presenter")
+    }
+        
+    func didGetToDoQuestion(questionArray: [RealmMindNodeModel]) {
+        print("questionArray")
+        print("\(questionArray)")
+        self.setQuestionArray(questionArray: questionArray)
+    }
+    
+    private func setQuestionArray(questionArray: [RealmMindNodeModel]){
+        self.questionArray = questionArray
     }
 }
