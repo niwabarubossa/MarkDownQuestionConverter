@@ -46,10 +46,13 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     
     func answerButtonTapped(){
         print("answerButtonTapped in presenter")
+        self.changeToAnswerMode()
     }
     
     func nextQuestionButtonTapped(){
         print("nextQuestionButtonTapped in presenter")
+        //select next question
+        self.changeToQuestionMode()
     }
         
     func didGetToDoQuestion(questionArray: [RealmMindNodeModel]) {
@@ -59,7 +62,6 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     }
     
     func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
-        
     }
     
     func leadingSwipeQuestion(swipedQuestion:RealmMindNodeModel){
@@ -101,4 +103,10 @@ extension ToDoQuestionPresenter {
         view?.customView.questionLabel.isHidden = false
         view?.answerTableView.isHidden = true
     }
+    
+    private func changeToAnswerMode(){
+        view?.customView.questionLabel.isHidden = true
+        view?.answerTableView.isHidden = false
+    }
+
 }
