@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 protocol QuestionModelDelegate: class {
-    func didGetMapQuestion(question:Results<RealmMindNodeModel>)
+    func didGetMapQuestion(question:[RealmMindNodeModel])
 }
 
 class QuestionModel {
@@ -19,8 +19,11 @@ class QuestionModel {
     
     func getMapQuestion(mapId:String){
         let realm = try! Realm()
-        let allQuestionNodeArray = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId)
-        self.delegate?.didGetMapQuestion(question: allQuestionNodeArray)
+        let results = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId)
+        for node in results {
+            self.allNodeData.append(node)
+        }
+        self.delegate?.didGetMapQuestion(question: allNodeData)
     }
     
     func updateMapQuestion(learningIntervalStruct:LearningIntervalStruct,focusNode:RealmMindNodeModel){
@@ -79,5 +82,10 @@ class QuestionModel {
         }
         return learningIntervalStruct
     }
+    
+    func calculateNextDateWhenWrong() -> LearningIntervalStruct{
+        return LearningIntervalStruct(ifSuccessNextInterval: 1, nextLearningDate: Calendar.current.date(byAdding: .day, value: 0, to: Date())!.millisecondsSince1970)
+    }
+
     
 }
