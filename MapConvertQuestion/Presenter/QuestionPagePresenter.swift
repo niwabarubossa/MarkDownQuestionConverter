@@ -117,5 +117,10 @@ class QuestionPagePresenter:QuestionModelDelegate{
         print("swipedAnswer")
         print("\(swipedAnswer)")
     }
+    
+    func syncData(allNodeData: [RealmMindNodeModel]) {
+        //TODO protocol調整用。　２つにまたがるprotocol
+        print("\(allNodeData)")
+    }
 
 }
