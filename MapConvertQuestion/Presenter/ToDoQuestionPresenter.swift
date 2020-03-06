@@ -29,10 +29,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     }
     
     func didGetMapQuestion(question: [RealmMindNodeModel]) {
-        if question.count > 0 {
-            print("question")
-            print("\(question[0])")
-        }
+        self.quizDataSource = question
     }
     // Presenter → Model 操作する側
     func toModelFromPresenter() {
@@ -52,7 +49,14 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     func nextQuestionButtonTapped(){
         print("nextQuestionButtonTapped in presenter")
         //select next question
+        if (self.quizDataSource.count < 1) {
+            print("self.quizDataSource.count < 1")
+            return
+        }
+        let nextQuestionNodeId:Int = myModel.searchNextQuestionNodeId(displayingQustion: self.displayingQustion)
+        self.reloadQAPair(questionNodeId: nextQuestionNodeId)
         self.changeToQuestionMode()
+        
     }
         
     func didGetToDoQuestion(questionArray: [RealmMindNodeModel]) {
@@ -88,6 +92,7 @@ extension ToDoQuestionPresenter {
     }
     
     func notifyNodeToView(){
+        print("notifyNodeToView")
         self.view?.displayingNode = self.displayingQustion
         self.view?.answerNodeArrayDataSource = self.answerNodeArray
     }

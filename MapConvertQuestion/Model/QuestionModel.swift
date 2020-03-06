@@ -37,8 +37,30 @@ class QuestionModel {
         for question in results {
             questionArray.append(question)
         }
+        self.allNodeData = questionArray
         self.delegate?.didGetMapQuestion(question: questionArray)
     }
+    
+    
+    func searchNextQuestionNodeId(displayingQustion:RealmMindNodeModel) -> Int{
+        //have childなnodeつまり、questionとなりうるnodeを表示する。 answer持たない奴はquestionになれないので、ここでスキップ
+        let diplayingNodeId = displayingQustion.myNodeId
+        var nextQuestionNodeId:Int = 0
+        for nodeId in diplayingNodeId+1..<self.allNodeData.count {
+            let node = selectNodeByNodeId(nodeId: nodeId)
+            if (node.childNodeIdArray.count > 0){
+                nextQuestionNodeId = nodeId
+                return nextQuestionNodeId
+            }
+            if (nodeId == self.allNodeData.count - 1 ){
+                print("もうクイズはありません。")
+                return 0
+            }
+        }
+        print("もうクイズないよ")
+        return nextQuestionNodeId
+    }
+    
     
     func updateMapQuestion(learningIntervalStruct:LearningIntervalStruct,focusNode:RealmMindNodeModel){
         let realm = try! Realm()
