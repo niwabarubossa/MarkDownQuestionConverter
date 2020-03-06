@@ -65,11 +65,15 @@ class ToDoQuestionPageViewController: UIViewController,ToDoQuestionDisplayDelega
 
 extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        answerNodeArrayDataSource.count
+        print("answerNodeArrayDataSource.count")
+        print("\(answerNodeArrayDataSource.count)")
+        return answerNodeArrayDataSource.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionAnswerTableViewCell.className, for: indexPath ) as! QuestionAnswerTableViewCell
          cell.questionLabel.text = self.answerNodeArrayDataSource[indexPath.row].content
+       print("cell content")
+        print("\(self.answerNodeArrayDataSource[indexPath.row].content)")
          return cell
     }
     

@@ -51,12 +51,12 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         //select next question
         if (self.quizDataSource.count < 1) {
             print("self.quizDataSource.count < 1")
+            print("no question ! todays todo question is complete!")
             return
         }
         let nextQuestionNodeId:Int = myModel.searchNextQuestionNodeId(displayingQustion: self.displayingQustion)
         self.reloadQAPair(questionNodeId: nextQuestionNodeId)
         self.changeToQuestionMode()
-        
     }
         
     func didGetToDoQuestion(questionArray: [RealmMindNodeModel]) {
@@ -105,12 +105,12 @@ extension ToDoQuestionPresenter {
     }
     
     private func changeToQuestionMode(){
-        view?.customView.questionLabel.isHidden = false
+        view?.customView.isHidden = false
         view?.answerTableView.isHidden = true
     }
     
     private func changeToAnswerMode(){
-        view?.customView.questionLabel.isHidden = true
+        view?.customView.isHidden = true
         view?.answerTableView.isHidden = false
     }
 
