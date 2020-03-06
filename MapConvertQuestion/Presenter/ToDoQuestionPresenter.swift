@@ -58,16 +58,15 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
             print("no question ! todays todo question is complete!")
             return
         }
-//        let nextQuestionNodeId:Int = myModel.searchNextQuestionNodeId(displayingQustion: self.displayingQustion)
         //reloadする　解いたやつremove
         let nextQuestionNodeId:Int = Int.random(in: 0..<self.quizDataSource.count)
+        //reloadQAPairはnode iD なのにここではランダムにindexで投げてしまっていることがげんいん
         self.reloadQAPair(questionNodeId: nextQuestionNodeId)
         self.changeToQuestionMode()
+        
     }
         
     func didGetToDoQuestion(questionArray: [RealmMindNodeModel]) {
-        print("questionArray")
-        print("\(questionArray)")
         self.setQuestionArray(questionArray: questionArray)
     }
     
@@ -97,10 +96,10 @@ extension ToDoQuestionPresenter {
         self.answerNodeArray = myModel.getAnswerNodeArray(displayingQuestion: self.displayingQustion)
         print("self.answerNodeArray")
         print("\(self.answerNodeArray)")
-        
         self.notifyNodeToView()
         self.renderingView()
         self.changeToQuestionMode()
+        
     }
     
     func notifyNodeToView(){

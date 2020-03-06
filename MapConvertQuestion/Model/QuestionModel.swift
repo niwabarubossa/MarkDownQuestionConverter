@@ -31,13 +31,11 @@ class QuestionModel {
         let realm = try! Realm()
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
         let todayEnd = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
+        //答えのみ取得。答えに次の復習時間が記録しているので。　答えの情報をもとにクイズデータを取得
         let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(todayEnd)}")
         print("results.count")
         print("\(results.count) 件あります。 これはanswerNodeなのでこれを元にquestion 取得します")
         var questionArray = [RealmMindNodeModel]()
-//        for question in results {
-//            questionArray.append(question)
-//        }
         for answerNode in results {
             //get parent node つまりquestionNOde
             let question = self.getNodeFromRealm(mapId:answerNode.mapId,nodeId: answerNode.parentNodeId)
@@ -60,11 +58,10 @@ class QuestionModel {
         let removeNodeIndex = self.convertNodeIdToIndex(node: swipedAnswer)
         //removeして反映
         print("self.allNodeData.count")
-        print("\(self.allNodeData.count)")
+        print("\(self.allNodeData.count) 件です allNodeData　（削除前）")
         self.allNodeData.remove(at: removeNodeIndex)
         self.syncData()
-        print("self.allNodeData.count")
-        print("\(self.allNodeData.count)")
+        print("\(self.allNodeData.count)件 削除後")
     }
     
     func convertNodeIdToIndex(node:RealmMindNodeModel)->Int{
