@@ -41,6 +41,27 @@ class QuestionModel {
         self.delegate?.didGetMapQuestion(question: questionArray)
     }
     
+    func trailingSwipeAction(swipedAnswer:RealmMindNodeModel){
+        //正解時
+        let learningIntervalStruct = self.calculateNextDateWhenCorrect(question: swipedAnswer)
+        self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
+        let removeNodeIndex = self.convertNodeIdToIndex(node: swipedAnswer)
+        //removeして反映
+        self.allNodeData.remove(at: removeNodeIndex)
+    }
+    
+    func convertNodeIdToIndex(node:RealmMindNodeModel)->Int{
+        let index:Int = self.allNodeData.filter({$0.myNodeId == node.myNodeId}).first?.myNodeId ?? 0
+        return index
+    }
+
+    func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
+        //不正解時
+        let learningIntervalStruct = self.calculateNextDateWhenWrong()
+        self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
+        //removeせず　nextDate が今日になったことを反映
+    }
+    
     
     func searchNextQuestionNodeId(displayingQustion:RealmMindNodeModel) -> Int{
         //have childなnodeつまり、questionとなりうるnodeを表示する。 answer持たない奴はquestionになれないので、ここでスキップ

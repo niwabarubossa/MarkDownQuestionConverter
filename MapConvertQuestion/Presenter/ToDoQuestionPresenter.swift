@@ -66,10 +66,13 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     }
     
     func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
+        //データ更新する
+         myModel.trailingSwipeAction(swipedAnswer: swipedAnswer)
     }
     
-    func leadingSwipeQuestion(swipedQuestion:RealmMindNodeModel){
-        
+    func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
+        //データ更新する
+         myModel.leadingSwipeQuestion(swipedAnswer: swipedAnswer)
     }
     
     func changeToSelectedAnswerQuiz(tappedNodeId:Int){
