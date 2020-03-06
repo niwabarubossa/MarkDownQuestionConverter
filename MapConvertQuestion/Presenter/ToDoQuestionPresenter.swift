@@ -31,6 +31,10 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     func didGetMapQuestion(question: [RealmMindNodeModel]) {
         self.quizDataSource = question
     }
+    
+    func syncData(allNodeData: [RealmMindNodeModel]) {
+        self.quizDataSource = allNodeData
+    }
     // Presenter → Model 操作する側
     func toModelFromPresenter() {
 //        myModel.testfunc()

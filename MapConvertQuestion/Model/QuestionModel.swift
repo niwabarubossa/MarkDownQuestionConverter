@@ -11,6 +11,7 @@ import RealmSwift
 
 protocol QuestionModelDelegate: class {
     func didGetMapQuestion(question:[RealmMindNodeModel])
+    func syncData(allNodeData:[RealmMindNodeModel])
 }
 
 class QuestionModel {
@@ -48,11 +49,16 @@ class QuestionModel {
         let removeNodeIndex = self.convertNodeIdToIndex(node: swipedAnswer)
         //removeして反映
         self.allNodeData.remove(at: removeNodeIndex)
+        self.syncData()
     }
     
     func convertNodeIdToIndex(node:RealmMindNodeModel)->Int{
         let index:Int = self.allNodeData.filter({$0.myNodeId == node.myNodeId}).first?.myNodeId ?? 0
         return index
+    }
+    
+    private func syncData(){
+        self.delegate?.syncData(allNodeData: allNodeData)
     }
 
     func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
@@ -60,6 +66,7 @@ class QuestionModel {
         let learningIntervalStruct = self.calculateNextDateWhenWrong()
         self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
         //removeせず　nextDate が今日になったことを反映
+        self.syncData()
     }
     
     
