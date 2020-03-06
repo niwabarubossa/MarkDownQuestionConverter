@@ -33,13 +33,24 @@ class QuestionModel {
         let todayEnd = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
         let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(todayEnd)}")
         print("results.count")
-        print("\(results.count) 件あります。")
+        print("\(results.count) 件あります。 これはanswerNodeなのでこれを元にquestion 取得します")
         var questionArray = [RealmMindNodeModel]()
-        for question in results {
+//        for question in results {
+//            questionArray.append(question)
+//        }
+        for answerNode in results {
+            //get parent node つまりquestionNOde
+            let question = self.getNodeFromRealm(mapId:answerNode.mapId,nodeId: answerNode.parentNodeId)
             questionArray.append(question)
         }
         self.allNodeData = questionArray
         self.delegate?.didGetMapQuestion(question: questionArray)
+    }
+    
+    private func getNodeFromRealm(mapId:String,nodeId: Int) -> RealmMindNodeModel{
+        let realm = try! Realm()
+        let node:RealmMindNodeModel = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId).filter("myNodeId == %@", nodeId).first ?? RealmMindNodeModel()
+        return node
     }
     
     func trailingSwipeAction(swipedAnswer:RealmMindNodeModel){
@@ -48,8 +59,12 @@ class QuestionModel {
         self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
         let removeNodeIndex = self.convertNodeIdToIndex(node: swipedAnswer)
         //removeして反映
+        print("self.allNodeData.count")
+        print("\(self.allNodeData.count)")
         self.allNodeData.remove(at: removeNodeIndex)
         self.syncData()
+        print("self.allNodeData.count")
+        print("\(self.allNodeData.count)")
     }
     
     func convertNodeIdToIndex(node:RealmMindNodeModel)->Int{
@@ -106,11 +121,12 @@ class QuestionModel {
         return selectedNode
     }
     
-    func getAnswerNodeArray(childNodeIdList:List<MindNodeChildId>) -> [RealmMindNodeModel]{
+    func getAnswerNodeArray(displayingQuestion:RealmMindNodeModel) -> [RealmMindNodeModel]{
         var localAnswerNodeArray = [RealmMindNodeModel]()
-        for answerNodeId in childNodeIdList {
+        for answerNodeId in displayingQuestion.childNodeIdArray {
             let nodeId = answerNodeId.MindNodeChildId
-            let answerNode = self.selectNodeByNodeId(nodeId: nodeId)
+//            let answerNode = self.selectNodeByNodeId(nodeId: nodeId)
+            let answerNode = self.getNodeFromRealm(mapId: displayingQuestion.mapId, nodeId: nodeId)
             localAnswerNodeArray.append(answerNode)
         }
         return localAnswerNodeArray

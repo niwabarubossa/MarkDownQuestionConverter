@@ -58,7 +58,9 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
             print("no question ! todays todo question is complete!")
             return
         }
-        let nextQuestionNodeId:Int = myModel.searchNextQuestionNodeId(displayingQustion: self.displayingQustion)
+//        let nextQuestionNodeId:Int = myModel.searchNextQuestionNodeId(displayingQustion: self.displayingQustion)
+        //reloadする　解いたやつremove
+        let nextQuestionNodeId:Int = Int.random(in: 0..<self.quizDataSource.count)
         self.reloadQAPair(questionNodeId: nextQuestionNodeId)
         self.changeToQuestionMode()
     }
@@ -92,7 +94,10 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
 extension ToDoQuestionPresenter {
     func reloadQAPair(questionNodeId:Int){
         self.displayingQustion = myModel.selectNodeByNodeId(nodeId: questionNodeId)
-        self.answerNodeArray = myModel.getAnswerNodeArray(childNodeIdList: self.displayingQustion.childNodeIdArray)
+        self.answerNodeArray = myModel.getAnswerNodeArray(displayingQuestion: self.displayingQustion)
+        print("self.answerNodeArray")
+        print("\(self.answerNodeArray)")
+        
         self.notifyNodeToView()
         self.renderingView()
         self.changeToQuestionMode()
@@ -117,7 +122,7 @@ extension ToDoQuestionPresenter {
     }
     
     private func changeToAnswerMode(){
-        view?.customView.isHidden = true
+//        view?.customView.isHidden = true
         view?.answerTableView.isHidden = false
     }
 
