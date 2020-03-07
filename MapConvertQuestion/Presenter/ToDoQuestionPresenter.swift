@@ -39,7 +39,6 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     func toModelFromPresenter() {
 //        myModel.testfunc()
     }
-
     //Presenter → View の操作  操作する側
     func toViewFromPresenter() {
         view?.testfunc()
