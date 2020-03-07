@@ -15,6 +15,7 @@ class MapGroup:Object{
 }
 
 class RealmMindNodeModel:Object{
+    @objc dynamic var nodePrimaryKey:String = NSUUID().uuidString
     @objc dynamic var mapId:String = ""
     @objc dynamic var myNodeId:Int = 0
     @objc dynamic var content:String = ""
@@ -22,6 +23,16 @@ class RealmMindNodeModel:Object{
     @objc dynamic var nextDate:Int64 = 0
     @objc dynamic var ifSuccessInterval:Int = 1
     let childNodeIdArray = List<MindNodeChildId>()
+    
+    override static func primaryKey() -> String? {
+        return "nodePrimaryKey"
+    }
+}
+
+extension RealmMindNodeModel {
+    public static func ==(l:RealmMindNodeModel, r:RealmMindNodeModel) -> Bool {
+        return l.nodePrimaryKey == r.nodePrimaryKey
+    }
 }
 
 class MindNodeChildId: Object {

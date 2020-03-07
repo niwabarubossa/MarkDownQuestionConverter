@@ -11,6 +11,7 @@ import RealmSwift
 
 protocol QuestionModelDelegate: class {
     func didGetMapQuestion(question:[RealmMindNodeModel])
+    func syncData(allNodeData:[RealmMindNodeModel])
 }
 
 class QuestionModel {
@@ -30,25 +31,109 @@ class QuestionModel {
         let realm = try! Realm()
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
         let todayEnd = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
+        //答えのみ取得。答えに次の復習時間を記録しているので。　答えのparentNodeをクイズデータとして取得
         let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(todayEnd)}")
-        print("results.count")
-        print("\(results.count) 件あります。")
+        print("\(results.count) 件あります。 これはanswerNode。これを元にquestion 取得します")
+        //FIX 大元の親は parent0 child0 だから、自分を取得しちゃうので排除しよう
         var questionArray = [RealmMindNodeModel]()
-        for question in results {
-            questionArray.append(question)
+        var alreadyExist = [String]()
+        for answerNode in results {
+            //get parent node つまりquestionNOde
+            let question = self.getNodeFromRealm(mapId:answerNode.mapId,nodeId: answerNode.parentNodeId)
+            if alreadyExist.contains(question.nodePrimaryKey) == false{
+                questionArray.append(question)
+                alreadyExist.append(question.nodePrimaryKey)
+            }
         }
+        self.allNodeData = questionArray
         self.delegate?.didGetMapQuestion(question: questionArray)
     }
+    
+    private func alreadyExist(array: [RealmMindNodeModel],node:RealmMindNodeModel)->Bool{
+        return false
+    }
+    
+    func getNodeFromRealm(mapId:String,nodeId: Int) -> RealmMindNodeModel{
+        let realm = try! Realm()
+        let node:RealmMindNodeModel = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId).filter("myNodeId == %@", nodeId).first ?? RealmMindNodeModel()
+        return node
+    }
+    
+    func trailingSwipeAction(swipedAnswer:RealmMindNodeModel){
+        //正解時
+        let learningIntervalStruct = self.calculateNextDateWhenCorrect(question: swipedAnswer)
+        self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
+        //親のquestionを削除
+        let parentNode = self.getNodeFromRealm(mapId: swipedAnswer.mapId, nodeId: swipedAnswer.parentNodeId)
+        //今日とくべき問題を全て解き終わっているならば削除して良い。　そうでないと子供３問あったとしても、１問しか答えてなくてもクイズを削除してはまずい
+        let removeNodeIndex = self.allNodeData.firstIndex(of: parentNode) ?? 1000
+//        print("self.allNodeData")
+//        print("\(self.allNodeData.count)件　削除前")
+//        self.allNodeData.remove(at: removeNodeIndex)
+//        if remove == true {
+//            self.allNodeData.remove(at: removeNodeIndex)
+//        }
+        print("\(self.allNodeData.count)件 削除後")
+        self.syncData()
+    }
+    
+    
+    
+    func convertNodeIdToIndex(node:RealmMindNodeModel)->Int{
+        let index:Int = self.allNodeData.filter({$0.nodePrimaryKey == node.nodePrimaryKey}).first?.myNodeId ?? 0
+        return index
+    }
+    
+    func deleteNodeFromModel(deleteNode: RealmMindNodeModel){
+        print("quizが消去されました in model")
+        print("\(self.allNodeData.count)件数")
+        let removeIndex = self.allNodeData.firstIndex(of: deleteNode)
+        self.allNodeData.remove(at: removeIndex ?? 1000)
+        
+        print("\(self.allNodeData.count)件数")
+        self.syncData()
+    }
+    
+    private func syncData(){
+        self.delegate?.syncData(allNodeData: allNodeData)
+    }
+
+    func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
+        //不正解時
+        let learningIntervalStruct = self.calculateNextDateWhenWrong()
+        self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
+        //removeせず　nextDate が今日になったことを反映
+        self.syncData()
+    }
+    
+    func searchNextQuestionNodeId(displayingQustion:RealmMindNodeModel) -> Int{
+        //have childなnodeつまり、questionとなりうるnodeを表示する。 answer持たない奴はquestionになれないので、ここでスキップ
+        let diplayingNodeId = displayingQustion.myNodeId
+        var nextQuestionNodeId:Int = 0
+        for nodeId in diplayingNodeId+1..<self.allNodeData.count {
+            let node = selectNodeByNodeId(nodeId: nodeId)
+            if (node.childNodeIdArray.count > 0){
+                nextQuestionNodeId = nodeId
+                return nextQuestionNodeId
+            }
+            if (nodeId == self.allNodeData.count - 1 ){
+                print("もうクイズはありません。")
+                return 0
+            }
+        }
+        print("もうクイズないよ")
+        return nextQuestionNodeId
+    }
+    
     
     func updateMapQuestion(learningIntervalStruct:LearningIntervalStruct,focusNode:RealmMindNodeModel){
         let realm = try! Realm()
         let focusNode = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", focusNode.mapId).filter("myNodeId == %@", focusNode.myNodeId).first
-
         try! realm.write {
-        focusNode?.setValue(learningIntervalStruct.ifSuccessNextInterval, forKey: "ifSuccessInterval")
-        
+            focusNode?.setValue(learningIntervalStruct.ifSuccessNextInterval, forKey: "ifSuccessInterval")
             focusNode?.setValue(learningIntervalStruct.nextLearningDate, forKey: "nextDate")
         }
+        
     }
     
     func selectNodeByNodeId(nodeId:Int) -> RealmMindNodeModel{
@@ -56,11 +141,11 @@ class QuestionModel {
         return selectedNode
     }
     
-    func getAnswerNodeArray(childNodeIdList:List<MindNodeChildId>) -> [RealmMindNodeModel]{
+    func getAnswerNodeArray(displayingQuestion:RealmMindNodeModel) -> [RealmMindNodeModel]{
         var localAnswerNodeArray = [RealmMindNodeModel]()
-        for answerNodeId in childNodeIdList {
+        for answerNodeId in displayingQuestion.childNodeIdArray {
             let nodeId = answerNodeId.MindNodeChildId
-            let answerNode = self.selectNodeByNodeId(nodeId: nodeId)
+            let answerNode = self.getNodeFromRealm(mapId: displayingQuestion.mapId, nodeId: nodeId)
             localAnswerNodeArray.append(answerNode)
         }
         return localAnswerNodeArray
@@ -101,5 +186,4 @@ class QuestionModel {
         return LearningIntervalStruct(ifSuccessNextInterval: 1, nextLearningDate: Calendar.current.date(byAdding: .day, value: 0, to: Date())!.millisecondsSince1970)
     }
 
-    
 }

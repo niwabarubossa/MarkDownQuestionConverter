@@ -43,7 +43,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
     
     func reloadQAPair(questionNodeId:Int){
         self.displayingQustion = questionModel.selectNodeByNodeId(nodeId: questionNodeId)
-        self.answerNodeArray = questionModel.getAnswerNodeArray(childNodeIdList: self.displayingQustion.childNodeIdArray)
+        self.answerNodeArray = questionModel.getAnswerNodeArray(displayingQuestion: self.displayingQustion)
         self.notifyNodeToView()
         self.renderingView()
         self.changeToQuestionMode()
@@ -116,6 +116,11 @@ class QuestionPagePresenter:QuestionModelDelegate{
         let swipedAnswer = self.answerNodeArray[row]
         print("swipedAnswer")
         print("\(swipedAnswer)")
+    }
+    
+    func syncData(allNodeData: [RealmMindNodeModel]) {
+        //TODO protocol調整用。　２つにまたがるprotocol
+        print("\(allNodeData)")
     }
 
 }
