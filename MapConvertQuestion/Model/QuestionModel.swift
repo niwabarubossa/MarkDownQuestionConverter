@@ -69,7 +69,8 @@ class QuestionModel {
         self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
         //親のquestionを削除
         let parentNode = self.getNodeFromRealm(mapId: swipedAnswer.mapId, nodeId: swipedAnswer.parentNodeId)
-        let removeNodeIndex = self.convertNodeIdToIndex(node: parentNode)
+//        let removeNodeIndex = self.convertNodeIdToIndex(node: parentNode)
+        let removeNodeIndex = self.allNodeData.firstIndex(of: parentNode) ?? 1000
         //removeして反映
         print("self.allNodeData.count")
         print("\(self.allNodeData.count) 件です allNodeData　（削除前）")

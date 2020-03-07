@@ -29,6 +29,12 @@ class RealmMindNodeModel:Object{
     }
 }
 
+extension RealmMindNodeModel {
+    public static func ==(l:RealmMindNodeModel, r:RealmMindNodeModel) -> Bool {
+        return l.nodePrimaryKey == r.nodePrimaryKey
+    }
+}
+
 class MindNodeChildId: Object {
     @objc dynamic var MindNodeChildId: Int = 0
 }
