@@ -59,12 +59,10 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
             return
         }
         //reloadする　解いたやつremove
-//        let nextQuestionNodeId:Int = Int.random(in: 0..<self.quizDataSource.count)
-        let nextQuestionNodeId:Int = self.quizDataSource.shuffled()[0].myNodeId
-            //reloadQAPairはnode iD なのにここではランダムにindexで投げてしまっていることがげんいん
-        self.reloadQAPair(questionNodeId: nextQuestionNodeId)
-        self.changeToQuestionMode()
+        let nextQuestion:RealmMindNodeModel = self.quizDataSource.shuffled()[0]
         
+        self.reloadQAPair(nextQuestion: nextQuestion)
+        self.changeToQuestionMode()
     }
         
     func didGetToDoQuestion(questionArray: [RealmMindNodeModel]) {
@@ -82,8 +80,8 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     }
     
     func changeToSelectedAnswerQuiz(tappedNode:RealmMindNodeModel){
-        let nextQuestionId = tappedNode.myNodeId
-        self.reloadQAPair(questionNodeId: nextQuestionId)
+        let nextQuestion:RealmMindNodeModel = myModel.getNodeFromRealm(mapId: tappedNode.mapId, nodeId: tappedNode.myNodeId)
+        self.reloadQAPair(nextQuestion: nextQuestion)
     }
     
     private func setQuestionArray(questionArray: [RealmMindNodeModel]){
@@ -92,19 +90,20 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
 }
 
 extension ToDoQuestionPresenter {
-    func reloadQAPair(questionNodeId:Int){
-//        self.displayingQustion = myModel.selectNodeByNodeId(nodeId: questionNodeId)
-        self.displayingQustion =    myModel.searchNodeFromRealm(nodeId: questionNodeId)
-//        self.answerNodeArray = myModel.getAnswerNodeArray(displayingQuestion: self.displayingQustion)
-        self.answerNodeArray = myModel.getAnswerArrayFromRealm(displayingQuestion: self.displayingQustion)
-        
-        
+    func reloadQAPair(nextQuestion:RealmMindNodeModel){
+    //focusNodeはタップされたもの、
+    //nextBUttonTapped 時はランダムな未解決displayingQが入っている
+        self.displayingQustion = nextQuestion
+        self.answerNodeArray.removeAll()
+        for childNodeId in nextQuestion.childNodeIdArray {
+            let answerNode = myModel.getNodeFromRealm(mapId: nextQuestion.mapId, nodeId: childNodeId.MindNodeChildId)
+            self.answerNodeArray.append(answerNode)
+        }
         print("self.answerNodeArray")
         print("\(self.answerNodeArray)")
         self.notifyNodeToView()
         self.renderingView()
         self.changeToQuestionMode()
-        
     }
     
     func notifyNodeToView(){

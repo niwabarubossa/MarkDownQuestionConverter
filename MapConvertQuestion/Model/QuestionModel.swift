@@ -36,16 +36,27 @@ class QuestionModel {
         print("results.count")
         print("\(results.count) 件あります。 これはanswerNodeなのでこれを元にquestion 取得します")
         var questionArray = [RealmMindNodeModel]()
+        var alreadyExist = [String:Int]()
         for answerNode in results {
             //get parent node つまりquestionNOde
             let question = self.getNodeFromRealm(mapId:answerNode.mapId,nodeId: answerNode.parentNodeId)
-            questionArray.append(question)
+            if self.alreadyExist(array: questionArray,node:question) == false{
+                questionArray.append(question)
+            }
         }
+        
+        // 答えが３つある親は３カウントされている。その重複をさける
         self.allNodeData = questionArray
         self.delegate?.didGetMapQuestion(question: questionArray)
     }
     
-    private func getNodeFromRealm(mapId:String,nodeId: Int) -> RealmMindNodeModel{
+    
+    private func alreadyExist(array: [RealmMindNodeModel],node:RealmMindNodeModel)->Bool{
+        return false
+    }
+    
+    
+    func getNodeFromRealm(mapId:String,nodeId: Int) -> RealmMindNodeModel{
         let realm = try! Realm()
         let node:RealmMindNodeModel = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId).filter("myNodeId == %@", nodeId).first ?? RealmMindNodeModel()
         return node
@@ -55,12 +66,16 @@ class QuestionModel {
         //正解時
         let learningIntervalStruct = self.calculateNextDateWhenCorrect(question: swipedAnswer)
         self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
-        let removeNodeIndex = self.convertNodeIdToIndex(node: swipedAnswer)
+        //親のquestionを削除
+        let parentNode = self.getNodeFromRealm(mapId: swipedAnswer.mapId, nodeId: swipedAnswer.parentNodeId)
+        let removeNodeIndex = self.convertNodeIdToIndex(node: parentNode)
         //removeして反映
         print("self.allNodeData.count")
         print("\(self.allNodeData.count) 件です allNodeData　（削除前）")
+        
         self.allNodeData.remove(at: removeNodeIndex)
         self.syncData()
+        
         print("\(self.allNodeData.count)件 削除後")
     }
     
