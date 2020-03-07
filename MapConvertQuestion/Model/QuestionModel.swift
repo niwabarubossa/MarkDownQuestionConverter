@@ -49,11 +49,9 @@ class QuestionModel {
         self.delegate?.didGetMapQuestion(question: questionArray)
     }
     
-    
     private func alreadyExist(array: [RealmMindNodeModel],node:RealmMindNodeModel)->Bool{
         return false
     }
-    
     
     func getNodeFromRealm(mapId:String,nodeId: Int) -> RealmMindNodeModel{
         let realm = try! Realm()
@@ -89,7 +87,6 @@ class QuestionModel {
         self.syncData()
     }
     
-    
     func searchNextQuestionNodeId(displayingQustion:RealmMindNodeModel) -> Int{
         //have childなnodeつまり、questionとなりうるnodeを表示する。 answer持たない奴はquestionになれないので、ここでスキップ
         let diplayingNodeId = displayingQustion.myNodeId
@@ -113,10 +110,8 @@ class QuestionModel {
     func updateMapQuestion(learningIntervalStruct:LearningIntervalStruct,focusNode:RealmMindNodeModel){
         let realm = try! Realm()
         let focusNode = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", focusNode.mapId).filter("myNodeId == %@", focusNode.myNodeId).first
-
         try! realm.write {
-        focusNode?.setValue(learningIntervalStruct.ifSuccessNextInterval, forKey: "ifSuccessInterval")
-        
+            focusNode?.setValue(learningIntervalStruct.ifSuccessNextInterval, forKey: "ifSuccessInterval")
             focusNode?.setValue(learningIntervalStruct.nextLearningDate, forKey: "nextDate")
         }
     }
@@ -130,7 +125,6 @@ class QuestionModel {
         var localAnswerNodeArray = [RealmMindNodeModel]()
         for answerNodeId in displayingQuestion.childNodeIdArray {
             let nodeId = answerNodeId.MindNodeChildId
-//            let answerNode = self.selectNodeByNodeId(nodeId: nodeId)
             let answerNode = self.getNodeFromRealm(mapId: displayingQuestion.mapId, nodeId: nodeId)
             localAnswerNodeArray.append(answerNode)
         }
