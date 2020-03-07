@@ -39,7 +39,6 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     func toModelFromPresenter() {
 //        myModel.testfunc()
     }
-
     //Presenter → View の操作  操作する側
     func toViewFromPresenter() {
         view?.testfunc()
@@ -54,6 +53,8 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         print("nextQuestionButtonTapped in presenter")
         //select next question
         if (self.quizDataSource.count < 1) {
+            self.view?.noQuestionLabel.isHidden = false
+            self.changeToCompleteMode()
             print("self.quizDataSource.count < 1")
             print("no question ! todays todo question is complete!")
             return
@@ -124,6 +125,11 @@ extension ToDoQuestionPresenter {
     private func changeToAnswerMode(){
 //        view?.customView.isHidden = true
         view?.answerTableView.isHidden = false
+    }
+    
+    private func changeToCompleteMode(){
+        view?.customView.isHidden = true
+        view?.answerTableView.isHidden = true
     }
 
 }
