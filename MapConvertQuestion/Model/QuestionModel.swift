@@ -33,8 +33,7 @@ class QuestionModel {
         let todayEnd = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
         //答えのみ取得。答えに次の復習時間を記録しているので。　答えのparentNodeをクイズデータとして取得
         let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(todayEnd)}")
-        print("results.count")
-        print("\(results.count) 件あります。 これはanswerNodeなのでこれを元にquestion 取得します")
+        print("\(results.count) 件あります。 これはanswerNode。これを元にquestion 取得します")
         var questionArray = [RealmMindNodeModel]()
         var alreadyExist = [String]()
         for answerNode in results {
