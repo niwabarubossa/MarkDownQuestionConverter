@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if (oldSchemaVersion < migSchemaVersion) {
         }})
         Realm.Configuration.defaultConfiguration = config
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         return true
     }
 
