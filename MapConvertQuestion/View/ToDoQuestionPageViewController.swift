@@ -79,8 +79,8 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.answerNodeArrayDataSource[indexPath.row].childNodeIdArray.count > 0 {
-            let tappedNodeId = self.answerNodeArrayDataSource[indexPath.row].myNodeId
-            presenter.changeToSelectedAnswerQuiz(tappedNodeId: tappedNodeId)
+            let tappedNode = self.answerNodeArrayDataSource[indexPath.row]
+            presenter.changeToSelectedAnswerQuiz(tappedNode: tappedNode)
         }else{
             print("i have no answer")
         }

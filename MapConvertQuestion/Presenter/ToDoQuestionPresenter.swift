@@ -59,8 +59,9 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
             return
         }
         //reloadする　解いたやつremove
-        let nextQuestionNodeId:Int = Int.random(in: 0..<self.quizDataSource.count)
-        //reloadQAPairはnode iD なのにここではランダムにindexで投げてしまっていることがげんいん
+//        let nextQuestionNodeId:Int = Int.random(in: 0..<self.quizDataSource.count)
+        let nextQuestionNodeId:Int = self.quizDataSource.shuffled()[0].myNodeId
+            //reloadQAPairはnode iD なのにここではランダムにindexで投げてしまっていることがげんいん
         self.reloadQAPair(questionNodeId: nextQuestionNodeId)
         self.changeToQuestionMode()
         
@@ -80,8 +81,8 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
          myModel.leadingSwipeQuestion(swipedAnswer: swipedAnswer)
     }
     
-    func changeToSelectedAnswerQuiz(tappedNodeId:Int){
-        let nextQuestionId = tappedNodeId
+    func changeToSelectedAnswerQuiz(tappedNode:RealmMindNodeModel){
+        let nextQuestionId = tappedNode.myNodeId
         self.reloadQAPair(questionNodeId: nextQuestionId)
     }
     
@@ -92,8 +93,12 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
 
 extension ToDoQuestionPresenter {
     func reloadQAPair(questionNodeId:Int){
-        self.displayingQustion = myModel.selectNodeByNodeId(nodeId: questionNodeId)
-        self.answerNodeArray = myModel.getAnswerNodeArray(displayingQuestion: self.displayingQustion)
+//        self.displayingQustion = myModel.selectNodeByNodeId(nodeId: questionNodeId)
+        self.displayingQustion =    myModel.searchNodeFromRealm(nodeId: questionNodeId)
+//        self.answerNodeArray = myModel.getAnswerNodeArray(displayingQuestion: self.displayingQustion)
+        self.answerNodeArray = myModel.getAnswerArrayFromRealm(displayingQuestion: self.displayingQustion)
+        
+        
         print("self.answerNodeArray")
         print("\(self.answerNodeArray)")
         self.notifyNodeToView()
