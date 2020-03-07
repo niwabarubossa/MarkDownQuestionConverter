@@ -71,8 +71,6 @@ class ToDoQuestionPageViewController: UIViewController,ToDoQuestionDisplayDelega
 
 extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("answerNodeArrayDataSource.count")
-        print("\(answerNodeArrayDataSource.count)")
         return answerNodeArrayDataSource.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
