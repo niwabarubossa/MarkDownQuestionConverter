@@ -36,12 +36,13 @@ class QuestionModel {
         print("results.count")
         print("\(results.count) 件あります。 これはanswerNodeなのでこれを元にquestion 取得します")
         var questionArray = [RealmMindNodeModel]()
-        var alreadyExist = [String:Int]()
+        var alreadyExist = [String]()
         for answerNode in results {
             //get parent node つまりquestionNOde
             let question = self.getNodeFromRealm(mapId:answerNode.mapId,nodeId: answerNode.parentNodeId)
-            if self.alreadyExist(array: questionArray,node:question) == false{
+            if alreadyExist.contains(question.nodePrimaryKey) == false{
                 questionArray.append(question)
+                alreadyExist.append(question.nodePrimaryKey)
             }
         }
         
@@ -73,6 +74,8 @@ class QuestionModel {
         print("self.allNodeData.count")
         print("\(self.allNodeData.count) 件です allNodeData　（削除前）")
         
+        
+        //これおかしい removeNodeIndex = 9
         self.allNodeData.remove(at: removeNodeIndex)
         self.syncData()
         
@@ -80,7 +83,7 @@ class QuestionModel {
     }
     
     func convertNodeIdToIndex(node:RealmMindNodeModel)->Int{
-        let index:Int = self.allNodeData.filter({$0.myNodeId == node.myNodeId}).first?.myNodeId ?? 0
+        let index:Int = self.allNodeData.filter({$0.nodePrimaryKey == node.nodePrimaryKey}).first?.myNodeId ?? 0
         return index
     }
     
