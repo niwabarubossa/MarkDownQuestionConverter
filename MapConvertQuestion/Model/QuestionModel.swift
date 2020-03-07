@@ -31,7 +31,7 @@ class QuestionModel {
         let realm = try! Realm()
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
         let todayEnd = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
-        //答えのみ取得。答えに次の復習時間が記録しているので。　答えの情報をもとにクイズデータを取得
+        //答えのみ取得。答えに次の復習時間を記録しているので。　答えのparentNodeをクイズデータとして取得
         let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(todayEnd)}")
         print("results.count")
         print("\(results.count) 件あります。 これはanswerNodeなのでこれを元にquestion 取得します")
@@ -45,8 +45,6 @@ class QuestionModel {
                 alreadyExist.append(question.nodePrimaryKey)
             }
         }
-        
-        // 答えが３つある親は３カウントされている。その重複をさける
         self.allNodeData = questionArray
         self.delegate?.didGetMapQuestion(question: questionArray)
     }
@@ -69,18 +67,9 @@ class QuestionModel {
         self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
         //親のquestionを削除
         let parentNode = self.getNodeFromRealm(mapId: swipedAnswer.mapId, nodeId: swipedAnswer.parentNodeId)
-//        let removeNodeIndex = self.convertNodeIdToIndex(node: parentNode)
         let removeNodeIndex = self.allNodeData.firstIndex(of: parentNode) ?? 1000
-        //removeして反映
-        print("self.allNodeData.count")
-        print("\(self.allNodeData.count) 件です allNodeData　（削除前）")
-        
-        
-        //これおかしい removeNodeIndex = 9
         self.allNodeData.remove(at: removeNodeIndex)
         self.syncData()
-        
-        print("\(self.allNodeData.count)件 削除後")
     }
     
     func convertNodeIdToIndex(node:RealmMindNodeModel)->Int{
@@ -183,5 +172,4 @@ class QuestionModel {
         return LearningIntervalStruct(ifSuccessNextInterval: 1, nextLearningDate: Calendar.current.date(byAdding: .day, value: 0, to: Date())!.millisecondsSince1970)
     }
 
-    
 }
