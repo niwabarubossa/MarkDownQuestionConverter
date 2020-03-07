@@ -99,15 +99,12 @@ extension ToDoQuestionPresenter {
             let answerNode = myModel.getNodeFromRealm(mapId: nextQuestion.mapId, nodeId: childNodeId.MindNodeChildId)
             self.answerNodeArray.append(answerNode)
         }
-        print("self.answerNodeArray")
-        print("\(self.answerNodeArray)")
         self.notifyNodeToView()
         self.renderingView()
         self.changeToQuestionMode()
     }
     
     func notifyNodeToView(){
-        print("notifyNodeToView")
         self.view?.displayingNode = self.displayingQustion
         self.view?.answerNodeArrayDataSource = self.answerNodeArray
     }
