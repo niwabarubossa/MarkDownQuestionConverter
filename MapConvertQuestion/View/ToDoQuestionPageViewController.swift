@@ -13,6 +13,7 @@ class ToDoQuestionPageViewController: UIViewController,ToDoQuestionDisplayDelega
     @IBOutlet weak var answerTableView: UITableView!
     var presenter:ToDoQuestionPresenter!
     let customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+    let noQuestionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     var displayingNode:RealmMindNodeModel = RealmMindNodeModel()
     var answerNodeArrayDataSource = [RealmMindNodeModel]()
     
@@ -27,6 +28,11 @@ class ToDoQuestionPageViewController: UIViewController,ToDoQuestionDisplayDelega
     
     private func layout(){
         customView.center = self.view.center
+        noQuestionLabel.text = "no question !!!!!!!!!"
+        noQuestionLabel.center = self.view.center
+        noQuestionLabel.isHidden = true
+        noQuestionLabel.sizeToFit()
+        self.view.addSubview(noQuestionLabel)
         customView.myDelegate = self
         self.view.addSubview(customView)
     }
