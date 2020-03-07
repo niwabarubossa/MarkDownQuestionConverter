@@ -135,7 +135,12 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
         }
         
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
-        return true
+        let questionDate = self.answerNodeArrayDataSource[indexPath.row].nextDate
+        if self.todayQuestion(nextDate: questionDate) == true {
+            return true
+        }
+        //スワイプ　つまり正解にできるのは今日の問題のみ
+        return false
     }
     
 }

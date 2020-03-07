@@ -7,6 +7,7 @@
 //
 import Foundation
 import UIKit
+import RealmSwift
 
 class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     //自分用のモデルの宣言
@@ -16,6 +17,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     var quizDataSource = [RealmMindNodeModel]()
     var displayingQustion:RealmMindNodeModel = RealmMindNodeModel()
     var answerNodeArray = [RealmMindNodeModel]()
+    var solvedAnswerId = [String]()
 
     init(view: ToDoQuestionPageViewController) {
         self.view = view
@@ -32,6 +34,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         self.quizDataSource = question
     }
     
+    //model とpresenter同期
     func syncData(allNodeData: [RealmMindNodeModel]) {
         self.quizDataSource = allNodeData
     }
@@ -72,7 +75,40 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     
     func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
         //データ更新する
-         myModel.trailingSwipeAction(swipedAnswer: swipedAnswer)
+//            self.solvedAnswerId.append(swipedAnswer.nodePrimaryKey)
+        myModel.trailingSwipeAction(swipedAnswer: swipedAnswer)
+        //データ更新は終了しているので、ここでクイズとして完全にノルマが終わっているか判定
+        //button view settings edit
+        let removeQuestionSwitch = self.removeSwipedAnswer()
+        
+        if removeQuestionSwitch == true {
+            myModel.deleteNodeFromModel(deleteNode: self.displayingQustion)
+            
+        }
+    }
+    
+    private func removeSwipedAnswer()->Bool{
+        //不完全　クイズ途中でnext行かれた時にめんどくさい。
+        // 今日１回解いたやつ　今日まだ解いてないやつ　の状態で次に行った場合、また遭遇した時に今日２回解いたやつ　今日１回解いたやつ　状態にならないとクイズが消えない
+        for answerNode in self.answerNodeArray {
+            if isTodayToDoQuestion(question: answerNode) == true {
+//                １つでも今日のやつが残っているならまだ消さない
+                print("remove switch is false")
+                return false
+            }
+        }
+        print("removeされます")
+        //全てのanswerが,0~todayの範囲を超えていたらOKとする。
+        return true
+    }
+    
+    private func isTodayToDoQuestion(question:RealmMindNodeModel) ->Bool{
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
+        let todayEnd = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
+        if question.nextDate >= 0 && todayEnd >= question.nextDate {
+            return true
+        }
+        return false
     }
     
     func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
@@ -95,14 +131,24 @@ extension ToDoQuestionPresenter {
     //focusNodeはタップされたもの、
     //nextBUttonTapped 時はランダムな未解決displayingQが入っている
         self.displayingQustion = nextQuestion
-        self.answerNodeArray.removeAll()
-        for childNodeId in nextQuestion.childNodeIdArray {
-            let answerNode = myModel.getNodeFromRealm(mapId: nextQuestion.mapId, nodeId: childNodeId.MindNodeChildId)
-            self.answerNodeArray.append(answerNode)
-        }
+        self.resetData()
+        self.setAnswerNodeArray(question:nextQuestion)
+
         self.notifyNodeToView()
         self.renderingView()
         self.changeToQuestionMode()
+    }
+    
+    private func resetData(){
+        self.answerNodeArray.removeAll()
+        self.solvedAnswerId.removeAll()
+    }
+    
+    private func setAnswerNodeArray(question:RealmMindNodeModel){
+        for childNodeId in question.childNodeIdArray {
+            let answerNode = myModel.getNodeFromRealm(mapId: question.mapId, nodeId: childNodeId.MindNodeChildId)
+            self.answerNodeArray.append(answerNode)
+        }
     }
     
     func notifyNodeToView(){

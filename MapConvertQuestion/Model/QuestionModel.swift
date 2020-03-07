@@ -34,6 +34,7 @@ class QuestionModel {
         //答えのみ取得。答えに次の復習時間を記録しているので。　答えのparentNodeをクイズデータとして取得
         let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(todayEnd)}")
         print("\(results.count) 件あります。 これはanswerNode。これを元にquestion 取得します")
+        //FIX 大元の親は parent0 child0 だから、自分を取得しちゃうので排除しよう
         var questionArray = [RealmMindNodeModel]()
         var alreadyExist = [String]()
         for answerNode in results {
@@ -66,13 +67,31 @@ class QuestionModel {
         let parentNode = self.getNodeFromRealm(mapId: swipedAnswer.mapId, nodeId: swipedAnswer.parentNodeId)
         //今日とくべき問題を全て解き終わっているならば削除して良い。　そうでないと子供３問あったとしても、１問しか答えてなくてもクイズを削除してはまずい
         let removeNodeIndex = self.allNodeData.firstIndex(of: parentNode) ?? 1000
-        self.allNodeData.remove(at: removeNodeIndex)
+//        print("self.allNodeData")
+//        print("\(self.allNodeData.count)件　削除前")
+//        self.allNodeData.remove(at: removeNodeIndex)
+//        if remove == true {
+//            self.allNodeData.remove(at: removeNodeIndex)
+//        }
+        print("\(self.allNodeData.count)件 削除後")
         self.syncData()
     }
+    
+    
     
     func convertNodeIdToIndex(node:RealmMindNodeModel)->Int{
         let index:Int = self.allNodeData.filter({$0.nodePrimaryKey == node.nodePrimaryKey}).first?.myNodeId ?? 0
         return index
+    }
+    
+    func deleteNodeFromModel(deleteNode: RealmMindNodeModel){
+        print("quizが消去されました in model")
+        print("\(self.allNodeData.count)件数")
+        let removeIndex = self.allNodeData.firstIndex(of: deleteNode)
+        self.allNodeData.remove(at: removeIndex ?? 1000)
+        
+        print("\(self.allNodeData.count)件数")
+        self.syncData()
     }
     
     private func syncData(){
@@ -114,6 +133,7 @@ class QuestionModel {
             focusNode?.setValue(learningIntervalStruct.ifSuccessNextInterval, forKey: "ifSuccessInterval")
             focusNode?.setValue(learningIntervalStruct.nextLearningDate, forKey: "nextDate")
         }
+        
     }
     
     func selectNodeByNodeId(nodeId:Int) -> RealmMindNodeModel{
