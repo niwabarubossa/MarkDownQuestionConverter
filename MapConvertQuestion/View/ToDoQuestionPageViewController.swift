@@ -77,10 +77,23 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionAnswerTableViewCell.className, for: indexPath ) as! QuestionAnswerTableViewCell
-         cell.questionLabel.text = self.answerNodeArrayDataSource[indexPath.row].content
-       print("cell content")
-        print("\(self.answerNodeArrayDataSource[indexPath.row].content)")
+        let data = self.answerNodeArrayDataSource[indexPath.row]
+        cell.questionLabel.text = data.content + String(data.ifSuccessInterval) + "日"
+        if todayQuestion(nextDate: data.nextDate) == true{
+            cell.backgroundColor = .orange
+        }else{
+            cell.backgroundColor = .green
+        }
          return cell
+    }
+    
+    private func todayQuestion(nextDate:Int64)->Bool{
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
+        let todayEnd = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
+        if nextDate >= 0 && nextDate <= todayEnd {
+             return true
+         }
+        return false
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -64,6 +64,7 @@ class QuestionModel {
         self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
         //親のquestionを削除
         let parentNode = self.getNodeFromRealm(mapId: swipedAnswer.mapId, nodeId: swipedAnswer.parentNodeId)
+        //今日とくべき問題を全て解き終わっているならば削除して良い。　そうでないと子供３問あったとしても、１問しか答えてなくてもクイズを削除してはまずい
         let removeNodeIndex = self.allNodeData.firstIndex(of: parentNode) ?? 1000
         self.allNodeData.remove(at: removeNodeIndex)
         self.syncData()
