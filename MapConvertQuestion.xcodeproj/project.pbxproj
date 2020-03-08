@@ -17,6 +17,7 @@
 		542F3FB0240FB3E100D92561 /* ToDoQuestionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542F3FAF240FB3E100D92561 /* ToDoQuestionDisplay.swift */; };
 		542F3FB2240FB54D00D92561 /* ToDoQuestionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542F3FB1240FB54D00D92561 /* ToDoQuestionPresenter.swift */; };
 		542F3FB4240FB58900D92561 /* ToDoQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542F3FB3240FB58900D92561 /* ToDoQuestionModel.swift */; };
+		5433AE562414AF60009877A1 /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5433AE552414AF60009877A1 /* MyColor.swift */; };
 		543E7FE7240E987D0073C7FF /* LearningIntervalStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543E7FE6240E987D0073C7FF /* LearningIntervalStruct.swift */; };
 		54769734240E08B1004E8C63 /* IntervalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54769733240E08B1004E8C63 /* IntervalEnum.swift */; };
 		54B466A72408B90700813800 /* QuestionAnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B466A52408B90700813800 /* QuestionAnswerTableViewCell.swift */; };
@@ -57,6 +58,7 @@
 		542F3FAF240FB3E100D92561 /* ToDoQuestionDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoQuestionDisplay.swift; sourceTree = "<group>"; };
 		542F3FB1240FB54D00D92561 /* ToDoQuestionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoQuestionPresenter.swift; sourceTree = "<group>"; };
 		542F3FB3240FB58900D92561 /* ToDoQuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoQuestionModel.swift; sourceTree = "<group>"; };
+		5433AE552414AF60009877A1 /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyColor.swift; path = MapConvertQuestion/Model/MyColor.swift; sourceTree = SOURCE_ROOT; };
 		543E7FE6240E987D0073C7FF /* LearningIntervalStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningIntervalStruct.swift; sourceTree = "<group>"; };
 		54769733240E08B1004E8C63 /* IntervalEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IntervalEnum.swift; path = MapConvertQuestion/Presenter/IntervalEnum.swift; sourceTree = SOURCE_ROOT; };
 		54B466A52408B90700813800 /* QuestionAnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerTableViewCell.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				54769733240E08B1004E8C63 /* IntervalEnum.swift */,
+				5433AE552414AF60009877A1 /* MyColor.swift */,
 			);
 			path = LetGroup;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 			files = (
 				54F45E5123FAA177002981C8 /* MarkDownInputViewController.swift in Sources */,
 				5404BD06240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift in Sources */,
+				5433AE562414AF60009877A1 /* MyColor.swift in Sources */,
 				54F45E2423F90AB5002981C8 /* ViewController.swift in Sources */,
 				543E7FE7240E987D0073C7FF /* LearningIntervalStruct.swift in Sources */,
 				54B466AA2408BA3C00813800 /* ObjectExtension.swift in Sources */,
