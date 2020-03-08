@@ -20,6 +20,8 @@
 		5433AE562414AF60009877A1 /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5433AE552414AF60009877A1 /* MyColor.swift */; };
 		543E7FE7240E987D0073C7FF /* LearningIntervalStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543E7FE6240E987D0073C7FF /* LearningIntervalStruct.swift */; };
 		54769734240E08B1004E8C63 /* IntervalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54769733240E08B1004E8C63 /* IntervalEnum.swift */; };
+		54A7DC712414BC1E009F7229 /* SelectQustionPageThemeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A7DC702414BC1E009F7229 /* SelectQustionPageThemeView.xib */; };
+		54A7DC732414BC69009F7229 /* SelectQustionPageThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7DC722414BC69009F7229 /* SelectQustionPageThemeView.swift */; };
 		54B466A72408B90700813800 /* QuestionAnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B466A52408B90700813800 /* QuestionAnswerTableViewCell.swift */; };
 		54B466A82408B90700813800 /* QuestionAnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54B466A62408B90700813800 /* QuestionAnswerTableViewCell.xib */; };
 		54B466AA2408BA3C00813800 /* ObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B466A92408BA3C00813800 /* ObjectExtension.swift */; };
@@ -61,6 +63,8 @@
 		5433AE552414AF60009877A1 /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyColor.swift; path = MapConvertQuestion/Model/MyColor.swift; sourceTree = SOURCE_ROOT; };
 		543E7FE6240E987D0073C7FF /* LearningIntervalStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningIntervalStruct.swift; sourceTree = "<group>"; };
 		54769733240E08B1004E8C63 /* IntervalEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IntervalEnum.swift; path = MapConvertQuestion/Presenter/IntervalEnum.swift; sourceTree = SOURCE_ROOT; };
+		54A7DC702414BC1E009F7229 /* SelectQustionPageThemeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectQustionPageThemeView.xib; sourceTree = "<group>"; };
+		54A7DC722414BC69009F7229 /* SelectQustionPageThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectQustionPageThemeView.swift; sourceTree = "<group>"; };
 		54B466A52408B90700813800 /* QuestionAnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerTableViewCell.swift; sourceTree = "<group>"; };
 		54B466A62408B90700813800 /* QuestionAnswerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = QuestionAnswerTableViewCell.xib; path = ../CustomView/QuestionAnswerTableViewCell.xib; sourceTree = "<group>"; };
 		54B466A92408BA3C00813800 /* ObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ObjectExtension.swift; path = MapConvertQuestion/CustomView/ObjectExtension.swift; sourceTree = SOURCE_ROOT; };
@@ -178,6 +182,7 @@
 				54B466A62408B90700813800 /* QuestionAnswerTableViewCell.xib */,
 				54F45E3523F9111B002981C8 /* QuestionDidsplay.xib */,
 				54F45E3723F917C5002981C8 /* MarkDownInput.xib */,
+				54A7DC702414BC1E009F7229 /* SelectQustionPageThemeView.xib */,
 			);
 			path = XibFile;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 				54F45E3A23F918E6002981C8 /* QuestionDidsplay.swift */,
 				54F45E3C23F918F5002981C8 /* MarkDownInput.swift */,
 				54B466A52408B90700813800 /* QuestionAnswerTableViewCell.swift */,
+				54A7DC722414BC69009F7229 /* SelectQustionPageThemeView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -314,6 +320,7 @@
 			files = (
 				54F45E3823F917C5002981C8 /* MarkDownInput.xib in Resources */,
 				54F45E2C23F90AC3002981C8 /* LaunchScreen.storyboard in Resources */,
+				54A7DC712414BC1E009F7229 /* SelectQustionPageThemeView.xib in Resources */,
 				54F45E2923F90AC3002981C8 /* Assets.xcassets in Resources */,
 				5404BD07240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.xib in Resources */,
 				54B466A82408B90700813800 /* QuestionAnswerTableViewCell.xib in Resources */,
@@ -401,6 +408,7 @@
 				54F45E2423F90AB5002981C8 /* ViewController.swift in Sources */,
 				543E7FE7240E987D0073C7FF /* LearningIntervalStruct.swift in Sources */,
 				54B466AA2408BA3C00813800 /* ObjectExtension.swift in Sources */,
+				54A7DC732414BC69009F7229 /* SelectQustionPageThemeView.swift in Sources */,
 				5404BD03240A62F100B3C6EC /* QuestionMapSelectPageTableViewController.swift in Sources */,
 				542F3FB2240FB54D00D92561 /* ToDoQuestionPresenter.swift in Sources */,
 				54F45E5323FAA263002981C8 /* MarkDownInputPresenter.swift in Sources */,
