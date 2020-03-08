@@ -9,8 +9,7 @@
 import UIKit
 import RealmSwift
 
-class QuestionMapSelectPageTableViewController: UIViewController {
-
+class QuestionMapSelectPageTableViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     var dataSource = [Dictionary<String,String>]()
@@ -18,6 +17,8 @@ class QuestionMapSelectPageTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setRefreshReload()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         self.tableView.register(SelectQuestionMapPageTableViewCell.createXib(), forCellReuseIdentifier: SelectQuestionMapPageTableViewCell.className)
         self.dataSource = getMapTitleData()
 //        self.tableView.contentInset = UIEdgeInsets(top: 20,left: 20,bottom: 20,right: 20)
@@ -69,13 +70,13 @@ class QuestionMapSelectPageTableViewController: UIViewController {
 }
 
 
-extension QuestionMapSelectPageTableViewController {
+extension QuestionMapSelectPageTableViewController:UITableViewDelegate,UITableViewDataSource{
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return dataSource.count
     }
     
@@ -87,7 +88,6 @@ extension QuestionMapSelectPageTableViewController {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SelectQuestionMapPageTableViewCell.className, for: indexPath ) as! SelectQuestionMapPageTableViewCell
-        
             cell.mapTitleLabel.text = self.dataSource[indexPath.row]["mapFirstNodeContent"]
         return cell
     }
