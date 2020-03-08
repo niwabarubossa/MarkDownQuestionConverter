@@ -39,10 +39,14 @@ class QuestionModel {
         var alreadyExist = [String]()
         for answerNode in results {
             //get parent node つまりquestionNOde
-            let question = self.getNodeFromRealm(mapId:answerNode.mapId,nodeId: answerNode.parentNodeId)
-            if alreadyExist.contains(question.nodePrimaryKey) == false{
-                questionArray.append(question)
-                alreadyExist.append(question.nodePrimaryKey)
+            let question:RealmMindNodeModel = self.getNodeFromRealm(mapId:answerNode.mapId,nodeId: answerNode.parentNodeId)
+            //TODO oukyuushotitosite大元のnodeを省くif２重処理。
+            if question.myNodeId != question.parentNodeId {
+                if alreadyExist.contains(question.nodePrimaryKey) == false{
+                    //TODO equatable 実装したからいける？
+                    questionArray.append(question)
+                    alreadyExist.append(question.nodePrimaryKey)
+                }
             }
         }
         self.allNodeData = questionArray
