@@ -15,12 +15,20 @@ class SelectQuestionMapPageTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.layout()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    private func layout(){
+        mapTitleLabel.numberOfLines = 0
+        let font = UIFont.systemFont(ofSize: 25, weight: UIFont.Weight(300))
+        mapTitleLabel.font = font
+//        mapTitleLabel.textColor =
     }
     
 }
