@@ -19,6 +19,7 @@ class QuestionMapSelectPageTableViewController: UITableViewController {
         setRefreshReload()
         self.tableView.register(SelectQuestionMapPageTableViewCell.createXib(), forCellReuseIdentifier: SelectQuestionMapPageTableViewCell.className)
         self.dataSource = getMapTitleData()
+//        self.tableView.contentInset = UIEdgeInsets(top: 20,left: 20,bottom: 20,right: 20)
         self.tableView.reloadData()
     }
     
@@ -79,6 +80,7 @@ extension QuestionMapSelectPageTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.didSelectRowAt = indexPath.row
         self.performSegue(withIdentifier: R.segue.questionMapSelectPageTableViewController.goToQuestionPage, sender: nil)
+        self.tableView.deselectRow(at: indexPath, animated: true)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
