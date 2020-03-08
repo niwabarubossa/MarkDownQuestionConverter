@@ -11,8 +11,6 @@ import UIKit
 class MarkDownInput: UIView {
 
     @IBOutlet weak var inputTextView: UITextView!
-    @IBOutlet weak var indentAndLineButton: UIButton!
-    @IBOutlet weak var lineButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
     var myDelegate:MarkDownInputViewDelegate?
     
@@ -29,7 +27,7 @@ class MarkDownInput: UIView {
     }
 
     func loadNib() {
-        if let view = Bundle(for: type(of: self)).loadNibNamed(String(describing: type(of: self)), owner: self, options: nil)?.first as? UIView {
+        if let view = Bundle(for: type(of: self)).loadNibNamed(String(describing: type(of: self)), owner: self, options: nil)?.first as? UIView {   
             view.frame = self.bounds
             self.addSubview(view)
         }
