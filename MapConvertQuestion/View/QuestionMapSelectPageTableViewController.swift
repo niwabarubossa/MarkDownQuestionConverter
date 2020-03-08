@@ -19,6 +19,7 @@ class QuestionMapSelectPageTableViewController: UITableViewController {
         setRefreshReload()
         self.tableView.register(SelectQuestionMapPageTableViewCell.createXib(), forCellReuseIdentifier: SelectQuestionMapPageTableViewCell.className)
         self.dataSource = getMapTitleData()
+//        self.tableView.contentInset = UIEdgeInsets(top: 20,left: 20,bottom: 20,right: 20)
         self.tableView.reloadData()
     }
     
