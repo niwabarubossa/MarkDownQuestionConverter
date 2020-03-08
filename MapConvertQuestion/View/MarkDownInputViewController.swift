@@ -9,15 +9,15 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
         layout()
     }
     
-    private func layout(){
-        let customView = MarkDownInput(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+    private func initializePresenter() {
+       presenter = MarkDownInputPresenter(view: self)
+    }
+    
+    func layout() {
+        let customView = MarkDownInput(frame: CGRect(x: 0, y: 0, width: view.frame.width - 30, height: view.frame.height - 30))
         customView.center = self.view.center
         customView.myDelegate = self
         self.view.addSubview(customView)
-    }
-    
-    private func initializePresenter() {
-       presenter = MarkDownInputPresenter(view: self)
     }
     
     // Presenter ← View
