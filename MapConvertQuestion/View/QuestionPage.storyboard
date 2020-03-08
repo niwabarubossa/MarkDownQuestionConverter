@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dYv-Rj-fW2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DXf-NG-R72">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -37,28 +37,45 @@
             <point key="canvasLocation" x="131.8840579710145" y="62.946428571428569"/>
         </scene>
         <!--Question Map Select Page Table View Controller-->
-        <scene sceneID="TSI-Hh-8e0">
+        <scene sceneID="hF5-Zx-nB7">
             <objects>
-                <tableViewController id="dYv-Rj-fW2" customClass="QuestionMapSelectPageTableViewController" customModule="MapConvertQuestion" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="xnR-2d-4Zb">
+                <viewController id="DXf-NG-R72" customClass="QuestionMapSelectPageTableViewController" customModule="MapConvertQuestion" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BDZ-MR-mhx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KNm-WC-tCs">
+                                <rect key="frame" x="20" y="58" width="374" height="78"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RXk-oR-61y">
+                                <rect key="frame" x="20" y="156" width="374" height="640"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <connections>
-                            <outlet property="dataSource" destination="dYv-Rj-fW2" id="Ec1-XZ-kut"/>
-                            <outlet property="delegate" destination="dYv-Rj-fW2" id="vCz-QG-caO"/>
-                        </connections>
-                    </tableView>
+                        <constraints>
+                            <constraint firstItem="G42-Pn-fcC" firstAttribute="bottom" secondItem="RXk-oR-61y" secondAttribute="bottom" constant="20" id="0gN-zi-QLT"/>
+                            <constraint firstItem="RXk-oR-61y" firstAttribute="centerX" secondItem="BDZ-MR-mhx" secondAttribute="centerX" id="2qp-1c-7Ge"/>
+                            <constraint firstItem="KNm-WC-tCs" firstAttribute="top" secondItem="G42-Pn-fcC" secondAttribute="top" constant="15" id="3Tl-IG-Gc5"/>
+                            <constraint firstItem="KNm-WC-tCs" firstAttribute="leading" secondItem="G42-Pn-fcC" secondAttribute="leading" constant="20" id="7NA-VA-Mm9"/>
+                            <constraint firstItem="RXk-oR-61y" firstAttribute="top" secondItem="KNm-WC-tCs" secondAttribute="bottom" constant="20" id="HIE-nT-i7S"/>
+                            <constraint firstItem="G42-Pn-fcC" firstAttribute="trailing" secondItem="RXk-oR-61y" secondAttribute="trailing" constant="20" id="ccF-cZ-s0r"/>
+                            <constraint firstItem="G42-Pn-fcC" firstAttribute="trailing" secondItem="KNm-WC-tCs" secondAttribute="trailing" constant="20" id="nRb-Zi-Wpo"/>
+                            <constraint firstItem="RXk-oR-61y" firstAttribute="leading" secondItem="G42-Pn-fcC" secondAttribute="leading" constant="20" id="tFi-pJ-YEo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="G42-Pn-fcC"/>
+                    </view>
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="RNQ-af-OMt"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="tableVIew" destination="xnR-2d-4Zb" id="DS3-hg-XMb"/>
-                        <segue destination="Hw6-0L-hB2" kind="show" identifier="goToQuestionPage" id="1t7-UL-HKB"/>
+                        <outlet property="tableView" destination="RXk-oR-61y" id="vas-up-7Ym"/>
+                        <segue destination="Hw6-0L-hB2" kind="show" identifier="goToQuestionPage" id="dhJ-bk-qkG"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MoP-FE-j5X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lUG-a6-en1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-813.04347826086962" y="62.946428571428569"/>
+            <point key="canvasLocation" x="-971.01449275362324" y="62.946428571428569"/>
         </scene>
     </scenes>
 </document>
