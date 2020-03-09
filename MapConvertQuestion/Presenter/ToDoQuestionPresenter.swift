@@ -169,7 +169,7 @@ extension ToDoQuestionPresenter {
     }
     
     private func changeToAnswerMode(){
-//        view?.customView.isHidden = true
+        view?.customView.isHidden = true
         view?.answerTableView.isHidden = false
     }
     

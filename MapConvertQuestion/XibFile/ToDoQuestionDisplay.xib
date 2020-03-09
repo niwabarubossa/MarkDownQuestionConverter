@@ -19,59 +19,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="here is a question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJh-rN-Xgb">
-                    <rect key="frame" x="10" y="54" width="276" height="360"/>
+                    <rect key="frame" x="10" y="54" width="276" height="420"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7lJ-7K-kcz">
-                    <rect key="frame" x="23" y="424" width="250" height="50"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iez-UH-Gdy">
-                            <rect key="frame" x="0.0" y="0.0" width="83.5" height="50"/>
-                            <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal" title="Answer">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="answerButtonTapped:" destination="-1" eventType="touchUpInside" id="tDp-Ng-Kf4"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrT-1n-eel">
-                            <rect key="frame" x="83.5" y="0.0" width="83" height="50"/>
-                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCV-sp-jve">
-                            <rect key="frame" x="166.5" y="0.0" width="83.5" height="50"/>
-                            <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                            <state key="normal" title="NextQ">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="nextQuestionButtonTapped:" destination="-1" eventType="touchUpInside" id="orc-8d-A9a"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="250" id="kxu-ex-XcX"/>
-                        <constraint firstAttribute="height" constant="50" id="viz-W6-C4E"/>
-                    </constraints>
-                </stackView>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
-                <constraint firstItem="GJh-rN-Xgb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1De-oX-qAf"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="7lJ-7K-kcz" secondAttribute="bottom" constant="10" id="GV7-RK-YvK"/>
-                <constraint firstItem="7lJ-7K-kcz" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Nbe-gM-41e"/>
-                <constraint firstItem="7lJ-7K-kcz" firstAttribute="top" secondItem="GJh-rN-Xgb" secondAttribute="bottom" constant="10" id="aVI-wg-NaY"/>
-                <constraint firstItem="GJh-rN-Xgb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="apS-Ww-eX4"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GJh-rN-Xgb" secondAttribute="trailing" constant="10" id="pIL-Ks-gFY"/>
-                <constraint firstItem="GJh-rN-Xgb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="xR3-ny-dUE"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GJh-rN-Xgb" secondAttribute="trailing" constant="10" id="6GH-sS-vOe"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="GJh-rN-Xgb" secondAttribute="bottom" constant="10" id="8QQ-W8-Kxh"/>
+                <constraint firstItem="GJh-rN-Xgb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="Gqu-zC-Cgb"/>
+                <constraint firstItem="GJh-rN-Xgb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="qhY-Ve-ZBh"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

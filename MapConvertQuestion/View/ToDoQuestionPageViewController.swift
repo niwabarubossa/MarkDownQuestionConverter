@@ -7,9 +7,8 @@
 //
 import UIKit
 
-class ToDoQuestionPageViewController: UIViewController,ToDoQuestionDisplayDelegate {
+class ToDoQuestionPageViewController: UIViewController,ButtonStackViewDelegate {
 
-    
     @IBOutlet weak var answerTableView: UITableView!
     var presenter:ToDoQuestionPresenter!
     let customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
@@ -27,14 +26,20 @@ class ToDoQuestionPageViewController: UIViewController,ToDoQuestionDisplayDelega
     }
     
     private func layout(){
+        self.answerTableView.center = self.view.center
         customView.center = self.view.center
         noQuestionLabel.text = "no question !!!!!!!!!"
         noQuestionLabel.center = self.view.center
         noQuestionLabel.isHidden = true
         noQuestionLabel.sizeToFit()
         self.view.addSubview(noQuestionLabel)
-        customView.myDelegate = self
         self.view.addSubview(customView)
+        let BUTTON_STACK_VIEW_HEIGHT = 80
+        let myWidth = view.frame.width
+        let myHeight = view.frame.height
+        let buttonStackView = ButtonStackView(frame: CGRect(x: 0, y: myHeight - 180 , width: myWidth, height: 80))
+        buttonStackView.delegate = self
+        self.view.addSubview(buttonStackView)
     }
     
     private func initializePage(){
