@@ -9,10 +9,7 @@ import UIKit
 
 class ToDoQuestionPageViewController: UIViewController,ButtonStackViewDelegate {
 
-    
     @IBOutlet weak var answerTableView: UITableView!
-    
-    
     var presenter:ToDoQuestionPresenter!
     let customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     let noQuestionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
@@ -35,7 +32,6 @@ class ToDoQuestionPageViewController: UIViewController,ButtonStackViewDelegate {
         noQuestionLabel.isHidden = true
         noQuestionLabel.sizeToFit()
         self.view.addSubview(noQuestionLabel)
-//        customView.myDelegate = self
         self.view.addSubview(customView)
         let BUTTON_STACK_VIEW_HEIGHT = 80
         let myWidth = view.frame.width
