@@ -10,7 +10,6 @@ import UIKit
 
 class SelectQustionPageThemeView: UIView {
     
-    
     @IBOutlet weak var themeImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
