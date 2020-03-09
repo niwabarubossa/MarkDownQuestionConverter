@@ -27,6 +27,9 @@
                             <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Answer"/>
+                            <connections>
+                                <action selector="answerButtonTapped:" destination="-1" eventType="touchUpInside" id="E82-ks-ddW"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xm-5i-DyL">
                             <rect key="frame" x="112" y="0.0" width="112" height="157"/>
@@ -37,6 +40,9 @@
                             <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="NextQ"/>
+                            <connections>
+                                <action selector="nextQuestionButtonTapped:" destination="-1" eventType="touchUpInside" id="WS9-AX-Ffx"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>

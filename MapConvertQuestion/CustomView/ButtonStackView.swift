@@ -12,6 +12,7 @@ class ButtonStackView: UIView {
 
     @IBOutlet weak var answerButton: UIButton!
     @IBOutlet weak var nextQuestionButton: UIButton!
+    weak var delegate: ButtonStackViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,6 +30,18 @@ class ButtonStackView: UIView {
             self.addSubview(view)
         }
     }
+    
+    @IBAction func answerButtonTapped(_ sender: Any) {
+        self.delegate?.answerButtonTapped()
+    }
+    
+    @IBAction func nextQuestionButtonTapped(_ sender: Any) {
+        self.delegate?.nextQuestionButtonTapped()
+    }
+    
+}
 
-
+protocol ButtonStackViewDelegate:class{
+    func answerButtonTapped()
+    func nextQuestionButtonTapped()
 }
