@@ -10,6 +10,9 @@ import UIKit
 
 class ButtonStackView: UIView {
 
+    @IBOutlet weak var answerButton: UIButton!
+    @IBOutlet weak var nextQuestionButton: UIButton!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
