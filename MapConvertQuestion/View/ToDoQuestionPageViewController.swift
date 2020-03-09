@@ -26,6 +26,7 @@ class ToDoQuestionPageViewController: UIViewController,ButtonStackViewDelegate {
     }
     
     private func layout(){
+        self.answerTableView.center = self.view.center
         customView.center = self.view.center
         noQuestionLabel.text = "no question !!!!!!!!!"
         noQuestionLabel.center = self.view.center
