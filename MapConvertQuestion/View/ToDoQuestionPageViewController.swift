@@ -109,7 +109,9 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
                     completion(true)
             })
             swipedAction.backgroundColor = UIColor.red
-    //        swipedAction.image = UIImage(named: "something") あるいは R.swift
+            swipedAction.image = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { _ in
+                R.image.wrong()?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
+            }
             return UISwipeActionsConfiguration(actions: [swipedAction])
         }
         
@@ -125,7 +127,9 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
                     completion(true)
             })
             swipedAction.backgroundColor = UIColor.green
-            //        swipedAction.image = UIImage(named: "something") あるいは R.swift
+            swipedAction.image = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { _ in
+                R.image.done()?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
+            }
             return UISwipeActionsConfiguration(actions: [swipedAction])
         }
         
