@@ -107,12 +107,9 @@ class QuestionPagePresenter:QuestionModelDelegate{
     }
     
     func abandonQuestionButtonTapped(){
-        print("abandonQuestionButtonTapped")
-        
         for answerNode in self.answerNodeArray {
             questionModel.updateMapQuestionIsAnswer(updateNode: answerNode, isAnswer: false)
         }
-
         self.syncData(allNodeData: self.answerNodeArray)
     }
     
