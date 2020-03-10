@@ -24,6 +24,8 @@
 		5492009F2415D75700F01C7D /* ButtonStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5492009E2415D75700F01C7D /* ButtonStackView.swift */; };
 		54A7DC712414BC1E009F7229 /* SelectQustionPageThemeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A7DC702414BC1E009F7229 /* SelectQustionPageThemeView.xib */; };
 		54A7DC732414BC69009F7229 /* SelectQustionPageThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7DC722414BC69009F7229 /* SelectQustionPageThemeView.swift */; };
+		54A7F0042417CD2F007A7E70 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7F0032417CD2F007A7E70 /* UserModel.swift */; };
+		54A7F0062417CDA2007A7E70 /* QuestionLogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7F0052417CDA2007A7E70 /* QuestionLogModel.swift */; };
 		54B466A72408B90700813800 /* QuestionAnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B466A52408B90700813800 /* QuestionAnswerTableViewCell.swift */; };
 		54B466A82408B90700813800 /* QuestionAnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54B466A62408B90700813800 /* QuestionAnswerTableViewCell.xib */; };
 		54B466AA2408BA3C00813800 /* ObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B466A92408BA3C00813800 /* ObjectExtension.swift */; };
@@ -69,6 +71,8 @@
 		5492009E2415D75700F01C7D /* ButtonStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStackView.swift; sourceTree = "<group>"; };
 		54A7DC702414BC1E009F7229 /* SelectQustionPageThemeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectQustionPageThemeView.xib; sourceTree = "<group>"; };
 		54A7DC722414BC69009F7229 /* SelectQustionPageThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectQustionPageThemeView.swift; sourceTree = "<group>"; };
+		54A7F0032417CD2F007A7E70 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		54A7F0052417CDA2007A7E70 /* QuestionLogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionLogModel.swift; sourceTree = "<group>"; };
 		54B466A52408B90700813800 /* QuestionAnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerTableViewCell.swift; sourceTree = "<group>"; };
 		54B466A62408B90700813800 /* QuestionAnswerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = QuestionAnswerTableViewCell.xib; path = ../CustomView/QuestionAnswerTableViewCell.xib; sourceTree = "<group>"; };
 		54B466A92408BA3C00813800 /* ObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ObjectExtension.swift; path = MapConvertQuestion/CustomView/ObjectExtension.swift; sourceTree = SOURCE_ROOT; };
@@ -216,6 +220,8 @@
 				54BFEE3A2402701000B55A8C /* RealmMindNodeModel.swift */,
 				543E7FE6240E987D0073C7FF /* LearningIntervalStruct.swift */,
 				542F3FB3240FB58900D92561 /* ToDoQuestionModel.swift */,
+				54A7F0032417CD2F007A7E70 /* UserModel.swift */,
+				54A7F0052417CDA2007A7E70 /* QuestionLogModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -410,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54F45E5123FAA177002981C8 /* MarkDownInputViewController.swift in Sources */,
+				54A7F0062417CDA2007A7E70 /* QuestionLogModel.swift in Sources */,
 				5404BD06240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift in Sources */,
 				5433AE562414AF60009877A1 /* MyColor.swift in Sources */,
 				54F45E2423F90AB5002981C8 /* ViewController.swift in Sources */,
@@ -437,6 +444,7 @@
 				54FF62C62400E1640009B721 /* MindNodeModel.swift in Sources */,
 				542F3FB4240FB58900D92561 /* ToDoQuestionModel.swift in Sources */,
 				54F45E3B23F918E6002981C8 /* QuestionDidsplay.swift in Sources */,
+				54A7F0042417CD2F007A7E70 /* UserModel.swift in Sources */,
 				54F45E3D23F918F5002981C8 /* MarkDownInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
