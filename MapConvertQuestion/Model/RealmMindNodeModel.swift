@@ -22,8 +22,9 @@ class RealmMindNodeModel:Object{
     @objc dynamic var parentNodeId:Int = 0
     @objc dynamic var nextDate:Int64 = 0
     @objc dynamic var ifSuccessInterval:Int = 1
+    @objc dynamic var isAnswer:Bool = true
     let childNodeIdArray = List<MindNodeChildId>()
-    
+
     override static func primaryKey() -> String? {
         return "nodePrimaryKey"
     }
