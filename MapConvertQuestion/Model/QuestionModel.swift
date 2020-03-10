@@ -32,7 +32,7 @@ class QuestionModel {
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
         let todayEnd = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
         //答えのみ取得。答えに次の復習時間を記録しているので。　答えのparentNodeをクイズデータとして取得
-        let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(todayEnd)}")
+        let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(todayEnd)}").filter("isAnswer == %@",true)
         print("\(results.count) 件あります。 これはanswerNode。これを元にquestion 取得します")
         //FIX 大元の親は parent0 child0 だから、自分を取得しちゃうので排除しよう
         var questionArray = [RealmMindNodeModel]()
@@ -70,7 +70,7 @@ class QuestionModel {
         //親のquestionを削除
         let parentNode = self.getNodeFromRealm(mapId: swipedAnswer.mapId, nodeId: swipedAnswer.parentNodeId)
         //今日とくべき問題を全て解き終わっているならば削除して良い。　そうでないと子供３問あったとしても、１問しか答えてなくてもクイズを削除してはまずい
-        let removeNodeIndex = self.allNodeData.firstIndex(of: parentNode) ?? 1000
+//        let removeNodeIndex = self.allNodeData.firstIndex(of: parentNode) ?? 1000
 //        print("self.allNodeData")
 //        print("\(self.allNodeData.count)件　削除前")
 //        self.allNodeData.remove(at: removeNodeIndex)
@@ -133,11 +133,43 @@ class QuestionModel {
     func updateMapQuestion(learningIntervalStruct:LearningIntervalStruct,focusNode:RealmMindNodeModel){
         let realm = try! Realm()
         let focusNode = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", focusNode.mapId).filter("myNodeId == %@", focusNode.myNodeId).first
+        
         try! realm.write {
             focusNode?.setValue(learningIntervalStruct.ifSuccessNextInterval, forKey: "ifSuccessInterval")
             focusNode?.setValue(learningIntervalStruct.nextLearningDate, forKey: "nextDate")
         }
         
+    }
+    
+    func updateMapQuestionIsAnswer(updateNode:RealmMindNodeModel,isAnswer:Bool){
+        let answerNode = self
+            .searchByPrimaryKey(node: updateNode)
+        var questionNode = RealmMindNodeModel()
+        if let tempQuesiton = self.allNodeData.filter({ $0.mapId == updateNode.mapId && $0.myNodeId == updateNode.parentNodeId }).first {
+            questionNode = tempQuesiton
+        }
+        do{
+            let realm = try Realm()
+            try! realm.write {
+                 answerNode?.setValue(isAnswer, forKey: "isAnswer")
+            }
+        }catch{
+            print("\(error)")
+        }
+//書き換える、データの更新は子供（answer)。allNodeDataにはクイズが入っているので、それを削除
+//FIXME 汎用的にする必要あり。
+        if let questionNode = self.allNodeData.filter({ $0.mapId == updateNode.mapId && $0.myNodeId == questionNode.myNodeId  }).first {
+            if let removeIndex = self.allNodeData.firstIndex(of: questionNode){
+                self.allNodeData.remove(at: removeIndex)
+            }
+        }
+        self.syncData()
+    }
+    
+    func searchByPrimaryKey(node:RealmMindNodeModel) -> RealmMindNodeModel?{
+        let realm = try! Realm()
+        let searchResult:RealmMindNodeModel? = realm.objects(RealmMindNodeModel.self).filter("nodePrimaryKey == %@", node.nodePrimaryKey).first
+        return searchResult
     }
     
     func selectNodeByNodeId(nodeId:Int) -> RealmMindNodeModel{

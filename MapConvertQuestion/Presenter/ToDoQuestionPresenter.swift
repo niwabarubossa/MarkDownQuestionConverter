@@ -68,6 +68,12 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         self.reloadQAPair(nextQuestion: nextQuestion)
         self.changeToQuestionMode()
     }
+    
+    func abandonQuestionButtonTapped(){
+        for answerNode in self.answerNodeArray {
+            myModel.updateMapQuestionIsAnswer(updateNode: answerNode, isAnswer: false)
+        }
+    }
         
     func didGetToDoQuestion(questionArray: [RealmMindNodeModel]) {
         self.setQuestionArray(questionArray: questionArray)

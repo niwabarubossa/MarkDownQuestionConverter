@@ -112,7 +112,7 @@ extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
                 completion(true)
         })
         swipedAction.backgroundColor = UIColor.green
-        //        swipedAction.image = UIImage(named: "something") あるいは R.swift
+        //TODO        swipedAction.image = UIImage(named: "something") あるいは R.swift
         return UISwipeActionsConfiguration(actions: [swipedAction])
     }
     
@@ -122,6 +122,10 @@ extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
 }
 
 extension QuestionPageViewController:ButtonStackViewDelegate{
+    func abandonQuestionButtonTapped() {
+        presenter.abandonQuestionButtonTapped()
+    }
+    
     func answerButtonTapped() {
         presenter.showAnswerButtonTapped()
     }

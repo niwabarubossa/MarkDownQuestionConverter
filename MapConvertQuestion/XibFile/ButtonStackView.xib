@@ -34,6 +34,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xm-5i-DyL">
                             <rect key="frame" x="112" y="0.0" width="112" height="157"/>
                             <state key="normal" title="NO"/>
+                            <connections>
+                                <action selector="abandonQuestionButtonTapped:" destination="-1" eventType="touchUpInside" id="1bF-EW-zB4"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fV-0x-L17">
                             <rect key="frame" x="224" y="0.0" width="112" height="157"/>

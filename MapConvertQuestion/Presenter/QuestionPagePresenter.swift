@@ -106,6 +106,16 @@ class QuestionPagePresenter:QuestionModelDelegate{
         self.changeToAnswerMode()
     }
     
+    func abandonQuestionButtonTapped(){
+        print("abandonQuestionButtonTapped")
+        
+        for answerNode in self.answerNodeArray {
+            questionModel.updateMapQuestionIsAnswer(updateNode: answerNode, isAnswer: false)
+        }
+
+        self.syncData(allNodeData: self.answerNodeArray)
+    }
+    
     func correctAnswer(row:Int){
         let swipedAnswer = self.answerNodeArray[row]
         print("swipedAnswer")
