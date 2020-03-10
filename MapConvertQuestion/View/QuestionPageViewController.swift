@@ -69,8 +69,31 @@ extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
     //本来これはPresenterに書くべきとの２つの意見があるが、こちらの方が都合が良いのでtableViewのみ特例。
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionAnswerTableViewCell.className, for: indexPath ) as! QuestionAnswerTableViewCell
-        cell.questionLabel.text = self.dataSource[indexPath.row].content
+        let data = self.dataSource[indexPath.row]
+        cell.questionLabel.text = data.content
+        cell.backgroundColor = self.convertDateToColor(ifSuccessInterval: data.ifSuccessInterval)
         return cell
+    }
+    
+    private func convertDateToColor(ifSuccessInterval:Int)->UIColor{
+        switch ifSuccessInterval {
+        case Interval.zero.rawValue:
+            return MyColor.zeroColor
+        case Interval.first.rawValue:
+            return MyColor.firstColor
+        case Interval.second.rawValue:
+            return MyColor.secondColor
+        case Interval.third.rawValue:
+                return MyColor.thirdColor
+        case Interval.fourth.rawValue:
+                return MyColor.fourthColor
+        case Interval.fifth.rawValue:
+                return MyColor.fifthColor
+        case Interval.sixth.rawValue:
+                return MyColor.sixthColor
+        default:
+            return MyColor.zeroColor
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

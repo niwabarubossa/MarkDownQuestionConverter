@@ -33,7 +33,7 @@ class MyColor : UIColor {
     class var firstColor: UIColor {
         return UIColor(hex: "#e2f3f7")
     }
-    class var secondCOlor: UIColor {
+    class var secondColor: UIColor {
         return UIColor(hex: "#c3e7ef")
     }
     class var thirdColor: UIColor {

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 enum Interval:Int{
+    case zero = 0
     case first = 1
     case second = 3
     case third = 7
