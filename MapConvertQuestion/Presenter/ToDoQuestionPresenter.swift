@@ -164,13 +164,23 @@ extension ToDoQuestionPresenter {
     }
     
     private func changeToQuestionMode(){
-        view?.customView.isHidden = false
-        view?.answerTableView.isHidden = true
+        UIView.transition(with: self.view!.customView, duration: 0.5, options: [.transitionFlipFromLeft], animations: {
+            self.view!.customView.isHidden = true
+            self.view!.answerTableView.isHidden = false
+        }, completion: { (finished: Bool) in
+            self.view!.customView.isHidden = false
+            self.view!.answerTableView.isHidden = true
+        })
     }
     
     private func changeToAnswerMode(){
-        view?.customView.isHidden = true
-        view?.answerTableView.isHidden = false
+        UIView.transition(with: self.view!.customView, duration: 0.5, options: [.transitionFlipFromLeft], animations: {
+            self.view!.customView.isHidden = false
+            self.view!.answerTableView.isHidden = true
+        }, completion: { (finished: Bool) in
+            self.view!.customView.isHidden = true
+            self.view!.answerTableView.isHidden = false
+        })
     }
     
     private func changeToCompleteMode(){
