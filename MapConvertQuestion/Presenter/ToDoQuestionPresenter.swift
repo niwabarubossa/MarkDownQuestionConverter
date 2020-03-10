@@ -80,16 +80,13 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     }
     
     func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
-        //データ更新する
-//            self.solvedAnswerId.append(swipedAnswer.nodePrimaryKey)
+//データ更新する
         myModel.trailingSwipeAction(swipedAnswer: swipedAnswer)
-        //データ更新は終了しているので、ここでクイズとして完全にノルマが終わっているか判定
-        //button view settings edit
+ //データ更新は終了しているので、ここでクイズとして完全にノルマが終わっているか判定
+//button view settings edit
         let removeQuestionSwitch = self.removeSwipedAnswer()
-        
         if removeQuestionSwitch == true {
             myModel.deleteNodeFromModel(deleteNode: self.displayingQustion)
-            
         }
     }
     
@@ -99,12 +96,10 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         for answerNode in self.answerNodeArray {
             if isTodayToDoQuestion(question: answerNode) == true {
 //                １つでも今日のやつが残っているならまだ消さない
-                print("remove switch is false")
                 return false
             }
         }
-        print("removeされます")
-        //全てのanswerが,0~todayの範囲を超えていたらOKとする。
+        //全てのanswerが,0~todayの範囲を超えていたらOKとする。つまりremove
         return true
     }
     
@@ -139,7 +134,6 @@ extension ToDoQuestionPresenter {
         self.displayingQustion = nextQuestion
         self.resetData()
         self.setAnswerNodeArray(question:nextQuestion)
-
         self.notifyNodeToView()
         self.renderingView()
         self.changeToQuestionMode()
