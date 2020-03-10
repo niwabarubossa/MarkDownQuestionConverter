@@ -26,6 +26,28 @@ class MyColor : UIColor {
     class var textBlueColor:UIColor{
         return UIColor(hex: "#0066CC")
     }
+    
+    class var zeroColor: UIColor {
+        return UIColor(hex: "#ffffff")
+    }
+    class var firstColor: UIColor {
+        return UIColor(hex: "#e2f3f7")
+    }
+    class var secondColor: UIColor {
+        return UIColor(hex: "#c3e7ef")
+    }
+    class var thirdColor: UIColor {
+        return UIColor(hex: "#a4dbe6")
+    }
+    class var fourthColor: UIColor {
+        return UIColor(hex: "#81cfde")
+    }
+    class var fifthColor: UIColor {
+        return UIColor(hex: "#58c3d6")
+    }
+    class var sixthColor: UIColor {
+        return UIColor(hex: "#00b7ce")
+    }
 }
 
 extension UIColor {
