@@ -19,61 +19,18 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sy8-Ch-l2O">
-                    <rect key="frame" x="10" y="10" width="390" height="326"/>
+                    <rect key="frame" x="10" y="10" width="390" height="381"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cXX-6o-mgS">
-                    <rect key="frame" x="80" y="346" width="250" height="50"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IwW-xe-uWc">
-                            <rect key="frame" x="0.0" y="0.0" width="83.5" height="50"/>
-                            <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal" title="Answer">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="tappedAnswerButton:" destination="-1" eventType="touchUpInside" id="i9h-H9-mMS"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJq-wf-gdn">
-                            <rect key="frame" x="83.5" y="0.0" width="83" height="50"/>
-                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal" title="Question">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="tappedQuestionButton:" destination="-1" eventType="touchUpInside" id="ea6-1e-wKW"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5M4-cc-6cr">
-                            <rect key="frame" x="166.5" y="0.0" width="83.5" height="50"/>
-                            <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                            <state key="normal" title="Next">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="tappedNextButton:" destination="-1" eventType="touchUpInside" id="kbs-cq-t2A"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="250" id="GYU-zN-ccf"/>
-                        <constraint firstAttribute="height" constant="50" id="qen-vH-Hd6"/>
-                    </constraints>
-                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Sy8-Ch-l2O" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="8au-ZK-QTY"/>
-                <constraint firstItem="Sy8-Ch-l2O" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Glu-S0-gKO"/>
-                <constraint firstItem="cXX-6o-mgS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="O31-d9-DvY"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Sy8-Ch-l2O" secondAttribute="trailing" constant="10" id="bgf-M4-W6h"/>
-                <constraint firstItem="Sy8-Ch-l2O" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="nkG-fC-K7t"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="cXX-6o-mgS" secondAttribute="bottom" constant="5" id="s6Y-wK-EQL"/>
-                <constraint firstItem="cXX-6o-mgS" firstAttribute="top" secondItem="Sy8-Ch-l2O" secondAttribute="bottom" constant="10" id="z0U-qp-tcH"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Sy8-Ch-l2O" secondAttribute="bottom" constant="10" id="O9S-kJ-3Ir"/>
+                <constraint firstAttribute="trailing" secondItem="Sy8-Ch-l2O" secondAttribute="trailing" constant="10" id="OTu-Qu-fzJ"/>
+                <constraint firstItem="Sy8-Ch-l2O" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="mEv-Xi-P9f"/>
+                <constraint firstItem="Sy8-Ch-l2O" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="sEp-w2-834"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

@@ -35,6 +35,11 @@ class QuestionPageViewController: UIViewController {
         customView.center = self.view.center
         customView.delegate = self
         self.view.addSubview(customView)
+        let myWidth = view.frame.width
+        let myHeight = view.frame.height
+        let buttonStackView = ButtonStackView(frame: CGRect(x: 0, y: myHeight - 180 , width: myWidth, height: 80))
+        buttonStackView.delegate = self
+        self.view.addSubview(buttonStackView)
     }
     
     private func getQuestion(mapId:String){
@@ -51,14 +56,6 @@ class QuestionPageViewController: UIViewController {
     func changeQuizDisplay(displayingQustion: RealmMindNodeModel){
         self.displayingNode = displayingQustion
         self.customView.questionDisplayLabel.text = displayingQustion.content
-    }
-    
-    func nextButtonTapped(){
-        presenter.nextButtonTapped()
-    }
-    
-    func showAnswerButtonTapped(){
-        presenter.showAnswerButtonTapped()
     }
     
     func changeDisplayToAnswer(answerNodeArray:[RealmMindNodeModel]){
@@ -122,4 +119,14 @@ extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
             return true
     }
+}
+
+extension QuestionPageViewController:ButtonStackViewDelegate{
+    func answerButtonTapped() {
+        presenter.showAnswerButtonTapped()
+    }
+    
+    func nextQuestionButtonTapped() {
+        presenter.nextButtonTapped()
+    }   
 }
