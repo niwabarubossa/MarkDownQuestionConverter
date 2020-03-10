@@ -68,6 +68,10 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         self.reloadQAPair(nextQuestion: nextQuestion)
         self.changeToQuestionMode()
     }
+    
+    func abandonQuestionButtonTapped(){
+        print("abandonQuestionButtonTapped")
+    }
         
     func didGetToDoQuestion(questionArray: [RealmMindNodeModel]) {
         self.setQuestionArray(questionArray: questionArray)

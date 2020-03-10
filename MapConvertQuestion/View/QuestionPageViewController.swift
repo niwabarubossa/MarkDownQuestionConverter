@@ -122,6 +122,10 @@ extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
 }
 
 extension QuestionPageViewController:ButtonStackViewDelegate{
+    func abandonQuestionButtonTapped() {
+        presenter.abandonQuestionButtonTapped()
+    }
+    
     func answerButtonTapped() {
         presenter.showAnswerButtonTapped()
     }

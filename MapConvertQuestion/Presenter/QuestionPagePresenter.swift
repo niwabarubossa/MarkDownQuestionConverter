@@ -106,6 +106,10 @@ class QuestionPagePresenter:QuestionModelDelegate{
         self.changeToAnswerMode()
     }
     
+    func abandonQuestionButtonTapped(){
+        print("abandonQuestionButtonTapped")
+    }
+    
     func correctAnswer(row:Int){
         let swipedAnswer = self.answerNodeArray[row]
         print("swipedAnswer")

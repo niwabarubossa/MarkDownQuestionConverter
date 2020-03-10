@@ -39,9 +39,14 @@ class ButtonStackView: UIView {
         self.delegate?.nextQuestionButtonTapped()
     }
     
+    @IBAction func abandonQuestionButtonTapped(_ sender: Any) {
+        self.delegate?.abandonQuestionButtonTapped()
+    }
+    
 }
 
 protocol ButtonStackViewDelegate:class{
     func answerButtonTapped()
     func nextQuestionButtonTapped()
+    func abandonQuestionButtonTapped()
 }

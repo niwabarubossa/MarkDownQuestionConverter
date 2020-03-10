@@ -7,8 +7,8 @@
 //
 import UIKit
 
-class ToDoQuestionPageViewController: UIViewController,ButtonStackViewDelegate {
-
+class ToDoQuestionPageViewController: UIViewController{
+    
     @IBOutlet weak var answerTableView: UITableView!
     var presenter:ToDoQuestionPresenter!
     let customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
@@ -52,16 +52,6 @@ class ToDoQuestionPageViewController: UIViewController,ButtonStackViewDelegate {
         self.answerTableView.dataSource = self
     }
     
-    func answerButtonTapped() {
-        print("answerButtonTapped")
-        presenter.answerButtonTapped()
-    }
-    
-    func nextQuestionButtonTapped(){
-        print("nextQuestionButtonTapped")
-        presenter.nextQuestionButtonTapped()
-    }
-
     private func initializePresenter() {
        presenter = ToDoQuestionPresenter(view: self)
     }
@@ -148,6 +138,23 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
         return false
     }
     
+}
+
+extension ToDoQuestionPageViewController:ButtonStackViewDelegate{
+    func answerButtonTapped() {
+        print("answerButtonTapped")
+        presenter.answerButtonTapped()
+    }
+    
+    func abandonQuestionButtonTapped() {
+        print("abandonQuestionButtonTapped")
+        presenter.abandonQuestionButtonTapped()
+    }
+    func nextQuestionButtonTapped(){
+        print("nextQuestionButtonTapped")
+        presenter.nextQuestionButtonTapped()
+    }
+
 }
 
 protocol ToDoQuestionDisplayDelegate {
