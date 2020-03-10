@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum Interval:Int{
     case first = 1
