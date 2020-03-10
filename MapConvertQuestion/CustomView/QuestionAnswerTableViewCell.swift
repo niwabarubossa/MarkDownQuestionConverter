@@ -11,6 +11,8 @@ import UIKit
 class QuestionAnswerTableViewCell: UITableViewCell {
 
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var nextDateLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

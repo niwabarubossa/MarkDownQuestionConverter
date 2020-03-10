@@ -80,7 +80,8 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionAnswerTableViewCell.className, for: indexPath ) as! QuestionAnswerTableViewCell
         let data = self.answerNodeArrayDataSource[indexPath.row]
-        cell.questionLabel.text = data.content + String(data.ifSuccessInterval) + "日"
+        cell.questionLabel.text = data.content
+        cell.nextDateLabel.text = String(data.ifSuccessInterval) + "日"
         if todayQuestion(nextDate: data.nextDate) == true{
             cell.backgroundColor = .orange
         }else{

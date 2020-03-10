@@ -18,24 +18,37 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebv-wo-ggT">
-                        <rect key="frame" x="10" y="10" width="300" height="24"/>
+                        <rect key="frame" x="10" y="10" width="250" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91f-Nj-IZX">
+                        <rect key="frame" x="270" y="10" width="40" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="dh2-pg-Xte"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="ebv-wo-ggT" secondAttribute="trailing" constant="10" id="IPt-8H-ofs"/>
-                    <constraint firstItem="ebv-wo-ggT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="VKJ-2v-eg5"/>
-                    <constraint firstItem="ebv-wo-ggT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="bFL-Ti-35o"/>
-                    <constraint firstAttribute="bottom" secondItem="ebv-wo-ggT" secondAttribute="bottom" constant="10" id="bb4-HU-ZJ5"/>
+                    <constraint firstAttribute="bottom" secondItem="91f-Nj-IZX" secondAttribute="bottom" constant="10" id="1MS-M3-GYc"/>
+                    <constraint firstItem="ebv-wo-ggT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="64h-F3-XyY"/>
+                    <constraint firstAttribute="bottom" secondItem="ebv-wo-ggT" secondAttribute="bottom" constant="10" id="B3k-x8-iw0"/>
+                    <constraint firstItem="91f-Nj-IZX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Fso-Bw-pGE"/>
+                    <constraint firstItem="91f-Nj-IZX" firstAttribute="leading" secondItem="ebv-wo-ggT" secondAttribute="trailing" constant="10" id="GCz-bQ-hen"/>
+                    <constraint firstItem="ebv-wo-ggT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="b9m-Lz-bFo"/>
+                    <constraint firstAttribute="trailing" secondItem="91f-Nj-IZX" secondAttribute="trailing" constant="10" id="bE6-Ic-zt3"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="nextDateLabel" destination="91f-Nj-IZX" id="I6Q-OH-ZgL"/>
                 <outlet property="questionLabel" destination="ebv-wo-ggT" id="3d7-qj-tik"/>
             </connections>
-            <point key="canvasLocation" x="129" y="86"/>
+            <point key="canvasLocation" x="128.98550724637681" y="85.714285714285708"/>
         </tableViewCell>
     </objects>
 </document>
