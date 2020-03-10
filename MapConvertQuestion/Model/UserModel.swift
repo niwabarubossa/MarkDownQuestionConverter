@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class User:Object{
-    @objc dynamic var uuid:String = NSUUID().uuidString
+    @objc dynamic var uuid:String = ""
     @objc dynamic var totalCharactersAmount:Int64 = 0
     @objc dynamic var totalAnswerTimes:Int64 = 0
     override static func primaryKey() -> String? {
