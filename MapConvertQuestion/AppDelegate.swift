@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow? // これを追加
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let migSchemaVersion: UInt64 = 8
+        let migSchemaVersion: UInt64 = 9
         let config = Realm.Configuration(
             schemaVersion: migSchemaVersion,
             migrationBlock: { migration, oldSchemaVersion in
