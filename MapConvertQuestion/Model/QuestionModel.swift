@@ -133,11 +133,30 @@ class QuestionModel {
     func updateMapQuestion(learningIntervalStruct:LearningIntervalStruct,focusNode:RealmMindNodeModel){
         let realm = try! Realm()
         let focusNode = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", focusNode.mapId).filter("myNodeId == %@", focusNode.myNodeId).first
+        
         try! realm.write {
             focusNode?.setValue(learningIntervalStruct.ifSuccessNextInterval, forKey: "ifSuccessInterval")
             focusNode?.setValue(learningIntervalStruct.nextLearningDate, forKey: "nextDate")
         }
         
+    }
+    
+    func updateMapQuestionIsAnswer(updateNode:RealmMindNodeModel,isAnswer:Bool){
+        let focusNode = self.searchByPrimaryKey(node: updateNode)
+        do{
+            let realm = try Realm()
+            try! realm.write {
+                 focusNode?.setValue(isAnswer, forKey: "isAnswer")
+            }
+        }catch{
+            print("\(error)")
+        }
+    }
+    
+    func searchByPrimaryKey(node:RealmMindNodeModel) -> RealmMindNodeModel?{
+        let realm = try! Realm()
+        let searchResult:RealmMindNodeModel? = realm.objects(RealmMindNodeModel.self).filter("nodePrimaryKey == %@", node.nodePrimaryKey).first
+        return searchResult
     }
     
     func selectNodeByNodeId(nodeId:Int) -> RealmMindNodeModel{

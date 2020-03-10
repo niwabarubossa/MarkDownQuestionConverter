@@ -70,7 +70,9 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     }
     
     func abandonQuestionButtonTapped(){
-        print("abandonQuestionButtonTapped")
+        for answerNode in self.answerNodeArray {
+            myModel.updateMapQuestionIsAnswer(updateNode: answerNode, isAnswer: false)
+        }
     }
         
     func didGetToDoQuestion(questionArray: [RealmMindNodeModel]) {
