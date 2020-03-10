@@ -34,7 +34,6 @@ class ToDoQuestionPageViewController: UIViewController,ButtonStackViewDelegate {
         noQuestionLabel.sizeToFit()
         self.view.addSubview(noQuestionLabel)
         self.view.addSubview(customView)
-        let BUTTON_STACK_VIEW_HEIGHT = 80
         let myWidth = view.frame.width
         let myHeight = view.frame.height
         let buttonStackView = ButtonStackView(frame: CGRect(x: 0, y: myHeight - 180 , width: myWidth, height: 80))

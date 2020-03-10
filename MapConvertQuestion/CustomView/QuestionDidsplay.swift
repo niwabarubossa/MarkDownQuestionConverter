@@ -31,15 +31,15 @@ class QuestionDidsplay: UIView {
         }
     }
     
-    @IBAction func tappedAnswerButton(_ sender: Any) {
-        self.delegate?.showAnswerButtonTapped()
-    }
-    
-    @IBAction func tappedQuestionButton(_ sender: Any) {
-    }
-    
-    @IBAction func tappedNextButton(_ sender: Any) {
-        self.delegate?.nextButtonTapped()
-    }
+//    @IBAction func tappedAnswerButton(_ sender: Any) {
+//        self.delegate?.showAnswerButtonTapped()
+//    }
+//
+//    @IBAction func tappedQuestionButton(_ sender: Any) {
+//    }
+//
+//    @IBAction func tappedNextButton(_ sender: Any) {
+//        self.delegate?.nextButtonTapped()
+//    }
     
 }
