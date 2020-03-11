@@ -27,6 +27,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         self.userModel = UserDataModel()
         userModel.delegate = self
         myModel.delegate = self
+        myModel.addObserver(self, selector: #selector(self.notifyToQuestionModelView))
         userModel.addObserver(self, selector:#selector(self.userModelUpdateDone))
     }
     
@@ -229,4 +230,12 @@ extension ToDoQuestionPresenter {
         view?.answerTableView.isHidden = true
     }
 
+}
+
+extension ToDoQuestionPresenter:QuestionModelPresenterProtocol{
+    @objc func notifyToQuestionModelView() {
+        self.view?.reloadQuestionModelView()
+//        self.view?.displayingNode = self.displayingQustion like this...
+        //ここで progressbarをやろう
+    }
 }

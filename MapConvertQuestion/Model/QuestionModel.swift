@@ -14,6 +14,20 @@ protocol QuestionModelDelegate: class {
     func syncData(allNodeData:[RealmMindNodeModel])
 }
 
+protocol QuestionModelViewProtocol: class {
+    func reloadQuestionModelView()
+}
+
+protocol QuestionModelPresenterProtocol: class{
+    func notifyToQuestionModelView() //notifyによって　model → presenter → viewをデータ同期
+}
+
+protocol QuestionModelProtocolNotify: class {
+    func addObserver(_ observer: Any, selector: Selector)
+    func removeObserver(_ observer: Any)
+    func notifyToPresenter()
+}
+
 class QuestionModel {
     weak var delegate: QuestionModelDelegate?
     var allNodeData = [RealmMindNodeModel]()
@@ -67,7 +81,7 @@ class QuestionModel {
         //正解時
         let learningIntervalStruct = self.calculateNextDateWhenCorrect(question: swipedAnswer)
         self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
-        self.syncData()
+        self.syncDataAndNotifyPresenter()
     }
     
     func convertNodeIdToIndex(node:RealmMindNodeModel)->Int{
@@ -81,11 +95,12 @@ class QuestionModel {
             self.allNodeData.remove(at: removeIndex)
         }
         print("\(self.allNodeData.count)件数 削除後")
-        self.syncData()
+        self.syncDataAndNotifyPresenter()
     }
     
-    private func syncData(){
+    private func syncDataAndNotifyPresenter(){     
         self.delegate?.syncData(allNodeData: allNodeData)
+        self.notifyToPresenter()
     }
 
     func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
@@ -93,7 +108,7 @@ class QuestionModel {
         let learningIntervalStruct = self.calculateNextDateWhenWrong()
         self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
         //removeせず　nextDate が今日になったことを反映
-        self.syncData()
+        self.syncDataAndNotifyPresenter()
     }
     
     func searchNextQuestionNodeId(displayingQustion:RealmMindNodeModel) -> Int{
@@ -149,7 +164,7 @@ class QuestionModel {
                 self.allNodeData.remove(at: removeIndex)
             }
         }
-        self.syncData()
+        self.syncDataAndNotifyPresenter()
     }
     
     func searchByPrimaryKey(node:RealmMindNodeModel) -> RealmMindNodeModel?{
@@ -208,4 +223,24 @@ class QuestionModel {
         return LearningIntervalStruct(ifSuccessNextInterval: 1, nextLearningDate: Calendar.current.date(byAdding: .day, value: 0, to: Date())!.millisecondsSince1970)
     }
 
+}
+
+extension QuestionModel:QuestionModelProtocolNotify{
+    
+    var notificationName: Notification.Name {
+        return Notification.Name.questionModelUpdate
+     }
+    
+    func notifyToPresenter() {
+        NotificationCenter.default.post(name: notificationName, object:nil)
+    }
+    
+    func addObserver(_ observer: Any, selector: Selector) {
+        NotificationCenter.default.addObserver(observer, selector: selector, name: notificationName, object: nil)
+    }
+    
+    func removeObserver(_ observer: Any) {
+        NotificationCenter.default.removeObserver(observer)
+    }
+    
 }

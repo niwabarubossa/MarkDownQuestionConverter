@@ -171,6 +171,13 @@ extension ToDoQuestionPageViewController:UserDataModelViewProtocol{
     }
 }
 
+extension ToDoQuestionPageViewController:QuestionModelViewProtocol{
+    
+    func reloadQuestionModelView() {
+        print("reload questoin model view controller")
+    }
+}
+
 protocol ToDoQuestionDisplayDelegate {
     func answerButtonTapped() -> Void
     func nextQuestionButtonTapped() -> Void
