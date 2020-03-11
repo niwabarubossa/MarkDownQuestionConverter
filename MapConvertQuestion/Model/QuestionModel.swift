@@ -77,8 +77,9 @@ class QuestionModel {
     
     func deleteNodeFromModel(deleteNode: RealmMindNodeModel){
         print("\(self.allNodeData.count)件数 削除前")
-        let removeIndex = self.allNodeData.firstIndex(of: deleteNode)
-        self.allNodeData.remove(at: removeIndex ?? 1000)
+        if let removeIndex = self.allNodeData.firstIndex(of: deleteNode){
+            self.allNodeData.remove(at: removeIndex)
+        }
         print("\(self.allNodeData.count)件数 削除後")
         self.syncData()
     }

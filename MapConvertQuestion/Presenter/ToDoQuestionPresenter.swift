@@ -147,8 +147,24 @@ extension ToDoQuestionPresenter:UserDataModelDelegate{
 
     @objc func userModelUpdateDone(notification: Notification){
         print("get observer ここでviewの更新をする")
-        self.view?.userDataDisplay.answerTimesLabel.text = String(self.user.totalAnswerTimes) + "回"
-        self.view?.userDataDisplay.scoreLabel.text = String(self.user.totalCharactersAmount)
+        let answerTimesLabel = self.view?.userDataDisplay.answerTimesLabel
+        let scoreLabel = self.view?.userDataDisplay.scoreLabel
+        UIView.transition(with: answerTimesLabel!, // アニメーションさせるview
+                        duration: 0.5, // アニメーションの秒数
+                          options: [.transitionFlipFromBottom, .curveEaseIn],
+                          animations: {
+        },
+                          completion:  { (finished: Bool) in
+                            answerTimesLabel!.text = String(self.user.totalAnswerTimes) + "回"
+        })
+        UIView.transition(with: scoreLabel!, // アニメーションさせるview
+                        duration: 0.5, // アニメーションの秒数
+                          options: [.transitionFlipFromBottom, .curveEaseIn],
+                          animations: {
+        },
+                          completion:  { (finished: Bool) in
+                            scoreLabel!.text = String(self.user.totalCharactersAmount)
+        })
     }
 }
 
