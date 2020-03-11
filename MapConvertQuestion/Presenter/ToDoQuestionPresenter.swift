@@ -20,6 +20,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     var answerNodeArray = [RealmMindNodeModel]()
     var solvedAnswerId = [String]()
     var user = User()
+    var startQuestionTime:Date = Date()
 
     init(view: ToDoQuestionPageViewController) {
         self.view = view
@@ -68,6 +69,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     func nextQuestionButtonTapped(){
         print("nextQuestionButtonTapped in presenter")
         //select next question
+        self.startQuestionTime = Date()
         if (self.quizDataSource.count < 1) {
             self.view?.noQuestionLabel.isHidden = false
             self.changeToCompleteMode()
@@ -95,6 +97,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
 //データ更新する
         myModel.trailingSwipeAction(swipedAnswer: swipedAnswer)
+        self.createQuestionLog(isAnswer:true)
  //データ更新は終了しているので、ここでクイズとして完全にノルマが終わっているか判定
 //button view settings edit
         let removeQuestionSwitch = self.removeSwipedAnswer()
@@ -102,6 +105,23 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
             myModel.deleteNodeFromModel(deleteNode: self.displayingQustion)
         }
         userModel.updateUserData(swipedAnswer: swipedAnswer)
+    }
+    
+    private func createQuestionLog(isAnswer:Bool){
+        do{
+            let realm = try Realm()
+            let thinkingTime = Double(Date().millisecondsSince1970 - self.startQuestionTime.millisecondsSince1970) / 1000
+            let questionLog = QuestionLog(value: [
+                "questionNodeId": self.displayingQustion.nodePrimaryKey,
+                "thinkingTime": thinkingTime,
+                "isAnswer": isAnswer
+            ])
+            try! realm.write {
+                realm.add(questionLog)
+            }
+        }catch{
+            print("\(error)")
+        }
     }
     
     private func removeSwipedAnswer()->Bool{
@@ -127,7 +147,9 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     }
     
     func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
+        //間違えたときの処理
         //データ更新する
+        self.createQuestionLog(isAnswer:false)
          myModel.leadingSwipeQuestion(swipedAnswer: swipedAnswer)
     }
     
