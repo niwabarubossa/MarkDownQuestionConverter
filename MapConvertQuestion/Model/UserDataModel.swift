@@ -31,7 +31,7 @@ class UserDataModel {
     weak var delegate: UserDataModelDelegate?
     var user = User()
     
-    func setUser(user:User){
+    func setUser(user: User){
         self.user = user
     }
     
@@ -52,6 +52,7 @@ class UserDataModel {
     }
     
     private func createQuestionLog(swipedAnswer:RealmMindNodeModel){
+        print("createQuestionLog")
     }
     
     private func updateUserScore(swipedAnswer:RealmMindNodeModel) ->User{
