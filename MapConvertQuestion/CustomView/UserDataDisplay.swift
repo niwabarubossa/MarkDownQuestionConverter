@@ -9,7 +9,11 @@
 import UIKit
 
 class UserDataDisplay: UIView {
-
+    
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var answerTimesLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
@@ -25,6 +29,7 @@ class UserDataDisplay: UIView {
             view.frame = self.bounds
             self.addSubview(view)
         }
+        self.image.image = R.image.student()
     }
 
 }

@@ -147,7 +147,8 @@ extension ToDoQuestionPresenter:UserDataModelDelegate{
 
     @objc func userModelUpdateDone(notification: Notification){
         print("get observer ここでviewの更新をする")
-//        customview.text = self.user.text
+        self.view?.userDataDisplay.answerTimesLabel.text = String(self.user.totalAnswerTimes) + "回"
+        self.view?.userDataDisplay.scoreLabel.text = String(self.user.totalCharactersAmount)
     }
 }
 

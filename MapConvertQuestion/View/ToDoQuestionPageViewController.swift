@@ -13,6 +13,7 @@ class ToDoQuestionPageViewController: UIViewController{
     var presenter:ToDoQuestionPresenter!
     let customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     let noQuestionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+    var userDataDisplay = UserDataDisplay()
     var displayingNode:RealmMindNodeModel = RealmMindNodeModel()
     var answerNodeArrayDataSource = [RealmMindNodeModel]()
     
@@ -39,6 +40,8 @@ class ToDoQuestionPageViewController: UIViewController{
         let buttonStackView = ButtonStackView(frame: CGRect(x: 0, y: myHeight - 180 , width: myWidth, height: 80))
         buttonStackView.delegate = self
         self.view.addSubview(buttonStackView)
+        userDataDisplay = UserDataDisplay(frame: CGRect(x: 0, y: 100, width: myWidth, height: 100))
+        self.view.addSubview(userDataDisplay)
     }
     
     private func initializePage(){
