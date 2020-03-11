@@ -27,6 +27,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         self.userModel = UserDataModel()
         userModel.delegate = self
         myModel.delegate = self
+        userModel.addObserver(self, selector:#selector(self.userModelUpdateDone))
     }
     
     //勝手に呼ばれる　from presenter
@@ -137,6 +138,11 @@ extension ToDoQuestionPresenter:UserDataModelDelegate{
     func didGetUserData(user: User) {
         print("\(user)")
         self.user = user
+    }
+
+    @objc func userModelUpdateDone(notification: Notification){
+        print("get observer ここでviewの更新をする")
+//        view.label.text = text
     }
 }
 
