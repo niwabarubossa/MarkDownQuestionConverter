@@ -97,6 +97,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
 //データ更新する
         myModel.trailingSwipeAction(swipedAnswer: swipedAnswer)
+        
         self.createQuestionLog(isCorrect:true,swipedAnswer: swipedAnswer)
  //データ更新は終了しているので、ここでクイズとして完全にノルマが終わっているか判定
 //button view settings edit
@@ -111,6 +112,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         do{
             let realm = try Realm()
             let thinkingTime = Double(Date().millisecondsSince1970 - self.startQuestionTime.millisecondsSince1970) / 1000
+            
             let questionLog = QuestionLog(value: [
                 "questionNodeId": self.displayingQustion.nodePrimaryKey,
                 "thinkingTime": thinkingTime,
@@ -152,6 +154,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
         //間違えたときの処理
         //データ更新する
+        
         self.createQuestionLog(isCorrect:false,swipedAnswer: swipedAnswer)
          myModel.leadingSwipeQuestion(swipedAnswer: swipedAnswer)
     }
