@@ -77,10 +77,13 @@ class QuestionModel {
         return node
     }
     
-    func trailingSwipeAction(swipedAnswer:RealmMindNodeModel){
-        //正解時
-        let learningIntervalStruct = self.calculateNextDateWhenCorrect(question: swipedAnswer)
+    
+//    trailingSwipeAction  → leading
+    func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
+        //不正解時
+        let learningIntervalStruct = self.calculateNextDateWhenWrong()
         self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
+        //removeせず　nextDate が今日になったことを反映
         self.syncDataAndNotifyPresenter()
     }
     
@@ -104,10 +107,9 @@ class QuestionModel {
     }
 
     func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
-        //不正解時
-        let learningIntervalStruct = self.calculateNextDateWhenWrong()
+        //正解時
+        let learningIntervalStruct = self.calculateNextDateWhenCorrect(question: swipedAnswer)
         self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
-        //removeせず　nextDate が今日になったことを反映
         self.syncDataAndNotifyPresenter()
     }
     

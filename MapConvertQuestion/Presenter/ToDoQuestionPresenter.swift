@@ -20,6 +20,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     var answerNodeArray = [RealmMindNodeModel]()
     var solvedAnswerId = [String]()
     var user = User()
+    var startQuestionTime:Date = Date()
 
     init(view: ToDoQuestionPageViewController) {
         self.view = view
@@ -68,6 +69,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     func nextQuestionButtonTapped(){
         print("nextQuestionButtonTapped in presenter")
         //select next question
+        self.startQuestionTime = Date()
         if (self.quizDataSource.count < 1) {
             self.view?.noQuestionLabel.isHidden = false
             self.changeToCompleteMode()
@@ -92,11 +94,13 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         self.setQuestionArray(questionArray: questionArray)
     }
     
-    func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
+    func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
+//leadingSwipeQuestion = 正解
 //データ更新する
-        myModel.trailingSwipeAction(swipedAnswer: swipedAnswer)
- //データ更新は終了しているので、ここでクイズとして完全にノルマが終わっているか判定
-//button view settings edit
+        myModel.leadingSwipeQuestion(swipedAnswer: swipedAnswer)
+        self.createQuestionLog(isCorrect:true,swipedAnswer: swipedAnswer)
+         //データ更新は終了してる。クイズノルマが全て終わっているか判定
+        //button view settings edit
         let removeQuestionSwitch = self.removeSwipedAnswer()
         if removeQuestionSwitch == true {
             myModel.deleteNodeFromModel(deleteNode: self.displayingQustion)
@@ -104,9 +108,31 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         userModel.updateUserData(swipedAnswer: swipedAnswer)
     }
     
+    private func createQuestionLog(isCorrect:Bool,swipedAnswer:RealmMindNodeModel){
+        do{
+            let realm = try Realm()
+            let thinkingTime = Double(Date().millisecondsSince1970 - self.startQuestionTime.millisecondsSince1970) / 1000
+            
+            let questionLog = QuestionLog(value: [
+                "questionNodeId": self.displayingQustion.nodePrimaryKey,
+                "thinkingTime": thinkingTime,
+                "isCorrect": isCorrect,
+                "mapId": swipedAnswer.mapId,
+                //TODO インデント込みの文字数になっているので治すこと
+                "charactersAmount": swipedAnswer.content.count
+            ])
+            try! realm.write {
+                realm.add(questionLog)
+            }
+        }catch{
+            print("\(error)")
+        }
+    }
+    
     private func removeSwipedAnswer()->Bool{
-        //不完全　クイズ途中でnext行かれた時にめんどくさい。
-        // 今日１回解いたやつ　今日まだ解いてないやつ　の状態で次に行った場合、また遭遇した時に今日２回解いたやつ　今日１回解いたやつ　状態にならないとクイズが消えない
+//不完全　クイズ途中でnext行かれた時にめんどくさい。
+// 今日１回解いたやつ,今日まだ解いてないやつ　の状態で次に行った場合、
+//また遭遇した時に今日２回解いたやつ　今日１回解いたやつ　状態にならないとクイズが消えない
         for answerNode in self.answerNodeArray {
             if isTodayToDoQuestion(question: answerNode) == true {
 //                １つでも今日のやつが残っているならまだ消さない
@@ -126,9 +152,10 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         return false
     }
     
-    func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
-        //データ更新する
-         myModel.leadingSwipeQuestion(swipedAnswer: swipedAnswer)
+    func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
+        //不正解
+        myModel.trailingSwipeQuestion(swipedAnswer: swipedAnswer)
+        self.createQuestionLog(isCorrect:false,swipedAnswer: swipedAnswer)
     }
     
     func changeToSelectedAnswerQuiz(tappedNode:RealmMindNodeModel){
