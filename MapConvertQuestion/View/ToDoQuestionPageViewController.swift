@@ -161,6 +161,13 @@ extension ToDoQuestionPageViewController:ButtonStackViewDelegate{
 
 }
 
+extension ToDoQuestionPageViewController:UserDataModelViewProtocol{
+    
+    func reloadUserDataModelView() {
+         print("reload user data model view")
+    }
+}
+
 protocol ToDoQuestionDisplayDelegate {
     func answerButtonTapped() -> Void
     func nextQuestionButtonTapped() -> Void

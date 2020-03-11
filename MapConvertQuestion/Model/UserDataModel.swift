@@ -9,9 +9,12 @@
 import Foundation
 import RealmSwift
 
-
 protocol UserDataModelDelegate: class {
     func didGetUserData(user:User) -> Void
+}
+
+protocol UserDataModelViewProtocol: class {
+    func reloadUserDataModelView()
 }
 
 protocol UserDataModelProtocol: ModelProtocolNotify {
