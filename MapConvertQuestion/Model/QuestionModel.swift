@@ -81,7 +81,7 @@ class QuestionModel {
         //正解時
         let learningIntervalStruct = self.calculateNextDateWhenCorrect(question: swipedAnswer)
         self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
-        self.syncData()
+        self.syncDataAndNotifyPresenter()
     }
     
     func convertNodeIdToIndex(node:RealmMindNodeModel)->Int{
@@ -95,11 +95,12 @@ class QuestionModel {
             self.allNodeData.remove(at: removeIndex)
         }
         print("\(self.allNodeData.count)件数 削除後")
-        self.syncData()
+        self.syncDataAndNotifyPresenter()
     }
     
-    private func syncData(){
+    private func syncDataAndNotifyPresenter(){
         self.delegate?.syncData(allNodeData: allNodeData)
+        self.notifyToPresenter()
     }
 
     func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
@@ -107,7 +108,7 @@ class QuestionModel {
         let learningIntervalStruct = self.calculateNextDateWhenWrong()
         self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
         //removeせず　nextDate が今日になったことを反映
-        self.syncData()
+        self.syncDataAndNotifyPresenter()
     }
     
     func searchNextQuestionNodeId(displayingQustion:RealmMindNodeModel) -> Int{
@@ -163,7 +164,7 @@ class QuestionModel {
                 self.allNodeData.remove(at: removeIndex)
             }
         }
-        self.syncData()
+        self.syncDataAndNotifyPresenter()
     }
     
     func searchByPrimaryKey(node:RealmMindNodeModel) -> RealmMindNodeModel?{

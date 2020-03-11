@@ -27,6 +27,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         self.userModel = UserDataModel()
         userModel.delegate = self
         myModel.delegate = self
+        myModel.addObserver(self, selector: #selector(self.notifyToQuestionModelView))
         userModel.addObserver(self, selector:#selector(self.userModelUpdateDone))
     }
     
@@ -232,7 +233,7 @@ extension ToDoQuestionPresenter {
 }
 
 extension ToDoQuestionPresenter:QuestionModelPresenterProtocol{
-    func notifyToQuestionModelView() {
+    @objc func notifyToQuestionModelView() {
         print("notify to question model view")
         self.view?.reloadQuestionModelView()
 //        self.view?.displayingNode = self.displayingQustion like this...
