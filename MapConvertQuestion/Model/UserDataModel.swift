@@ -11,6 +11,7 @@ import RealmSwift
 
 protocol UserDataModelDelegate: class {
     func didGetUserData(user:User) -> Void
+    func syncUserData(user:User)
 }
 
 protocol UserDataModelViewProtocol: class {
@@ -28,18 +29,43 @@ protocol ModelProtocolNotify: class {
 
 class UserDataModel {
     weak var delegate: UserDataModelDelegate?
+    var user = User()
+    
+    func setUser(user:User){
+        self.user = user
+    }
     
     func getUserData(){
         print("test function")
         let realm = try! Realm()
         if let user = realm.objects(User.self).first{
             self.delegate?.didGetUserData(user:user)
+            self.user = user
         }
     }
     
-    func updateUserData(){
-        //update処理
+    func updateUserData(swipedAnswer:RealmMindNodeModel){
+        self.createQuestionLog(swipedAnswer:swipedAnswer)
+        let user = self.updateUserScore(swipedAnswer:swipedAnswer)
+        self.setUser(user: user)
         self.notify()
+    }
+    
+    private func createQuestionLog(swipedAnswer:RealmMindNodeModel){
+    }
+    
+    private func updateUserScore(swipedAnswer:RealmMindNodeModel) ->User{
+        let charactersCount = Int64(swipedAnswer.content.count)
+        do{
+            let realm = try Realm()
+            try! realm.write {
+                self.user.setValue(user.totalAnswerTimes + 1, forKey: "totalAnswerTimes")
+                self.user.setValue(user.totalCharactersAmount + charactersCount, forKey: "totalCharactersAmount")
+            }
+        }catch{
+            print("\(error)")
+        }
+        return self.user
     }
     
     func fetchControl(){
@@ -58,6 +84,7 @@ extension UserDataModel: UserDataModelProtocol {
     }
     
     func notify() {
+        self.delegate?.syncUserData(user: self.user)
         NotificationCenter.default.post(name: self.notificationName, object:nil)
     }
     

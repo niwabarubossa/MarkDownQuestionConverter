@@ -40,6 +40,10 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         self.quizDataSource = question
     }
     
+    func syncUserData(user:User){
+        self.user = user
+    }
+    
     //model とpresenter同期
     func syncData(allNodeData: [RealmMindNodeModel]) {
         self.quizDataSource = allNodeData
@@ -94,6 +98,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         if removeQuestionSwitch == true {
             myModel.deleteNodeFromModel(deleteNode: self.displayingQustion)
         }
+        userModel.updateUserData(swipedAnswer: swipedAnswer)
     }
     
     private func removeSwipedAnswer()->Bool{
@@ -142,7 +147,7 @@ extension ToDoQuestionPresenter:UserDataModelDelegate{
 
     @objc func userModelUpdateDone(notification: Notification){
         print("get observer ここでviewの更新をする")
-//        view.label.text = text
+//        customview.text = self.user.text
     }
 }
 
