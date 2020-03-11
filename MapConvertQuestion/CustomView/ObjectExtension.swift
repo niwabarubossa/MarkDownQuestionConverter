@@ -51,4 +51,5 @@ extension Date {
 
 extension Notification.Name{
     static let userModelUpdate = Notification.Name("userModelUpdate")
+    static let questionModelUpdate = Notification.Name("questionModelUpdate")
 }

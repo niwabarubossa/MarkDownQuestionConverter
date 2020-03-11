@@ -14,6 +14,21 @@ protocol QuestionModelDelegate: class {
     func syncData(allNodeData:[RealmMindNodeModel])
 }
 
+
+protocol QuestionModelViewProtocol: class {
+    func reloadQuestionModelView()
+}
+
+protocol QuestionModelPresenterProtocol: class{
+    func notify() //notifyによって　model → presenter → viewをデータ同期
+}
+
+protocol QuestionModelProtocolNotify: class {
+    func addObserver(_ observer: Any, selector: Selector)
+    func removeObserver(_ observer: Any)
+    func notifyToPresenter()
+}
+
 class QuestionModel {
     weak var delegate: QuestionModelDelegate?
     var allNodeData = [RealmMindNodeModel]()
@@ -208,4 +223,24 @@ class QuestionModel {
         return LearningIntervalStruct(ifSuccessNextInterval: 1, nextLearningDate: Calendar.current.date(byAdding: .day, value: 0, to: Date())!.millisecondsSince1970)
     }
 
+}
+
+extension QuestionModel:QuestionModelProtocolNotify{
+    
+    var notificationName: Notification.Name {
+        return Notification.Name.questionModelUpdate
+     }
+    
+    func notifyToPresenter() {
+        NotificationCenter.default.post(name: notificationName, object:nil)
+    }
+    
+    func addObserver(_ observer: Any, selector: Selector) {
+        NotificationCenter.default.addObserver(observer, selector: selector, name: notificationName, object: nil)
+    }
+    
+    func removeObserver(_ observer: Any) {
+        NotificationCenter.default.removeObserver(observer)
+    }
+    
 }
