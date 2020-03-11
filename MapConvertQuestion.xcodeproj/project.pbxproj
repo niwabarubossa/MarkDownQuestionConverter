@@ -33,6 +33,7 @@
 		54BFEE372400F61100B55A8C /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BFEE362400F61100B55A8C /* QuestionModel.swift */; };
 		54BFEE392400F7E400B55A8C /* QuestionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BFEE382400F7E400B55A8C /* QuestionPageViewController.swift */; };
 		54BFEE3B2402701000B55A8C /* RealmMindNodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BFEE3A2402701000B55A8C /* RealmMindNodeModel.swift */; };
+		54C53B3424186547000EE76E /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C53B3324186547000EE76E /* UserDataModel.swift */; };
 		54EE8B0E23FE337300CF342F /* MarkDownInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EE8B0D23FE337300CF342F /* MarkDownInputModel.swift */; };
 		54F45E2023F90AB5002981C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F45E1F23F90AB5002981C8 /* AppDelegate.swift */; };
 		54F45E2223F90AB5002981C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F45E2123F90AB5002981C8 /* SceneDelegate.swift */; };
@@ -80,6 +81,7 @@
 		54BFEE362400F61100B55A8C /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		54BFEE382400F7E400B55A8C /* QuestionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPageViewController.swift; sourceTree = "<group>"; };
 		54BFEE3A2402701000B55A8C /* RealmMindNodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMindNodeModel.swift; sourceTree = "<group>"; };
+		54C53B3324186547000EE76E /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		54EE8B0D23FE337300CF342F /* MarkDownInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkDownInputModel.swift; sourceTree = "<group>"; };
 		54F45E1C23F90AB5002981C8 /* MapConvertQuestion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapConvertQuestion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F45E1F23F90AB5002981C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				542F3FB3240FB58900D92561 /* ToDoQuestionModel.swift */,
 				54A7F0032417CD2F007A7E70 /* UserModel.swift */,
 				54A7F0052417CDA2007A7E70 /* QuestionLogModel.swift */,
+				54C53B3324186547000EE76E /* UserDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				542F3FB0240FB3E100D92561 /* ToDoQuestionDisplay.swift in Sources */,
 				54FF62C42400D68F0009B721 /* FirestoreProtocolExtension.swift in Sources */,
 				54769734240E08B1004E8C63 /* IntervalEnum.swift in Sources */,
+				54C53B3424186547000EE76E /* UserDataModel.swift in Sources */,
 				542F3FAC240FB1C300D92561 /* ToDoQuestionPageViewController.swift in Sources */,
 				54F4854923FF781900D7962C /* R.generated.swift in Sources */,
 				54FF62C62400E1640009B721 /* MindNodeModel.swift in Sources */,

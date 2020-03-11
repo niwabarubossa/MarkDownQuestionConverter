@@ -12,22 +12,27 @@ import RealmSwift
 class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     //自分用のモデルの宣言
     let myModel: QuestionModel
+    let userModel:UserDataModel
     //オリジナルのクラス型にすること
     weak var view:ToDoQuestionPageViewController?
     var quizDataSource = [RealmMindNodeModel]()
     var displayingQustion:RealmMindNodeModel = RealmMindNodeModel()
     var answerNodeArray = [RealmMindNodeModel]()
     var solvedAnswerId = [String]()
+    var user = User()
 
     init(view: ToDoQuestionPageViewController) {
         self.view = view
         self.myModel = QuestionModel()
+        self.userModel = UserDataModel()
+        userModel.delegate = self
         myModel.delegate = self
     }
     
     //勝手に呼ばれる　from presenter
     func initializePage(){
         myModel.getToDoQuestion()
+        userModel.getUserData()
     }
     
     func didGetMapQuestion(question: [RealmMindNodeModel]) {
@@ -124,6 +129,14 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     
     private func setQuestionArray(questionArray: [RealmMindNodeModel]){
         self.quizDataSource = questionArray
+    }
+}
+
+extension ToDoQuestionPresenter:UserDataModelDelegate{
+    
+    func didGetUserData(user: User) {
+        print("\(user)")
+        self.user = user
     }
 }
 
