@@ -84,7 +84,7 @@
 		54B466A52408B90700813800 /* QuestionAnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerTableViewCell.swift; sourceTree = "<group>"; };
 		54B466A62408B90700813800 /* QuestionAnswerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = QuestionAnswerTableViewCell.xib; path = ../CustomView/QuestionAnswerTableViewCell.xib; sourceTree = "<group>"; };
 		54B466A92408BA3C00813800 /* ObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ObjectExtension.swift; path = MapConvertQuestion/CustomView/ObjectExtension.swift; sourceTree = SOURCE_ROOT; };
-		54BFEE342400F58800B55A8C /* QuestionPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPagePresenter.swift; sourceTree = "<group>"; };
+		54BFEE342400F58800B55A8C /* QuestionPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuestionPagePresenter.swift; path = ../View/QuestionPagePresenter.swift; sourceTree = "<group>"; };
 		54BFEE362400F61100B55A8C /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		54BFEE382400F7E400B55A8C /* QuestionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPageViewController.swift; sourceTree = "<group>"; };
 		54BFEE3A2402701000B55A8C /* RealmMindNodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMindNodeModel.swift; sourceTree = "<group>"; };
@@ -197,7 +197,6 @@
 			children = (
 				54C53B3C2418F361000EE76E /* TutorialExplanationViewController.swift */,
 				54C53B3E2418F361000EE76E /* Settings.storyboard */,
-				54BFEE342400F58800B55A8C /* QuestionPagePresenter.swift */,
 				54F45E4723F9437F002981C8 /* MarkDownInput.storyboard */,
 				54F45E4923F944DB002981C8 /* QuestionPage.storyboard */,
 				54F45E5023FAA177002981C8 /* MarkDownInputViewController.swift */,
@@ -263,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				54F45E5223FAA263002981C8 /* MarkDownInputPresenter.swift */,
+				54BFEE342400F58800B55A8C /* QuestionPagePresenter.swift */,
 				542F3FB1240FB54D00D92561 /* ToDoQuestionPresenter.swift */,
 			);
 			path = Presenter;
