@@ -98,7 +98,7 @@ class QuestionModel {
         self.syncDataAndNotifyPresenter()
     }
     
-    private func syncDataAndNotifyPresenter(){
+    private func syncDataAndNotifyPresenter(){     
         self.delegate?.syncData(allNodeData: allNodeData)
         self.notifyToPresenter()
     }
