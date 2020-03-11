@@ -15,6 +15,7 @@ class QuestionLog:Object{
     @objc dynamic var date:Date = Date()
     @objc dynamic var mapId:String = ""
     @objc dynamic var questionNodeId:String = ""
+    @objc dynamic var thinkingTime:Double = 0.0
     //場所も追加したい
     override static func primaryKey() -> String? {
         return "logId"
