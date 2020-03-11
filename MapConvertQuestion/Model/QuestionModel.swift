@@ -14,13 +14,12 @@ protocol QuestionModelDelegate: class {
     func syncData(allNodeData:[RealmMindNodeModel])
 }
 
-
 protocol QuestionModelViewProtocol: class {
     func reloadQuestionModelView()
 }
 
 protocol QuestionModelPresenterProtocol: class{
-    func notify() //notifyによって　model → presenter → viewをデータ同期
+    func notifyToQuestionModelView() //notifyによって　model → presenter → viewをデータ同期
 }
 
 protocol QuestionModelProtocolNotify: class {

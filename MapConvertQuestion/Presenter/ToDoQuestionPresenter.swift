@@ -230,3 +230,11 @@ extension ToDoQuestionPresenter {
     }
 
 }
+
+extension ToDoQuestionPresenter:QuestionModelPresenterProtocol{
+    func notifyToQuestionModelView() {
+        print("notify to question model view")
+        self.view?.reloadQuestionModelView()
+//        self.view?.displayingNode = self.displayingQustion like this...
+    }
+}
