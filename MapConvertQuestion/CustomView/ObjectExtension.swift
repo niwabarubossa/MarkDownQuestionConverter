@@ -48,3 +48,7 @@ extension Date {
         self = Date(timeIntervalSince1970: TimeInterval(milliseconds / 1000))
     }
 }
+
+extension Notification.Name{
+    static let userModelUpdate = Notification.Name("userModelUpdate")
+}

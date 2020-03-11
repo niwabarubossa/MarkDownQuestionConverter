@@ -12,26 +12,36 @@ import RealmSwift
 class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     //自分用のモデルの宣言
     let myModel: QuestionModel
+    let userModel:UserDataModel
     //オリジナルのクラス型にすること
     weak var view:ToDoQuestionPageViewController?
     var quizDataSource = [RealmMindNodeModel]()
     var displayingQustion:RealmMindNodeModel = RealmMindNodeModel()
     var answerNodeArray = [RealmMindNodeModel]()
     var solvedAnswerId = [String]()
+    var user = User()
 
     init(view: ToDoQuestionPageViewController) {
         self.view = view
         self.myModel = QuestionModel()
+        self.userModel = UserDataModel()
+        userModel.delegate = self
         myModel.delegate = self
+        userModel.addObserver(self, selector:#selector(self.userModelUpdateDone))
     }
     
     //勝手に呼ばれる　from presenter
     func initializePage(){
         myModel.getToDoQuestion()
+        userModel.getUserData()
     }
     
     func didGetMapQuestion(question: [RealmMindNodeModel]) {
         self.quizDataSource = question
+    }
+    
+    func syncUserData(user:User){
+        self.user = user
     }
     
     //model とpresenter同期
@@ -88,6 +98,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         if removeQuestionSwitch == true {
             myModel.deleteNodeFromModel(deleteNode: self.displayingQustion)
         }
+        userModel.updateUserData(swipedAnswer: swipedAnswer)
     }
     
     private func removeSwipedAnswer()->Bool{
@@ -124,6 +135,36 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     
     private func setQuestionArray(questionArray: [RealmMindNodeModel]){
         self.quizDataSource = questionArray
+    }
+}
+
+extension ToDoQuestionPresenter:UserDataModelDelegate{
+    
+    func didGetUserData(user: User) {
+        print("\(user)")
+        self.user = user
+    }
+
+    @objc func userModelUpdateDone(notification: Notification){
+        print("get observer ここでviewの更新をする")
+        let answerTimesLabel = self.view?.userDataDisplay.answerTimesLabel
+        let scoreLabel = self.view?.userDataDisplay.scoreLabel
+        UIView.transition(with: answerTimesLabel!, // アニメーションさせるview
+                        duration: 0.5, // アニメーションの秒数
+                          options: [.transitionFlipFromBottom, .curveEaseIn],
+                          animations: {
+        },
+                          completion:  { (finished: Bool) in
+                            answerTimesLabel!.text = String(self.user.totalAnswerTimes) + "回"
+        })
+        UIView.transition(with: scoreLabel!, // アニメーションさせるview
+                        duration: 0.5, // アニメーションの秒数
+                          options: [.transitionFlipFromBottom, .curveEaseIn],
+                          animations: {
+        },
+                          completion:  { (finished: Bool) in
+                            scoreLabel!.text = String(self.user.totalCharactersAmount)
+        })
     }
 }
 
