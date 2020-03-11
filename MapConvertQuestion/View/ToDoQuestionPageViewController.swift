@@ -124,7 +124,7 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
                 title: "正解",
                 handler: {(action: UIContextualAction, view: UIView, completion: (Bool) -> Void) in
                     print("正解です")
-                    self.presenter.trailingSwipeQuestion(swipedAnswer:
+                    self.presenter.leadingSwipeQuestion(swipedAnswer:
                         self.answerNodeArrayDataSource[indexPath.row])
                     tableView.reloadData()
                     completion(true)

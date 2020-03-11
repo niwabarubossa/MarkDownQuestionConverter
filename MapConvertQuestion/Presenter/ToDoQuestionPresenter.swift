@@ -94,13 +94,15 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         self.setQuestionArray(questionArray: questionArray)
     }
     
-    func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
+//    func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
 //データ更新する
-        myModel.trailingSwipeAction(swipedAnswer: swipedAnswer)
-        
+    func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
+//leadingSwipeQuestion = 正解
+               //データ更新する
+        myModel.leadingSwipeQuestion(swipedAnswer: swipedAnswer)
         self.createQuestionLog(isCorrect:true,swipedAnswer: swipedAnswer)
- //データ更新は終了しているので、ここでクイズとして完全にノルマが終わっているか判定
-//button view settings edit
+         //データ更新は終了しているので、ここでクイズとして完全にノルマが終わっているか判定
+        //button view settings edit
         let removeQuestionSwitch = self.removeSwipedAnswer()
         if removeQuestionSwitch == true {
             myModel.deleteNodeFromModel(deleteNode: self.displayingQustion)
@@ -151,12 +153,10 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         return false
     }
     
-    func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
-        //間違えたときの処理
-        //データ更新する
-        
+    func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
+        //不正解
+        myModel.trailingSwipeQuestion(swipedAnswer: swipedAnswer)
         self.createQuestionLog(isCorrect:false,swipedAnswer: swipedAnswer)
-         myModel.leadingSwipeQuestion(swipedAnswer: swipedAnswer)
     }
     
     func changeToSelectedAnswerQuiz(tappedNode:RealmMindNodeModel){
