@@ -36,6 +36,11 @@
 		54C53B3424186547000EE76E /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C53B3324186547000EE76E /* UserDataModel.swift */; };
 		54C53B3624188385000EE76E /* UserDataDisplay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C53B3524188385000EE76E /* UserDataDisplay.xib */; };
 		54C53B38241883D4000EE76E /* UserDataDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C53B37241883D4000EE76E /* UserDataDisplay.swift */; };
+		54C53B3F2418F361000EE76E /* TutorialExplanationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C53B3C2418F361000EE76E /* TutorialExplanationViewController.swift */; };
+		54C53B402418F361000EE76E /* TutorialExplanationUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C53B3D2418F361000EE76E /* TutorialExplanationUIView.swift */; };
+		54C53B412418F361000EE76E /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54C53B3E2418F361000EE76E /* Settings.storyboard */; };
+		54C53B432418F438000EE76E /* TutorialContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C53B422418F437000EE76E /* TutorialContentModel.swift */; };
+		54C53B452418F6C8000EE76E /* TutorialExplanationUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C53B442418F6C7000EE76E /* TutorialExplanationUIView.xib */; };
 		54EE8B0E23FE337300CF342F /* MarkDownInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EE8B0D23FE337300CF342F /* MarkDownInputModel.swift */; };
 		54F45E2023F90AB5002981C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F45E1F23F90AB5002981C8 /* AppDelegate.swift */; };
 		54F45E2223F90AB5002981C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F45E2123F90AB5002981C8 /* SceneDelegate.swift */; };
@@ -86,6 +91,11 @@
 		54C53B3324186547000EE76E /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		54C53B3524188385000EE76E /* UserDataDisplay.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDataDisplay.xib; sourceTree = "<group>"; };
 		54C53B37241883D4000EE76E /* UserDataDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataDisplay.swift; sourceTree = "<group>"; };
+		54C53B3C2418F361000EE76E /* TutorialExplanationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialExplanationViewController.swift; path = ../TutorialExplanation/TutorialExplanationViewController.swift; sourceTree = "<group>"; };
+		54C53B3D2418F361000EE76E /* TutorialExplanationUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialExplanationUIView.swift; path = ../TutorialExplanation/TutorialExplanationUIView.swift; sourceTree = "<group>"; };
+		54C53B3E2418F361000EE76E /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = ../TutorialExplanation/Settings.storyboard; sourceTree = "<group>"; };
+		54C53B422418F437000EE76E /* TutorialContentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialContentModel.swift; sourceTree = "<group>"; };
+		54C53B442418F6C7000EE76E /* TutorialExplanationUIView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialExplanationUIView.xib; sourceTree = "<group>"; };
 		54EE8B0D23FE337300CF342F /* MarkDownInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkDownInputModel.swift; sourceTree = "<group>"; };
 		54F45E1C23F90AB5002981C8 /* MapConvertQuestion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapConvertQuestion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F45E1F23F90AB5002981C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +143,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		54C53B3B2418F361000EE76E /* TutorialExplanation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TutorialExplanation;
+			sourceTree = "<group>";
+		};
 		54F45E1323F90AB5002981C8 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +176,7 @@
 				54F45E4323F91A8B002981C8 /* ExtensionUIKit */,
 				54F45E4223F91A82002981C8 /* LetGroup */,
 				54F45E3E23F91991002981C8 /* Model */,
+				54C53B3B2418F361000EE76E /* TutorialExplanation */,
 				54F45E3F23F9199C002981C8 /* Presenter */,
 				54F45E3323F910F1002981C8 /* View */,
 				54F45E3923F918C6002981C8 /* CustomView */,
@@ -177,6 +195,9 @@
 		54F45E3323F910F1002981C8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				54C53B3C2418F361000EE76E /* TutorialExplanationViewController.swift */,
+				54C53B3E2418F361000EE76E /* Settings.storyboard */,
+				54BFEE342400F58800B55A8C /* QuestionPagePresenter.swift */,
 				54F45E4723F9437F002981C8 /* MarkDownInput.storyboard */,
 				54F45E4923F944DB002981C8 /* QuestionPage.storyboard */,
 				54F45E5023FAA177002981C8 /* MarkDownInputViewController.swift */,
@@ -191,6 +212,7 @@
 		54F45E3423F91104002981C8 /* XibFile */ = {
 			isa = PBXGroup;
 			children = (
+				54C53B442418F6C7000EE76E /* TutorialExplanationUIView.xib */,
 				542F3FAD240FB32500D92561 /* ToDoQuestionDisplay.xib */,
 				5404BD05240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.xib */,
 				54B466A62408B90700813800 /* QuestionAnswerTableViewCell.xib */,
@@ -206,6 +228,7 @@
 		54F45E3923F918C6002981C8 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				54C53B3D2418F361000EE76E /* TutorialExplanationUIView.swift */,
 				542F3FAF240FB3E100D92561 /* ToDoQuestionDisplay.swift */,
 				5404BD04240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift */,
 				54F45E3A23F918E6002981C8 /* QuestionDidsplay.swift */,
@@ -221,6 +244,7 @@
 		54F45E3E23F91991002981C8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				54C53B422418F437000EE76E /* TutorialContentModel.swift */,
 				54F45E4523F91ABB002981C8 /* QuestionStruct.swift */,
 				54EE8B0D23FE337300CF342F /* MarkDownInputModel.swift */,
 				54FF62C52400E1640009B721 /* MindNodeModel.swift */,
@@ -239,7 +263,6 @@
 			isa = PBXGroup;
 			children = (
 				54F45E5223FAA263002981C8 /* MarkDownInputPresenter.swift */,
-				54BFEE342400F58800B55A8C /* QuestionPagePresenter.swift */,
 				542F3FB1240FB54D00D92561 /* ToDoQuestionPresenter.swift */,
 			);
 			path = Presenter;
@@ -341,6 +364,7 @@
 			files = (
 				54F45E3823F917C5002981C8 /* MarkDownInput.xib in Resources */,
 				54F45E2C23F90AC3002981C8 /* LaunchScreen.storyboard in Resources */,
+				54C53B412418F361000EE76E /* Settings.storyboard in Resources */,
 				54A7DC712414BC1E009F7229 /* SelectQustionPageThemeView.xib in Resources */,
 				54F45E2923F90AC3002981C8 /* Assets.xcassets in Resources */,
 				5404BD07240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.xib in Resources */,
@@ -352,6 +376,7 @@
 				5492009D2415D71200F01C7D /* ButtonStackView.xib in Resources */,
 				542F3FAE240FB32500D92561 /* ToDoQuestionDisplay.xib in Resources */,
 				54F45E4A23F944DB002981C8 /* QuestionPage.storyboard in Resources */,
+				54C53B452418F6C8000EE76E /* TutorialExplanationUIView.xib in Resources */,
 				54F45E3623F9111B002981C8 /* QuestionDidsplay.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,6 +452,7 @@
 			files = (
 				54F45E5123FAA177002981C8 /* MarkDownInputViewController.swift in Sources */,
 				54A7F0062417CDA2007A7E70 /* QuestionLogModel.swift in Sources */,
+				54C53B402418F361000EE76E /* TutorialExplanationUIView.swift in Sources */,
 				5404BD06240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift in Sources */,
 				5433AE562414AF60009877A1 /* MyColor.swift in Sources */,
 				54F45E2423F90AB5002981C8 /* ViewController.swift in Sources */,
@@ -445,8 +471,10 @@
 				54F45E4623F91ABC002981C8 /* QuestionStruct.swift in Sources */,
 				54BFEE372400F61100B55A8C /* QuestionModel.swift in Sources */,
 				54EE8B0E23FE337300CF342F /* MarkDownInputModel.swift in Sources */,
+				54C53B432418F438000EE76E /* TutorialContentModel.swift in Sources */,
 				54B466A72408B90700813800 /* QuestionAnswerTableViewCell.swift in Sources */,
 				542F3FB0240FB3E100D92561 /* ToDoQuestionDisplay.swift in Sources */,
+				54C53B3F2418F361000EE76E /* TutorialExplanationViewController.swift in Sources */,
 				54FF62C42400D68F0009B721 /* FirestoreProtocolExtension.swift in Sources */,
 				54C53B38241883D4000EE76E /* UserDataDisplay.swift in Sources */,
 				54769734240E08B1004E8C63 /* IntervalEnum.swift in Sources */,

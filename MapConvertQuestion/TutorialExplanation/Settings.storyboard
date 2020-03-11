@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xtv-xT-Ehz">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="qWR-J7-b1U">
+            <objects>
+                <viewController id="xtv-xT-Ehz" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HW9-Yb-klT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77O-u1-5AJ">
+                                <rect key="frame" x="169" y="190" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="説明を見る"/>
+                                <connections>
+                                    <segue destination="ZBR-ZL-CFf" kind="show" id="CA1-e0-NTi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="SAD-gm-bH5"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="cNZ-gq-5E8"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o9G-XK-Jab" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1013" y="18"/>
+        </scene>
+        <!--Tutorial Explanation View Controller-->
+        <scene sceneID="HvW-90-aJL">
+            <objects>
+                <viewController storyboardIdentifier="AboutCbtExplanation" id="ZBR-ZL-CFf" customClass="TutorialExplanationViewController" customModule="MapConvertQuestion" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6BT-db-7zQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="zuB-Gd-905">
+                                <rect key="frame" x="157" y="771" width="100" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="N6S-sd-kyV"/>
+                                    <constraint firstAttribute="width" constant="100" id="yGZ-Ik-sTR"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </pageControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nMN-Mf-bk3">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="771"/>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GGq-QQ-TuH">
+                                <rect key="frame" x="52" y="771" width="46" height="37"/>
+                                <state key="normal" title="閉じる"/>
+                                <connections>
+                                    <action selector="dismissButtonTapped:" destination="ZBR-ZL-CFf" eventType="touchUpInside" id="Bvm-Kj-DUB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="GGq-QQ-TuH" firstAttribute="top" secondItem="nMN-Mf-bk3" secondAttribute="bottom" id="BmG-vn-bxf"/>
+                            <constraint firstItem="efi-u9-pjl" firstAttribute="bottom" secondItem="nMN-Mf-bk3" secondAttribute="bottom" constant="37" id="GNy-qC-7en"/>
+                            <constraint firstItem="nMN-Mf-bk3" firstAttribute="leading" secondItem="efi-u9-pjl" secondAttribute="leading" id="H7e-8o-Qcx"/>
+                            <constraint firstItem="GGq-QQ-TuH" firstAttribute="bottom" secondItem="efi-u9-pjl" secondAttribute="bottom" id="MKT-ez-T2U"/>
+                            <constraint firstItem="efi-u9-pjl" firstAttribute="bottom" secondItem="zuB-Gd-905" secondAttribute="bottom" id="OdX-ru-GWd"/>
+                            <constraint firstItem="GGq-QQ-TuH" firstAttribute="leading" secondItem="efi-u9-pjl" secondAttribute="leading" constant="52" id="YGG-kl-fGP"/>
+                            <constraint firstItem="zuB-Gd-905" firstAttribute="centerX" secondItem="6BT-db-7zQ" secondAttribute="centerX" id="jhE-FC-bpk"/>
+                            <constraint firstItem="nMN-Mf-bk3" firstAttribute="top" secondItem="efi-u9-pjl" secondAttribute="top" id="k8z-VS-lA0"/>
+                            <constraint firstItem="efi-u9-pjl" firstAttribute="trailing" secondItem="nMN-Mf-bk3" secondAttribute="trailing" id="yAv-JU-ngt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="efi-u9-pjl"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Q5I-Ep-YOU"/>
+                    <connections>
+                        <outlet property="dismissButton" destination="GGq-QQ-TuH" id="PU3-i1-c67"/>
+                        <outlet property="myScrollView" destination="nMN-Mf-bk3" id="aMV-pZ-2dW"/>
+                        <outlet property="pageControl" destination="zuB-Gd-905" id="Ls8-fg-fTZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0c2-qQ-d6n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="20.758928571428569"/>
+        </scene>
+    </scenes>
+</document>
