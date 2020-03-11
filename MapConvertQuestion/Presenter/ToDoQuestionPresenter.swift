@@ -205,7 +205,7 @@ extension ToDoQuestionPresenter {
     }
     
     private func changeToQuestionMode(){
-        UIView.transition(with: self.view!.customView, duration: 0.5, options: [.transitionFlipFromLeft], animations: {
+        UIView.transition(with: self.view!.customView, duration: 0.2, options: [.transitionFlipFromLeft], animations: {
             self.view!.customView.isHidden = true
             self.view!.answerTableView.isHidden = false
         }, completion: { (finished: Bool) in
@@ -215,7 +215,7 @@ extension ToDoQuestionPresenter {
     }
     
     private func changeToAnswerMode(){
-        UIView.transition(with: self.view!.customView, duration: 0.5, options: [.transitionFlipFromLeft], animations: {
+        UIView.transition(with: self.view!.customView, duration: 0.3, options: [.transitionCurlUp], animations: {
             self.view!.customView.isHidden = false
             self.view!.answerTableView.isHidden = true
         }, completion: { (finished: Bool) in
