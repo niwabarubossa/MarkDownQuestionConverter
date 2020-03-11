@@ -97,7 +97,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
 //データ更新する
         myModel.trailingSwipeAction(swipedAnswer: swipedAnswer)
-        self.createQuestionLog(isAnswer:true)
+        self.createQuestionLog(isCorrect:true,swipedAnswer: swipedAnswer)
  //データ更新は終了しているので、ここでクイズとして完全にノルマが終わっているか判定
 //button view settings edit
         let removeQuestionSwitch = self.removeSwipedAnswer()
@@ -107,14 +107,17 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         userModel.updateUserData(swipedAnswer: swipedAnswer)
     }
     
-    private func createQuestionLog(isAnswer:Bool){
+    private func createQuestionLog(isCorrect:Bool,swipedAnswer:RealmMindNodeModel){
         do{
             let realm = try Realm()
             let thinkingTime = Double(Date().millisecondsSince1970 - self.startQuestionTime.millisecondsSince1970) / 1000
             let questionLog = QuestionLog(value: [
                 "questionNodeId": self.displayingQustion.nodePrimaryKey,
                 "thinkingTime": thinkingTime,
-                "isAnswer": isAnswer
+                "isCorrect": isCorrect,
+                "mapId": swipedAnswer.mapId,
+                //TODO インデント込みの文字数になっているので治すこと
+                "charactersAmount": swipedAnswer.content.count
             ])
             try! realm.write {
                 realm.add(questionLog)
@@ -149,7 +152,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
         //間違えたときの処理
         //データ更新する
-        self.createQuestionLog(isAnswer:false)
+        self.createQuestionLog(isCorrect:false,swipedAnswer: swipedAnswer)
          myModel.leadingSwipeQuestion(swipedAnswer: swipedAnswer)
     }
     
