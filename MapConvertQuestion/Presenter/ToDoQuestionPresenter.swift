@@ -94,14 +94,12 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         self.setQuestionArray(questionArray: questionArray)
     }
     
-//    func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
-//データ更新する
     func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
 //leadingSwipeQuestion = 正解
-               //データ更新する
+//データ更新する
         myModel.leadingSwipeQuestion(swipedAnswer: swipedAnswer)
         self.createQuestionLog(isCorrect:true,swipedAnswer: swipedAnswer)
-         //データ更新は終了しているので、ここでクイズとして完全にノルマが終わっているか判定
+         //データ更新は終了してる。クイズノルマが全て終わっているか判定
         //button view settings edit
         let removeQuestionSwitch = self.removeSwipedAnswer()
         if removeQuestionSwitch == true {
@@ -132,8 +130,9 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     }
     
     private func removeSwipedAnswer()->Bool{
-        //不完全　クイズ途中でnext行かれた時にめんどくさい。
-        // 今日１回解いたやつ　今日まだ解いてないやつ　の状態で次に行った場合、また遭遇した時に今日２回解いたやつ　今日１回解いたやつ　状態にならないとクイズが消えない
+//不完全　クイズ途中でnext行かれた時にめんどくさい。
+// 今日１回解いたやつ,今日まだ解いてないやつ　の状態で次に行った場合、
+//また遭遇した時に今日２回解いたやつ　今日１回解いたやつ　状態にならないとクイズが消えない
         for answerNode in self.answerNodeArray {
             if isTodayToDoQuestion(question: answerNode) == true {
 //                １つでも今日のやつが残っているならまだ消さない
