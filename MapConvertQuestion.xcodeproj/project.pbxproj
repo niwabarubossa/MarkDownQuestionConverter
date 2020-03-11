@@ -38,7 +38,8 @@
 		54C53B38241883D4000EE76E /* UserDataDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C53B37241883D4000EE76E /* UserDataDisplay.swift */; };
 		54C53B3F2418F361000EE76E /* TutorialExplanationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C53B3C2418F361000EE76E /* TutorialExplanationViewController.swift */; };
 		54C53B402418F361000EE76E /* TutorialExplanationUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C53B3D2418F361000EE76E /* TutorialExplanationUIView.swift */; };
-		54C53B412418F361000EE76E /* TutorialExplanation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54C53B3E2418F361000EE76E /* TutorialExplanation.storyboard */; };
+		54C53B412418F361000EE76E /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54C53B3E2418F361000EE76E /* Settings.storyboard */; };
+		54C53B432418F438000EE76E /* TutorialContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C53B422418F437000EE76E /* TutorialContentModel.swift */; };
 		54EE8B0E23FE337300CF342F /* MarkDownInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EE8B0D23FE337300CF342F /* MarkDownInputModel.swift */; };
 		54F45E2023F90AB5002981C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F45E1F23F90AB5002981C8 /* AppDelegate.swift */; };
 		54F45E2223F90AB5002981C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F45E2123F90AB5002981C8 /* SceneDelegate.swift */; };
@@ -91,7 +92,8 @@
 		54C53B37241883D4000EE76E /* UserDataDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataDisplay.swift; sourceTree = "<group>"; };
 		54C53B3C2418F361000EE76E /* TutorialExplanationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialExplanationViewController.swift; path = ../TutorialExplanation/TutorialExplanationViewController.swift; sourceTree = "<group>"; };
 		54C53B3D2418F361000EE76E /* TutorialExplanationUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialExplanationUIView.swift; path = ../TutorialExplanation/TutorialExplanationUIView.swift; sourceTree = "<group>"; };
-		54C53B3E2418F361000EE76E /* TutorialExplanation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TutorialExplanation.storyboard; path = ../TutorialExplanation/TutorialExplanation.storyboard; sourceTree = "<group>"; };
+		54C53B3E2418F361000EE76E /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = ../TutorialExplanation/Settings.storyboard; sourceTree = "<group>"; };
+		54C53B422418F437000EE76E /* TutorialContentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialContentModel.swift; sourceTree = "<group>"; };
 		54EE8B0D23FE337300CF342F /* MarkDownInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkDownInputModel.swift; sourceTree = "<group>"; };
 		54F45E1C23F90AB5002981C8 /* MapConvertQuestion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapConvertQuestion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F45E1F23F90AB5002981C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -192,7 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				54C53B3C2418F361000EE76E /* TutorialExplanationViewController.swift */,
-				54C53B3E2418F361000EE76E /* TutorialExplanation.storyboard */,
+				54C53B3E2418F361000EE76E /* Settings.storyboard */,
 				54BFEE342400F58800B55A8C /* QuestionPagePresenter.swift */,
 				54F45E4723F9437F002981C8 /* MarkDownInput.storyboard */,
 				54F45E4923F944DB002981C8 /* QuestionPage.storyboard */,
@@ -239,6 +241,7 @@
 		54F45E3E23F91991002981C8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				54C53B422418F437000EE76E /* TutorialContentModel.swift */,
 				54F45E4523F91ABB002981C8 /* QuestionStruct.swift */,
 				54EE8B0D23FE337300CF342F /* MarkDownInputModel.swift */,
 				54FF62C52400E1640009B721 /* MindNodeModel.swift */,
@@ -358,7 +361,7 @@
 			files = (
 				54F45E3823F917C5002981C8 /* MarkDownInput.xib in Resources */,
 				54F45E2C23F90AC3002981C8 /* LaunchScreen.storyboard in Resources */,
-				54C53B412418F361000EE76E /* TutorialExplanation.storyboard in Resources */,
+				54C53B412418F361000EE76E /* Settings.storyboard in Resources */,
 				54A7DC712414BC1E009F7229 /* SelectQustionPageThemeView.xib in Resources */,
 				54F45E2923F90AC3002981C8 /* Assets.xcassets in Resources */,
 				5404BD07240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.xib in Resources */,
@@ -464,6 +467,7 @@
 				54F45E4623F91ABC002981C8 /* QuestionStruct.swift in Sources */,
 				54BFEE372400F61100B55A8C /* QuestionModel.swift in Sources */,
 				54EE8B0E23FE337300CF342F /* MarkDownInputModel.swift in Sources */,
+				54C53B432418F438000EE76E /* TutorialContentModel.swift in Sources */,
 				54B466A72408B90700813800 /* QuestionAnswerTableViewCell.swift in Sources */,
 				542F3FB0240FB3E100D92561 /* ToDoQuestionDisplay.swift in Sources */,
 				54C53B3F2418F361000EE76E /* TutorialExplanationViewController.swift in Sources */,
