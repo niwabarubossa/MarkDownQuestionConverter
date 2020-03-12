@@ -75,6 +75,13 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
         let data = self.answerNodeArrayDataSource[indexPath.row]
         cell.questionLabel.text = data.content
         cell.nextDateLabel.text = String(data.ifSuccessInterval) + "日"
+        
+        if data.childNodeIdArray.count > 0 {
+            cell.myImageView.isHidden = false
+            cell.myImageView.image = R.image.arrow()
+        }else{
+            cell.myImageView.isHidden = true
+        }
         if todayQuestion(nextDate: data.nextDate) == true{
             cell.backgroundColor = .orange
         }else{
