@@ -204,6 +204,7 @@ extension ToDoQuestionPresenter {
         }
     }
     
+    //TODO protocolに準拠させよう viewRenderingなprotocol
     private func renderingView(){
         self.view?.customView.questionLabel.text = self.displayingQustion.content
         self.view?.answerTableView.reloadData()
