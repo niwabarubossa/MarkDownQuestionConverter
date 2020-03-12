@@ -40,7 +40,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     
     func didGetMapQuestion(question: [RealmMindNodeModel]) {
         self.quizDataSource = question
-        self.displayingQustion = self.quizDataSource.shuffled()[0]
+        question.count > 0 ? self.displayingQustion = self.quizDataSource.shuffled()[0] : print("no question")
         let firstQuestion = self.displayingQustion
         self.reloadQAPair(nextQuestion: firstQuestion)
         self.view?.userDataDisplay.bunboLabel.text = String(self.quizDataSource.count)
