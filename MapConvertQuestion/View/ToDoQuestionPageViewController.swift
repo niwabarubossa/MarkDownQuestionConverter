@@ -230,16 +230,11 @@ extension ToDoQuestionPageViewController:QuestionModelViewProtocol{
 }
 
 extension ToDoQuestionPageViewController: CLLocationManagerDelegate {
-
     /// 位置情報が更新された際、位置情報を格納する
-    /// - Parameters:
-    ///   - manager: ロケーションマネージャ
-    ///   - locations: 位置情報
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.first
         let latitude = location?.coordinate.latitude
         let longitude = location?.coordinate.longitude
-        // 位置情報を格納する
         self.latitudeNow = String(latitude!)
         self.longitudeNow = String(longitude!)
     }
