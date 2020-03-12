@@ -66,6 +66,10 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
             print("no question ! todays todo question is complete!")
             return
         }
+        if self.quizDataSource.count == 1 {
+            self.view?.buttonStackView.nextQuestionButton.isEnabled = false
+            self.view?.buttonStackView.nextQuestionButton.alpha = 0.5
+        }
         let nextQuestion:RealmMindNodeModel = self.shuffleQuestion()
         self.reloadQAPair(nextQuestion: nextQuestion)
         self.changeToQuestionMode()
@@ -161,7 +165,7 @@ extension ToDoQuestionPresenter:UserDataModelDelegate{
     }
 
     @objc func userModelUpdateDone(notification: Notification){
-        print("get observer ここでviewの更新をする")
+        print("userに関する情報、今回はuserDisplay情報が更新されました")
         let answerTimesLabel = self.view?.userDataDisplay.answerTimesLabel
         let scoreLabel = self.view?.userDataDisplay.scoreLabel
         UIView.transition(with: answerTimesLabel!,
@@ -190,6 +194,7 @@ extension ToDoQuestionPresenter {
         self.setAnswerNodeArray(question:nextQuestion)
         self.renderingView()
         self.changeToQuestionMode()
+        self.buttonEnabledControl()
     }
     
     private func resetData(){
@@ -207,6 +212,17 @@ extension ToDoQuestionPresenter {
     private func renderingView(){
         self.view?.customView.questionLabel.text = self.displayingQustion.content
         self.view?.answerTableView.reloadData()
+    }
+    
+    private func buttonEnabledControl(){
+        if self.quizDataSource.count == 0{
+            self.view?.buttonStackView.isHidden = true
+            self.view?.buttonStackView.answerButton.isEnabled = false
+            self.view?.buttonStackView.answerButton.alpha = 0.5
+            //TODO 多くのこと一度にやりすぎているので分割しなきゃいけない
+            print("complete!")
+            self.changeToCompleteMode()
+        }
     }
     
     private func changeToQuestionMode(){
@@ -232,6 +248,8 @@ extension ToDoQuestionPresenter {
     private func changeToCompleteMode(){
         view?.customView.isHidden = true
         view?.answerTableView.isHidden = true
+        view?.buttonStackView.isHidden = true
+        view?.noQuestionLabel.isHidden = false
     }
 
 }
@@ -239,7 +257,11 @@ extension ToDoQuestionPresenter {
 //viewの更新関連
 extension ToDoQuestionPresenter:QuestionModelPresenterProtocol{
     @objc func notifyToQuestionModelView() {
+        print("notify model change update")
+        self.buttonEnabledControl()
+        //状態確認
         self.view?.reloadQuestionModelView()
+        //FIX ここで呼び出すの適切じゃないと思う
         self.userDisplayReload()
     }
     
@@ -249,6 +271,5 @@ extension ToDoQuestionPresenter:QuestionModelPresenterProtocol{
         if let bunboText = bunboTextLabel {
             let bunboFloat = NumberFormatter().number(from: bunboText)!.floatValue
             self.view?.userDataDisplay.progressView.setProgress( ( bunboFloat - Float(self.quizDataSource.count) ) / bunboFloat, animated: true)
-        }
-    }
+        }     }
 }
