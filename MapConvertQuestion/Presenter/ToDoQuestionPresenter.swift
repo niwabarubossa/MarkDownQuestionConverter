@@ -206,7 +206,6 @@ extension ToDoQuestionPresenter {
     }
     
     func notifyNodeToView(){
-        self.view?.displayingNode = self.displayingQustion
         self.view?.answerNodeArrayDataSource = self.answerNodeArray
     }
     

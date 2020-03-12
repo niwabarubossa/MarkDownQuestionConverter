@@ -17,7 +17,6 @@ class ToDoQuestionPageViewController: UIViewController{
     
     //presenterを参照する
     
-    var displayingNode:RealmMindNodeModel = RealmMindNodeModel()
     var answerNodeArrayDataSource = [RealmMindNodeModel]()
     
     override func viewDidLoad() {
