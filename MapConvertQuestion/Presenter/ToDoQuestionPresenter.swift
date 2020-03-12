@@ -113,7 +113,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         self.createQuestionLog(isCorrect:true,swipedAnswer: swipedAnswer)
          //データ更新は終了してる。クイズノルマが全て終わっているか判定
         //button view settings edit
-        let removeQuestionSwitch = self.removeSwipedAnswer()
+        let removeQuestionSwitch = self.removeSwipedAnswerJudge()
         if removeQuestionSwitch == true {
             myModel.deleteNodeFromModel(deleteNode: self.displayingQustion)
         }
@@ -141,7 +141,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         }
     }
     
-    private func removeSwipedAnswer()->Bool{
+    private func removeSwipedAnswerJudge()->Bool{
 //不完全　クイズ途中でnext行かれた時にめんどくさい。
 // 今日１回解いたやつ,今日まだ解いてないやつ　の状態で次に行った場合、
 //また遭遇した時に今日２回解いたやつ　今日１回解いたやつ　状態にならないとクイズが消えない
