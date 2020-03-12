@@ -12,12 +12,11 @@ class QuestionPageViewController: UIViewController {
     
     @IBOutlet weak var questionAnswerTableView: UITableView!
     
-    var dataSource = [RealmMindNodeModel]()
     var presenter:QuestionPagePresenter!
     var customView = QuestionDidsplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     var questionMapId:String = ""
-    var displayingNode:RealmMindNodeModel = RealmMindNodeModel()
-    var answerMindNodeArray = [RealmMindNodeModel]()
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,16 +49,9 @@ class QuestionPageViewController: UIViewController {
         self.questionAnswerTableView.register(QuestionAnswerTableViewCell.createXib(), forCellReuseIdentifier: QuestionAnswerTableViewCell.className)
         self.questionAnswerTableView.delegate = self
         self.questionAnswerTableView.dataSource = self
-
     }
-        
-    func changeQuizDisplay(displayingQustion: RealmMindNodeModel){
-        self.displayingNode = displayingQustion
-        self.customView.questionDisplayLabel.text = displayingQustion.content
-    }
-    
+            
     func changeDisplayToAnswer(answerNodeArray:[RealmMindNodeModel]){
-        self.dataSource = answerNodeArray
         self.questionAnswerTableView.reloadData()
     }
     
@@ -69,7 +61,7 @@ extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
     //本来これはPresenterに書くべきとの２つの意見があるが、こちらの方が都合が良いのでtableViewのみ特例。
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionAnswerTableViewCell.className, for: indexPath ) as! QuestionAnswerTableViewCell
-        let data = self.dataSource[indexPath.row]
+        let data = presenter.answerNodeArray[indexPath.row]
         cell.questionLabel.text = data.content
         cell.backgroundColor = self.convertDateToColor(ifSuccessInterval: data.ifSuccessInterval)
         return cell
@@ -97,12 +89,12 @@ extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return presenter.answerNodeArray.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.dataSource[indexPath.row].childNodeIdArray.count > 0 {
-            let tappedNodeId = self.dataSource[indexPath.row].myNodeId
+        if presenter.answerNodeArray[indexPath.row].childNodeIdArray.count > 0 {
+            let tappedNodeId = presenter.answerNodeArray[indexPath.row].myNodeId
             presenter.changeToSelectedAnswerQuiz(tappedNodeId: tappedNodeId)
         }else{
             print("i have no answer")

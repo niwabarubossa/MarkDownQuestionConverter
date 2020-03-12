@@ -14,9 +14,9 @@ class QuestionPagePresenter:QuestionModelDelegate{
     let questionModel: QuestionModel
     var quizDataSource = [RealmMindNodeModel]()
     var displayingQustion:RealmMindNodeModel = RealmMindNodeModel()
+    //viewから参照されている。 answerTableViewCellの数を決定
     var answerNodeArray = [RealmMindNodeModel]()
     
-    //オリジナルのクラス型にすること
     weak var view: QuestionPageViewController?
 
     init(view: QuestionPageViewController) {
@@ -69,14 +69,10 @@ class QuestionPagePresenter:QuestionModelDelegate{
     }
     
     func notifyNodeToView(){
-        self.view?.displayingNode = self.displayingQustion
-        self.view?.answerMindNodeArray = self.answerNodeArray
     }
     
     private func renderingView(){
         self.view?.customView.questionDisplayLabel.text = self.displayingQustion.content
-        self.view?.answerMindNodeArray = self.answerNodeArray
-        self.view?.dataSource = self.answerNodeArray
         self.view?.questionAnswerTableView.reloadData()
     }
     
