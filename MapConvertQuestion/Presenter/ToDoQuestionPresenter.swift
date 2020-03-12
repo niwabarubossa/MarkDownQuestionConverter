@@ -189,7 +189,6 @@ extension ToDoQuestionPresenter {
         self.resetData()
         self.displayingQustion = nextQuestion
         self.setAnswerNodeArray(question:nextQuestion)
-        self.notifyNodeToView()
         self.renderingView()
         self.changeToQuestionMode()
     }
@@ -205,13 +204,8 @@ extension ToDoQuestionPresenter {
         }
     }
     
-    func notifyNodeToView(){
-        self.view?.answerNodeArrayDataSource = self.answerNodeArray
-    }
-    
     private func renderingView(){
         self.view?.customView.questionLabel.text = self.displayingQustion.content
-        self.view?.answerNodeArrayDataSource = self.answerNodeArray
         self.view?.answerTableView.reloadData()
     }
     
