@@ -40,6 +40,9 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     
     func didGetMapQuestion(question: [RealmMindNodeModel]) {
         self.quizDataSource = question
+        self.displayingQustion = self.quizDataSource.shuffled()[0]
+        let firstQuestion = self.displayingQustion
+        self.reloadQAPair(nextQuestion: firstQuestion)
         self.view?.userDataDisplay.bunboLabel.text = String(self.quizDataSource.count)
         self.view?.userDataDisplay.bunsiLabel.text = String(self.quizDataSource.count)
     }
@@ -78,11 +81,20 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
             return
         }
         //reloadする　解いたやつremove
-        let nextQuestion:RealmMindNodeModel = self.quizDataSource.shuffled()[0]
-        
+        let nextQuestion:RealmMindNodeModel = self.shuffleQuestion()
         self.reloadQAPair(nextQuestion: nextQuestion)
         self.changeToQuestionMode()
     }
+    
+    private func shuffleQuestion() -> RealmMindNodeModel{
+        var nextQuestion = self.quizDataSource.shuffled()[0]
+        if self.quizDataSource.count == 1 { return self.quizDataSource[0] }
+        while (nextQuestion.nodePrimaryKey == self.displayingQustion.nodePrimaryKey )  {
+            nextQuestion = self.quizDataSource.shuffled()[0]
+        }
+        return nextQuestion
+    }
+    
     
     func abandonQuestionButtonTapped(){
         for answerNode in self.answerNodeArray {
