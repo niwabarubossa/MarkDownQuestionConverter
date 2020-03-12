@@ -18,7 +18,6 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     var quizDataSource = [RealmMindNodeModel]()
     var displayingQustion:RealmMindNodeModel = RealmMindNodeModel()
     var answerNodeArray = [RealmMindNodeModel]()
-    var solvedAnswerId = [String]()
     var user = User()
     var startQuestionTime:Date = Date()
 
@@ -224,7 +223,6 @@ extension ToDoQuestionPresenter {
     
     private func resetData(){
         self.answerNodeArray.removeAll()
-        self.solvedAnswerId.removeAll()
     }
     
     private func setAnswerNodeArray(question:RealmMindNodeModel){
@@ -273,9 +271,14 @@ extension ToDoQuestionPresenter {
 
 }
 
+//viewの更新関連
 extension ToDoQuestionPresenter:QuestionModelPresenterProtocol{
     @objc func notifyToQuestionModelView() {
         self.view?.reloadQuestionModelView()
+        self.userDisplayReload()
+    }
+    
+    private func userDisplayReload(){
         self.view?.userDataDisplay.bunsiLabel.text = String(self.quizDataSource.count)
         let bunboTextLabel = self.view?.userDataDisplay.bunboLabel.text
         if let bunboText = bunboTextLabel {
