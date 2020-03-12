@@ -9,16 +9,14 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
-    //自分用のモデルの宣言
+class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,RealmCreateProtocol{
     let myModel: QuestionModel
     let userModel:UserDataModel
-    //オリジナルのクラス型にすること
     weak var view:ToDoQuestionPageViewController?
+    
     var quizDataSource = [RealmMindNodeModel]()
     var displayingQustion:RealmMindNodeModel = RealmMindNodeModel()
     var answerNodeArray = [RealmMindNodeModel]()
-    var solvedAnswerId = [String]()
     var user = User()
     var startQuestionTime:Date = Date()
 
@@ -32,7 +30,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         userModel.addObserver(self, selector:#selector(self.userModelUpdateDone))
     }
     
-    //勝手に呼ばれる　from presenter
+    //初期化時に呼ばれる　from presenter
     func initializePage(){
         myModel.getToDoQuestion()
         userModel.getUserData()
@@ -55,38 +53,26 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     func syncData(allNodeData: [RealmMindNodeModel]) {
         self.quizDataSource = allNodeData
     }
-    // Presenter → Model 操作する側
-    func toModelFromPresenter() {
-//        myModel.testfunc()
-    }
-    //Presenter → View の操作  操作する側
-    func toViewFromPresenter() {
-        view?.testfunc()
-    }
     
     func answerButtonTapped(){
-        print("answerButtonTapped in presenter")
         self.changeToAnswerMode()
     }
     
     func nextQuestionButtonTapped(){
-        print("nextQuestionButtonTapped in presenter")
-        //select next question
         self.startQuestionTime = Date()
         if (self.quizDataSource.count < 1) {
             self.view?.noQuestionLabel.isHidden = false
             self.changeToCompleteMode()
-            print("self.quizDataSource.count < 1")
             print("no question ! todays todo question is complete!")
             return
         }
-        //reloadする　解いたやつremove
         let nextQuestion:RealmMindNodeModel = self.shuffleQuestion()
         self.reloadQAPair(nextQuestion: nextQuestion)
         self.changeToQuestionMode()
     }
     
     private func shuffleQuestion() -> RealmMindNodeModel{
+        //同じ問題が連続で出題されるのを避ける
         var nextQuestion = self.quizDataSource.shuffled()[0]
         if self.quizDataSource.count == 1 { return self.quizDataSource[0] }
         while (nextQuestion.nodePrimaryKey == self.displayingQustion.nodePrimaryKey )  {
@@ -113,7 +99,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
         self.createQuestionLog(isCorrect:true,swipedAnswer: swipedAnswer)
          //データ更新は終了してる。クイズノルマが全て終わっているか判定
         //button view settings edit
-        let removeQuestionSwitch = self.removeSwipedAnswer()
+        let removeQuestionSwitch = self.removeSwipedAnswerJudge()
         if removeQuestionSwitch == true {
             myModel.deleteNodeFromModel(deleteNode: self.displayingQustion)
         }
@@ -121,10 +107,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     }
     
     private func createQuestionLog(isCorrect:Bool,swipedAnswer:RealmMindNodeModel){
-        do{
-            let realm = try Realm()
             let thinkingTime = Double(Date().millisecondsSince1970 - self.startQuestionTime.millisecondsSince1970) / 1000
-            
             let questionLog = QuestionLog(value: [
                 "questionNodeId": self.displayingQustion.nodePrimaryKey,
                 "thinkingTime": thinkingTime,
@@ -133,25 +116,17 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
                 //TODO インデント込みの文字数になっているので治すこと
                 "charactersAmount": swipedAnswer.content.count
             ])
-            try! realm.write {
-                realm.add(questionLog)
-            }
-        }catch{
-            print("\(error)")
-        }
+            self.createRealm(data: questionLog)
     }
     
-    private func removeSwipedAnswer()->Bool{
-//不完全　クイズ途中でnext行かれた時にめんどくさい。
-// 今日１回解いたやつ,今日まだ解いてないやつ　の状態で次に行った場合、
-//また遭遇した時に今日２回解いたやつ　今日１回解いたやつ　状態にならないとクイズが消えない
+    private func removeSwipedAnswerJudge()->Bool{
         for answerNode in self.answerNodeArray {
             if isTodayToDoQuestion(question: answerNode) == true {
-//                １つでも今日のやつが残っているならまだ消さない
+                //１つでも今日のやつが残っているならまだ消さない
                 return false
             }
         }
-        //全てのanswerが,0~todayの範囲を超えていたらOKとする。つまりremove
+        //全てのanswerが,0~todayの範囲を超えていたらOK,removeする。
         return true
     }
     
@@ -183,7 +158,6 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
 extension ToDoQuestionPresenter:UserDataModelDelegate{
     
     func didGetUserData(user: User) {
-        print("\(user)")
         self.user = user
     }
 
@@ -191,16 +165,16 @@ extension ToDoQuestionPresenter:UserDataModelDelegate{
         print("get observer ここでviewの更新をする")
         let answerTimesLabel = self.view?.userDataDisplay.answerTimesLabel
         let scoreLabel = self.view?.userDataDisplay.scoreLabel
-        UIView.transition(with: answerTimesLabel!, // アニメーションさせるview
-                        duration: 0.5, // アニメーションの秒数
+        UIView.transition(with: answerTimesLabel!,
+                        duration: 0.5,
                           options: [.transitionFlipFromBottom, .curveEaseIn],
                           animations: {
         },
                           completion:  { (finished: Bool) in
                             answerTimesLabel!.text = String(self.user.totalAnswerTimes) + "回"
         })
-        UIView.transition(with: scoreLabel!, // アニメーションさせるview
-                        duration: 0.5, // アニメーションの秒数
+        UIView.transition(with: scoreLabel!,
+                        duration: 0.5,
                           options: [.transitionFlipFromBottom, .curveEaseIn],
                           animations: {
         },
@@ -212,10 +186,8 @@ extension ToDoQuestionPresenter:UserDataModelDelegate{
 
 extension ToDoQuestionPresenter {
     func reloadQAPair(nextQuestion:RealmMindNodeModel){
-    //focusNodeはタップされたもの、
-    //nextBUttonTapped 時はランダムな未解決displayingQが入っている
-        self.displayingQustion = nextQuestion
         self.resetData()
+        self.displayingQustion = nextQuestion
         self.setAnswerNodeArray(question:nextQuestion)
         self.notifyNodeToView()
         self.renderingView()
@@ -224,7 +196,6 @@ extension ToDoQuestionPresenter {
     
     private func resetData(){
         self.answerNodeArray.removeAll()
-        self.solvedAnswerId.removeAll()
     }
     
     private func setAnswerNodeArray(question:RealmMindNodeModel){
@@ -273,9 +244,14 @@ extension ToDoQuestionPresenter {
 
 }
 
+//viewの更新関連
 extension ToDoQuestionPresenter:QuestionModelPresenterProtocol{
     @objc func notifyToQuestionModelView() {
         self.view?.reloadQuestionModelView()
+        self.userDisplayReload()
+    }
+    
+    private func userDisplayReload(){
         self.view?.userDataDisplay.bunsiLabel.text = String(self.quizDataSource.count)
         let bunboTextLabel = self.view?.userDataDisplay.bunboLabel.text
         if let bunboText = bunboTextLabel {

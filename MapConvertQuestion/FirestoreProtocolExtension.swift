@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseFirestore
+import RealmSwift
 
 protocol UpdateFirestoreDocProtocol {
     func updateFirestoreDocument(ref_array:[DocumentReference],update_data:[String:Any])
@@ -47,6 +48,23 @@ extension SubmitFirestoreDocProtocol {
             } else {
                 print("Batch write succeeded.")
             }
+        }
+    }
+}
+
+protocol RealmCreateProtocol {
+    func createRealm(data:Object)
+}
+
+extension RealmCreateProtocol {
+    func createRealm(data:Object){
+        do{
+            let realm = try Realm()
+            try! realm.write {
+                realm.add(data)
+            }
+        }catch{
+            print("\(error)")
         }
     }
 }
