@@ -107,10 +107,10 @@ extension QuestionMapSelectPageTableViewController:UITableViewDelegate,UITableVi
     private func deleteMapData(cellData:[String:String]){
         let realm = try! Realm()
         var mapData = MapGroup()
-        if let data = realm.objects(MapGroup.self).filter("mapId = %@",cellData["mapId"]).first {
+        if let data = realm.objects(MapGroup.self).filter("mapId = %@",cellData["mapId"] ?? "").first {
             mapData = data
         }
-        let allNodeList = realm.objects(RealmMindNodeModel.self).filter("mapId = %@",cellData["mapId"])
+        let allNodeList = realm.objects(RealmMindNodeModel.self).filter("mapId = %@",cellData["mapId"] ?? "")
         do{
             let realm = try Realm()
             try! realm.write {
