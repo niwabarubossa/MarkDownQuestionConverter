@@ -10,11 +10,10 @@ import UIKit
 import RealmSwift
 
 class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
-    //自分用のモデルの宣言
     let myModel: QuestionModel
     let userModel:UserDataModel
-    //オリジナルのクラス型にすること
     weak var view:ToDoQuestionPageViewController?
+    
     var quizDataSource = [RealmMindNodeModel]()
     var displayingQustion:RealmMindNodeModel = RealmMindNodeModel()
     var answerNodeArray = [RealmMindNodeModel]()
