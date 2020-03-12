@@ -34,6 +34,14 @@ class ToDoQuestionPageViewController: UIViewController{
         self.setupLocationManager()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("will appear")
+        layout()
+        initializePage()
+        tableViewSetup()
+        self.setupLocationManager()
+    }
+    
     private func layout(){
         self.answerTableView.center = self.view.center
         customView.center = self.view.center
