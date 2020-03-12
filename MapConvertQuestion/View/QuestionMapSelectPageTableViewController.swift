@@ -92,6 +92,40 @@ extension QuestionMapSelectPageTableViewController:UITableViewDelegate,UITableVi
         return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            self.deleteMapData(cellData: self.dataSource[indexPath.row])
+            self.dataSource.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
+        }
+    }
+    
+    private func deleteMapData(cellData:[String:String]){
+        let realm = try! Realm()
+        var mapData = MapGroup()
+        if let data = realm.objects(MapGroup.self).filter("mapId = %@",cellData["mapId"] ?? "").first {
+            mapData = data
+        }
+        let allNodeList = realm.objects(RealmMindNodeModel.self).filter("mapId = %@",cellData["mapId"] ?? "")
+        do{
+            let realm = try Realm()
+            try! realm.write {
+                for node in allNodeList {
+                    realm.delete(node.childNodeIdArray)
+                }
+                realm.delete(allNodeList)
+                realm.delete(mapData)
+            }
+        }catch{
+            print("\(error)")
+        }
+        self.tableView.reloadData()
+    }
+    
     @objc func refresh(sender: UIRefreshControl) {
         self.dataSource = getMapTitleData()
         self.tableView.reloadData()
