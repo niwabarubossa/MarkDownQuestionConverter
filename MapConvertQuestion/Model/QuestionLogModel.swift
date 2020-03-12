@@ -17,6 +17,8 @@ class QuestionLog:Object{
     @objc dynamic var questionNodeId:String = ""
     @objc dynamic var thinkingTime:Double = 0.0
     @objc dynamic var isCorrect:Bool = true
+    @objc dynamic var latitude: String = ""
+    @objc dynamic var longitude: String = ""
     //場所も追加したい
     override static func primaryKey() -> String? {
         return "logId"
