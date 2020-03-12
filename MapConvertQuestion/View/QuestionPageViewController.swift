@@ -14,6 +14,8 @@ class QuestionPageViewController: UIViewController {
     
     var presenter:QuestionPagePresenter!
     var customView = QuestionDidsplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+    //TODO これもっときれいなやり方あるはず
+    var buttonStackView = ButtonStackView()
     var questionMapId:String = ""
     
     override func viewDidLoad() {
@@ -34,7 +36,7 @@ class QuestionPageViewController: UIViewController {
         self.view.addSubview(customView)
         let myWidth = view.frame.width
         let myHeight = view.frame.height
-        let buttonStackView = ButtonStackView(frame: CGRect(x: 0, y: myHeight - 180 , width: myWidth, height: 80))
+        buttonStackView = ButtonStackView(frame: CGRect(x: 0, y: myHeight - 180 , width: myWidth, height: 80))
         buttonStackView.delegate = self
         self.view.addSubview(buttonStackView)
     }
