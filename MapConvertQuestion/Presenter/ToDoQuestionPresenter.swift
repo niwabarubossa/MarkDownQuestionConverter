@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
+class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,RealmCreateProtocol{
     let myModel: QuestionModel
     let userModel:UserDataModel
     weak var view:ToDoQuestionPageViewController?
@@ -107,8 +107,6 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
     }
     
     private func createQuestionLog(isCorrect:Bool,swipedAnswer:RealmMindNodeModel){
-        do{
-            let realm = try Realm()
             let thinkingTime = Double(Date().millisecondsSince1970 - self.startQuestionTime.millisecondsSince1970) / 1000
             let questionLog = QuestionLog(value: [
                 "questionNodeId": self.displayingQustion.nodePrimaryKey,
@@ -118,12 +116,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate{
                 //TODO インデント込みの文字数になっているので治すこと
                 "charactersAmount": swipedAnswer.content.count
             ])
-            try! realm.write {
-                realm.add(questionLog)
-            }
-        }catch{
-            print("\(error)")
-        }
+            self.createRealm(data: questionLog)
     }
     
     private func removeSwipedAnswerJudge()->Bool{
