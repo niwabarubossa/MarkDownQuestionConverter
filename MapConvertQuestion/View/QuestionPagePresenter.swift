@@ -58,7 +58,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
                 return nextQuestionNodeId
             }
             if (nodeId == self.quizDataSource.count - 1 ){
-                print("もうクイズはありません。")
+                print("もうクイズはありません。初めに戻ります")
                 return 0
             }
         }
