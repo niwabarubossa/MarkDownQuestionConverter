@@ -37,12 +37,15 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
     }
     
     func didGetMapQuestion(question: [RealmMindNodeModel]) {
+        //初期化処理
         self.quizDataSource = question
         question.count > 0 ? self.displayingQustion = self.quizDataSource.shuffled()[0] : print("no question")
         let firstQuestion = self.displayingQustion
         self.reloadQAPair(nextQuestion: firstQuestion)
         self.view?.userDataDisplay.bunboLabel.text = String(self.quizDataSource.count)
         self.view?.userDataDisplay.bunsiLabel.text = String(self.quizDataSource.count)
+        self.userDisplayReload()
+        self.userModelUpdateDone()
     }
     
     func syncUserData(user:User){
@@ -166,7 +169,8 @@ extension ToDoQuestionPresenter:UserDataModelDelegate{
         self.user = user
     }
 
-    @objc func userModelUpdateDone(notification: Notification){
+//    @objc func userModelUpdateDone(notification: Notification){
+    @objc func userModelUpdateDone(){
         print("userに関する情報、今回はuserDisplay情報が更新されました")
         let answerTimesLabel = self.view?.userDataDisplay.answerTimesLabel
         let scoreLabel = self.view?.userDataDisplay.scoreLabel
@@ -273,5 +277,7 @@ extension ToDoQuestionPresenter:QuestionModelPresenterProtocol{
         if let bunboText = bunboTextLabel {
             let bunboFloat = NumberFormatter().number(from: bunboText)!.floatValue
             self.view?.userDataDisplay.progressView.setProgress( ( bunboFloat - Float(self.quizDataSource.count) ) / bunboFloat, animated: true)
-        }     }
+        }
+    }
+
 }
