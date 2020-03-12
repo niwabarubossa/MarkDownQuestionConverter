@@ -37,14 +37,12 @@ class QuestionPagePresenter:QuestionModelDelegate{
     func didGetMapQuestion(question: [RealmMindNodeModel]){
         self.quizDataSource = question
         self.reloadQAPair(questionNodeId:0) //最初はタイトルからのクイズで
-        self.notifyNodeToView()
         self.changeToQuestionMode()
     }
     
     func reloadQAPair(questionNodeId:Int){
         self.displayingQustion = questionModel.selectNodeByNodeId(nodeId: questionNodeId)
         self.answerNodeArray = questionModel.getAnswerNodeArray(displayingQuestion: self.displayingQustion)
-        self.notifyNodeToView()
         self.renderingView()
         self.changeToQuestionMode()
     }
@@ -66,9 +64,6 @@ class QuestionPagePresenter:QuestionModelDelegate{
         }
         print("もうクイズないよ")
         return nextQuestionNodeId
-    }
-    
-    func notifyNodeToView(){
     }
     
     private func renderingView(){
