@@ -16,6 +16,8 @@ class QuestionPageViewController: UIViewController {
     var presenter:QuestionPagePresenter!
     var customView = QuestionDidsplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     var questionMapId:String = ""
+    
+    
     var displayingNode:RealmMindNodeModel = RealmMindNodeModel()
     var answerMindNodeArray = [RealmMindNodeModel]()
     
@@ -52,12 +54,7 @@ class QuestionPageViewController: UIViewController {
         self.questionAnswerTableView.dataSource = self
 
     }
-        
-    func changeQuizDisplay(displayingQustion: RealmMindNodeModel){
-        self.displayingNode = displayingQustion
-        self.customView.questionDisplayLabel.text = displayingQustion.content
-    }
-    
+            
     func changeDisplayToAnswer(answerNodeArray:[RealmMindNodeModel]){
         self.dataSource = answerNodeArray
         self.questionAnswerTableView.reloadData()
