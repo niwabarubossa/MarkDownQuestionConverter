@@ -14,6 +14,9 @@ class ToDoQuestionPageViewController: UIViewController{
     let customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     let noQuestionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     var userDataDisplay = UserDataDisplay()
+    
+    //presenterを参照する
+    
     var displayingNode:RealmMindNodeModel = RealmMindNodeModel()
     var answerNodeArrayDataSource = [RealmMindNodeModel]()
     

@@ -213,7 +213,6 @@ extension ToDoQuestionPresenter {
     private func renderingView(){
         self.view?.customView.questionLabel.text = self.displayingQustion.content
         self.view?.answerNodeArrayDataSource = self.answerNodeArray
-        self.view?.answerNodeArrayDataSource = self.answerNodeArray
         self.view?.answerTableView.reloadData()
     }
     
