@@ -18,7 +18,6 @@ class QuestionPageViewController: UIViewController {
     var questionMapId:String = ""
     
 
-    var answerMindNodeArray = [RealmMindNodeModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

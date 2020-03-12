@@ -69,12 +69,10 @@ class QuestionPagePresenter:QuestionModelDelegate{
     }
     
     func notifyNodeToView(){
-        self.view?.answerMindNodeArray = self.answerNodeArray
     }
     
     private func renderingView(){
         self.view?.customView.questionDisplayLabel.text = self.displayingQustion.content
-        self.view?.answerMindNodeArray = self.answerNodeArray
         self.view?.dataSource = self.answerNodeArray
         self.view?.questionAnswerTableView.reloadData()
     }
