@@ -98,9 +98,20 @@ extension QuestionMapSelectPageTableViewController:UITableViewDelegate,UITableVi
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            self.deleteMapData(cellData: self.dataSource[indexPath.row])
-            self.dataSource.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
+            let alert: UIAlertController = UIAlertController(title: "確認", message: "本当に削除しますか？", preferredStyle:  UIAlertController.Style.alert)
+            let defaultAction: UIAlertAction = UIAlertAction(title: "削除", style: UIAlertAction.Style.destructive, handler:{
+                (action: UIAlertAction!) -> Void in
+                    self.deleteMapData(cellData: self.dataSource[indexPath.row])
+                    self.dataSource.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
+            })
+            let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
+                (action: UIAlertAction!) -> Void in
+                return
+            })
+            alert.addAction(cancelAction)
+            alert.addAction(defaultAction)
+            present(alert, animated: true)
         }
     }
     
