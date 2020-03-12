@@ -14,8 +14,8 @@ class ToDoQuestionPageViewController: UIViewController{
     let customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     let noQuestionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     var userDataDisplay = UserDataDisplay()
-    var displayingNode:RealmMindNodeModel = RealmMindNodeModel()
-    var answerNodeArrayDataSource = [RealmMindNodeModel]()
+    
+    //presenterを参照する
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,11 +68,11 @@ class ToDoQuestionPageViewController: UIViewController{
 
 extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return answerNodeArrayDataSource.count
+        return presenter.answerNodeArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionAnswerTableViewCell.className, for: indexPath ) as! QuestionAnswerTableViewCell
-        let data = self.answerNodeArrayDataSource[indexPath.row]
+        let data = presenter.answerNodeArray[indexPath.row]
         cell.questionLabel.text = data.content
         cell.nextDateLabel.text = String(data.ifSuccessInterval) + "日"
         
@@ -100,8 +100,8 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.answerNodeArrayDataSource[indexPath.row].childNodeIdArray.count > 0 {
-            let tappedNode = self.answerNodeArrayDataSource[indexPath.row]
+        if presenter.answerNodeArray[indexPath.row].childNodeIdArray.count > 0 {
+            let tappedNode = presenter.answerNodeArray[indexPath.row]
             presenter.changeToSelectedAnswerQuiz(tappedNode: tappedNode)
         }else{
             print("i have no answer")
@@ -114,7 +114,7 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
                 title: "間違えた",
                 handler: {(action: UIContextualAction, view: UIView, completion: (Bool) -> Void) in
                     print("間違えました")
-                    self.presenter.trailingSwipeQuestion(swipedAnswer: self.answerNodeArrayDataSource[indexPath.row])
+                    self.presenter.trailingSwipeQuestion(swipedAnswer: self.presenter.answerNodeArray[indexPath.row])
                     tableView.reloadData()
                     completion(true)
             })
@@ -132,7 +132,7 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
                 handler: {(action: UIContextualAction, view: UIView, completion: (Bool) -> Void) in
                     print("正解です")
                     self.presenter.leadingSwipeQuestion(swipedAnswer:
-                        self.answerNodeArrayDataSource[indexPath.row])
+                        self.presenter.answerNodeArray[indexPath.row])
                     tableView.reloadData()
                     completion(true)
             })
@@ -144,7 +144,7 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
         }
         
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
-        let questionDate = self.answerNodeArrayDataSource[indexPath.row].nextDate
+        let questionDate = presenter.answerNodeArray[indexPath.row].nextDate
         if self.todayQuestion(nextDate: questionDate) == true {
             return true
         }
