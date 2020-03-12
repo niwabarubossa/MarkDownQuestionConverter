@@ -69,7 +69,6 @@ class QuestionPagePresenter:QuestionModelDelegate{
     }
     
     func notifyNodeToView(){
-        self.view?.displayingNode = self.displayingQustion
         self.view?.answerMindNodeArray = self.answerNodeArray
     }
     

@@ -17,8 +17,7 @@ class QuestionPageViewController: UIViewController {
     var customView = QuestionDidsplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     var questionMapId:String = ""
     
-    
-    var displayingNode:RealmMindNodeModel = RealmMindNodeModel()
+
     var answerMindNodeArray = [RealmMindNodeModel]()
     
     override func viewDidLoad() {
@@ -52,7 +51,6 @@ class QuestionPageViewController: UIViewController {
         self.questionAnswerTableView.register(QuestionAnswerTableViewCell.createXib(), forCellReuseIdentifier: QuestionAnswerTableViewCell.className)
         self.questionAnswerTableView.delegate = self
         self.questionAnswerTableView.dataSource = self
-
     }
             
     func changeDisplayToAnswer(answerNodeArray:[RealmMindNodeModel]){
