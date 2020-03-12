@@ -32,6 +32,9 @@ class MarkDownInput: UIView {
             self.addSubview(view)
         }
         self.inputTextView.delegate = self
+        self.submitButton.layer.cornerRadius = 10
+        let font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(300))
+        self.submitButton.titleLabel?.font = font
     }
     
     @IBAction func submitAction(_ sender: Any) {

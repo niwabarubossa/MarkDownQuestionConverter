@@ -40,8 +40,8 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRR-JW-W4x">
-                    <rect key="frame" x="142.5" y="273" width="49" height="30"/>
-                    <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="20" y="273" width="294" height="30"/>
+                    <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" title="Submit">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -50,13 +50,15 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="gRR-JW-W4x" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="24F-fH-f5C"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="gRR-JW-W4x" secondAttribute="bottom" constant="30" id="8Gm-Ub-Uqw"/>
                 <constraint firstItem="gRR-JW-W4x" firstAttribute="top" secondItem="x26-tR-nIQ" secondAttribute="bottom" constant="30" id="L83-3q-VXq"/>
                 <constraint firstItem="x26-tR-nIQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="Pwm-99-IO6"/>
+                <constraint firstItem="gRR-JW-W4x" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="RNY-GY-WO2"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="x26-tR-nIQ" secondAttribute="trailing" constant="10" id="SNP-bM-Yht"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gRR-JW-W4x" secondAttribute="trailing" constant="20" id="det-5W-HFa"/>
                 <constraint firstItem="x26-tR-nIQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="wjS-Dv-Tot"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
