@@ -95,8 +95,12 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         }
     }
         
+    //removeするやつ
     func didGetToDoQuestion(questionArray: [RealmMindNodeModel]) {
         self.setQuestionArray(questionArray: questionArray)
+        if questionArray.count == 0 {
+            self.changeToCompleteMode()
+        }
     }
     
     func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
@@ -199,7 +203,7 @@ extension ToDoQuestionPresenter {
         self.displayingQustion = nextQuestion
         self.setAnswerNodeArray(question:nextQuestion)
         self.renderingView()
-        self.changeToQuestionMode()
+        self.quizDataSource.count > 0 ? self.changeToQuestionMode() : self.changeToCompleteMode()
         self.buttonEnabledControl()
     }
     
