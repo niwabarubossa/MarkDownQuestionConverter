@@ -16,8 +16,6 @@ class QuestionPageViewController: UIViewController {
     var customView = QuestionDidsplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     var questionMapId:String = ""
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializePresenter()
