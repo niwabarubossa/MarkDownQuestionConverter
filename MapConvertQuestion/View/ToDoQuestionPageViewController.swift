@@ -14,6 +14,7 @@ class ToDoQuestionPageViewController: UIViewController{
     let customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     let noQuestionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     var userDataDisplay = UserDataDisplay()
+    var buttonStackView = ButtonStackView()
     
     //presenterを参照する
     
@@ -37,7 +38,7 @@ class ToDoQuestionPageViewController: UIViewController{
         self.view.addSubview(customView)
         let myWidth = view.frame.width
         let myHeight = view.frame.height
-        let buttonStackView = ButtonStackView(frame: CGRect(x: 0, y: myHeight - 180 , width: myWidth, height: 80))
+        buttonStackView = ButtonStackView(frame: CGRect(x: 0, y: myHeight - 180 , width: myWidth, height: 80))
         buttonStackView.delegate = self
         self.view.addSubview(buttonStackView)
         userDataDisplay = UserDataDisplay(frame: CGRect(x: 0, y: 100, width: myWidth, height: 100))
