@@ -4,6 +4,7 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     
     var presenter:MarkDownInputPresenter!
     var customView = MarkDownInput()
+    var completeLabel = UILabel()
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -20,6 +21,13 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
         customView.center = self.view.center
         customView.myDelegate = self
         self.view.addSubview(customView)
+        completeLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 30, height: 100))
+        completeLabel.backgroundColor = MyColor.fourthColor
+        completeLabel.center = self.view.center
+        completeLabel.textAlignment = .center
+        completeLabel.text = "complete!!!!!!"
+        self.view.addSubview(completeLabel)
+        self.completeLabel.isHidden  = true
     }
     
     // Presenter ← View
@@ -27,19 +35,21 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     }
     
     func submitAction(text:String) {
+        presenter.submitButtonDisabled()
         var lines = [String]()
         text.enumerateLines { (line, stop) -> () in
             lines.append(line)
         }
-        print("lines")
-        print("\(lines)")
         presenter.submitButtonTapped(input: text)
-        //complete
-    }
-    
-//    func convertToNode(parent_){
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: .autoreverse, animations: {
+            self.completeLabel.isHidden = false
+            self.completeLabel.center.y += 10.0
+            self.completeLabel.text = "finished!!"
+        }, completion: { (finished:Bool) in
+            self.completeLabel.isHidden = true
+        })
         
-//    }
+    }
     
 }
 
