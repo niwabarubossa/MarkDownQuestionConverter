@@ -140,6 +140,7 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if presenter.answerNodeArray[indexPath.row].childNodeIdArray.count > 0 {
+            presenter.changeToQuestionMode()
             let tappedNode = presenter.answerNodeArray[indexPath.row]
             presenter.changeToSelectedAnswerQuiz(tappedNode: tappedNode)
         }else{

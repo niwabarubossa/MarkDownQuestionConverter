@@ -251,7 +251,7 @@ extension ToDoQuestionPresenter {
         }
     }
     
-    private func changeToQuestionMode(){
+    func changeToQuestionMode(){
         UIView.transition(with: self.view!.customView, duration: 0.2, options: [.transitionFlipFromLeft], animations: {
             self.view!.customView.isHidden = true
             self.view!.answerTableView.isHidden = false
