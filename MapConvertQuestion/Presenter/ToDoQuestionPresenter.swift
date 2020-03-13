@@ -69,7 +69,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         self.view?.buttonStackView.answerButton.isEnabled = false
         self.view?.buttonStackView.answerButton.alpha = 0.5
     }
-    private func answerButtonEnabled(){
+    func answerButtonEnabled(){
         self.view?.buttonStackView.answerButton.isEnabled = true
         self.view?.buttonStackView.answerButton.alpha = 1
     }
@@ -172,6 +172,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
     }
     
     func changeToSelectedAnswerQuiz(tappedNode:RealmMindNodeModel){
+        self.answerButtonEnabled()
         let nextQuestion:RealmMindNodeModel = myModel.getNodeFromRealm(mapId: tappedNode.mapId, nodeId: tappedNode.myNodeId)
         self.reloadQAPair(nextQuestion: nextQuestion)
     }
