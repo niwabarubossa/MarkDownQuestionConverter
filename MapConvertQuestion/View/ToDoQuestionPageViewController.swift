@@ -12,24 +12,18 @@ class ToDoQuestionPageViewController: UIViewController{
     
     var presenter:ToDoQuestionPresenter!
     var customView = ToDoQuestionDisplay()
-
     @IBOutlet weak var answerTableView: UITableView!
-    
     let noQuestionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     var userDataDisplay = UserDataDisplay()
     var buttonStackView = ButtonStackView()
     
     var locationManager: CLLocationManager!
     var latitudeNow: String = ""
-    // 経度
     var longitudeNow: String = ""
-    
-    //presenterを参照する
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializePresenter()
-        // Do any additional setup after loading the view.
         tableViewSetup()
         layout()
         initializePage()
@@ -56,27 +50,20 @@ class ToDoQuestionPageViewController: UIViewController{
     }
     
     private func initializePage(){
-        //get question func
         presenter.initializePage()
     }
     
     func setupLocationManager() {
         locationManager = CLLocationManager()
-        // 権限をリクエスト
         guard let locationManager = locationManager else { return }
         locationManager.requestWhenInUseAuthorization()
-
-        // マネージャの設定
         let status = CLLocationManager.authorizationStatus()
-
-        // ステータスごとの処理
         if status == .authorizedWhenInUse {
             locationManager.delegate = self
             locationManager.startUpdatingLocation()
         }
     }
     
-    /// アラートを表示する
     func showAlert() {
         let alertTitle = "位置情報取得が許可されていません。"
         let alertMessage = "設定アプリの「プライバシー > 位置情報サービス」から変更してください。"
@@ -85,15 +72,12 @@ class ToDoQuestionPageViewController: UIViewController{
             message: alertMessage,
             preferredStyle:  UIAlertController.Style.alert
         )
-        // OKボタン
         let defaultAction: UIAlertAction = UIAlertAction(
             title: "OK",
             style: UIAlertAction.Style.default,
             handler: nil
         )
-        // UIAlertController に Action を追加
         alert.addAction(defaultAction)
-        // Alertを表示
         present(alert, animated: true, completion: nil)
     }
     private func tableViewSetup(){
@@ -110,7 +94,6 @@ class ToDoQuestionPageViewController: UIViewController{
        presenter = ToDoQuestionPresenter(view: self)
     }
     
-    //presenter → view
     func testfunc(){
         print("done from presenter function")
     }
@@ -125,11 +108,11 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionAnswerTableViewCell.className, for: indexPath ) as! QuestionAnswerTableViewCell
         let data = presenter.answerNodeArray[indexPath.row]
         cell.questionLabel.text = data.content.replacingOccurrences(of:"\t", with:"")
+        
         let timeSince1970 = data.nextDate
         let dateVar = Date.init(timeIntervalSince1970: Double(timeSince1970) / 1000.0)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd"
-        
         cell.nextDateLabel.text = dateFormatter.string(from: dateVar)
         
         if data.childNodeIdArray.count > 0 {
