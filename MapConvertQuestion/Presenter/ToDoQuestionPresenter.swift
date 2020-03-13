@@ -62,6 +62,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
     
     func answerButtonTapped(){
         self.changeToAnswerMode()
+        self.setAnswerNodeArray(question: self.displayingQustion)
         self.answerButtonDisabled()
     }
     
@@ -69,7 +70,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         self.view?.buttonStackView.answerButton.isEnabled = false
         self.view?.buttonStackView.answerButton.alpha = 0.5
     }
-    private func answerButtonEnabled(){
+    func answerButtonEnabled(){
         self.view?.buttonStackView.answerButton.isEnabled = true
         self.view?.buttonStackView.answerButton.alpha = 1
     }
@@ -172,6 +173,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
     }
     
     func changeToSelectedAnswerQuiz(tappedNode:RealmMindNodeModel){
+        self.answerButtonEnabled()
         let nextQuestion:RealmMindNodeModel = myModel.getNodeFromRealm(mapId: tappedNode.mapId, nodeId: tappedNode.myNodeId)
         self.reloadQAPair(nextQuestion: nextQuestion)
     }
@@ -215,7 +217,7 @@ extension ToDoQuestionPresenter {
     func reloadQAPair(nextQuestion:RealmMindNodeModel){
         self.resetData()
         self.displayingQustion = nextQuestion
-        self.setAnswerNodeArray(question:nextQuestion)
+//        self.setAnswerNodeArray(question:nextQuestion)
         self.renderingView()
         self.quizDataSource.count > 0 ? self.changeToQuestionMode() : self.changeToCompleteMode()
         self.buttonEnabledControl()
@@ -230,12 +232,13 @@ extension ToDoQuestionPresenter {
             let answerNode = myModel.getNodeFromRealm(mapId: question.mapId, nodeId: childNodeId.MindNodeChildId)
             self.answerNodeArray.append(answerNode)
         }
+        self.view?.answerTableView.reloadData()
     }
     
     //TODO protocolに準拠させよう viewRenderingなprotocol
     private func renderingView(){
         self.view?.customView.questionLabel.text = self.displayingQustion.content.replacingOccurrences(of:"\t", with:"")
-        self.view?.answerTableView.reloadData()
+//        self.view?.answerTableView.reloadData()
         
     }
     
@@ -250,7 +253,7 @@ extension ToDoQuestionPresenter {
         }
     }
     
-    private func changeToQuestionMode(){
+    func changeToQuestionMode(){
         UIView.transition(with: self.view!.customView, duration: 0.2, options: [.transitionFlipFromLeft], animations: {
             self.view!.customView.isHidden = true
             self.view!.answerTableView.isHidden = false
