@@ -28,20 +28,16 @@ class ToDoQuestionPageViewController: UIViewController{
         super.viewDidLoad()
         initializePresenter()
         // Do any additional setup after loading the view.
-        tableViewSetup()
         layout()
+        tableViewSetup()
         initializePage()
         self.setupLocationManager()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        print("will appear")
-        tableViewSetup()
-        layout()
-        initializePage()
-        self.setupLocationManager()
+    override func viewDidLayoutSubviews() {
+        
     }
-    
+        
     private func layout(){
         self.answerTableView.center = self.view.center
         customView.center = self.view.center
@@ -102,9 +98,9 @@ class ToDoQuestionPageViewController: UIViewController{
         present(alert, animated: true, completion: nil)
     }
     private func tableViewSetup(){
+        answerTableView.isHidden = true
         answerTableView = UITableView(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: view.frame.height - 400))
         answerTableView.center = view.center
-        answerTableView.isHidden = true
         self.view.addSubview(answerTableView)
         self.answerTableView.register(QuestionAnswerTableViewCell.createXib(), forCellReuseIdentifier: QuestionAnswerTableViewCell.className)
         self.answerTableView.delegate = self

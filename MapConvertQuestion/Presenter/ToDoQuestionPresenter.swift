@@ -59,6 +59,16 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
     
     func answerButtonTapped(){
         self.changeToAnswerMode()
+        self.answerButtonDisabled()
+    }
+    
+    private func answerButtonDisabled(){
+        self.view?.buttonStackView.answerButton.isEnabled = false
+        self.view?.buttonStackView.answerButton.alpha = 0.5
+    }
+    private func answerButtonEnabled(){
+        self.view?.buttonStackView.answerButton.isEnabled = true
+        self.view?.buttonStackView.answerButton.alpha = 1
     }
     
     func nextQuestionButtonTapped(){
@@ -76,6 +86,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         let nextQuestion:RealmMindNodeModel = self.shuffleQuestion()
         self.reloadQAPair(nextQuestion: nextQuestion)
         self.changeToQuestionMode()
+        self.answerButtonEnabled()
     }
     
     private func shuffleQuestion() -> RealmMindNodeModel{
