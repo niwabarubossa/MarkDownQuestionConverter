@@ -126,7 +126,13 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionAnswerTableViewCell.className, for: indexPath ) as! QuestionAnswerTableViewCell
         let data = presenter.answerNodeArray[indexPath.row]
         cell.questionLabel.text = data.content
-        cell.nextDateLabel.text = String(data.ifSuccessInterval) + "日"
+        
+        let timeSince1970 = data.nextDate
+        let dateVar = Date.init(timeIntervalSince1970: Double(timeSince1970) / 1000.0)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM月dd日"
+        
+        cell.nextDateLabel.text = dateFormatter.string(from: dateVar)
         
         if data.childNodeIdArray.count > 0 {
             cell.myImageView.isHidden = false
