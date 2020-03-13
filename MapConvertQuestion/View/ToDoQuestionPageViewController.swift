@@ -12,7 +12,9 @@ class ToDoQuestionPageViewController: UIViewController{
     
     var presenter:ToDoQuestionPresenter!
     var customView = ToDoQuestionDisplay()
-    var answerTableView = UITableView(frame: .zero)
+
+    @IBOutlet weak var answerTableView: UITableView!
+    
     let noQuestionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     var userDataDisplay = UserDataDisplay()
     var buttonStackView = ButtonStackView()

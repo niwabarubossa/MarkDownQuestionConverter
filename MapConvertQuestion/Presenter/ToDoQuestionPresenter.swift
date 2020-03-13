@@ -34,6 +34,8 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
     func initializePage(){
         myModel.getToDoQuestion()
         userModel.getUserData()
+        self.view?.customView.questionLabel.isHidden = false
+        self.view?.answerTableView.isHidden = true
     }
     
     func didGetMapQuestion(question: [RealmMindNodeModel]) {
@@ -41,6 +43,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         self.quizDataSource = question
         question.count > 0 ? self.displayingQustion = self.quizDataSource.shuffled()[0] : print("no question")
         let firstQuestion = self.displayingQustion
+        self.renderingView()
         self.reloadQAPair(nextQuestion: firstQuestion)
         self.view?.userDataDisplay.bunboLabel.text = String(self.quizDataSource.count)
         self.view?.userDataDisplay.bunsiLabel.text = String(self.quizDataSource.count)
@@ -233,6 +236,7 @@ extension ToDoQuestionPresenter {
     private func renderingView(){
         self.view?.customView.questionLabel.text = self.displayingQustion.content.replacingOccurrences(of:"\t", with:"")
         self.view?.answerTableView.reloadData()
+        
     }
     
     private func buttonEnabledControl(){
