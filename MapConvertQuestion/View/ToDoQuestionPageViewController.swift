@@ -10,9 +10,9 @@ import CoreLocation
 
 class ToDoQuestionPageViewController: UIViewController{
     
-    var answerTableView = UITableView()
     var presenter:ToDoQuestionPresenter!
-    let customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+    var customView = ToDoQuestionDisplay()
+    var answerTableView = UITableView(frame: .zero)
     let noQuestionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
     var userDataDisplay = UserDataDisplay()
     var buttonStackView = ButtonStackView()
@@ -33,17 +33,10 @@ class ToDoQuestionPageViewController: UIViewController{
         initializePage()
         self.setupLocationManager()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("will appear")
-        tableViewSetup()
-        layout()
-        initializePage()
-        self.setupLocationManager()
-    }
-    
+        
     private func layout(){
         self.answerTableView.center = self.view.center
+        customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: view.frame.height - 400))
         customView.center = self.view.center
         noQuestionLabel.text = "no question !!!!!!!!!"
         noQuestionLabel.center = self.view.center
@@ -102,9 +95,9 @@ class ToDoQuestionPageViewController: UIViewController{
         present(alert, animated: true, completion: nil)
     }
     private func tableViewSetup(){
+        answerTableView.isHidden = true
         answerTableView = UITableView(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: view.frame.height - 400))
         answerTableView.center = view.center
-        answerTableView.isHidden = true
         self.view.addSubview(answerTableView)
         self.answerTableView.register(QuestionAnswerTableViewCell.createXib(), forCellReuseIdentifier: QuestionAnswerTableViewCell.className)
         self.answerTableView.delegate = self
