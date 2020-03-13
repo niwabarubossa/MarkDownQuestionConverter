@@ -17,6 +17,7 @@ class MarkDownInputPresenter:MarkDownInputModelDelegate{
     func submitButtonTapped(input:String){
         print(" submit button tapped recognized")
         markDownInputModel.submitInput(input:input)
+        self.view?.customView.inputTextView.text = ""
     }
     
     func didSubmitInput(){

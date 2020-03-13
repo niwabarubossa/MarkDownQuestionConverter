@@ -3,6 +3,8 @@ import UIKit
 class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     
     var presenter:MarkDownInputPresenter!
+    var customView = MarkDownInput()
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         initializePresenter()
@@ -14,7 +16,7 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     }
     
     func layout() {
-        let customView = MarkDownInput(frame: CGRect(x: 0, y: 0, width: view.frame.width - 30, height: view.frame.height - 30))
+        customView = MarkDownInput(frame: CGRect(x: 0, y: 0, width: view.frame.width - 30, height: view.frame.height - 30))
         customView.center = self.view.center
         customView.myDelegate = self
         self.view.addSubview(customView)
@@ -32,6 +34,7 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
         print("lines")
         print("\(lines)")
         presenter.submitButtonTapped(input: text)
+        //complete
     }
     
 //    func convertToNode(parent_){
