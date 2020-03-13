@@ -62,6 +62,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
     
     func answerButtonTapped(){
         self.changeToAnswerMode()
+        self.setAnswerNodeArray(question: self.displayingQustion)
         self.answerButtonDisabled()
     }
     
@@ -216,7 +217,7 @@ extension ToDoQuestionPresenter {
     func reloadQAPair(nextQuestion:RealmMindNodeModel){
         self.resetData()
         self.displayingQustion = nextQuestion
-        self.setAnswerNodeArray(question:nextQuestion)
+//        self.setAnswerNodeArray(question:nextQuestion)
         self.renderingView()
         self.quizDataSource.count > 0 ? self.changeToQuestionMode() : self.changeToCompleteMode()
         self.buttonEnabledControl()
@@ -231,12 +232,13 @@ extension ToDoQuestionPresenter {
             let answerNode = myModel.getNodeFromRealm(mapId: question.mapId, nodeId: childNodeId.MindNodeChildId)
             self.answerNodeArray.append(answerNode)
         }
+        self.view?.answerTableView.reloadData()
     }
     
     //TODO protocolに準拠させよう viewRenderingなprotocol
     private func renderingView(){
         self.view?.customView.questionLabel.text = self.displayingQustion.content.replacingOccurrences(of:"\t", with:"")
-        self.view?.answerTableView.reloadData()
+//        self.view?.answerTableView.reloadData()
         
     }
     
