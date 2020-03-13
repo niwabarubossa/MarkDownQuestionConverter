@@ -125,12 +125,11 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionAnswerTableViewCell.className, for: indexPath ) as! QuestionAnswerTableViewCell
         let data = presenter.answerNodeArray[indexPath.row]
-        cell.questionLabel.text = data.content
-        
+        cell.questionLabel.text = data.content.replacingOccurrences(of:"\t", with:"")
         let timeSince1970 = data.nextDate
         let dateVar = Date.init(timeIntervalSince1970: Double(timeSince1970) / 1000.0)
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM月dd日"
+        dateFormatter.dateFormat = "MM/dd"
         
         cell.nextDateLabel.text = dateFormatter.string(from: dateVar)
         
