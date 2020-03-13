@@ -33,10 +33,6 @@ class ToDoQuestionPageViewController: UIViewController{
         initializePage()
         self.setupLocationManager()
     }
-    
-    override func viewDidLayoutSubviews() {
-        
-    }
         
     private func layout(){
         self.answerTableView.center = self.view.center
