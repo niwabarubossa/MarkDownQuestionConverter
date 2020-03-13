@@ -10,7 +10,7 @@ import UIKit
 
 class QuestionPageViewController: UIViewController {
     
-    @IBOutlet weak var questionAnswerTableView: UITableView!
+    var questionAnswerTableView = UITableView()
     
     var presenter:QuestionPagePresenter!
     var customView = QuestionDidsplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
@@ -21,9 +21,9 @@ class QuestionPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initializePresenter()
+        tableViewSetup()
         layout()
         getQuestion(mapId:self.questionMapId)
-        tableViewSetup()
     }
     
     private func initializePresenter() {
@@ -46,9 +46,13 @@ class QuestionPageViewController: UIViewController {
     }
     
     private func tableViewSetup(){
+        questionAnswerTableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.frame.width - 20, height: 500))
+        questionAnswerTableView.center = view.center
         self.questionAnswerTableView.register(QuestionAnswerTableViewCell.createXib(), forCellReuseIdentifier: QuestionAnswerTableViewCell.className)
         self.questionAnswerTableView.delegate = self
         self.questionAnswerTableView.dataSource = self
+        self.view.addSubview(questionAnswerTableView)
+        
     }
             
     func changeDisplayToAnswer(answerNodeArray:[RealmMindNodeModel]){
@@ -62,7 +66,7 @@ extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionAnswerTableViewCell.className, for: indexPath ) as! QuestionAnswerTableViewCell
         let data = presenter.answerNodeArray[indexPath.row]
-        cell.questionLabel.text = data.content
+        cell.questionLabel.text = data.content.replacingOccurrences(of: "\t", with: "")
         cell.backgroundColor = self.convertDateToColor(ifSuccessInterval: data.ifSuccessInterval)
         return cell
     }

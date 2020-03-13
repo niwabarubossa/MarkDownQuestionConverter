@@ -67,7 +67,7 @@ class QuestionPagePresenter:QuestionModelDelegate{
     }
     
     private func renderingView(){
-        self.view?.customView.questionDisplayLabel.text = self.displayingQustion.content
+        self.view?.customView.questionDisplayLabel.text = self.displayingQustion.content.replacingOccurrences(of: "\t", with: "")
         self.view?.questionAnswerTableView.reloadData()
     }
     
@@ -84,12 +84,12 @@ class QuestionPagePresenter:QuestionModelDelegate{
     }
     
     private func changeToQuestionMode(){
-        view?.customView.questionDisplayLabel.isHidden = false
+        view?.customView.isHidden = false
         view?.questionAnswerTableView.isHidden = true
     }
     
     private func changeToAnswerMode(){
-        view?.customView.questionDisplayLabel.isHidden = true
+        view?.customView.isHidden = true
         view?.questionAnswerTableView.isHidden = false
     }
     
