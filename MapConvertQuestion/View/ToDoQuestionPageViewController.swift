@@ -105,6 +105,7 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
         return presenter.answerNodeArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionAnswerTableViewCell.className, for: indexPath ) as! QuestionAnswerTableViewCell
         let data = presenter.answerNodeArray[indexPath.row]
         cell.questionLabel.text = data.content.replacingOccurrences(of:"\t", with:"")
