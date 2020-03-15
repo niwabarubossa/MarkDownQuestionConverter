@@ -13,7 +13,7 @@ class ToDoQuestionPageViewController: UIViewController{
     var presenter:ToDoQuestionPresenter!
     var customView = ToDoQuestionDisplay()
     @IBOutlet weak var answerTableView: UITableView!
-    let noQuestionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+    var noQuestionLabel = ToDoQuestionCompleteLabel()
     var userDataDisplay = UserDataDisplay()
     var buttonStackView = ButtonStackView()
     
@@ -34,10 +34,10 @@ class ToDoQuestionPageViewController: UIViewController{
         self.answerTableView.center = self.view.center
         customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: view.frame.height - 500))
         customView.center = self.view.center
-        noQuestionLabel.text = "no question !!!!!!!!!"
+        noQuestionLabel = ToDoQuestionCompleteLabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 200))
+        noQuestionLabel.contentLabel.text = "no question !!!!!!!!!"
         noQuestionLabel.center = self.view.center
         noQuestionLabel.isHidden = true
-        noQuestionLabel.sizeToFit()
         self.view.addSubview(noQuestionLabel)
         self.view.addSubview(customView)
         let myWidth = view.frame.width
