@@ -56,7 +56,7 @@ class UserDataModel {
     }
     
     private func updateUserScore(swipedAnswer:RealmMindNodeModel) ->User{
-        let charactersCount = Int64(swipedAnswer.content.count)
+        let charactersCount = Int64(swipedAnswer.content.replacingOccurrences(of:"\t", with:"").count)
         do{
             let realm = try Realm()
             try! realm.write {

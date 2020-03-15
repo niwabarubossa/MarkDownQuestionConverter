@@ -139,7 +139,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
                 "isCorrect": isCorrect,
                 "mapId": swipedAnswer.mapId,
                 //TODO インデント込みの文字数になっているので治すこと
-                "charactersAmount": swipedAnswer.content.count,
+                "charactersAmount": swipedAnswer.content.replacingOccurrences(of:"\t", with:"").count,
                 "latitude": self.view?.latitudeNow ?? "",
                 "longitude": self.view?.longitudeNow ?? ""
             ])
