@@ -45,6 +45,7 @@ class ToDoQuestionPageViewController: UIViewController{
         buttonStackView.delegate = self
         self.view.addSubview(buttonStackView)
         userDataDisplay = UserDataDisplay(frame: CGRect(x: 0, y: 100, width: myWidth, height: 100))
+        userDataDisplay.delegate = self
         self.view.addSubview(userDataDisplay)
     }
     
@@ -233,6 +234,13 @@ extension ToDoQuestionPageViewController: CLLocationManagerDelegate {
         let longitude = location?.coordinate.longitude
         self.latitudeNow = String(latitude!)
         self.longitudeNow = String(longitude!)
+    }
+}
+
+extension ToDoQuestionPageViewController:UserDataDisplayDelegate{
+    func reloadButtonTapped() {
+        print("reloadButtonTapped")
+        self.viewDidLoad()
     }
 }
 

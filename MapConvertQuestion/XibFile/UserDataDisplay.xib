@@ -97,6 +97,17 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZq-vc-wF2">
+                    <rect key="frame" x="323" y="18" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="YS4-no-6JS"/>
+                        <constraint firstAttribute="width" constant="50" id="xPi-2V-pLx"/>
+                    </constraints>
+                    <state key="normal" image="reload"/>
+                    <connections>
+                        <action selector="reloadButtonTapped:" destination="-1" eventType="touchUpInside" id="9rY-93-hDX"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -107,7 +118,9 @@
                 <constraint firstItem="GqQ-OW-j3Q" firstAttribute="top" secondItem="ewd-fJ-Tfb" secondAttribute="bottom" constant="15" id="92n-2I-oDT"/>
                 <constraint firstItem="xZV-GN-mpb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="9j8-11-JbS"/>
                 <constraint firstItem="GqQ-OW-j3Q" firstAttribute="leading" secondItem="xZV-GN-mpb" secondAttribute="leading" id="BlR-rr-g3z"/>
+                <constraint firstItem="sZq-vc-wF2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="18" id="Db9-cD-Hlt"/>
                 <constraint firstItem="HSN-Gg-cbz" firstAttribute="bottom" secondItem="cwZ-B9-LlF" secondAttribute="bottom" id="Dfh-PQ-PEo"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="sZq-vc-wF2" secondAttribute="trailing" constant="20" id="ILS-8w-EF7"/>
                 <constraint firstItem="gM4-6N-pby" firstAttribute="top" secondItem="cwZ-B9-LlF" secondAttribute="top" id="NHy-cl-sf2"/>
                 <constraint firstItem="gM4-6N-pby" firstAttribute="leading" secondItem="cwZ-B9-LlF" secondAttribute="trailing" id="QWV-sM-KCr"/>
                 <constraint firstItem="F4K-uM-Kq1" firstAttribute="leading" secondItem="xZV-GN-mpb" secondAttribute="leading" id="R0c-K8-gWO"/>
@@ -131,4 +144,7 @@
             <point key="canvasLocation" x="122.46376811594205" y="-158.70535714285714"/>
         </view>
     </objects>
+    <resources>
+        <image name="reload" width="256" height="256"/>
+    </resources>
 </document>

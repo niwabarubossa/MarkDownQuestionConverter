@@ -10,6 +10,8 @@ import UIKit
 
 class UserDataDisplay: UIView {
     
+    weak var delegate: UserDataDisplayDelegate?
+    
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var answerTimesLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -35,4 +37,11 @@ class UserDataDisplay: UIView {
         self.image.image = R.image.student()
     }
 
+    @IBAction func reloadButtonTapped(_ sender: Any) {
+        self.delegate?.reloadButtonTapped()
+    }
+}
+
+protocol UserDataDisplayDelegate:class{
+    func reloadButtonTapped()
 }
