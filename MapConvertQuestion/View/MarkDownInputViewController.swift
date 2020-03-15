@@ -17,7 +17,7 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     }
     
     func layout() {
-        customView = MarkDownInput(frame: CGRect(x: 0, y: 0, width: view.frame.width - 30, height: view.frame.height - 30))
+        customView = MarkDownInput(frame: CGRect(x: 0, y: 0, width: view.frame.width - 30, height: view.frame.height - 100))
         customView.center = self.view.center
         customView.myDelegate = self
         self.view.addSubview(customView)
