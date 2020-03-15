@@ -46,12 +46,13 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k1E-YO-Vbj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1811" y="432"/>
+            <point key="canvasLocation" x="1817" y="437"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Root Tab Bar Controller-->
         <scene sceneID="GxP-Ba-LtK">
             <objects>
-                <tabBarController id="MIx-iJ-1Dx" sceneMemberID="viewController">
+                <tabBarController id="MIx-iJ-1Dx" customClass="RootTabBarController" customModule="MapConvertQuestion" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ktw-OS-GMt"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fph-4o-Twv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
