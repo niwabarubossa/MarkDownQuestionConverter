@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("２回目以降のログインです")
         }
         
-        let migSchemaVersion: UInt64 = 15
+        let migSchemaVersion: UInt64 = 16
         let config = Realm.Configuration(
             schemaVersion: migSchemaVersion,
             migrationBlock: { migration, oldSchemaVersion in
