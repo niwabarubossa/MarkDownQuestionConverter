@@ -32,7 +32,7 @@ class ToDoQuestionPageViewController: UIViewController{
         
     private func layout(){
         self.answerTableView.center = self.view.center
-        customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: view.frame.height - 400))
+        customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: view.frame.height - 500))
         customView.center = self.view.center
         noQuestionLabel.text = "no question !!!!!!!!!"
         noQuestionLabel.center = self.view.center
@@ -82,7 +82,7 @@ class ToDoQuestionPageViewController: UIViewController{
     }
     private func tableViewSetup(){
         answerTableView.isHidden = true
-        answerTableView = UITableView(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: view.frame.height - 400))
+        answerTableView = UITableView(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: view.frame.height - 460))
         answerTableView.center = view.center
         self.view.addSubview(answerTableView)
         self.answerTableView.register(QuestionAnswerTableViewCell.createXib(), forCellReuseIdentifier: QuestionAnswerTableViewCell.className)
