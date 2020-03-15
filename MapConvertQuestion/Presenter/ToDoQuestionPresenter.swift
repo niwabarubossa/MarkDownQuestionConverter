@@ -126,8 +126,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
     }
     
     func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
-//leadingSwipeQuestion = 正解
-//データ更新する
+//正解時のアクション //データ更新
         myModel.leadingSwipeQuestion(swipedAnswer: swipedAnswer)
         self.createQuestionLog(isCorrect:true,swipedAnswer: swipedAnswer)
          //データ更新は終了してる。クイズノルマが全て終わっているか判定
@@ -146,7 +145,6 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
                 "thinkingTime": thinkingTime,
                 "isCorrect": isCorrect,
                 "mapId": swipedAnswer.mapId,
-                //TODO インデント込みの文字数になっているので治すこと
                 "charactersAmount": swipedAnswer.content.replacingOccurrences(of:"\t", with:"").count,
                 "latitude": self.view?.latitudeNow ?? "",
                 "longitude": self.view?.longitudeNow ?? ""
@@ -197,7 +195,6 @@ extension ToDoQuestionPresenter:UserDataModelDelegate{
         self.user = user
     }
 
-//    @objc func userModelUpdateDone(notification: Notification){
     @objc func userModelUpdateDone(){
         print("userに関する情報、今回はuserDisplay情報が更新されました")
         let answerTimesLabel = self.view?.userDataDisplay.answerTimesLabel
