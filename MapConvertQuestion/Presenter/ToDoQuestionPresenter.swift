@@ -294,10 +294,11 @@ extension ToDoQuestionPresenter:QuestionModelPresenterProtocol{
     }
     
     private func userDisplayReload(){
-        self.view?.userDataDisplay.bunsiLabel.text = String(self.quizDataSource.count)
         let bunboTextLabel = self.view?.userDataDisplay.bunboLabel.text
         if let bunboText = bunboTextLabel {
             let bunboFloat = NumberFormatter().number(from: bunboText)!.floatValue
+            let bunboInt = NumberFormatter().number(from: bunboText)!.intValue
+            self.view?.userDataDisplay.bunsiLabel.text = String( bunboInt - self.quizDataSource.count)
             self.view?.userDataDisplay.progressView.setProgress( ( bunboFloat - Float(self.quizDataSource.count) ) / bunboFloat, animated: true)
         }
     }
