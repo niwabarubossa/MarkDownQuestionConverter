@@ -68,6 +68,14 @@ extension QuestionPageViewController:UITableViewDataSource,UITableViewDelegate{
         let data = presenter.answerNodeArray[indexPath.row]
         cell.questionLabel.text = data.content.replacingOccurrences(of: "\t", with: "")
         cell.backgroundColor = self.convertDateToColor(ifSuccessInterval: data.ifSuccessInterval)
+        
+        if data.childNodeIdArray.count > 0 {
+            cell.myImageView.isHidden = false
+            cell.myImageView.image = R.image.arrow()
+        }else{
+            cell.myImageView.isHidden = true
+        }
+        
         return cell
     }
     
