@@ -108,6 +108,12 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         for answerNode in self.answerNodeArray {
             myModel.updateMapQuestionIsAnswer(updateNode: answerNode, isAnswer: false)
         }
+        let removeQuestion = self.displayingQustion
+        if let removeIndex =  self.quizDataSource.firstIndex(of: removeQuestion) {
+            self.quizDataSource.remove(at: removeIndex)
+        }
+        self.notifyToQuestionModelView()
+        self.nextQuestionButtonTapped()
     }
         
     //removeするやつ
@@ -127,6 +133,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         let removeQuestionSwitch = self.removeSwipedAnswerJudge()
         if removeQuestionSwitch == true {
             myModel.deleteNodeFromModel(deleteNode: self.displayingQustion)
+            self.nextQuestionButtonTapped()
         }
         userModel.updateUserData(swipedAnswer: swipedAnswer)
     }
