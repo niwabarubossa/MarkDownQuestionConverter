@@ -25,11 +25,11 @@ class RootTabBarController: UITabBarController {
              print("new!! \n \(new_uuid) \n\n")
             print("初回のログインです")
             self.createUserData(uuid:new_uuid)
+            let howToVC = R.storyboard.settings.howToPage()
+            self.present(howToVC!, animated: true, completion: nil)
         }else{
             UserDefaults.standard.set(false, forKey: "FirstLaunch")
             print("２回目以降のログインです")
-            let howToVC = R.storyboard.settings.howToPage()
-            self.present(howToVC!, animated: true, completion: nil)
         }
     }
     
