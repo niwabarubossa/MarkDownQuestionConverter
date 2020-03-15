@@ -18,24 +18,51 @@
             <rect key="frame" x="0.0" y="0.0" width="381" height="206"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete Question!!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upr-si-kiA">
-                    <rect key="frame" x="20" y="74" width="341" height="58"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="57U-dK-nIJ">
+                    <rect key="frame" x="0.0" y="0.0" width="381" height="206"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="congratulationWhite" translatesAutoresizingMaskIntoConstraints="NO" id="rFC-UZ-AD1">
+                            <rect key="frame" x="301" y="78" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="Zyg-R7-cPh"/>
+                                <constraint firstAttribute="height" constant="50" id="faY-Hl-BPQ"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete!!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upr-si-kiA">
+                            <rect key="frame" x="30" y="74" width="271" height="58"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="58" id="ajy-h6-aCR"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.45085787770000002" green="0.98829740290000001" blue="0.83763033149999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="rFC-UZ-AD1" secondAttribute="trailing" constant="30" id="1Wp-RI-Jjo"/>
+                        <constraint firstItem="rFC-UZ-AD1" firstAttribute="leading" secondItem="Upr-si-kiA" secondAttribute="trailing" id="LU7-yx-VZ4"/>
+                        <constraint firstItem="Upr-si-kiA" firstAttribute="leading" secondItem="57U-dK-nIJ" secondAttribute="leading" constant="30" id="Ogv-uK-rVB"/>
+                        <constraint firstItem="Upr-si-kiA" firstAttribute="centerY" secondItem="57U-dK-nIJ" secondAttribute="centerY" id="oiS-JB-NmW"/>
+                        <constraint firstItem="rFC-UZ-AD1" firstAttribute="centerY" secondItem="57U-dK-nIJ" secondAttribute="centerY" id="vnX-sU-bad"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.45009386540000001" green="0.98132258650000004" blue="0.4743030667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Upr-si-kiA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="Evy-7O-ygx"/>
-                <constraint firstItem="Upr-si-kiA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="FuT-oO-gIU"/>
-                <constraint firstItem="Upr-si-kiA" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="s3q-23-f6U"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Upr-si-kiA" secondAttribute="trailing" constant="20" id="zJC-f4-mak"/>
-                <constraint firstItem="Upr-si-kiA" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="zc6-dE-ChM"/>
+                <constraint firstItem="57U-dK-nIJ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="IiA-ZC-nqD"/>
+                <constraint firstItem="57U-dK-nIJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="KnG-9I-xBj"/>
+                <constraint firstItem="57U-dK-nIJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="S0l-vp-nye"/>
+                <constraint firstItem="57U-dK-nIJ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ckm-7K-bqK"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="57U-dK-nIJ" secondAttribute="bottom" id="iWg-TP-C7d"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="57U-dK-nIJ" secondAttribute="trailing" id="rvN-fe-EbG"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="116.66666666666667" y="-139.28571428571428"/>
         </view>
     </objects>
+    <resources>
+        <image name="congratulationWhite" width="256" height="256"/>
+    </resources>
 </document>

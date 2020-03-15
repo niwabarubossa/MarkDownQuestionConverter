@@ -35,7 +35,6 @@ class ToDoQuestionPageViewController: UIViewController{
         customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: view.frame.height - 500))
         customView.center = self.view.center
         noQuestionLabel = ToDoQuestionCompleteLabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 200))
-        noQuestionLabel.contentLabel.text = "no question !!!!!!!!!"
         noQuestionLabel.center = self.view.center
         noQuestionLabel.isHidden = true
         self.view.addSubview(noQuestionLabel)
