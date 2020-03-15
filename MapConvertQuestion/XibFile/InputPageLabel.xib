@@ -14,21 +14,46 @@
             <rect key="frame" x="0.0" y="0.0" width="370" height="193"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paste And Convert Map!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cy-0j-5bn">
-                    <rect key="frame" x="92" y="86" width="186" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dyy-Pi-eF7">
+                    <rect key="frame" x="62.5" y="45.5" width="245.5" height="102"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paste And Convert Map!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cy-0j-5bn">
+                            <rect key="frame" x="0.0" y="40.5" width="185.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowDown" translatesAutoresizingMaskIntoConstraints="NO" id="dS8-rV-BR0">
+                            <rect key="frame" x="195.5" y="26" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="XFb-iQ-9AI"/>
+                                <constraint firstAttribute="width" constant="50" id="mrN-E9-VSR"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="dS8-rV-BR0" firstAttribute="leading" secondItem="2cy-0j-5bn" secondAttribute="trailing" constant="10" id="1gK-DF-6WH"/>
+                        <constraint firstAttribute="height" constant="102" id="7Xb-gY-tgy"/>
+                        <constraint firstAttribute="trailing" secondItem="dS8-rV-BR0" secondAttribute="trailing" id="HeW-oq-Ths"/>
+                        <constraint firstItem="2cy-0j-5bn" firstAttribute="centerY" secondItem="dyy-Pi-eF7" secondAttribute="centerY" id="OvY-oB-LUU"/>
+                        <constraint firstAttribute="width" constant="245.5" id="vpp-da-6Bf"/>
+                        <constraint firstItem="dS8-rV-BR0" firstAttribute="centerY" secondItem="dyy-Pi-eF7" secondAttribute="centerY" id="wHV-p3-4m7"/>
+                        <constraint firstItem="2cy-0j-5bn" firstAttribute="leading" secondItem="dyy-Pi-eF7" secondAttribute="leading" id="xvb-sn-8vh"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="2cy-0j-5bn" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="sKL-Ih-nys"/>
-                <constraint firstItem="2cy-0j-5bn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vYM-80-1PK"/>
+                <constraint firstItem="dyy-Pi-eF7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fil-hu-Gld"/>
+                <constraint firstItem="dyy-Pi-eF7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wcm-Je-Y1l"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="105.79710144927537" y="-143.63839285714286"/>
         </view>
     </objects>
+    <resources>
+        <image name="arrowDown" width="256" height="256"/>
+    </resources>
 </document>
