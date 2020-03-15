@@ -15,12 +15,57 @@
                     <view key="view" contentMode="scaleToFill" id="rda-qe-YJQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uPt-Ek-vaL">
+                                <rect key="frame" x="0.0" y="679" width="414" height="80"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="4DI-GN-kA2"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GhS-16-S9l">
+                                <rect key="frame" x="0.0" y="50" width="414" height="529"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ioq-x5-Fcw" customClass="ButtonStackView" customModule="MapConvertQuestion" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="579" width="414" height="80"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="QOs-2o-Obv"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X8q-RD-luJ" customClass="QuestionDidsplay" customModule="MapConvertQuestion" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="414" height="529"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="uPt-Ek-vaL" firstAttribute="top" secondItem="Ioq-x5-Fcw" secondAttribute="bottom" constant="20" id="0nn-Ij-6VC"/>
+                            <constraint firstItem="Ioq-x5-Fcw" firstAttribute="leading" secondItem="2s6-8J-VHq" secondAttribute="leading" id="1jz-es-Pqt"/>
+                            <constraint firstItem="Ioq-x5-Fcw" firstAttribute="top" secondItem="GhS-16-S9l" secondAttribute="bottom" id="61U-bO-mGP"/>
+                            <constraint firstItem="2s6-8J-VHq" firstAttribute="trailing" secondItem="Ioq-x5-Fcw" secondAttribute="trailing" id="7Cm-c8-MjF"/>
+                            <constraint firstItem="2s6-8J-VHq" firstAttribute="trailing" secondItem="X8q-RD-luJ" secondAttribute="trailing" id="Cby-d7-X0c"/>
+                            <constraint firstItem="Ioq-x5-Fcw" firstAttribute="top" secondItem="X8q-RD-luJ" secondAttribute="bottom" id="XeU-3l-03v"/>
+                            <constraint firstItem="2s6-8J-VHq" firstAttribute="trailing" secondItem="uPt-Ek-vaL" secondAttribute="trailing" id="a01-2a-ZRN"/>
+                            <constraint firstItem="GhS-16-S9l" firstAttribute="top" secondItem="2s6-8J-VHq" secondAttribute="top" constant="50" id="iTG-vC-39g"/>
+                            <constraint firstItem="X8q-RD-luJ" firstAttribute="leading" secondItem="2s6-8J-VHq" secondAttribute="leading" id="j3d-Wf-6gt"/>
+                            <constraint firstItem="X8q-RD-luJ" firstAttribute="top" secondItem="rda-qe-YJQ" secondAttribute="top" constant="50" id="nZo-Qf-9yc"/>
+                            <constraint firstItem="uPt-Ek-vaL" firstAttribute="leading" secondItem="2s6-8J-VHq" secondAttribute="leading" id="o3e-Cm-f9q"/>
+                            <constraint firstItem="2s6-8J-VHq" firstAttribute="trailing" secondItem="GhS-16-S9l" secondAttribute="trailing" id="pMQ-vT-Xsq"/>
+                            <constraint firstItem="GhS-16-S9l" firstAttribute="leading" secondItem="2s6-8J-VHq" secondAttribute="leading" id="sr8-kp-YRk"/>
+                            <constraint firstItem="2s6-8J-VHq" firstAttribute="bottom" secondItem="uPt-Ek-vaL" secondAttribute="bottom" id="vnP-Qd-BCZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="2s6-8J-VHq"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="QiY-ab-qVX"/>
                     <navigationItem key="navigationItem" id="yoy-Vq-8Vf"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="buttonStackView" destination="Ioq-x5-Fcw" id="yNg-Ae-leZ"/>
+                        <outlet property="customView" destination="X8q-RD-luJ" id="5Yi-aw-PLy"/>
+                        <outlet property="questionAnswerTableView" destination="GhS-16-S9l" id="fOc-Ll-UmN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Mx-eB-scL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

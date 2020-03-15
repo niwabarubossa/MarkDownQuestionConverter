@@ -11,6 +11,7 @@ import UIKit
 class ButtonStackView: UIView {
 
     @IBOutlet weak var answerButton: UIButton!
+    @IBOutlet weak var abandonButton: UIButton!
     @IBOutlet weak var nextQuestionButton: UIButton!
     weak var delegate: ButtonStackViewDelegate?
     
