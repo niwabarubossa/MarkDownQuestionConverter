@@ -26,6 +26,7 @@
 		548FA704241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */; };
 		5492009D2415D71200F01C7D /* ButtonStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5492009C2415D71200F01C7D /* ButtonStackView.xib */; };
 		5492009F2415D75700F01C7D /* ButtonStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5492009E2415D75700F01C7D /* ButtonStackView.swift */; };
+		549345ED241DF182009D9483 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549345EC241DF182009D9483 /* RootTabBarController.swift */; };
 		54A7DC712414BC1E009F7229 /* SelectQustionPageThemeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A7DC702414BC1E009F7229 /* SelectQustionPageThemeView.xib */; };
 		54A7DC732414BC69009F7229 /* SelectQustionPageThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7DC722414BC69009F7229 /* SelectQustionPageThemeView.swift */; };
 		54A7F0042417CD2F007A7E70 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7F0032417CD2F007A7E70 /* UserModel.swift */; };
@@ -48,7 +49,6 @@
 		54EE8B0E23FE337300CF342F /* MarkDownInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EE8B0D23FE337300CF342F /* MarkDownInputModel.swift */; };
 		54F45E2023F90AB5002981C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F45E1F23F90AB5002981C8 /* AppDelegate.swift */; };
 		54F45E2223F90AB5002981C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F45E2123F90AB5002981C8 /* SceneDelegate.swift */; };
-		54F45E2423F90AB5002981C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F45E2323F90AB5002981C8 /* ViewController.swift */; };
 		54F45E2723F90AB5002981C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54F45E2523F90AB5002981C8 /* Main.storyboard */; };
 		54F45E2923F90AC3002981C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54F45E2823F90AC3002981C8 /* Assets.xcassets */; };
 		54F45E2C23F90AC3002981C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54F45E2A23F90AC3002981C8 /* LaunchScreen.storyboard */; };
@@ -85,6 +85,7 @@
 		548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoQuestionCompleteLabel.swift; sourceTree = "<group>"; };
 		5492009C2415D71200F01C7D /* ButtonStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonStackView.xib; sourceTree = "<group>"; };
 		5492009E2415D75700F01C7D /* ButtonStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStackView.swift; sourceTree = "<group>"; };
+		549345EC241DF182009D9483 /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		54A7DC702414BC1E009F7229 /* SelectQustionPageThemeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectQustionPageThemeView.xib; sourceTree = "<group>"; };
 		54A7DC722414BC69009F7229 /* SelectQustionPageThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectQustionPageThemeView.swift; sourceTree = "<group>"; };
 		54A7F0032417CD2F007A7E70 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -108,7 +109,6 @@
 		54F45E1C23F90AB5002981C8 /* MapConvertQuestion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapConvertQuestion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F45E1F23F90AB5002981C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54F45E2123F90AB5002981C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		54F45E2323F90AB5002981C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		54F45E2623F90AB5002981C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		54F45E2823F90AC3002981C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54F45E2B23F90AC3002981C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -191,11 +191,11 @@
 				54F45E3423F91104002981C8 /* XibFile */,
 				54F45E1F23F90AB5002981C8 /* AppDelegate.swift */,
 				54F45E2123F90AB5002981C8 /* SceneDelegate.swift */,
-				54F45E2323F90AB5002981C8 /* ViewController.swift */,
 				54F45E2523F90AB5002981C8 /* Main.storyboard */,
 				54F45E2823F90AC3002981C8 /* Assets.xcassets */,
 				54F45E2A23F90AC3002981C8 /* LaunchScreen.storyboard */,
 				54F45E2D23F90AC3002981C8 /* Info.plist */,
+				549345EC241DF182009D9483 /* RootTabBarController.swift */,
 			);
 			path = MapConvertQuestion;
 			sourceTree = "<group>";
@@ -465,12 +465,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				54F45E5123FAA177002981C8 /* MarkDownInputViewController.swift in Sources */,
+				549345ED241DF182009D9483 /* RootTabBarController.swift in Sources */,
 				548FA704241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift in Sources */,
 				54A7F0062417CDA2007A7E70 /* QuestionLogModel.swift in Sources */,
 				54C53B402418F361000EE76E /* TutorialExplanationUIView.swift in Sources */,
 				5404BD06240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift in Sources */,
 				5433AE562414AF60009877A1 /* MyColor.swift in Sources */,
-				54F45E2423F90AB5002981C8 /* ViewController.swift in Sources */,
 				543E7FE7240E987D0073C7FF /* LearningIntervalStruct.swift in Sources */,
 				54B466AA2408BA3C00813800 /* ObjectExtension.swift in Sources */,
 				54A7DC732414BC69009F7229 /* SelectQustionPageThemeView.swift in Sources */,
