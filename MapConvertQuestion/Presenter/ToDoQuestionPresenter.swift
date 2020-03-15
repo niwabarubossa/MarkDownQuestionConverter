@@ -126,8 +126,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
     }
     
     func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
-//正解時のアクション
-//データ更新する
+//正解時のアクション //データ更新
         myModel.leadingSwipeQuestion(swipedAnswer: swipedAnswer)
         self.createQuestionLog(isCorrect:true,swipedAnswer: swipedAnswer)
          //データ更新は終了してる。クイズノルマが全て終わっているか判定
