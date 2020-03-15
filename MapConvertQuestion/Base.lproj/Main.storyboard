@@ -60,8 +60,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="9Ld-JS-PTt" kind="relationship" relationship="viewControllers" id="d8r-TT-RIe"/>
-                        <segue destination="54S-re-5Cb" kind="relationship" relationship="viewControllers" id="4jo-Kz-g7w"/>
                         <segue destination="OUB-PH-eLO" kind="relationship" relationship="viewControllers" id="uOR-Al-7pj"/>
+                        <segue destination="54S-re-5Cb" kind="relationship" relationship="viewControllers" id="4jo-Kz-g7w"/>
                         <segue destination="75o-dZ-CeN" kind="relationship" relationship="viewControllers" id="iT0-Je-TUD"/>
                     </connections>
                 </tabBarController>
