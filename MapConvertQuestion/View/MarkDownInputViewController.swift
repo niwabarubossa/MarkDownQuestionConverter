@@ -2,8 +2,9 @@ import UIKit
 
 class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     
+    @IBOutlet weak var customView: MarkDownInput!
     var presenter:MarkDownInputPresenter!
-    var customView = MarkDownInput()
+//    var customView = MarkDownInput()
     var completeLabel = UILabel()
     
     override func viewDidLoad(){
@@ -17,10 +18,10 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     }
     
     func layout() {
-        customView = MarkDownInput(frame: CGRect(x: 0, y: 0, width: view.frame.width - 30, height: view.frame.height - 30))
-        customView.center = self.view.center
+//        customView = MarkDownInput(frame: CGRect(x: 0, y: 0, width: view.frame.width - 30, height: view.frame.height - 100))
+//        customView.center = self.view.center
         customView.myDelegate = self
-        self.view.addSubview(customView)
+//        self.view.addSubview(customView)
         completeLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 30, height: 100))
         completeLabel.backgroundColor = MyColor.fourthColor
         completeLabel.center = self.view.center
