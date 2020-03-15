@@ -20,132 +20,8 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x26-tR-nIQ">
-                    <rect key="frame" x="10" y="30" width="314" height="213"/>
+                    <rect key="frame" x="0.0" y="0.0" width="334" height="243"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <mutableString key="text">本
-	NEWTYPE
-		相手の話を聞くときに重要な姿勢は？
-			自らの視点で捉えるのではなく、相手の視点から捉えることを意識する。自らの視点で捉える＝要するに〇〇でしょ　という浅井聞き方しか得られない
-	人類を前に進めたい
-		第1章　協会のない世界
-			他者との関係性が変わってくる
-			他者がいるからこそ、面白くなるのがアート
-			そもそも思考や概念は生き物のようなものであり、他者から影響を受けて日々変わるものだ。　それに境界を引くために言語であったり物質を媒介して表現している。ただ、デジタルアートであったら、その境界が必要ないから、面白くなるのでは？
-			モナリザについて
-				モナリザは、１人で鑑賞している方が当然楽しい。
-				しかしながら、デジタルアートは自分しかいないと相互作用が起きないから、他者が存在していてほしいとなる。　ゆえに他者の捉え方が変わるのではないか。
-			個人に影響を与えるだけでなく、他者との関係性から影響を受けてもらう
-			他社の捉え方の変容を目指す
-				今までは？
-					他社は不快なものである、その不快を受け入れることが成熟だ。としている
-				目指しているのは？
-					他者を美しいものと捉えることもできるよね？としている
-			SNSについて
-				変化に富んでいて面白いけれど、人類を幸福にしているかといったらそうではない。
-				コミュニケーションという乱数を、デジタルで表現しているのがSNS
-				言語ベースのコミュニケーションだと、人はネガティブな感情でつながってしまう
-			デジタルアートについて
-				意思を持っていなくても、インタラクションできる。じっとしていたらたまたま美しい花が咲いちゃった
-				現在はどうなのか？
-					ゲーミフィケーションとかで、前のめりにさせられている。
-			SNSとデジタルアート、立ち去りについて
-				デジタルアートは、自発的に立ち去る仕組みが存在するが（花が咲かなくなる）、SNSはそうならないのはなぜなんだろう？
-					SNSはどんな感じだからか？
-						シリコンバレーは脳の拡張をしてきたものだ。
-						人間関係の拡張（Facebook）、個人の発言の拡張（Twitter)
-						全て自己の意志が必要だからか
-						自己実現が目標となっているから、立ち去らない？フラストレーションが溜まっちゃう的な
-						数のコントロールに失敗している
-							神ゲーからクソゲーへ
-							具体的には、Twitterのクソリプ率が上昇したなど
-					デジタルアートは？
-						肉体が存在している
-							他者に優しくなれる。。？
-						必要なコミットメントが最小限だから？？
-		第9章
-			ヨーロッパの境界のない世界の関係性
-		第9章
-			スクリーントーンは日本の漫画的表現
-				由来は？
-					水墨画とか、日本的なものかは、手塚治虫が米国から輸入した映画的表現などと結びついたもの
-					チームラボの作品はどうなのか。水墨画チックなやつ
-						西洋的な英語表現と東洋的日本的な水墨画の表現が交わったもの
-						時間のを空間に変換しているのが面白い
-						この作品は動くことで奥行きや立体感意識できる。すなわち鑑賞者の時間的なものを空間的なものに変換している
-						ドットの空間密度ではなく、テクノロジーによら時間的変化によって、奥行きや立体感を表現
-		第9章
-			人間の時間と空間の相関関係を壊すことで初めて作品に没入させることができる
-		第10章
-			劇映画的な見せ方から、舞台芸術的な見せ方。これがチームラボの使命的な？？
-			ボーダーレスとは言葉で言うのは簡単だが、具体的なイメージを提出するのはすごく難しい
-			目に見えない時空間をどう表現するのかと言う問い
-		第11章
-			パーソナルな空間でも、美しければそれはパブリックであると思う。
-			今までのパブリックとプライベートの関係性は？
-				税金を払うことで、国にパブリックな状況を作ってもらい、プライベートを守ってもらっていた。
-				ここにある前提は何か？
-					パブリックというパイが十分な大きさ存在していること。そしてパブリックでは自分を押し殺すこと。
-					しかしこれには当然限界がある。　内集団と外集団の境界線を引きたがるのが人間だ。
-					解決策は？
-						チームラボによって、パブリックとプライベートの境界線をなくすこと。プライベートがインタラクションアートを通じて、他者にとっての価値となってしまうこと。これでしか解決はあり得ないということ
-			２１世紀には何が現れるのか？
-				国境が曖昧な国家
-				具体的には？
-					グーグルとかの多国籍企業に限らず、色々存在しうると思う。現にグーグルの予算は小国の国家予算を超えている
-					どんなものが消えるのか？
-						国防という概念
-							守るものがないから。国民が生成する富が守るもの？
-							しかしそれならば逃げればいいだけの話
-					どんなふうに導入が考えられる？
-						ある国の一部の領土とかを間借りする。社会インフラとかもお金を払って間借りする。
-			国家と経済のあり方はどう変わるのか？
-				境界線のない国として、現時点の代表例はどこか？
-					エストニア　なぜ？
-						ソフトウェアで国の精神が生き残ればいいや的なスタンス。仮想通貨であったり電子産業
-					他の具体例は？
-						不動産とかも金融資本となっていて、流動的なことからもそう言える
-				国家を自分で選べる時代が来るのではないか。部活動ぐらいの気軽さとは言わないが、、
-				宇野さんは国家をどう捉えているか？
-					国家は権力を持ちすぎている。
-					民主主義については？
-						そもそも多くの人が投票すべきことは少ない。どこに堤防築くかなんて専門家の意見以外はいらない
-						インターネットが普及した今、民主主義のリスクと正面から向き合う必要がある。
-						今までうまくいっていた要因は？
-							偶然の産物。民主主義を取り入れていた国が、人口ボーナスなどにより経済的に安定していただけの話
-			作品の密度を考える
-				密度を変えることで、関係性を変えていくとは・
-					広い空間の１つのオブジェ→少し密なオブジェ配置をすると、他者との関係性を感じる→もっと密にすると、遠くから見た時、場を象徴するオブジェとなる
-					チームラボによる新しいシェアの論理によるパブリック（他者の存在が自己の利益となる0
-		第12章
-			お茶をアートにする
-				お茶が注がれるとアートが表示されて、飲み干すと消える
-			モノとコトについて
-				この先どうなるか？
-					モノは
-						大量生産されていくから、人間に合わせることなく、批判力が落ちてくる
-					コトは？
-						SNSの自分語りに吸収されて、
-			現在世界では2種類のアプローチがある
-				1つはトップダウン式のディズニー的な世界観であり、アベンジャーズなどに代表されるように多文化主義の理想を啓蒙的に上から押し付ける
-				もう一つの見方は環境整備してそこからあなたたちは勝手にレベルアップしてくださいねと言うもともと好きな世界観、GoogleのPokémon GOでありチームラボの世界観である
-					ジョンハンけどチームラボの世界観の違い、Apple Watchの違いは何か?
-						Googleの世界観では、日常生活をいかにハックするかと言うことを考えている
-						チームラボの世界観では、日常を切断して建物の中と言う日日常をどれだけハックすること言うことをやっている
-				今日の人々は上記の2つのうちどちらのアプローチが好きか
-					2つ目のアプローチである。なぜならばSNSの登場により全員が情報発信ができるようになったから、1つ目のアプローチ私の物語であれば2つ目のアプローチは自己の物語を語るものであり、人間をそちらの方が好きになってきているから。
-			食べることは日常と非日常を行ったり来たりする。（具体的には豪華なものは非日常）
-			お茶とは？
-				日常の中の最小単位の非日常
-		第13章
-			多文化主義、カリフォルニアン・イデオロギー
-				カリフォルニアん・イデオロギーとは？
-					自由な経済、情報的な経済社会万歳見たいな？
-					工業社会の２０世紀的経済と、情報社会の２１世紀的経済をまぜようぜってスタンス
-			世界は本来境界など存在しなかった。しかしながら現在では境界があることが当たり前のように感じてしまう。　境界がない連続したアート作品の展示によって、協会のない世界で、世界について考えて欲しかった。
-			フランスのテロ翌日はどんな雰囲気だったか？
-				テロが日常に溶け込んでいた。多文化主義なかなか侮れないなという印象。
-				武装警官もいたが、それすらも日常に溶け込んでいる。町の人は変わらず楽しそう
-</mutableString>
                     <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -153,7 +29,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRR-JW-W4x">
                     <rect key="frame" x="20" y="273" width="294" height="30"/>
                     <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <state key="normal" title="Submit">
+                    <state key="normal" title="クイズに変換">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -166,11 +42,11 @@
                 <constraint firstItem="gRR-JW-W4x" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="24F-fH-f5C"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="gRR-JW-W4x" secondAttribute="bottom" constant="30" id="8Gm-Ub-Uqw"/>
                 <constraint firstItem="gRR-JW-W4x" firstAttribute="top" secondItem="x26-tR-nIQ" secondAttribute="bottom" constant="30" id="L83-3q-VXq"/>
-                <constraint firstItem="x26-tR-nIQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="Pwm-99-IO6"/>
+                <constraint firstItem="x26-tR-nIQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Pwm-99-IO6"/>
                 <constraint firstItem="gRR-JW-W4x" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="RNY-GY-WO2"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="x26-tR-nIQ" secondAttribute="trailing" constant="10" id="SNP-bM-Yht"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="x26-tR-nIQ" secondAttribute="trailing" id="SNP-bM-Yht"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gRR-JW-W4x" secondAttribute="trailing" constant="20" id="det-5W-HFa"/>
-                <constraint firstItem="x26-tR-nIQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="wjS-Dv-Tot"/>
+                <constraint firstItem="x26-tR-nIQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="wjS-Dv-Tot"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
