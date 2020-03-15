@@ -11,13 +11,17 @@ import RealmSwift
 
 struct MindNode{
     var myNodeId:Int
+    var myNodePrimaryKey:String
     var content:String
     var parentNodeId:Int
     var childNodeIdArray:[Int]
-    init(myNodeId:Int,content:String,parentNodeId:Int,childNodeIdArray:[Int]){
+    var parentNodePrimaryKey:String
+    init(myNodeId:Int,myNodePrimaryKey:String,content:String,parentNodeId:Int,childNodeIdArray:[Int],parentNodePrimaryKey:String){
         self.myNodeId = myNodeId
+        self.myNodePrimaryKey = myNodePrimaryKey
         self.content = content
         self.parentNodeId = parentNodeId
         self.childNodeIdArray = childNodeIdArray
+        self.parentNodePrimaryKey = parentNodePrimaryKey
     }
 }

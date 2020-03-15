@@ -24,7 +24,8 @@ class MarkDownInputModel {
         //realm処理
         let mapId = NSUUID().uuidString
         convertInputToLines(input:input)
-        convertStringLinesToMindNode(myNodeId: 0, myIndent: 0, parentNodeId: 0)
+        let parentNodePrimaryKey:String = NSUUID().uuidString
+        convertStringLinesToMindNode(myNodeId: 0, myIndent: 0, parentNodeId: 0,parentNodePrimaryKey: parentNodePrimaryKey)
         let realmDataArray = convertMindNodeToRealmDictionary(mindNodeArray: mindNodeArray,mapId: mapId)
         saveToRealm(realmDataArray: realmDataArray,mapId: mapId)
         self.delegate?.didSubmitInput()
@@ -41,17 +42,18 @@ class MarkDownInputModel {
         self.inputLineArray = input.components(separatedBy: "\n")
     }
         
-    private func convertStringLinesToMindNode(myNodeId:Int,myIndent:Int,parentNodeId:Int){
+    private func convertStringLinesToMindNode(myNodeId:Int,myIndent:Int,parentNodeId:Int,parentNodePrimaryKey:String){
         var childNodeIdArray = [Int]()
+        let myNodePrimaryKey = NSUUID().uuidString
         for i in (myNodeId + 1)..<inputLineArray.count{
             if ( !doneNum.contains(i) ){
                 if( myIndent >= getIndent(str: inputLineArray[i]) ){
                     doneNum.append(myNodeId)
-                    let myNode = MindNode(myNodeId: myNodeId, content: inputLineArray[myNodeId], parentNodeId: parentNodeId, childNodeIdArray: childNodeIdArray)
+                    let myNode = MindNode(myNodeId: myNodeId, myNodePrimaryKey: myNodePrimaryKey, content: inputLineArray[myNodeId], parentNodeId: parentNodeId, childNodeIdArray: childNodeIdArray,parentNodePrimaryKey:parentNodePrimaryKey)
                     mindNodeArray.append(myNode)
                     return
                 }
-                convertStringLinesToMindNode(myNodeId: i, myIndent: getIndent(str: inputLineArray[i]), parentNodeId: myNodeId)
+                convertStringLinesToMindNode(myNodeId: i, myIndent: getIndent(str: inputLineArray[i]), parentNodeId: myNodeId,parentNodePrimaryKey: myNodePrimaryKey)
                 childNodeIdArray.append(i)
             }
         }
@@ -75,8 +77,10 @@ class MarkDownInputModel {
                 "mapId": mapId,
                 "content": mindNode.content,
                 "myNodeId": mindNode.myNodeId,
+                "nodePrimaryKey": mindNode.myNodePrimaryKey,
                 "parentNodeId": mindNode.parentNodeId,
-                "childNodeIdArray":getChildNodeIdArray(mindNode: mindNode)
+                "childNodeIdArray":getChildNodeIdArray(mindNode: mindNode),
+                "parentNodePrimaryKey": mindNode.parentNodePrimaryKey
             ]
             dictionaryArray.append(dictionary)
         }
