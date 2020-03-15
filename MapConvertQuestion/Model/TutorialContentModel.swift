@@ -22,9 +22,9 @@ struct TutorialContentModel{
     
     static func createModels() -> [TutorialContentModel]{
         return [
-            TutorialContentModel(title: "first", content: "first content", imageIcon: R.image.student()!),
-            TutorialContentModel(title: "second", content: "first content", imageIcon: R.image.student()!),
-            TutorialContentModel(title: "third", content: "first content", imageIcon: R.image.student()!)
+            TutorialContentModel(title: "①マインドマップをクイズに変換", content: "マインドマップのアプリから、根ノードをタップしコピーして貼り付けて変換ボタンをタップ！\n親ノードがクイズに、子ノードが答え、という暗記カードに変換します。　\n子ノードを持つノードは全てクイズ扱いとなりますが、後からクイズでないものは消去することができます。", imageIcon: R.image.pencil()!),
+            TutorialContentModel(title: "②クイズを解いて定着させる", content: "Answerボタンをタップすると正解が表示されます。\n左から右にスワイプで「正解」を表します。全て「緑色」になるまで１問のクイズは出題されます。 \n毎日最適な復習タイミングで出題いたします。\nまた矢印マークのある答えをタップすることで子ノードへ進むことができます。", imageIcon: R.image.student()!),
+            TutorialContentModel(title: "③一覧", content: "登録して変換したマップは全てクイズとして確認できます。\nこちらではスワイプで正解不正解は行えません。\nマップの削除も行えます。", imageIcon: R.image.books()!)
         ]
     }
 }
