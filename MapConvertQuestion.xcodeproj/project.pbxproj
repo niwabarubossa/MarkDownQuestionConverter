@@ -23,6 +23,7 @@
 		543CC704241DC45E0008BDE6 /* ToDoQuestionCompleteLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 543CC703241DC45E0008BDE6 /* ToDoQuestionCompleteLabel.xib */; };
 		543E7FE7240E987D0073C7FF /* LearningIntervalStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543E7FE6240E987D0073C7FF /* LearningIntervalStruct.swift */; };
 		54769734240E08B1004E8C63 /* IntervalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54769733240E08B1004E8C63 /* IntervalEnum.swift */; };
+		548FA704241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */; };
 		5492009D2415D71200F01C7D /* ButtonStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5492009C2415D71200F01C7D /* ButtonStackView.xib */; };
 		5492009F2415D75700F01C7D /* ButtonStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5492009E2415D75700F01C7D /* ButtonStackView.swift */; };
 		54A7DC712414BC1E009F7229 /* SelectQustionPageThemeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A7DC702414BC1E009F7229 /* SelectQustionPageThemeView.xib */; };
@@ -81,6 +82,7 @@
 		543CC703241DC45E0008BDE6 /* ToDoQuestionCompleteLabel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoQuestionCompleteLabel.xib; sourceTree = "<group>"; };
 		543E7FE6240E987D0073C7FF /* LearningIntervalStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningIntervalStruct.swift; sourceTree = "<group>"; };
 		54769733240E08B1004E8C63 /* IntervalEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IntervalEnum.swift; path = MapConvertQuestion/Presenter/IntervalEnum.swift; sourceTree = SOURCE_ROOT; };
+		548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoQuestionCompleteLabel.swift; sourceTree = "<group>"; };
 		5492009C2415D71200F01C7D /* ButtonStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonStackView.xib; sourceTree = "<group>"; };
 		5492009E2415D75700F01C7D /* ButtonStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStackView.swift; sourceTree = "<group>"; };
 		54A7DC702414BC1E009F7229 /* SelectQustionPageThemeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectQustionPageThemeView.xib; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				5492009E2415D75700F01C7D /* ButtonStackView.swift */,
 				54C53B37241883D4000EE76E /* UserDataDisplay.swift */,
 				543CC701241DBEE70008BDE6 /* InputPageLabel.swift */,
+				548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54F45E5123FAA177002981C8 /* MarkDownInputViewController.swift in Sources */,
+				548FA704241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift in Sources */,
 				54A7F0062417CDA2007A7E70 /* QuestionLogModel.swift in Sources */,
 				54C53B402418F361000EE76E /* TutorialExplanationUIView.swift in Sources */,
 				5404BD06240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift in Sources */,
