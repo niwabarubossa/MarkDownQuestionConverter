@@ -241,10 +241,12 @@ extension ToDoQuestionPageViewController: CLLocationManagerDelegate {
     /// 位置情報が更新された際、位置情報を格納する
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.first
-        let latitude = location?.coordinate.latitude
-        let longitude = location?.coordinate.longitude
-        self.latitudeNow = String(latitude!)
-        self.longitudeNow = String(longitude!)
+        if let latitude = location?.coordinate.latitude {
+            self.latitudeNow = String(latitude)
+        }
+        if let longitude = location?.coordinate.longitude {
+            self.longitudeNow = String(longitude)
+        }
     }
 }
 
