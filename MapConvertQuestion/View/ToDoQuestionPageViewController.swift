@@ -34,8 +34,9 @@ class ToDoQuestionPageViewController: UIViewController{
         
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         addBannerViewToView(bannerView)
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-//        bannerView.adUnitID = "ca-app-pub-9417520592768746/8305374316"
+        //テストの方　2934735716
+//        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = "ca-app-pub-9417520592768746/8305374316"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
     }
@@ -51,7 +52,7 @@ class ToDoQuestionPageViewController: UIViewController{
         self.view.addSubview(customView)
         let myWidth = view.frame.width
         let myHeight = view.frame.height
-        buttonStackView = ButtonStackView(frame: CGRect(x: 0, y: myHeight - 180 , width: myWidth, height: 80))
+        buttonStackView = ButtonStackView(frame: CGRect(x: 0, y: myHeight - 220 , width: myWidth, height: 80))
         buttonStackView.delegate = self
         self.view.addSubview(buttonStackView)
         userDataDisplay = UserDataDisplay(frame: CGRect(x: 0, y: 100, width: myWidth, height: 100))

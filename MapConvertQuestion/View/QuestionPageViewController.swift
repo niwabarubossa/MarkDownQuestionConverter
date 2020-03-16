@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class QuestionPageViewController: UIViewController {
+    
+    var bannerView: GADBannerView!
     
     var presenter:QuestionPagePresenter!
     @IBOutlet weak var questionAnswerTableView: UITableView!
@@ -23,6 +26,14 @@ class QuestionPageViewController: UIViewController {
         tableViewSetup()
         layout()
         getQuestion(mapId:self.questionMapId)
+        
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+                addBannerViewToView(bannerView)
+        //テストの方　2934735716
+//                bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+                bannerView.adUnitID = "ca-app-pub-9417520592768746/8305374316"
+                bannerView.rootViewController = self
+                bannerView.load(GADRequest())
     }
     
     private func initializePresenter() {
@@ -122,4 +133,27 @@ extension QuestionPageViewController:ButtonStackViewDelegate{
     func nextQuestionButtonTapped() {
         presenter.nextButtonTapped()
     }   
+}
+
+extension QuestionPageViewController{
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+      bannerView.translatesAutoresizingMaskIntoConstraints = false
+      view.addSubview(bannerView)
+      view.addConstraints(
+        [NSLayoutConstraint(item: bannerView,
+                            attribute: .bottom,
+                            relatedBy: .equal,
+                            toItem: bottomLayoutGuide,
+                            attribute: .top,
+                            multiplier: 1,
+                            constant: 0),
+         NSLayoutConstraint(item: bannerView,
+                            attribute: .centerX,
+                            relatedBy: .equal,
+                            toItem: view,
+                            attribute: .centerX,
+                            multiplier: 1,
+                            constant: 0)
+        ])
+     }
 }
