@@ -137,6 +137,7 @@ extension QuestionPageViewController:ButtonStackViewDelegate{
 
 extension QuestionPageViewController{
     func addBannerViewToView(_ bannerView: GADBannerView) {
+        
       bannerView.translatesAutoresizingMaskIntoConstraints = false
       view.addSubview(bannerView)
       view.addConstraints(
