@@ -62,7 +62,6 @@ class QuestionMapSelectPageTableViewController: UIViewController{
             print("\(self.dataSource[didSelectRowAt]["mapId"] ?? "error")")
         }
     }
-
 }
 
 
