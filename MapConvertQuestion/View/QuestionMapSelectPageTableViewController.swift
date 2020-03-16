@@ -21,7 +21,6 @@ class QuestionMapSelectPageTableViewController: UIViewController{
         self.tableView.dataSource = self
         self.tableView.register(SelectQuestionMapPageTableViewCell.createXib(), forCellReuseIdentifier: SelectQuestionMapPageTableViewCell.className)
         self.dataSource = getMapTitleData()
-//        self.tableView.contentInset = UIEdgeInsets(top: 20,left: 20,bottom: 20,right: 20)
         self.tableView.reloadData()
     }
     
@@ -35,26 +34,23 @@ class QuestionMapSelectPageTableViewController: UIViewController{
         let realm = try! Realm()
         let mapIdAllData = realm.objects(MapGroup.self)
         var mapIdArray = [String]()
+        var mapAndTitleData = [Dictionary<String,String>]()
         for item in mapIdAllData {
             mapIdArray.append(item.mapId)
         }
-        var titleDataArray = [String]()
         for mapId in mapIdArray {
-            let mapFirstNodeContentResult = realm.objects(RealmMindNodeModel.self).filter("myNodeId == 0").filter("mapId == %@",mapId)
-            if mapFirstNodeContentResult.count > 0 {
-                titleDataArray.append(mapFirstNodeContentResult[0].content)
+            let firstNodeResult = realm.objects(RealmMindNodeModel.self).filter("myNodeId == 0").filter("mapId == %@",mapId).first
+            if let firstNode = firstNodeResult {
+                print("firstNode")
+                print("\(firstNode)")
+                let data = [
+                    "mapId": mapId,
+                    "mapFirstNodeContent": firstNode.content
+                ]
+                mapAndTitleData.append(data)
             }else{
                 print("search result not exist")
             }
-        }
-        var mapAndTitleData = [Dictionary<String,String>]()
-
-        for i in 0..<titleDataArray.count {
-            let data = [
-                "mapId": mapIdArray[i],
-                "mapFirstNodeContent": titleDataArray[i]
-            ]
-            mapAndTitleData.append(data)
         }
         return mapAndTitleData
     }
