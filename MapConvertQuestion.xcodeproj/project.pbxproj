@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1EC269601B1577FE15F7310F /* Pods_MapConvertQuestion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849D1477E77B3F5C13DCCE54 /* Pods_MapConvertQuestion.framework */; };
 		5404BD03240A62F100B3C6EC /* QuestionMapSelectPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5404BD02240A62F100B3C6EC /* QuestionMapSelectPageTableViewController.swift */; };
 		5404BD06240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5404BD04240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift */; };
 		5404BD07240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5404BD05240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.xib */; };
@@ -65,9 +64,12 @@
 		54F4854923FF781900D7962C /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F4854823FF781900D7962C /* R.generated.swift */; };
 		54FF62C42400D68F0009B721 /* FirestoreProtocolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FF62C32400D68F0009B721 /* FirestoreProtocolExtension.swift */; };
 		54FF62C62400E1640009B721 /* MindNodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FF62C52400E1640009B721 /* MindNodeModel.swift */; };
+		FDDE9F3D0952D1CA74A46B95 /* Pods_MapConvertQuestion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5910B35456228ADC8D62618F /* Pods_MapConvertQuestion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A7C1B46CC144708E80B5F4D /* Pods-MapConvertQuestion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapConvertQuestion.debug.xcconfig"; path = "Target Support Files/Pods-MapConvertQuestion/Pods-MapConvertQuestion.debug.xcconfig"; sourceTree = "<group>"; };
+		5349E9D6180AEA6527B6C0AF /* Pods-MapConvertQuestion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapConvertQuestion.release.xcconfig"; path = "Target Support Files/Pods-MapConvertQuestion/Pods-MapConvertQuestion.release.xcconfig"; sourceTree = "<group>"; };
 		5404BD02240A62F100B3C6EC /* QuestionMapSelectPageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionMapSelectPageTableViewController.swift; sourceTree = "<group>"; };
 		5404BD04240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectQuestionMapPageTableViewCell.swift; sourceTree = "<group>"; };
 		5404BD05240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectQuestionMapPageTableViewCell.xib; sourceTree = "<group>"; };
@@ -127,9 +129,7 @@
 		54F4854823FF781900D7962C /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		54FF62C32400D68F0009B721 /* FirestoreProtocolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirestoreProtocolExtension.swift; path = MapConvertQuestion/FirestoreProtocolExtension.swift; sourceTree = SOURCE_ROOT; };
 		54FF62C52400E1640009B721 /* MindNodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindNodeModel.swift; sourceTree = "<group>"; };
-		681C20796729C91AF6E5D505 /* Pods-MapConvertQuestion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapConvertQuestion.debug.xcconfig"; path = "Target Support Files/Pods-MapConvertQuestion/Pods-MapConvertQuestion.debug.xcconfig"; sourceTree = "<group>"; };
-		849D1477E77B3F5C13DCCE54 /* Pods_MapConvertQuestion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapConvertQuestion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA1819D63622595338B01A75 /* Pods-MapConvertQuestion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapConvertQuestion.release.xcconfig"; path = "Target Support Files/Pods-MapConvertQuestion/Pods-MapConvertQuestion.release.xcconfig"; sourceTree = "<group>"; };
+		5910B35456228ADC8D62618F /* Pods_MapConvertQuestion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapConvertQuestion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EC269601B1577FE15F7310F /* Pods_MapConvertQuestion.framework in Frameworks */,
+				FDDE9F3D0952D1CA74A46B95 /* Pods_MapConvertQuestion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,8 +147,8 @@
 		2825A71CC2EB6045A57B50C6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				681C20796729C91AF6E5D505 /* Pods-MapConvertQuestion.debug.xcconfig */,
-				FA1819D63622595338B01A75 /* Pods-MapConvertQuestion.release.xcconfig */,
+				4A7C1B46CC144708E80B5F4D /* Pods-MapConvertQuestion.debug.xcconfig */,
+				5349E9D6180AEA6527B6C0AF /* Pods-MapConvertQuestion.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -167,7 +167,7 @@
 				54F45E1E23F90AB5002981C8 /* MapConvertQuestion */,
 				54F45E1D23F90AB5002981C8 /* Products */,
 				2825A71CC2EB6045A57B50C6 /* Pods */,
-				5AA1A28FFD51396E46A767E6 /* Frameworks */,
+				88C1B0F24F55FFD43D421B5D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -308,10 +308,10 @@
 			path = ExtensionProtocol;
 			sourceTree = "<group>";
 		};
-		5AA1A28FFD51396E46A767E6 /* Frameworks */ = {
+		88C1B0F24F55FFD43D421B5D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				849D1477E77B3F5C13DCCE54 /* Pods_MapConvertQuestion.framework */,
+				5910B35456228ADC8D62618F /* Pods_MapConvertQuestion.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -323,12 +323,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 54F45E3023F90AC3002981C8 /* Build configuration list for PBXNativeTarget "MapConvertQuestion" */;
 			buildPhases = (
-				74A2FAE9451E1D6DB649C34B /* [CP] Check Pods Manifest.lock */,
+				AB7557792D3550558B3D4ABF /* [CP] Check Pods Manifest.lock */,
 				54F4854723FF769A00D7962C /* Run Script */,
 				54F45E1823F90AB5002981C8 /* Sources */,
 				54F45E1923F90AB5002981C8 /* Frameworks */,
 				54F45E1A23F90AB5002981C8 /* Resources */,
-				9A7AD2FDD15132DDD670973B /* [CP] Embed Pods Frameworks */,
+				4631D4106293FE5E5376A846 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -401,6 +401,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4631D4106293FE5E5376A846 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MapConvertQuestion/Pods-MapConvertQuestion-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MapConvertQuestion/Pods-MapConvertQuestion-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MapConvertQuestion/Pods-MapConvertQuestion-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		54F4854723FF769A00D7962C /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -415,13 +432,13 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				"$SRCROOT/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
-		74A2FAE9451E1D6DB649C34B /* [CP] Check Pods Manifest.lock */ = {
+		AB7557792D3550558B3D4ABF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -441,23 +458,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9A7AD2FDD15132DDD670973B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MapConvertQuestion/Pods-MapConvertQuestion-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MapConvertQuestion/Pods-MapConvertQuestion-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MapConvertQuestion/Pods-MapConvertQuestion-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -647,7 +647,7 @@
 		};
 		54F45E3123F90AC3002981C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 681C20796729C91AF6E5D505 /* Pods-MapConvertQuestion.debug.xcconfig */;
+			baseConfigurationReference = 4A7C1B46CC144708E80B5F4D /* Pods-MapConvertQuestion.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -666,7 +666,7 @@
 		};
 		54F45E3223F90AC3002981C8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FA1819D63622595338B01A75 /* Pods-MapConvertQuestion.release.xcconfig */;
+			baseConfigurationReference = 5349E9D6180AEA6527B6C0AF /* Pods-MapConvertQuestion.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
