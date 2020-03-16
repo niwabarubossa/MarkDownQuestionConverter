@@ -35,10 +35,21 @@ class MarkDownInput: UIView {
         self.submitButton.layer.cornerRadius = 10
         let font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(200))
         self.submitButton.titleLabel?.font = font
+        
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        toolBar.sizeToFit()
+        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
+        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(commitButtonTapped))
+        toolBar.items = [spacer, commitButton]
+        self.inputTextView.inputAccessoryView = toolBar
     }
     
     @IBAction func submitAction(_ sender: Any) {
         self.myDelegate?.submitAction(text: inputTextView.text!)
+    }
+    
+    @objc func commitButtonTapped() {
+        self.inputTextView.endEditing(true)
     }
     
 }

@@ -47,4 +47,5 @@ class RootTabBarController: UITabBarController {
             print("\(error)")
             print("エラーだよ")
         }
-    }}
+    }
+}
