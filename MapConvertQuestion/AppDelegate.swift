@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }})
         Realm.Configuration.defaultConfiguration = config
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
+        FirebaseApp.configure()
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         return true
     }
     
