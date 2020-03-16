@@ -147,6 +147,7 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
         }else{
             print("i have no answer")
         }
+        self.answerTableView.deselectRow(at: indexPath, animated: true)
     }
         
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
