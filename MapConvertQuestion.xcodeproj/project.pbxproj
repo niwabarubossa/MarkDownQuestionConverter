@@ -27,6 +27,7 @@
 		5492009F2415D75700F01C7D /* ButtonStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5492009E2415D75700F01C7D /* ButtonStackView.swift */; };
 		549345ED241DF182009D9483 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549345EC241DF182009D9483 /* RootTabBarController.swift */; };
 		54A707E4241E607C00DCEEC5 /* SettingRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A707E3241E607C00DCEEC5 /* SettingRootViewController.swift */; };
+		54A707E6241F477E00DCEEC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54A707E5241F477D00DCEEC5 /* GoogleService-Info.plist */; };
 		54A7DC712414BC1E009F7229 /* SelectQustionPageThemeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A7DC702414BC1E009F7229 /* SelectQustionPageThemeView.xib */; };
 		54A7DC732414BC69009F7229 /* SelectQustionPageThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7DC722414BC69009F7229 /* SelectQustionPageThemeView.swift */; };
 		54A7F0042417CD2F007A7E70 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7F0032417CD2F007A7E70 /* UserModel.swift */; };
@@ -90,6 +91,7 @@
 		5492009E2415D75700F01C7D /* ButtonStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStackView.swift; sourceTree = "<group>"; };
 		549345EC241DF182009D9483 /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		54A707E3241E607C00DCEEC5 /* SettingRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRootViewController.swift; sourceTree = "<group>"; };
+		54A707E5241F477D00DCEEC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54A7DC702414BC1E009F7229 /* SelectQustionPageThemeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectQustionPageThemeView.xib; sourceTree = "<group>"; };
 		54A7DC722414BC69009F7229 /* SelectQustionPageThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectQustionPageThemeView.swift; sourceTree = "<group>"; };
 		54A7F0032417CD2F007A7E70 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		54F45E1323F90AB5002981C8 = {
 			isa = PBXGroup;
 			children = (
+				54A707E5241F477D00DCEEC5 /* GoogleService-Info.plist */,
 				54F4854823FF781900D7962C /* R.generated.swift */,
 				54F45E1E23F90AB5002981C8 /* MapConvertQuestion */,
 				54F45E1D23F90AB5002981C8 /* Products */,
@@ -388,6 +391,7 @@
 				54B466A82408B90700813800 /* QuestionAnswerTableViewCell.xib in Resources */,
 				54F45E2723F90AB5002981C8 /* Main.storyboard in Resources */,
 				54F45E4823F9437F002981C8 /* MarkDownInput.storyboard in Resources */,
+				54A707E6241F477E00DCEEC5 /* GoogleService-Info.plist in Resources */,
 				542F3FAA240FAFEC00D92561 /* ToDoQuestionPage.storyboard in Resources */,
 				543CC700241DBE950008BDE6 /* InputPageLabel.xib in Resources */,
 				5492009D2415D71200F01C7D /* ButtonStackView.xib in Resources */,

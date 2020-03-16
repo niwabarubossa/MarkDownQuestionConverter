@@ -7,8 +7,11 @@
 //
 import UIKit
 import CoreLocation
+import GoogleMobileAds
 
 class ToDoQuestionPageViewController: UIViewController{
+    
+    var bannerView: GADBannerView!
     
     var presenter:ToDoQuestionPresenter!
     var customView = ToDoQuestionDisplay()
@@ -28,6 +31,14 @@ class ToDoQuestionPageViewController: UIViewController{
         layout()
         initializePage()
         self.setupLocationManager()
+        
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        addBannerViewToView(bannerView)
+        //テストの方　2934735716
+//        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = "ca-app-pub-9417520592768746/8305374316"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
     }
         
     private func layout(){
@@ -41,7 +52,7 @@ class ToDoQuestionPageViewController: UIViewController{
         self.view.addSubview(customView)
         let myWidth = view.frame.width
         let myHeight = view.frame.height
-        buttonStackView = ButtonStackView(frame: CGRect(x: 0, y: myHeight - 180 , width: myWidth, height: 80))
+        buttonStackView = ButtonStackView(frame: CGRect(x: 0, y: myHeight - 220 , width: myWidth, height: 80))
         buttonStackView.delegate = self
         self.view.addSubview(buttonStackView)
         userDataDisplay = UserDataDisplay(frame: CGRect(x: 0, y: 100, width: myWidth, height: 100))
@@ -245,9 +256,31 @@ extension ToDoQuestionPageViewController:UserDataDisplayDelegate{
     }
 }
 
+extension ToDoQuestionPageViewController{
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+      bannerView.translatesAutoresizingMaskIntoConstraints = false
+      view.addSubview(bannerView)
+      view.addConstraints(
+        [NSLayoutConstraint(item: bannerView,
+                            attribute: .bottom,
+                            relatedBy: .equal,
+                            toItem: bottomLayoutGuide,
+                            attribute: .top,
+                            multiplier: 1,
+                            constant: 0),
+         NSLayoutConstraint(item: bannerView,
+                            attribute: .centerX,
+                            relatedBy: .equal,
+                            toItem: view,
+                            attribute: .centerX,
+                            multiplier: 1,
+                            constant: 0)
+        ])
+     }
+}
+
 protocol ToDoQuestionDisplayDelegate {
     func answerButtonTapped() -> Void
     func nextQuestionButtonTapped() -> Void
 }
-
 
