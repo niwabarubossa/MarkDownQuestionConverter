@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>779982962846-276uun85hnu6h3qmi3up6tcj9jdu5i81.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.779982962846-276uun85hnu6h3qmi3up6tcj9jdu5i81</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCgrWVCEJ42swBY-32vW-KfhLLhmvjglwo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>779982962846</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>jp.techacademy.ryogo.niwa.MapConvertQuestion</string>
+	<key>PROJECT_ID</key>
+	<string>maptoquestionconverter</string>
+	<key>STORAGE_BUCKET</key>
+	<string>maptoquestionconverter.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:779982962846:ios:a4c8902951ea65c338fb8f</string>
+	<key>DATABASE_URL</key>
+	<string>https://maptoquestionconverter.firebaseio.com</string>
+</dict>
+</plist>
