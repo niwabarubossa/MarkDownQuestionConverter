@@ -16,13 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="W2k-CZ-7en">
-                                <rect key="frame" x="20" y="272" width="374" height="302"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="W2k-CZ-7en">
+                                <rect key="frame" x="0.0" y="274" width="414" height="299"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Q9v-s6-Dc4" firstAttribute="bottom" secondItem="W2k-CZ-7en" secondAttribute="bottom" constant="240" id="7HG-yb-Jcv"/>
+                            <constraint firstItem="Q9v-s6-Dc4" firstAttribute="trailing" secondItem="W2k-CZ-7en" secondAttribute="trailing" id="9IM-oY-YGc"/>
+                            <constraint firstItem="W2k-CZ-7en" firstAttribute="leading" secondItem="Q9v-s6-Dc4" secondAttribute="leading" id="lY8-wf-x6f"/>
+                            <constraint firstItem="W2k-CZ-7en" firstAttribute="top" secondItem="Q9v-s6-Dc4" secondAttribute="top" constant="230" id="uZb-xW-nfE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Q9v-s6-Dc4"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="今日の問題" image="studentTabBar" id="mnj-Ny-LwA"/>
