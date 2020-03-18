@@ -46,7 +46,7 @@ class QuestionModel {
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
         let todayEnd = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
 //答えのみ取得。答えに次の復習時間を記録しているので。　答えのparentNodeをクイズデータとして取得
-        let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(todayEnd)}").filter("isAnswer == %@",true)
+        let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(todayEnd)}").filter("isAnswer == %@",true).sorted(byKeyPath: "ifSuccessInterval", ascending: false).sorted(byKeyPath: "nextDate", ascending: true)
         print("\(results.count) 件あります。 これはanswerNode。これを元にquestion 取得します")
 //FIX 大元の親は parent0 child0 だから、自分を取得しちゃうので排除しよう
         var questionArray = [RealmMindNodeModel]()

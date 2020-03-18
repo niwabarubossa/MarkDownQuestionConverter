@@ -41,7 +41,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
     func didGetMapQuestion(question: [RealmMindNodeModel]) {
         //初期化処理
         self.quizDataSource = question
-        question.count > 0 ? self.displayingQustion = self.quizDataSource.shuffled()[0] : print("no question")
+        question.count > 0 ? self.displayingQustion = self.quizDataSource[0] : print("no question")
         let firstQuestion = self.displayingQustion
         self.renderingView()
         self.reloadQAPair(nextQuestion: firstQuestion)
@@ -87,20 +87,31 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
             self.view?.buttonStackView.nextQuestionButton.isEnabled = false
             self.view?.buttonStackView.nextQuestionButton.alpha = 0.5
         }
-        let nextQuestion:RealmMindNodeModel = self.shuffleQuestion()
+        let nextQuestion:RealmMindNodeModel = self.getNextQuestion()
         self.reloadQAPair(nextQuestion: nextQuestion)
         self.changeToQuestionMode()
         self.answerButtonEnabled()
     }
     
-    private func shuffleQuestion() -> RealmMindNodeModel{
+    private func getNextQuestion() -> RealmMindNodeModel{
         //同じ問題が連続で出題されるのを避ける
-        var nextQuestion = self.quizDataSource.shuffled()[0]
         if self.quizDataSource.count == 1 { return self.quizDataSource[0] }
-        while (nextQuestion.nodePrimaryKey == self.displayingQustion.nodePrimaryKey )  {
-            nextQuestion = self.quizDataSource.shuffled()[0]
+        
+        let randomIndex = Int.random(in: 0..<quizDataSource.count)
+        var nextQuestion = self.quizDataSource[0]
+        if nextQuestion.nodePrimaryKey == self.displayingQustion.nodePrimaryKey {
+            self.swapQuizDataSource(node1: self.displayingQustion, node2: self.quizDataSource[randomIndex])
+            nextQuestion = self.quizDataSource[0]
         }
         return nextQuestion
+    }
+    
+    private func swapQuizDataSource(node1:RealmMindNodeModel,node2:RealmMindNodeModel){
+        let displayingQuestionIndex = quizDataSource.firstIndex(of: node1) ?? 0
+        let randomQuestionIndex = quizDataSource.firstIndex(of: node2) ?? 0
+        let temp = self.quizDataSource[randomQuestionIndex]
+        self.quizDataSource[randomQuestionIndex] = self.quizDataSource[displayingQuestionIndex]
+        self.quizDataSource[displayingQuestionIndex] = temp
     }
     
     
