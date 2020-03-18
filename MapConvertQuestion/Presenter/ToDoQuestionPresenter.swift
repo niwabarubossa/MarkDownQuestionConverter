@@ -114,7 +114,6 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         self.quizDataSource[displayingQuestionIndex] = temp
     }
     
-    
     func abandonQuestionButtonTapped(){
         self.setAnswerNodeArray(question: self.displayingQustion)
         for answerNode in self.answerNodeArray {
