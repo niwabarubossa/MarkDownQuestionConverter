@@ -94,13 +94,13 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
     }
     
     private func getNextQuestion() -> RealmMindNodeModel{
-        //同じ問題が連続で出題されるのを避ける
         if self.quizDataSource.count == 1 { return self.quizDataSource[0] }
-        
-        let randomIndex = Int.random(in: 0..<quizDataSource.count)
+        //同じ問題が連続で出題されるのを避ける
         var nextQuestion = self.quizDataSource[0]
         if nextQuestion.nodePrimaryKey == self.displayingQustion.nodePrimaryKey {
-            self.swapQuizDataSource(node1: self.displayingQustion, node2: self.quizDataSource[randomIndex])
+            if let randomQuiz = self.quizDataSource.randomElement() {
+                self.swapQuizDataSource(node1: self.displayingQustion, node2: randomQuiz)
+            }
             nextQuestion = self.quizDataSource[0]
         }
         return nextQuestion
