@@ -224,6 +224,13 @@ class QuestionModel {
     func calculateNextDateWhenWrong() -> LearningIntervalStruct{
         return LearningIntervalStruct(ifSuccessNextInterval: 1, nextLearningDate: Calendar.current.date(byAdding: .day, value: 0, to: Date())!.millisecondsSince1970)
     }
+    
+    func getMapData(mapId:String){
+        let realm = try! Realm()
+        let searchResult:RealmMindNodeModel? = realm.objects(MapGroup.self).filter("nodePrimaryKey == %@", node.nodePrimaryKey).first
+        return searchResult
+
+    }
 
 }
 

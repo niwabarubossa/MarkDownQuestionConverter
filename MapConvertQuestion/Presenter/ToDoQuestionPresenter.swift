@@ -44,11 +44,18 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         question.count > 0 ? self.displayingQustion = self.quizDataSource[0] : print("no question")
         let firstQuestion = self.displayingQustion
         self.renderingView()
+        //get map title
         self.reloadQAPair(nextQuestion: firstQuestion)
         self.view?.userDataDisplay.bunboLabel.text = String(self.quizDataSource.count)
         self.view?.userDataDisplay.bunsiLabel.text = String(self.quizDataSource.count)
         self.userDisplayReload()
         self.userModelUpdateDone()
+    }
+    
+    private func getMapTitle(question:RealmMindNodeModel) -> String {
+        let mapId = question.mapId
+        myModel.
+        return ""
     }
     
     func syncUserData(user:User){
@@ -232,6 +239,7 @@ extension ToDoQuestionPresenter {
     func reloadQAPair(nextQuestion:RealmMindNodeModel){
         self.displayingQustion = nextQuestion
         self.renderingView()
+        //get map title
         self.quizDataSource.count > 0 ? self.changeToQuestionMode() : self.changeToCompleteMode()
         self.buttonEnabledControl()
     }
@@ -249,6 +257,7 @@ extension ToDoQuestionPresenter {
     //TODO protocolに準拠させよう viewRenderingなprotocol
     private func renderingView(){
         self.view?.customView.questionLabel.text = self.displayingQustion.content.replacingOccurrences(of:"\t", with:"")
+        self.view?.customView.mapTitleLabel.text = ""
     }
     
     private func buttonEnabledControl(){
