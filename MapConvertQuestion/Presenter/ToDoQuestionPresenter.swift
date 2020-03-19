@@ -55,7 +55,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
     
     private func getMapTitle(question:RealmMindNodeModel) -> String {
         let indexQuestion = myModel.getNodeByNodeIdAndMapId(question: question,nodeId: 0)
-        return indexQuestion.content == "" ? "タイトルなし" : indexQuestion.content
+        return indexQuestion.content == "" ? "no map title" : indexQuestion.content
     }
     
     func syncUserData(user:User){
