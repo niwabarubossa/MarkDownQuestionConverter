@@ -35,8 +35,8 @@ class ToDoQuestionPageViewController: UIViewController{
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         addBannerViewToView(bannerView)
         //テストの方　2934735716
-//        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        bannerView.adUnitID = "ca-app-pub-9417520592768746/8305374316"
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+//        bannerView.adUnitID = "ca-app-pub-9417520592768746/8305374316"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
     }
@@ -132,11 +132,8 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
         }else{
             cell.myImageView.isHidden = true
         }
-        if todayQuestion(nextDate: data.nextDate) == true{
-            cell.backgroundColor = .orange
-        }else{
-            cell.backgroundColor = .green
-        }
+        
+        cell.backgroundColor = presenter.decideCellColor(answerNodeData: data)
          return cell
     }
     

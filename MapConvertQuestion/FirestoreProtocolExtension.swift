@@ -68,3 +68,17 @@ extension RealmCreateProtocol {
         }
     }
 }
+
+protocol RealmNodeJudgeProtocol {
+    func todayQuestion(nextDate:Int64)->Bool
+}
+extension RealmNodeJudgeProtocol {
+    func todayQuestion(nextDate:Int64)->Bool{
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
+        let todayEnd = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
+        if nextDate >= 0 && nextDate <= todayEnd {
+             return true
+         }
+        return false
+    }
+}

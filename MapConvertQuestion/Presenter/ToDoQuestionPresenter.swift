@@ -263,6 +263,17 @@ extension ToDoQuestionPresenter {
         self.view?.customView.mapTitleLabel.text = self.mapTitle
     }
     
+    func decideCellColor(answerNodeData:RealmMindNodeModel) -> UIColor{
+        let lastAnswerdTime = answerNodeData.lastAnswerdTime
+        
+        if todayQuestion(nextDate: data.nextDate) == true{
+            cell.backgroundColor = .orange
+        }else{
+            cell.backgroundColor = .green
+        }
+        return UIColor.white
+    }
+    
     private func buttonEnabledControl(){
         if self.quizDataSource.count == 0{
             self.view?.buttonStackView.isHidden = true
