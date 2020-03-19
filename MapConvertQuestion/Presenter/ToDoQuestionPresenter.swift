@@ -275,7 +275,6 @@ extension ToDoQuestionPresenter {
             if self.betweenTodayRange(time: answerNodeData.nextDate) { return UIColor.white }
             return UIColor.green
         }
-        return UIColor.white
     }
     
     private func buttonEnabledControl(){

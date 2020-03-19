@@ -140,6 +140,7 @@ class QuestionModel {
         try! realm.write {
             focusNode?.setValue(learningIntervalStruct.ifSuccessNextInterval, forKey: "ifSuccessInterval")
             focusNode?.setValue(learningIntervalStruct.nextLearningDate, forKey: "nextDate")
+            focusNode?.setValue(Date().millisecondsSince1970,forKey: "lastAnswerdTime")
         }
         
     }
@@ -155,7 +156,6 @@ class QuestionModel {
             let realm = try Realm()
             try! realm.write {
                 answerNode?.setValue(isAnswer, forKey: "isAnswer")
-                answerNode?.setValue(Date().millisecondsSince1970,forKey: "lastAnswerdTime")
             }
         }catch{
             print("\(error)")
