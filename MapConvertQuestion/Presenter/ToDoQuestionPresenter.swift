@@ -147,12 +147,23 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         myModel.leadingSwipeQuestion(swipedAnswer: swipedAnswer)
         self.createQuestionLog(isCorrect:true,swipedAnswer: swipedAnswer)
          //データ更新は終了してる。クイズノルマが全て終わっているか判定
-        let removeQuestionSwitch = self.removeSwipedAnswerJudge()
+        let removeQuestionSwitch:Bool = self.removeSwipedAnswerJudge()
         if removeQuestionSwitch == true {
             myModel.deleteNodeFromModel(deleteNode: self.displayingQustion)
             self.nextQuestionButtonTapped()
         }
         userModel.updateUserData(swipedAnswer: swipedAnswer)
+    }
+    
+    private func removeSwipedAnswerJudge()->Bool{
+        for answerNode in self.answerNodeArray {
+            if isTodayToDoQuestion(question: answerNode) == true {
+                //１つでも今日のやつが残っているならまだ消さない
+                return false
+            }
+        }
+        //全てのanswerが,0~todayの範囲を超えていたらOK,removeする。
+        return true
     }
     
     private func createQuestionLog(isCorrect:Bool,swipedAnswer:RealmMindNodeModel){
@@ -168,18 +179,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
             ])
             self.createRealm(data: questionLog)
     }
-    
-    private func removeSwipedAnswerJudge()->Bool{
-        for answerNode in self.answerNodeArray {
-            if isTodayToDoQuestion(question: answerNode) == true {
-                //１つでも今日のやつが残っているならまだ消さない
-                return false
-            }
-        }
-        //全てのanswerが,0~todayの範囲を超えていたらOK,removeする。
-        return true
-    }
-    
+        
     private func isTodayToDoQuestion(question:RealmMindNodeModel) ->Bool{
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
         let todayEnd = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
