@@ -154,7 +154,8 @@ class QuestionModel {
         do{
             let realm = try Realm()
             try! realm.write {
-                 answerNode?.setValue(isAnswer, forKey: "isAnswer")
+                answerNode?.setValue(isAnswer, forKey: "isAnswer")
+                answerNode?.setValue(Date().millisecondsSince1970,forKey: "lastAnswerdTime")
             }
         }catch{
             print("\(error)")
