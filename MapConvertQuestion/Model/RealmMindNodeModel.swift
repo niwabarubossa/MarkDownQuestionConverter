@@ -22,6 +22,7 @@ class RealmMindNodeModel:Object{
     @objc dynamic var parentNodeId:Int = 0
     @objc dynamic var parentNodePrimaryKey:String = ""
     @objc dynamic var nextDate:Int64 = Date().millisecondsSince1970
+    @objc dynamic var lastAnswerdTime:Int64 = Date().millisecondsSince1970
     @objc dynamic var ifSuccessInterval:Int = 1
     @objc dynamic var isAnswer:Bool = true
     let childNodeIdArray = List<MindNodeChildId>()
