@@ -19,6 +19,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
     var answerNodeArray = [RealmMindNodeModel]()
     var user = User()
     var startQuestionTime:Date = Date()
+    var mapTitle:String = ""
 
     init(view: ToDoQuestionPageViewController) {
         self.view = view
@@ -53,9 +54,8 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
     }
     
     private func getMapTitle(question:RealmMindNodeModel) -> String {
-        let mapId = question.mapId
-        myModel.
-        return ""
+        let indexQuestion = myModel.getNodeByNodeIdAndMapId(question: question,nodeId: 0)
+        return indexQuestion.content
     }
     
     func syncUserData(user:User){
@@ -238,6 +238,9 @@ extension ToDoQuestionPresenter:UserDataModelDelegate{
 extension ToDoQuestionPresenter {
     func reloadQAPair(nextQuestion:RealmMindNodeModel){
         self.displayingQustion = nextQuestion
+        
+        self.mapTitle = self.getMapTitle(question: nextQuestion)
+        
         self.renderingView()
         //get map title
         self.quizDataSource.count > 0 ? self.changeToQuestionMode() : self.changeToCompleteMode()
@@ -257,7 +260,7 @@ extension ToDoQuestionPresenter {
     //TODO protocolに準拠させよう viewRenderingなprotocol
     private func renderingView(){
         self.view?.customView.questionLabel.text = self.displayingQustion.content.replacingOccurrences(of:"\t", with:"")
-        self.view?.customView.mapTitleLabel.text = ""
+        self.view?.customView.mapTitleLabel.text = self.mapTitle
     }
     
     private func buttonEnabledControl(){
