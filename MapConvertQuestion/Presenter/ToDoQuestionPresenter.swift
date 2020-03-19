@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,RealmCreateProtocol{
+class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,RealmCreateProtocol,RealmNodeJudgeProtocol{
     let myModel: QuestionModel
     let userModel:UserDataModel
     weak var view:ToDoQuestionPageViewController?
@@ -266,10 +266,14 @@ extension ToDoQuestionPresenter {
     func decideCellColor(answerNodeData:RealmMindNodeModel) -> UIColor{
         let lastAnswerdTime = answerNodeData.lastAnswerdTime
         
-        if todayQuestion(nextDate: data.nextDate) == true{
-            cell.backgroundColor = .orange
+        if lastAnswerdTime > self.startQuestionTime {
+            //already solved
+            if self.betweenTodayRange(time: answerNodeData.nextDate) { return UIColor.orange }
+            return UIColor.green
         }else{
-            cell.backgroundColor = .green
+            //まだ説かれていない
+            if self.betweenTodayRange(time: answerNodeData.nextDate) { return UIColor.white }
+            return UIColor.green
         }
         return UIColor.white
     }
