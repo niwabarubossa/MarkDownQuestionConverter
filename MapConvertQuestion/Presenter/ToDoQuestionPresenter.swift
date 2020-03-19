@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,RealmCreateProtocol{
+class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,RealmCreateProtocol,RealmNodeJudgeProtocol{
     let myModel: QuestionModel
     let userModel:UserDataModel
     weak var view:ToDoQuestionPageViewController?
@@ -261,6 +261,20 @@ extension ToDoQuestionPresenter {
     private func renderingView(){
         self.view?.customView.questionLabel.text = self.displayingQustion.content.replacingOccurrences(of:"\t", with:"")
         self.view?.customView.mapTitleLabel.text = self.mapTitle
+    }
+    
+    func decideCellColor(answerNodeData:RealmMindNodeModel) -> UIColor{
+        let lastAnswerdTime = answerNodeData.lastAnswerdTime
+        
+        if lastAnswerdTime > self.startQuestionTime.millisecondsSince1970 {
+            //already solved
+            if self.betweenTodayRange(time: answerNodeData.nextDate) { return UIColor.orange }
+            return UIColor.green
+        }else{
+            //まだ説かれていない
+            if self.betweenTodayRange(time: answerNodeData.nextDate) { return UIColor.white }
+            return UIColor.green
+        }
     }
     
     private func buttonEnabledControl(){
