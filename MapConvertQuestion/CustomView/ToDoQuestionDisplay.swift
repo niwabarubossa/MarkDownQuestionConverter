@@ -11,6 +11,7 @@ import UIKit
 class ToDoQuestionDisplay: UIView {
 
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var mapTitleLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
