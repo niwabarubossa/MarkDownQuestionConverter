@@ -21,6 +21,8 @@
 		543CC702241DBEE70008BDE6 /* InputPageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543CC701241DBEE70008BDE6 /* InputPageLabel.swift */; };
 		543CC704241DC45E0008BDE6 /* ToDoQuestionCompleteLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 543CC703241DC45E0008BDE6 /* ToDoQuestionCompleteLabel.xib */; };
 		543E7FE7240E987D0073C7FF /* LearningIntervalStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543E7FE6240E987D0073C7FF /* LearningIntervalStruct.swift */; };
+		5447E4EC24245C9C001E3350 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5447E4EE24245C9C001E3350 /* Localizable.strings */; };
+		5447E4F324245EFD001E3350 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5447E4F224245EFD001E3350 /* StringExtension.swift */; };
 		54769734240E08B1004E8C63 /* IntervalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54769733240E08B1004E8C63 /* IntervalEnum.swift */; };
 		548FA704241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */; };
 		5492009D2415D71200F01C7D /* ButtonStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5492009C2415D71200F01C7D /* ButtonStackView.xib */; };
@@ -85,6 +87,11 @@
 		543CC701241DBEE70008BDE6 /* InputPageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPageLabel.swift; sourceTree = "<group>"; };
 		543CC703241DC45E0008BDE6 /* ToDoQuestionCompleteLabel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoQuestionCompleteLabel.xib; sourceTree = "<group>"; };
 		543E7FE6240E987D0073C7FF /* LearningIntervalStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningIntervalStruct.swift; sourceTree = "<group>"; };
+		5447E4ED24245C9C001E3350 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5447E4EF24245CC5001E3350 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		5447E4F024245CC5001E3350 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		5447E4F124245CC6001E3350 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5447E4F224245EFD001E3350 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = MapConvertQuestion/StringExtension.swift; sourceTree = SOURCE_ROOT; };
 		54769733240E08B1004E8C63 /* IntervalEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IntervalEnum.swift; path = MapConvertQuestion/Presenter/IntervalEnum.swift; sourceTree = SOURCE_ROOT; };
 		548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoQuestionCompleteLabel.swift; sourceTree = "<group>"; };
 		5492009C2415D71200F01C7D /* ButtonStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonStackView.xib; sourceTree = "<group>"; };
@@ -201,6 +208,7 @@
 				54F45E2A23F90AC3002981C8 /* LaunchScreen.storyboard */,
 				54F45E2D23F90AC3002981C8 /* Info.plist */,
 				549345EC241DF182009D9483 /* RootTabBarController.swift */,
+				5447E4EE24245C9C001E3350 /* Localizable.strings */,
 			);
 			path = MapConvertQuestion;
 			sourceTree = "<group>";
@@ -299,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				54B466A92408BA3C00813800 /* ObjectExtension.swift */,
+				5447E4F224245EFD001E3350 /* StringExtension.swift */,
 			);
 			path = ExtensionUIKit;
 			sourceTree = "<group>";
@@ -364,6 +373,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 54F45E1323F90AB5002981C8;
 			productRefGroup = 54F45E1D23F90AB5002981C8 /* Products */;
@@ -385,6 +395,7 @@
 				54C53B412418F361000EE76E /* Settings.storyboard in Resources */,
 				54A7DC712414BC1E009F7229 /* SelectQustionPageThemeView.xib in Resources */,
 				54F45E2923F90AC3002981C8 /* Assets.xcassets in Resources */,
+				5447E4EC24245C9C001E3350 /* Localizable.strings in Resources */,
 				543CC704241DC45E0008BDE6 /* ToDoQuestionCompleteLabel.xib in Resources */,
 				5404BD07240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.xib in Resources */,
 				54C53B3624188385000EE76E /* UserDataDisplay.xib in Resources */,
@@ -483,6 +494,7 @@
 				54B466AA2408BA3C00813800 /* ObjectExtension.swift in Sources */,
 				54A7DC732414BC69009F7229 /* SelectQustionPageThemeView.swift in Sources */,
 				5404BD03240A62F100B3C6EC /* QuestionMapSelectPageTableViewController.swift in Sources */,
+				5447E4F324245EFD001E3350 /* StringExtension.swift in Sources */,
 				542F3FB2240FB54D00D92561 /* ToDoQuestionPresenter.swift in Sources */,
 				54F45E5323FAA263002981C8 /* MarkDownInputPresenter.swift in Sources */,
 				54BFEE3B2402701000B55A8C /* RealmMindNodeModel.swift in Sources */,
@@ -516,10 +528,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		5447E4EE24245C9C001E3350 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5447E4ED24245C9C001E3350 /* en */,
+				5447E4F124245CC6001E3350 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		54F45E2523F90AB5002981C8 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				54F45E2623F90AB5002981C8 /* Base */,
+				5447E4EF24245CC5001E3350 /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -528,6 +550,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				54F45E2B23F90AC3002981C8 /* Base */,
+				5447E4F024245CC5001E3350 /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -539,6 +562,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -599,6 +623,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -661,7 +686,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.ryogo.niwa.MapConvertQuestion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -681,7 +706,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.ryogo.niwa.MapConvertQuestion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

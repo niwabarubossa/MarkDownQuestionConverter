@@ -30,6 +30,7 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
         completeLabel.text = "complete!!!!!!"
         self.view.addSubview(completeLabel)
         self.completeLabel.isHidden  = true
+        self.customView.submitButton.setTitle("submitButtonText".localized, for: .normal)
     }
     
     // Presenter ← View
