@@ -22,6 +22,7 @@
 		543CC704241DC45E0008BDE6 /* ToDoQuestionCompleteLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 543CC703241DC45E0008BDE6 /* ToDoQuestionCompleteLabel.xib */; };
 		543E7FE7240E987D0073C7FF /* LearningIntervalStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543E7FE6240E987D0073C7FF /* LearningIntervalStruct.swift */; };
 		5447E4EC24245C9C001E3350 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5447E4EE24245C9C001E3350 /* Localizable.strings */; };
+		5447E4F324245EFD001E3350 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5447E4F224245EFD001E3350 /* StringExtension.swift */; };
 		54769734240E08B1004E8C63 /* IntervalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54769733240E08B1004E8C63 /* IntervalEnum.swift */; };
 		548FA704241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */; };
 		5492009D2415D71200F01C7D /* ButtonStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5492009C2415D71200F01C7D /* ButtonStackView.xib */; };
@@ -90,6 +91,7 @@
 		5447E4EF24245CC5001E3350 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		5447E4F024245CC5001E3350 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5447E4F124245CC6001E3350 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5447E4F224245EFD001E3350 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = MapConvertQuestion/StringExtension.swift; sourceTree = SOURCE_ROOT; };
 		54769733240E08B1004E8C63 /* IntervalEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IntervalEnum.swift; path = MapConvertQuestion/Presenter/IntervalEnum.swift; sourceTree = SOURCE_ROOT; };
 		548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoQuestionCompleteLabel.swift; sourceTree = "<group>"; };
 		5492009C2415D71200F01C7D /* ButtonStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonStackView.xib; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				54B466A92408BA3C00813800 /* ObjectExtension.swift */,
+				5447E4F224245EFD001E3350 /* StringExtension.swift */,
 			);
 			path = ExtensionUIKit;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				54B466AA2408BA3C00813800 /* ObjectExtension.swift in Sources */,
 				54A7DC732414BC69009F7229 /* SelectQustionPageThemeView.swift in Sources */,
 				5404BD03240A62F100B3C6EC /* QuestionMapSelectPageTableViewController.swift in Sources */,
+				5447E4F324245EFD001E3350 /* StringExtension.swift in Sources */,
 				542F3FB2240FB54D00D92561 /* ToDoQuestionPresenter.swift in Sources */,
 				54F45E5323FAA263002981C8 /* MarkDownInputPresenter.swift in Sources */,
 				54BFEE3B2402701000B55A8C /* RealmMindNodeModel.swift in Sources */,
