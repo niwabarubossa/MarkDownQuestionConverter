@@ -5,4 +5,19 @@
   Created by 丹羽遼吾 on 2020/03/20.
   Copyright © 2020 ryogo.niwa. All rights reserved.
 */
-"submitButtonText" = "submit & convert!";
+"submitButtonText" = "submit&convert!";
+"PasteAndConvertMap" = "Copy and Paste Mindmap!";
+"howManyTimesAnswered" = "totalTimes";
+"score" = "score";
+"answerButtonText" = "Answer"
+"noQuestionButtonText" = "not question";
+"nextQuizButtonText" = "nextQuiz";
+"selectMap" = "select map!"
+"howTo" = "HowTo";
+"tutorialFirstTitle" = "①Convert mindmap to quiz";
+"tutorialFirstContent" = "Tap the root node in your mindmap app,then copy and paste. And tap the convert button ! \n You can get a lot of memorization card. Parent node is converted to quiz and child node is converted to  answer.　\nAll node which has child nodes is converted to quiz, but if you want to do so , you can remove it from quiz data.";
+"tutorialSecondTitle" = "②Answer Quiz";
+"tutorialSecondContent" = "When you tapped answer button, you can show answer. \n Swiping left to light means [correct answer]. Swiping light to left means [wrong answer] \The question will be presented at the optimal timing. \nAnd when answer has arrow image, you can tap the answer content , and the content is converted to quiz.";
+"tutorialThirdTitle" = "③List";
+"tutorialThirdContent" = "You can check all map you registered as a quiz card. \nYou can't swipe answer here.\nYou can delete your map here.";
+"dismiss" = "dismiss";
