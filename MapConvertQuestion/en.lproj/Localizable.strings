@@ -7,12 +7,13 @@
 */
 "submitButtonText" = "submit&convert!";
 "PasteAndConvertMap" = "Copy and Paste Mindmap!";
-"howManyTimesAnswered" = "totalTimes";
+"howManyTimesAnswered" = "Times";
 "score" = "score";
-"answerButtonText" = "Answer"
+"finish" = "finish!!";
+"answerButtonText" = "Answer";
 "noQuestionButtonText" = "not question";
 "nextQuizButtonText" = "nextQuiz";
-"selectMap" = "select map!"
+"selectMap" = "select map!";
 "howTo" = "HowTo";
 "tutorialFirstTitle" = "①Convert mindmap to quiz";
 "tutorialFirstContent" = "Tap the root node in your mindmap app,then copy and paste. And tap the convert button ! \n You can get a lot of memorization card. Parent node is converted to quiz and child node is converted to  answer.　\nAll node which has child nodes is converted to quiz, but if you want to do so , you can remove it from quiz data.";

@@ -229,7 +229,7 @@ extension ToDoQuestionPresenter:UserDataModelDelegate{
                           animations: {
         },
                           completion:  { (finished: Bool) in
-                            answerTimesLabel!.text = String(self.user.totalAnswerTimes) + "回"
+                            answerTimesLabel!.text = String(self.user.totalAnswerTimes) + "times".localized
         })
         UIView.transition(with: scoreLabel!,
                         duration: 0.5,

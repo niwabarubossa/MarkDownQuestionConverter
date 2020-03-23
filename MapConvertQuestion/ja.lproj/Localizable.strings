@@ -10,6 +10,7 @@
 "howManyTimesAnswered" = "総回答数";
 "times" = "回";
 "score" = "スコア";
+"finish" = "finish!!";
 "answerButtonText" = "答えを見る";
 "noQuestionButtonText" = "出題しない";
 "nextQuizButtonText" = "次の問題";

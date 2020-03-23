@@ -12,6 +12,11 @@ class UserDataDisplay: UIView {
     
     weak var delegate: UserDataDisplayDelegate?
     
+    @IBOutlet weak var howManyTimesAnswered: UILabel!
+    
+    @IBOutlet weak var scoreTitleLabel: UILabel!
+    @IBOutlet weak var finishTitleLabel: UILabel!
+    
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var answerTimesLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -35,6 +40,9 @@ class UserDataDisplay: UIView {
             self.addSubview(view)
         }
         self.image.image = R.image.student()
+        self.howManyTimesAnswered.text = "howManyTimesAnswered".localized
+        self.scoreTitleLabel.text = "score".localized
+        self.finishTitleLabel.text = "finish".localized
     }
 
     @IBAction func reloadButtonTapped(_ sender: Any) {
