@@ -10,6 +10,7 @@ target 'MapConvertQuestion' do
   pod 'Firebase/Firestore'
   pod 'RealmSwift'
   pod 'Firebase/AdMob'
+  pod 'Charts'
   # Pods for MapConvertQuestion
 
 end
