@@ -9,7 +9,7 @@
 
 import UIKit
 
-class MyPageViewController: UIViewController,MyPageViewDelegate {
+class MyPageViewController: UIViewController {
 
     var presenter:MyPagePresenter!
     
@@ -39,15 +39,18 @@ class MyPageViewController: UIViewController,MyPageViewDelegate {
     func viewFunc(){
         print("done from presenter function")
     }
-    
-        
-    func delegateFunction() {
-        print("delegate")
-    }
 
 }
-protocol MyPageViewDelegate {
-    func delegateFunction() -> Void
+
+
+protocol MVPViewProtocol {
+    func reloadView() -> Void
+}
+
+extension MyPageViewController:MVPViewProtocol{
+    func reloadView(){
+        print("get from presenter")
+    }
 }
 
 

@@ -18,6 +18,10 @@
 import Foundation
 import UIKit
 
+protocol MVPPresenterProtocol{
+    func getNotifyFromModel()
+}
+
 class MyPagePresenter:QuestionLogModelDelegate{
     //自分用のモデルの宣言
     let model: QuestionLogModel
@@ -29,11 +33,12 @@ class MyPagePresenter:QuestionLogModelDelegate{
         self.view = view
         self.model = QuestionLogModel()
         model.delegate = self
+        model.addObserver(self, selector: #selector(self.getNotifyFromModel))
     }
 
     // Presenter → Model 操作する側
     func toModelFromPresenter() {
-        model.testfunc()
+//        model.testfunc()
     }
 
     //Presenter → View の操作  操作する側
@@ -52,6 +57,11 @@ class MyPagePresenter:QuestionLogModelDelegate{
 
 }
 
+extension MyPagePresenter:MVPPresenterProtocol{
+    @objc func getNotifyFromModel(){
+        
+    }
+}
 
 //------presenter---------------------------------------------
 
