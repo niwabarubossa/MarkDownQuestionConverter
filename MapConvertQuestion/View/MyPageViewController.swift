@@ -17,6 +17,7 @@ class MyPageViewController: UIViewController {
         super.viewDidLoad()
         initializePresenter()
         layout()
+        self.view.backgroundColor = .green
     }
     
     private func layout(){
