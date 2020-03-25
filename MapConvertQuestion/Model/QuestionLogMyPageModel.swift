@@ -50,5 +50,4 @@ extension QuestionLogModel:MVPModelProtocol{
     }
 }
 
-
 //----------model------------------------------------

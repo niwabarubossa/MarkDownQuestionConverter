@@ -42,7 +42,6 @@ class MyPageViewController: UIViewController {
 
 }
 
-
 protocol MVPViewProtocol {
     func reloadView() -> Void
 }
@@ -52,6 +51,5 @@ extension MyPageViewController:MVPViewProtocol{
         print("get from presenter")
     }
 }
-
 
 //------viewcontroller(view)------------------------------
