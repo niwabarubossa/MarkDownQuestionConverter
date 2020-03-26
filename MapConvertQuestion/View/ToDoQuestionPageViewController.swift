@@ -35,8 +35,11 @@ class ToDoQuestionPageViewController: UIViewController{
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         addBannerViewToView(bannerView)
         //テストの方　2934735716
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-//        bannerView.adUnitID = "ca-app-pub-9417520592768746/8305374316"
+        #if DEBUG
+            bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        #else
+            bannerView.adUnitID = "ca-app-pub-9417520592768746/8305374316"
+        #endif
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
     }
