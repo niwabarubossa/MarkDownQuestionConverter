@@ -51,6 +51,13 @@ class MyPagePresenter:QuestionLogModelDelegate{
     }
     
     private func convertLogToBarChartData(questionLogs:[QuestionLog]) -> BarChartData{
+        
+        for quesitonLog in questionLogs {
+        }
+        
+        
+        
+        
         let rawData: [Int] = [20, 50, 70, 30, 60, 90, 40]
         let entries = rawData.enumerated().map { BarChartDataEntry(x: Double($0.offset), y: Double($0.element)) }
         let dataSet = BarChartDataSet(entries: entries)

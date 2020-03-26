@@ -12,7 +12,7 @@ import RealmSwift
 class QuestionLog:Object{
     @objc dynamic var logId:String = NSUUID().uuidString
     @objc dynamic var charactersAmount:Int = 0
-    @objc dynamic var date:Date = Date()
+    @objc dynamic var date:Int64 = Date().millisecondsSince1970
     @objc dynamic var mapId:String = ""
     @objc dynamic var questionNodeId:String = ""
     @objc dynamic var thinkingTime:Double = 0.0
