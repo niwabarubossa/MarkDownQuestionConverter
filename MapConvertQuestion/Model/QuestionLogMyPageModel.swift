@@ -8,9 +8,11 @@
 
 //----------model-------------------------------------------
 import Foundation
+import RealmSwift
 
 protocol QuestionLogModelDelegate: class {
     func modelDelegateFunc() -> Void
+    func didGetWeeklyQuestionLog(questionLogs: [QuestionLog]) -> Void
 }
 
 protocol MVPModelProtocol: class {
@@ -22,6 +24,22 @@ protocol MVPModelProtocol: class {
 class QuestionLogModel {
     weak var delegate: QuestionLogModelDelegate?
     
+    func getWeeklyQuestionLog(mapId:String){
+        var allLogData = [QuestionLog]()
+        let realm = try! Realm()
+        let results = realm.objects(QuestionLog.self).filter("mapId == %@", mapId)
+        for questionLog in results {
+            allLogData.append(questionLog)
+        }
+        self.delegate?.didGetWeeklyQuestionLog(questionLogs: allLogData)
+    }
+    
+    private func calculateBeforeWeek() -> Date{
+        let sevenDaysBefore = Calendar.current.date(byAdding: .day, value: -7, to: Date())
+        let weekBegin = Calendar.current.startOfDay(for: sevenDaysBefore!)
+        return weekBegin
+    }
+
     func testfunc(){
         print("test func")
     }
