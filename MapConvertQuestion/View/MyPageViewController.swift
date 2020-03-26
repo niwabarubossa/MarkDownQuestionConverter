@@ -8,16 +8,19 @@
 //viewcontroller(view)-----  -------------------------
 
 import UIKit
+import Charts
 
 class MyPageViewController: UIViewController {
 
     var presenter:MyPagePresenter!
+    @IBOutlet weak var barChartView: BarChartView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializePresenter()
         layout()
         self.view.backgroundColor = .green
+        self.setChart()
     }
     
     private func layout(){
@@ -26,6 +29,16 @@ class MyPageViewController: UIViewController {
 //        customView.delegate = self
 //        self.view.addSubview(customView)
     }
+    
+    
+    private func setChart(){
+        let rawData: [Int] = [20, 50, 70, 30, 60, 90, 40]
+        let entries = rawData.enumerated().map { BarChartDataEntry(x: Double($0.offset), y: Double($0.element)) }
+        let dataSet = BarChartDataSet(entries: entries)
+        let data = BarChartData(dataSet: dataSet)
+        barChartView.data = data
+    }
+
     
     private func initializePresenter() {
        presenter = MyPagePresenter(view: self)

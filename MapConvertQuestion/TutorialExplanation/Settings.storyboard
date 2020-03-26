@@ -43,11 +43,6 @@
                                     <constraint firstAttribute="width" constant="240" id="kFJ-1P-b4R"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZdT-ag-uxs" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="20" y="304" width="374" height="236"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -59,7 +54,6 @@
                     <tabBarItem key="tabBarItem" title="その他" image="hammer" catalog="system" id="cNZ-gq-5E8"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="barChartView" destination="ZdT-ag-uxs" id="ZcW-G7-FU1"/>
                         <outlet property="howToLabel" destination="ZNk-ju-zKn" id="QYH-u8-CsW"/>
                         <outlet property="howToTitleLabel" destination="Chd-Ys-h2F" id="pU7-ya-SgT"/>
                         <segue destination="ZBR-ZL-CFf" kind="show" identifier="goToHowToPage" id="baD-NC-LjZ"/>
