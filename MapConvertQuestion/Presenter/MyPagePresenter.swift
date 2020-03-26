@@ -17,6 +17,7 @@
 
 import Foundation
 import UIKit
+import Charts
 
 protocol MVPPresenterProtocol{
     func getNotifyFromModel()
@@ -25,7 +26,7 @@ protocol MVPPresenterProtocol{
 class MyPagePresenter:QuestionLogModelDelegate{
     //自分用のモデルの宣言
     let model: QuestionLogModel
-    
+    var questionLogs = [QuestionLog]()
     //オリジナルのクラス型にすること
     weak var view:MyPageViewController?
 
@@ -35,7 +36,36 @@ class MyPagePresenter:QuestionLogModelDelegate{
         model.delegate = self
         model.addObserver(self, selector: #selector(self.getNotifyFromModel))
     }
+    
+    func getWeeklyQuestionLog() {
+        model.getWeeklyQuestionLog()
+    }
 
+    func didGetWeeklyQuestionLog(questionLogs: [QuestionLog]) {
+        self.setQuestionLog(questionLogs: questionLogs)
+        self.initializeViewController()
+    }
+    
+    private func setQuestionLog(questionLogs: [QuestionLog]){
+        self.questionLogs = questionLogs
+    }
+    
+    private func convertLogToBarChartData(questionLogs:[QuestionLog]) -> BarChartData{
+        let rawData: [Int] = [20, 50, 70, 30, 60, 90, 40]
+        let entries = rawData.enumerated().map { BarChartDataEntry(x: Double($0.offset), y: Double($0.element)) }
+        let dataSet = BarChartDataSet(entries: entries)
+        let data = BarChartData(dataSet: dataSet)
+        return data
+    }
+    
+    func initializeViewController(){
+        //データ加工
+        //データの流し込み
+        let data = self.convertLogToBarChartData(questionLogs: self.questionLogs)
+        self.view?.barChartView.data = data
+        self.getNotifyFromModel()
+    }
+        
     // Presenter → Model 操作する側
     func toModelFromPresenter() {
 //        model.testfunc()
@@ -59,7 +89,7 @@ class MyPagePresenter:QuestionLogModelDelegate{
 
 extension MyPagePresenter:MVPPresenterProtocol{
     @objc func getNotifyFromModel(){
-        
+        self.view?.reloadView()
     }
 }
 

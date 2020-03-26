@@ -24,10 +24,10 @@ protocol MVPModelProtocol: class {
 class QuestionLogModel {
     weak var delegate: QuestionLogModelDelegate?
     
-    func getWeeklyQuestionLog(mapId:String){
+    func getWeeklyQuestionLog(){
         var allLogData = [QuestionLog]()
         let realm = try! Realm()
-        let results = realm.objects(QuestionLog.self).filter("mapId == %@", mapId)
+        let results = realm.objects(QuestionLog.self)
         for questionLog in results {
             allLogData.append(questionLog)
         }
