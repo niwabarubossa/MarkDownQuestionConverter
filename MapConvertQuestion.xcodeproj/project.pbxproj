@@ -101,6 +101,8 @@
 		548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoQuestionCompleteLabel.swift; sourceTree = "<group>"; };
 		5492009C2415D71200F01C7D /* ButtonStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonStackView.xib; sourceTree = "<group>"; };
 		5492009E2415D75700F01C7D /* ButtonStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStackView.swift; sourceTree = "<group>"; };
+		5492D876242C74D400F69E56 /* app-debug.xcconfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "app-debug.xcconfig.xcconfig"; sourceTree = "<group>"; };
+		5492D877242C74E800F69E56 /* app-release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "app-release.xcconfig"; sourceTree = "<group>"; };
 		549345EC241DF182009D9483 /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		54A462F1242B76E8007EA353 /* QuestionLogMyPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionLogMyPageModel.swift; sourceTree = "<group>"; };
 		54A462F3242B7731007EA353 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +182,8 @@
 		54F45E1323F90AB5002981C8 = {
 			isa = PBXGroup;
 			children = (
+				5492D877242C74E800F69E56 /* app-release.xcconfig */,
+				5492D876242C74D400F69E56 /* app-debug.xcconfig.xcconfig */,
 				54A707E5241F477D00DCEEC5 /* GoogleService-Info.plist */,
 				54F4854823FF781900D7962C /* R.generated.swift */,
 				54F45E1E23F90AB5002981C8 /* MapConvertQuestion */,
