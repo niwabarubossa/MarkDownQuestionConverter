@@ -34,6 +34,15 @@ class QuestionLogModel {
         self.delegate?.didGetWeeklyQuestionLog(questionLogs: allLogData)
     }
     
+    func getUserData() -> User{
+        print("test function")
+        let realm = try! Realm()
+        if let user = realm.objects(User.self).first{
+            return user
+        }
+        return User()
+    }
+    
     private func calculateBeforeWeek() -> Date{
         let sevenDaysBefore = Calendar.current.date(byAdding: .day, value: -7, to: Date())
         let weekBegin = Calendar.current.startOfDay(for: sevenDaysBefore!)
