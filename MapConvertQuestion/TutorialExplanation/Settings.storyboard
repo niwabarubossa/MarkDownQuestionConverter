@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNk-ju-zKn">
-                                <rect key="frame" x="87" y="383" width="240" height="130"/>
+                                <rect key="frame" x="87" y="633" width="240" height="130"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="使い方" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Chd-Ys-h2F">
                                         <rect key="frame" x="68" y="53" width="62" height="24"/>
@@ -46,8 +46,8 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="ZNk-ju-zKn" firstAttribute="centerX" secondItem="HW9-Yb-klT" secondAttribute="centerX" id="X9P-eN-qa4"/>
-                            <constraint firstItem="ZNk-ju-zKn" firstAttribute="centerY" secondItem="HW9-Yb-klT" secondAttribute="centerY" id="hPM-yd-aCk"/>
+                            <constraint firstItem="ZNk-ju-zKn" firstAttribute="centerX" secondItem="HW9-Yb-klT" secondAttribute="centerX" id="j8R-3W-Iae"/>
+                            <constraint firstItem="SAD-gm-bH5" firstAttribute="bottom" secondItem="ZNk-ju-zKn" secondAttribute="bottom" constant="50" id="uDE-zW-Fwx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SAD-gm-bH5"/>
                     </view>

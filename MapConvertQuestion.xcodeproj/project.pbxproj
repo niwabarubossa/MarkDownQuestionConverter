@@ -17,6 +17,7 @@
 		542F3FB2240FB54D00D92561 /* ToDoQuestionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542F3FB1240FB54D00D92561 /* ToDoQuestionPresenter.swift */; };
 		542F3FB4240FB58900D92561 /* ToDoQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542F3FB3240FB58900D92561 /* ToDoQuestionModel.swift */; };
 		5433AE562414AF60009877A1 /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5433AE552414AF60009877A1 /* MyColor.swift */; };
+		5439113B242B75FF00C92312 /* MyPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5439113A242B75FF00C92312 /* MyPagePresenter.swift */; };
 		543CC700241DBE950008BDE6 /* InputPageLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 543CC6FF241DBE950008BDE6 /* InputPageLabel.xib */; };
 		543CC702241DBEE70008BDE6 /* InputPageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543CC701241DBEE70008BDE6 /* InputPageLabel.swift */; };
 		543CC704241DC45E0008BDE6 /* ToDoQuestionCompleteLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 543CC703241DC45E0008BDE6 /* ToDoQuestionCompleteLabel.xib */; };
@@ -28,6 +29,9 @@
 		5492009D2415D71200F01C7D /* ButtonStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5492009C2415D71200F01C7D /* ButtonStackView.xib */; };
 		5492009F2415D75700F01C7D /* ButtonStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5492009E2415D75700F01C7D /* ButtonStackView.swift */; };
 		549345ED241DF182009D9483 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549345EC241DF182009D9483 /* RootTabBarController.swift */; };
+		54A462F2242B76E8007EA353 /* QuestionLogMyPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A462F1242B76E8007EA353 /* QuestionLogMyPageModel.swift */; };
+		54A462F4242B7731007EA353 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A462F3242B7731007EA353 /* MyPageViewController.swift */; };
+		54A462F6242B7DF5007EA353 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54A462F5242B7DF5007EA353 /* MyPage.storyboard */; };
 		54A707E4241E607C00DCEEC5 /* SettingRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A707E3241E607C00DCEEC5 /* SettingRootViewController.swift */; };
 		54A707E6241F477E00DCEEC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54A707E5241F477D00DCEEC5 /* GoogleService-Info.plist */; };
 		54A7DC712414BC1E009F7229 /* SelectQustionPageThemeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A7DC702414BC1E009F7229 /* SelectQustionPageThemeView.xib */; };
@@ -83,6 +87,7 @@
 		542F3FB1240FB54D00D92561 /* ToDoQuestionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoQuestionPresenter.swift; sourceTree = "<group>"; };
 		542F3FB3240FB58900D92561 /* ToDoQuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoQuestionModel.swift; sourceTree = "<group>"; };
 		5433AE552414AF60009877A1 /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyColor.swift; path = MapConvertQuestion/Model/MyColor.swift; sourceTree = SOURCE_ROOT; };
+		5439113A242B75FF00C92312 /* MyPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPagePresenter.swift; sourceTree = "<group>"; };
 		543CC6FF241DBE950008BDE6 /* InputPageLabel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputPageLabel.xib; sourceTree = "<group>"; };
 		543CC701241DBEE70008BDE6 /* InputPageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPageLabel.swift; sourceTree = "<group>"; };
 		543CC703241DC45E0008BDE6 /* ToDoQuestionCompleteLabel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoQuestionCompleteLabel.xib; sourceTree = "<group>"; };
@@ -97,6 +102,9 @@
 		5492009C2415D71200F01C7D /* ButtonStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonStackView.xib; sourceTree = "<group>"; };
 		5492009E2415D75700F01C7D /* ButtonStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStackView.swift; sourceTree = "<group>"; };
 		549345EC241DF182009D9483 /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
+		54A462F1242B76E8007EA353 /* QuestionLogMyPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionLogMyPageModel.swift; sourceTree = "<group>"; };
+		54A462F3242B7731007EA353 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		54A462F5242B7DF5007EA353 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		54A707E3241E607C00DCEEC5 /* SettingRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRootViewController.swift; sourceTree = "<group>"; };
 		54A707E5241F477D00DCEEC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54A7DC702414BC1E009F7229 /* SelectQustionPageThemeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectQustionPageThemeView.xib; sourceTree = "<group>"; };
@@ -226,6 +234,8 @@
 				542F3FA9240FAFEC00D92561 /* ToDoQuestionPage.storyboard */,
 				542F3FAB240FB1C300D92561 /* ToDoQuestionPageViewController.swift */,
 				54A707E3241E607C00DCEEC5 /* SettingRootViewController.swift */,
+				54A462F3242B7731007EA353 /* MyPageViewController.swift */,
+				54A462F5242B7DF5007EA353 /* MyPage.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -280,6 +290,7 @@
 				54A7F0032417CD2F007A7E70 /* UserModel.swift */,
 				54A7F0052417CDA2007A7E70 /* QuestionLogModel.swift */,
 				54C53B3324186547000EE76E /* UserDataModel.swift */,
+				54A462F1242B76E8007EA353 /* QuestionLogMyPageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,6 +301,7 @@
 				54F45E5223FAA263002981C8 /* MarkDownInputPresenter.swift */,
 				54BFEE342400F58800B55A8C /* QuestionPagePresenter.swift */,
 				542F3FB1240FB54D00D92561 /* ToDoQuestionPresenter.swift */,
+				5439113A242B75FF00C92312 /* MyPagePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -394,6 +406,7 @@
 				54F45E2C23F90AC3002981C8 /* LaunchScreen.storyboard in Resources */,
 				54C53B412418F361000EE76E /* Settings.storyboard in Resources */,
 				54A7DC712414BC1E009F7229 /* SelectQustionPageThemeView.xib in Resources */,
+				54A462F6242B7DF5007EA353 /* MyPage.storyboard in Resources */,
 				54F45E2923F90AC3002981C8 /* Assets.xcassets in Resources */,
 				5447E4EC24245C9C001E3350 /* Localizable.strings in Resources */,
 				543CC704241DC45E0008BDE6 /* ToDoQuestionCompleteLabel.xib in Resources */,
@@ -509,6 +522,7 @@
 				543CC702241DBEE70008BDE6 /* InputPageLabel.swift in Sources */,
 				54C53B432418F438000EE76E /* TutorialContentModel.swift in Sources */,
 				54B466A72408B90700813800 /* QuestionAnswerTableViewCell.swift in Sources */,
+				5439113B242B75FF00C92312 /* MyPagePresenter.swift in Sources */,
 				542F3FB0240FB3E100D92561 /* ToDoQuestionDisplay.swift in Sources */,
 				54C53B3F2418F361000EE76E /* TutorialExplanationViewController.swift in Sources */,
 				54FF62C42400D68F0009B721 /* FirestoreProtocolExtension.swift in Sources */,
@@ -518,6 +532,8 @@
 				542F3FAC240FB1C300D92561 /* ToDoQuestionPageViewController.swift in Sources */,
 				54F4854923FF781900D7962C /* R.generated.swift in Sources */,
 				54FF62C62400E1640009B721 /* MindNodeModel.swift in Sources */,
+				54A462F4242B7731007EA353 /* MyPageViewController.swift in Sources */,
+				54A462F2242B76E8007EA353 /* QuestionLogMyPageModel.swift in Sources */,
 				542F3FB4240FB58900D92561 /* ToDoQuestionModel.swift in Sources */,
 				54F45E3B23F918E6002981C8 /* QuestionDidsplay.swift in Sources */,
 				54A7F0042417CD2F007A7E70 /* UserModel.swift in Sources */,
@@ -686,7 +702,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.ryogo.niwa.MapConvertQuestion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -706,7 +722,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.ryogo.niwa.MapConvertQuestion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
