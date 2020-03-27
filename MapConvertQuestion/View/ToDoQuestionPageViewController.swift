@@ -55,7 +55,7 @@ class ToDoQuestionPageViewController: UIViewController{
         self.view.addSubview(customView)
         let myWidth = view.frame.width
         let myHeight = view.frame.height
-        buttonStackView = ButtonStackView(frame: CGRect(x: 0, y: myHeight - 220 , width: myWidth, height: 80))
+        buttonStackView = ButtonStackView(frame: CGRect(x: 0, y: myHeight - 170 , width: myWidth, height: 80))
         buttonStackView.delegate = self
         self.view.addSubview(buttonStackView)
         userDataDisplay = UserDataDisplay(frame: CGRect(x: 0, y: 100, width: myWidth, height: 100))
@@ -263,9 +263,9 @@ extension ToDoQuestionPageViewController{
       view.addSubview(bannerView)
       view.addConstraints(
         [NSLayoutConstraint(item: bannerView,
-                            attribute: .bottom,
+                            attribute: .top,
                             relatedBy: .equal,
-                            toItem: bottomLayoutGuide,
+                            toItem: view.safeAreaLayoutGuide,
                             attribute: .top,
                             multiplier: 1,
                             constant: 0),
