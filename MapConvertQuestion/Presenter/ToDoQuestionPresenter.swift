@@ -18,6 +18,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
     var quizDataSource = [RealmMindNodeModel]()
     var displayingQustion:RealmMindNodeModel = RealmMindNodeModel()
     var answerNodeArray = [RealmMindNodeModel]()
+    var experience:Float = Float.random(in: 0.4..<1)
     var user = User()
     var startQuestionTime:Date = Date()
     var mapTitle:String = ""
@@ -152,6 +153,21 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         if self.removeSwipedAnswerJudge() == true { myModel.deleteNodeFromModel(deleteNode: self.displayingQustion) }
         if self.goNextQuestionJudge() == true { self.nextQuestionButtonTapped() }
         userModel.updateUserData(swipedAnswer: swipedAnswer)
+        self.getExperience()
+    }
+    
+    private func getExperience(){
+        self.experience = self.experience + self.calcLevelDelta()
+        if self.experience > 1.0 {
+            print("levelup")
+            self.experience = self.experience - 1.0
+        }
+    }
+    
+    private func calcLevelDelta() -> Float{
+        let randomDelta:Float = (Float.random(in: 0...1)) / 8
+        let perExperience:Float = 1 / 8
+        return randomDelta + perExperience
     }
     
     private func goNextQuestionJudge()->Bool{
@@ -323,10 +339,6 @@ extension ToDoQuestionPresenter {
         view?.buttonStackView.isHidden = true
         view?.noQuestionLabel.isHidden = false
     }
-    
-    private func calculateProgress(){
-        
-    }
 
 }
 
@@ -348,10 +360,8 @@ extension ToDoQuestionPresenter:QuestionModelPresenterProtocol{
             let bunboInt = NumberFormatter().number(from: bunboText)!.intValue
             self.view?.userDataDisplay.bunsiLabel.text = String( bunboInt - self.quizDataSource.count)
         }
-
 //        self.calculateProgress()
-
-//        self.view?.userDataDisplay.progressView.setProgress( ( bunboFloat - Float(self.quizDataSource.count) ) / bunboFloat, animated: true)
+        self.view?.userDataDisplay.progressView.setProgress(self.experience, animated: true)
     }
 
 }
