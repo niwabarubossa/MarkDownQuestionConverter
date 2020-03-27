@@ -16,6 +16,7 @@
                 <outlet property="finishTitleLabel" destination="HSN-Gg-cbz" id="OJ8-a4-8kx"/>
                 <outlet property="howManyTimesAnswered" destination="xZV-GN-mpb" id="UHo-AZ-sME"/>
                 <outlet property="image" destination="pFu-Zu-wnA" id="7A4-Tp-TSc"/>
+                <outlet property="levelLabel" destination="Xik-fm-sIj" id="CCB-4M-rXa"/>
                 <outlet property="progressView" destination="GqQ-OW-j3Q" id="zjb-Lm-WJX"/>
                 <outlet property="scoreLabel" destination="lPc-hP-2Qf" id="5m1-mw-Lyn"/>
                 <outlet property="scoreTitleLabel" destination="F4K-uM-Kq1" id="wwh-qj-zOm"/>
@@ -111,11 +112,18 @@
                         <action selector="reloadButtonTapped:" destination="-1" eventType="touchUpInside" id="9rY-93-hDX"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="level -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xik-fm-sIj">
+                    <rect key="frame" x="23" y="103" width="47" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="HSN-Gg-cbz" firstAttribute="top" secondItem="cwZ-B9-LlF" secondAttribute="top" id="0Gz-Uj-xI1"/>
                 <constraint firstItem="pFu-Zu-wnA" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="1vi-rH-hYt"/>
+                <constraint firstItem="Xik-fm-sIj" firstAttribute="trailing" secondItem="pFu-Zu-wnA" secondAttribute="trailing" id="54I-2g-gGV"/>
                 <constraint firstItem="ewd-fJ-Tfb" firstAttribute="leading" secondItem="gM4-6N-pby" secondAttribute="trailing" id="5Ox-3A-qLC"/>
                 <constraint firstItem="cwZ-B9-LlF" firstAttribute="top" secondItem="F4K-uM-Kq1" secondAttribute="bottom" constant="10" id="828-gn-ph0"/>
                 <constraint firstItem="GqQ-OW-j3Q" firstAttribute="top" secondItem="ewd-fJ-Tfb" secondAttribute="bottom" constant="15" id="92n-2I-oDT"/>
@@ -141,6 +149,7 @@
                 <constraint firstItem="lPc-hP-2Qf" firstAttribute="leading" secondItem="Oc3-oc-tHK" secondAttribute="leading" id="vOn-bO-K4P"/>
                 <constraint firstItem="ewd-fJ-Tfb" firstAttribute="top" secondItem="cwZ-B9-LlF" secondAttribute="top" id="vbt-Qt-WRd"/>
                 <constraint firstItem="HSN-Gg-cbz" firstAttribute="leading" secondItem="ewd-fJ-Tfb" secondAttribute="trailing" id="wlQ-4p-MU6"/>
+                <constraint firstItem="Xik-fm-sIj" firstAttribute="top" secondItem="pFu-Zu-wnA" secondAttribute="bottom" constant="8" id="wsG-Ym-vEy"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
