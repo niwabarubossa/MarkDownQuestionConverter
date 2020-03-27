@@ -161,6 +161,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         if self.experience > 1.0 {
             print("levelup")
             self.experience = self.experience - 1.0
+            userModel.updateUserLevel()
         }
     }
     
@@ -360,7 +361,7 @@ extension ToDoQuestionPresenter:QuestionModelPresenterProtocol{
             let bunboInt = NumberFormatter().number(from: bunboText)!.intValue
             self.view?.userDataDisplay.bunsiLabel.text = String( bunboInt - self.quizDataSource.count)
         }
-//        self.calculateProgress()
+        self.view?.userDataDisplay.levelLabel.text = "level." + String(self.user.level)
         self.view?.userDataDisplay.progressView.setProgress(self.experience, animated: true)
     }
 
