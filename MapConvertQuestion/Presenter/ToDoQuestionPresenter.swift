@@ -12,6 +12,7 @@ import RealmSwift
 class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,RealmCreateProtocol,RealmNodeJudgeProtocol{
     let myModel: QuestionModel
     let userModel:UserDataModel
+    let questionLogModel: QuestionLogModel
     weak var view:ToDoQuestionPageViewController?
     
     var quizDataSource = [RealmMindNodeModel]()
@@ -25,6 +26,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         self.view = view
         self.myModel = QuestionModel()
         self.userModel = UserDataModel()
+        self.questionLogModel = QuestionLogModel()
         userModel.delegate = self
         myModel.delegate = self
         myModel.addObserver(self, selector: #selector(self.notifyToQuestionModelView))
