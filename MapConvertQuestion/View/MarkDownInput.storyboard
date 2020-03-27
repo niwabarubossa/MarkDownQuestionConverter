@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--作成-->
+        <!--create-->
         <scene sceneID="VWy-Ty-s5a">
             <objects>
                 <viewController id="Iij-Xh-H0c" customClass="MarkDownInputViewController" customModule="MapConvertQuestion" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,7 +40,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gJo-SX-kMZ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="作成" image="pencilTabBar" id="sSI-2x-yU8"/>
+                    <tabBarItem key="tabBarItem" title="create" image="create" id="sSI-2x-yU8"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="customView" destination="Pr8-KW-uxZ" id="ZKW-Pm-djX"/>
@@ -52,6 +52,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pencilTabBar" width="32" height="32"/>
+        <image name="create" width="32" height="32"/>
     </resources>
 </document>
