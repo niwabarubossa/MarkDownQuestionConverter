@@ -157,10 +157,13 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
     }
     
     private func getExperience(){
+        let probability:Float = Float.random(in: 0...1)
+        if probability < 0.2 { return }
         self.experience = self.experience + self.calcLevelDelta()
         if self.experience > 1.0 {
             print("levelup")
-            self.experience = self.experience - 1.0
+            // experience % 1 と同じ意味
+            self.experience = self.experience.truncatingRemainder(dividingBy: 1)
             userModel.updateUserLevel()
         }
     }
@@ -236,6 +239,7 @@ extension ToDoQuestionPresenter:UserDataModelDelegate{
     
     func didGetUserData(user: User) {
         self.user = user
+        self.userDisplayReload()
     }
 
     @objc func userModelUpdateDone(){
