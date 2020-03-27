@@ -32,7 +32,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Ioq-x5-Fcw" firstAttribute="leading" secondItem="2s6-8J-VHq" secondAttribute="leading" id="1jz-es-Pqt"/>
                             <constraint firstItem="Ioq-x5-Fcw" firstAttribute="top" secondItem="GhS-16-S9l" secondAttribute="bottom" id="61U-bO-mGP"/>
@@ -61,7 +61,7 @@
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="62.946428571428569"/>
         </scene>
-        <!--一覧-->
+        <!--List-->
         <scene sceneID="hF5-Zx-nB7">
             <objects>
                 <viewController id="DXf-NG-R72" customClass="QuestionMapSelectPageTableViewController" customModule="MapConvertQuestion" customModuleProvider="target" sceneMemberID="viewController">
@@ -71,7 +71,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KNm-WC-tCs" customClass="SelectQustionPageThemeView" customModule="MapConvertQuestion" customModuleProvider="target">
                                 <rect key="frame" x="20" y="59" width="374" height="80"/>
-                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="ptU-PI-NkI"/>
                                 </constraints>
@@ -94,7 +94,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G42-Pn-fcC"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="一覧" image="bookTabBar" id="RNQ-af-OMt"/>
+                    <tabBarItem key="tabBarItem" title="List" image="bookTabBar" id="RNQ-af-OMt"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="RXk-oR-61y" id="vas-up-7Ym"/>
