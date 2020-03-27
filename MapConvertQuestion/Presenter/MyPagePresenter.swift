@@ -58,8 +58,8 @@ class MyPagePresenter:QuestionLogModelDelegate{
         }
         
         var totalMinusDelta:[Int] = [0, 0, 0, 0, 0, 0, 0]
-        for i in (1..<totalMinusDelta.count).reversed() {
-            totalMinusDelta[i - 1] = totalMinusDelta[i - 1] - totalMinusDelta[i]
+        for i in (0...totalMinusDelta.count - 2).reversed() {
+            totalMinusDelta[i] = totalMinusDelta[i+1] - rawData[i+1]
         }
 
         var graphData:[Int] = [0, 0, 0, 0, 0, 0, 0]
@@ -68,7 +68,7 @@ class MyPagePresenter:QuestionLogModelDelegate{
             graphData[i] = userTotalAnswerTimes + totalMinusDelta[i]
         }
         
-        let entries = rawData.enumerated().map { BarChartDataEntry(x: Double($0.offset), y: Double($0.element)) }
+        let entries = graphData.enumerated().map { BarChartDataEntry(x: Double($0.offset), y: Double($0.element)) }
         let dataSet = BarChartDataSet(entries: entries)
         let data = BarChartData(dataSet: dataSet)
         return data
@@ -95,6 +95,10 @@ class MyPagePresenter:QuestionLogModelDelegate{
         //データ加工
         //データの流し込み
         let data = self.convertLogToBarChartData(questionLogs: self.questionLogs)
+        self.view?.barChartView.leftAxis.drawAxisLineEnabled = false
+        self.view?.barChartView.xAxis.drawGridLinesEnabled = false
+        self.view?.barChartView.xAxis.drawAxisLineEnabled = false
+        self.view?.barChartView.leftAxis.drawAxisLineEnabled = false
         self.view?.barChartView.data = data
         self.getNotifyFromModel()
     }

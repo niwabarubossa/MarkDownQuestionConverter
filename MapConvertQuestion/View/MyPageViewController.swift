@@ -14,20 +14,21 @@ class MyPageViewController: UIViewController {
 
     var presenter:MyPagePresenter!
     @IBOutlet weak var barChartView: BarChartView!
+    @IBOutlet weak var totalAnswerTimesLabel: UILabel!
+    @IBOutlet weak var howToLabel: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializePresenter()
         layout()
         initializePage()
-        self.view.backgroundColor = .green
     }
     
     private func layout(){
-//        let customView = QuestionDidsplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
-//        customView .center = self.view.center
-//        customView.delegate = self
-//        self.view.addSubview(customView)
+        let font = UIFont.systemFont(ofSize: 25, weight: UIFont.Weight(300))
+        totalAnswerTimesLabel.font = font
+        self.howToLabel.addGestureRecognizer((UITapGestureRecognizer(target: self, action: Selector("howToLabelTapped:"))))
     }
     
     private func initializePage(){
@@ -38,10 +39,15 @@ class MyPageViewController: UIViewController {
     private func initializePresenter() {
        presenter = MyPagePresenter(view: self)
     }
-    
+
     //presenter ← view
     func notifyToPresenter(){
         presenter.presenterFunc()
+    }
+
+    @objc private func howToLabelTapped(_ sender:UIButton){
+        let howToVC = R.storyboard.settings.howToPage()
+        self.present(howToVC!, animated: true, completion: nil)
     }
     
     //presenter → view
