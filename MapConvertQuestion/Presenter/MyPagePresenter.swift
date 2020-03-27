@@ -41,7 +41,7 @@ class MyPagePresenter:QuestionLogModelDelegate{
         model.getWeeklyQuestionLog()
     }
 
-    func didGetWeeklyQuestionLog(questionLogs: [QuestionLog]) {
+    func didGetQuestionLog(questionLogs: [QuestionLog]) {
         self.setQuestionLog(questionLogs: questionLogs)
         self.initializeViewController()
     }

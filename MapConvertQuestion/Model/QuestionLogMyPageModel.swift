@@ -12,7 +12,7 @@ import RealmSwift
 
 protocol QuestionLogModelDelegate: class {
     func modelDelegateFunc() -> Void
-    func didGetWeeklyQuestionLog(questionLogs: [QuestionLog]) -> Void
+    func didGetQuestionLog(questionLogs: [QuestionLog]) -> Void
 }
 
 protocol MVPModelProtocol: class {
@@ -31,7 +31,7 @@ class QuestionLogModel {
         for questionLog in results {
             allLogData.append(questionLog)
         }
-        self.delegate?.didGetWeeklyQuestionLog(questionLogs: allLogData)
+        self.delegate?.didGetQuestionLog(questionLogs: allLogData)
     }
     
     func getUserData() -> User{
