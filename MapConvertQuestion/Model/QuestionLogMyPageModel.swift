@@ -12,7 +12,7 @@ import RealmSwift
 
 protocol QuestionLogModelDelegate: class {
     func modelDelegateFunc() -> Void
-    func didGetWeeklyQuestionLog(questionLogs: [QuestionLog]) -> Void
+    func didGetQuestionLog(questionLogs: [QuestionLog]) -> Void
 }
 
 protocol MVPModelProtocol: class {
@@ -33,7 +33,7 @@ class QuestionLogModel {
         for questionLog in results {
             allLogData.append(questionLog)
         }
-        self.delegate?.didGetWeeklyQuestionLog(questionLogs: allLogData)
+        self.delegate?.didGetQuestionLog(questionLogs: allLogData)
     }
     
     func getUserData() -> User{
@@ -44,6 +44,18 @@ class QuestionLogModel {
         }
         return User()
     }
+    
+    func getTodayQuestionLog(){
+        var allLogData = [QuestionLog]()
+        let realm = try! Realm()
+        let todayStart = Calendar.current.startOfDay(for: Date()).millisecondsSince1970 - 1
+        let results = realm.objects(QuestionLog.self).filter("date > %@", todayStart)
+        for questionLog in results {
+            allLogData.append(questionLog)
+        }
+        self.delegate?.didGetQuestionLog(questionLogs: allLogData)
+    }
+
     
     private func calculateBeforeWeek() -> Date{
         let sevenDaysBefore = Calendar.current.date(byAdding: .day, value: -7, to: Date())

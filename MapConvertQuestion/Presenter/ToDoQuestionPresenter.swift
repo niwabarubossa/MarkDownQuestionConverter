@@ -12,11 +12,13 @@ import RealmSwift
 class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,RealmCreateProtocol,RealmNodeJudgeProtocol{
     let myModel: QuestionModel
     let userModel:UserDataModel
+    let questionLogModel: QuestionLogModel
     weak var view:ToDoQuestionPageViewController?
     
     var quizDataSource = [RealmMindNodeModel]()
     var displayingQustion:RealmMindNodeModel = RealmMindNodeModel()
     var answerNodeArray = [RealmMindNodeModel]()
+    var experience:Float = Float.random(in: 0.4..<1)
     var user = User()
     var startQuestionTime:Date = Date()
     var mapTitle:String = ""
@@ -25,6 +27,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         self.view = view
         self.myModel = QuestionModel()
         self.userModel = UserDataModel()
+        self.questionLogModel = QuestionLogModel()
         userModel.delegate = self
         myModel.delegate = self
         myModel.addObserver(self, selector: #selector(self.notifyToQuestionModelView))
@@ -150,6 +153,25 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         if self.removeSwipedAnswerJudge() == true { myModel.deleteNodeFromModel(deleteNode: self.displayingQustion) }
         if self.goNextQuestionJudge() == true { self.nextQuestionButtonTapped() }
         userModel.updateUserData(swipedAnswer: swipedAnswer)
+        self.getExperience()
+    }
+    
+    private func getExperience(){
+        let probability:Float = Float.random(in: 0...1)
+        if probability < 0.2 { return }
+        self.experience = self.experience + self.calcLevelDelta()
+        if self.experience > 1.0 {
+            print("levelup")
+            // experience % 1 と同じ意味
+            self.experience = self.experience.truncatingRemainder(dividingBy: 1)
+            userModel.updateUserLevel()
+        }
+    }
+    
+    private func calcLevelDelta() -> Float{
+        let randomDelta:Float = (Float.random(in: 0...1)) / 8
+        let perExperience:Float = 1 / 8
+        return randomDelta + perExperience
     }
     
     private func goNextQuestionJudge()->Bool{
@@ -217,6 +239,7 @@ extension ToDoQuestionPresenter:UserDataModelDelegate{
     
     func didGetUserData(user: User) {
         self.user = user
+        self.userDisplayReload()
     }
 
     @objc func userModelUpdateDone(){
@@ -341,8 +364,9 @@ extension ToDoQuestionPresenter:QuestionModelPresenterProtocol{
             let bunboFloat = NumberFormatter().number(from: bunboText)!.floatValue
             let bunboInt = NumberFormatter().number(from: bunboText)!.intValue
             self.view?.userDataDisplay.bunsiLabel.text = String( bunboInt - self.quizDataSource.count)
-            self.view?.userDataDisplay.progressView.setProgress( ( bunboFloat - Float(self.quizDataSource.count) ) / bunboFloat, animated: true)
         }
+        self.view?.userDataDisplay.levelLabel.text = "level." + String(self.user.level)
+        self.view?.userDataDisplay.progressView.setProgress(self.experience, animated: true)
     }
 
 }

@@ -20,6 +20,7 @@ class UserDataDisplay: UIView {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var answerTimesLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var bunboLabel: UILabel!
     @IBOutlet weak var bunsiLabel: UILabel!

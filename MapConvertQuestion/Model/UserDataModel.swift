@@ -51,6 +51,18 @@ class UserDataModel {
         self.notify()
     }
     
+    func updateUserLevel(){
+        do{
+            let realm = try Realm()
+            try! realm.write {
+                self.user.setValue(user.level + 1, forKey: "level")
+            }
+        }catch{
+            print("\(error)")
+        }
+        self.notify()
+    }
+    
     private func createQuestionLog(swipedAnswer:RealmMindNodeModel){
         print("createQuestionLog")
     }
