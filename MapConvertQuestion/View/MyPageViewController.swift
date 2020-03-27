@@ -31,7 +31,7 @@ class MyPageViewController: UIViewController {
         self.howToLabel.addGestureRecognizer((UITapGestureRecognizer(target: self, action: Selector("howToLabelTapped:"))))
     }
     
-    private func initializePage(){
+    private func initiali zePage(){
         presenter.getWeeklyQuestionLog()
     }
 
