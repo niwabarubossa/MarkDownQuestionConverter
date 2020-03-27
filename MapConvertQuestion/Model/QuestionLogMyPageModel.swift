@@ -27,7 +27,9 @@ class QuestionLogModel {
     func getWeeklyQuestionLog(){
         var allLogData = [QuestionLog]()
         let realm = try! Realm()
-        let results = realm.objects(QuestionLog.self)
+        let aWeekAgo = Calendar.current.date(byAdding: .day, value: -7, to: Date())
+        let weekStart = Calendar.current.startOfDay(for: aWeekAgo!).millisecondsSince1970 - 1
+        let results = realm.objects(QuestionLog.self).filter("date > %@",weekStart).filter("isCorrect == %@",true)
         for questionLog in results {
             allLogData.append(questionLog)
         }
