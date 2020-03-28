@@ -31,27 +31,6 @@ extension UpdateFirestoreDocProtocol {
     }
 }
 
-protocol SubmitFirestoreDocProtocol {
-    func submitFirestoreDocument(ref_array:[DocumentReference],submit_data:[String:Any])
-}
-
-extension SubmitFirestoreDocProtocol {
-    func submitFirestoreDocument(ref_array:[DocumentReference],submit_data:[String:Any]) {
-        let db = Firestore.firestore()
-        let batch = db.batch()
-        for ref in ref_array{
-            batch.setData(submit_data, forDocument: ref)
-        }
-        batch.commit() { err in
-            if let err = err {
-                print("Error writing batch \(err)")
-            } else {
-                print("Batch write succeeded.")
-            }
-        }
-    }
-}
-
 protocol RealmCreateProtocol {
     func createRealm(data:Object)
 }
@@ -80,5 +59,26 @@ extension RealmNodeJudgeProtocol {
              return true
          }
         return false
+    }
+}
+
+protocol SubmitFirestoreDocProtocol{
+    func submitFirestoreDocument(ref_array:[DocumentReference],submit_data:[String:Any])
+}
+
+extension SubmitFirestoreDocProtocol{
+    func submitFirestoreDocument(ref_array:[DocumentReference],submit_data:[String:Any]) {
+        let db = Firestore.firestore()
+        let batch = db.batch()
+        for (index, item) in ref_array.enumerated() {
+            batch.setData(submit_data, forDocument: ref_array[index])
+        }
+        batch.commit() { err in
+            if let err = err {
+                print("Error writing batch \(err)")
+            } else {
+                print("Batch write succeeded.")
+            }
+        }
     }
 }

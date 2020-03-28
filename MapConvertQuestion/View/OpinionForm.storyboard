@@ -33,6 +33,9 @@
                                 <state key="normal" title="送信ボタン">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="submitButtonTapped:" destination="uSo-3X-Gdx" eventType="touchUpInside" id="mZL-Dh-9vB"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="意見ラベル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFU-DI-Ed4">
                                 <rect key="frame" x="163.5" y="297" width="87" height="21"/>

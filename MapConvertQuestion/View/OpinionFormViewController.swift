@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
-class OpinionFormViewController: UIViewController {
+class OpinionFormViewController: UIViewController,SubmitFirestoreDocProtocol{
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var myTextView: UITextView!
     @IBOutlet weak var submitButton: UIButton!
@@ -25,6 +26,18 @@ class OpinionFormViewController: UIViewController {
         let font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(400))
         self.submitButton.titleLabel?.font = font
         submitButton.setTitleColor(UIColor.white, for: .normal)
+    }
+    @IBAction func submitButtonTapped(_ sender: Any) {
+         let db = Firestore.firestore()
+        let opinionDocRef = db.collection("opinion").document()
+        let document_id = opinionDocRef.documentID
+        let refArray = [opinionDocRef]
+        let submit_data = [
+            "id": document_id,
+            "text": myTextView.text!,
+            "created_at": Date(),
+            ] as [String : Any]
+        self.submitFirestoreDocument(ref_array: refArray, submit_data: submit_data)
     }
 }
 
