@@ -24,6 +24,8 @@
 		543E7FE7240E987D0073C7FF /* LearningIntervalStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543E7FE6240E987D0073C7FF /* LearningIntervalStruct.swift */; };
 		5447E4EC24245C9C001E3350 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5447E4EE24245C9C001E3350 /* Localizable.strings */; };
 		5447E4F324245EFD001E3350 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5447E4F224245EFD001E3350 /* StringExtension.swift */; };
+		54676D91242F16AD00541EBE /* OpinionForm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54676D90242F16AD00541EBE /* OpinionForm.storyboard */; };
+		54676D93242F16DA00541EBE /* OpinionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54676D92242F16DA00541EBE /* OpinionFormViewController.swift */; };
 		54769734240E08B1004E8C63 /* IntervalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54769733240E08B1004E8C63 /* IntervalEnum.swift */; };
 		548FA704241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */; };
 		5492009D2415D71200F01C7D /* ButtonStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5492009C2415D71200F01C7D /* ButtonStackView.xib */; };
@@ -97,6 +99,8 @@
 		5447E4F024245CC5001E3350 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5447E4F124245CC6001E3350 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5447E4F224245EFD001E3350 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = MapConvertQuestion/StringExtension.swift; sourceTree = SOURCE_ROOT; };
+		54676D90242F16AD00541EBE /* OpinionForm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpinionForm.storyboard; sourceTree = "<group>"; };
+		54676D92242F16DA00541EBE /* OpinionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpinionFormViewController.swift; sourceTree = "<group>"; };
 		54769733240E08B1004E8C63 /* IntervalEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IntervalEnum.swift; path = MapConvertQuestion/Presenter/IntervalEnum.swift; sourceTree = SOURCE_ROOT; };
 		548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoQuestionCompleteLabel.swift; sourceTree = "<group>"; };
 		5492009C2415D71200F01C7D /* ButtonStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonStackView.xib; sourceTree = "<group>"; };
@@ -236,6 +240,8 @@
 				54A707E3241E607C00DCEEC5 /* SettingRootViewController.swift */,
 				54A462F3242B7731007EA353 /* MyPageViewController.swift */,
 				54A462F5242B7DF5007EA353 /* MyPage.storyboard */,
+				54676D92242F16DA00541EBE /* OpinionFormViewController.swift */,
+				54676D90242F16AD00541EBE /* OpinionForm.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -409,6 +415,7 @@
 				54A462F6242B7DF5007EA353 /* MyPage.storyboard in Resources */,
 				54F45E2923F90AC3002981C8 /* Assets.xcassets in Resources */,
 				5447E4EC24245C9C001E3350 /* Localizable.strings in Resources */,
+				54676D91242F16AD00541EBE /* OpinionForm.storyboard in Resources */,
 				543CC704241DC45E0008BDE6 /* ToDoQuestionCompleteLabel.xib in Resources */,
 				5404BD07240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.xib in Resources */,
 				54C53B3624188385000EE76E /* UserDataDisplay.xib in Resources */,
@@ -512,6 +519,7 @@
 				54F45E5323FAA263002981C8 /* MarkDownInputPresenter.swift in Sources */,
 				54BFEE3B2402701000B55A8C /* RealmMindNodeModel.swift in Sources */,
 				54BFEE392400F7E400B55A8C /* QuestionPageViewController.swift in Sources */,
+				54676D93242F16DA00541EBE /* OpinionFormViewController.swift in Sources */,
 				5492009F2415D75700F01C7D /* ButtonStackView.swift in Sources */,
 				54F45E2023F90AB5002981C8 /* AppDelegate.swift in Sources */,
 				54F45E2223F90AB5002981C8 /* SceneDelegate.swift in Sources */,
