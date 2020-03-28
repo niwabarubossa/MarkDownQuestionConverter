@@ -26,6 +26,7 @@
 		5447E4F324245EFD001E3350 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5447E4F224245EFD001E3350 /* StringExtension.swift */; };
 		54676D91242F16AD00541EBE /* OpinionForm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54676D90242F16AD00541EBE /* OpinionForm.storyboard */; };
 		54676D93242F16DA00541EBE /* OpinionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54676D92242F16DA00541EBE /* OpinionFormViewController.swift */; };
+		54676D95242F179400541EBE /* OpinionFormButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54676D94242F179400541EBE /* OpinionFormButton.xib */; };
 		54769734240E08B1004E8C63 /* IntervalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54769733240E08B1004E8C63 /* IntervalEnum.swift */; };
 		548FA704241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */; };
 		5492009D2415D71200F01C7D /* ButtonStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5492009C2415D71200F01C7D /* ButtonStackView.xib */; };
@@ -101,6 +102,7 @@
 		5447E4F224245EFD001E3350 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = MapConvertQuestion/StringExtension.swift; sourceTree = SOURCE_ROOT; };
 		54676D90242F16AD00541EBE /* OpinionForm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpinionForm.storyboard; sourceTree = "<group>"; };
 		54676D92242F16DA00541EBE /* OpinionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpinionFormViewController.swift; sourceTree = "<group>"; };
+		54676D94242F179400541EBE /* OpinionFormButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpinionFormButton.xib; sourceTree = "<group>"; };
 		54769733240E08B1004E8C63 /* IntervalEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IntervalEnum.swift; path = MapConvertQuestion/Presenter/IntervalEnum.swift; sourceTree = SOURCE_ROOT; };
 		548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoQuestionCompleteLabel.swift; sourceTree = "<group>"; };
 		5492009C2415D71200F01C7D /* ButtonStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonStackView.xib; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				54C53B3524188385000EE76E /* UserDataDisplay.xib */,
 				543CC6FF241DBE950008BDE6 /* InputPageLabel.xib */,
 				543CC703241DC45E0008BDE6 /* ToDoQuestionCompleteLabel.xib */,
+				54676D94242F179400541EBE /* OpinionFormButton.xib */,
 			);
 			path = XibFile;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				54A7DC712414BC1E009F7229 /* SelectQustionPageThemeView.xib in Resources */,
 				54A462F6242B7DF5007EA353 /* MyPage.storyboard in Resources */,
 				54F45E2923F90AC3002981C8 /* Assets.xcassets in Resources */,
+				54676D95242F179400541EBE /* OpinionFormButton.xib in Resources */,
 				5447E4EC24245C9C001E3350 /* Localizable.strings in Resources */,
 				54676D91242F16AD00541EBE /* OpinionForm.storyboard in Resources */,
 				543CC704241DC45E0008BDE6 /* ToDoQuestionCompleteLabel.xib in Resources */,
