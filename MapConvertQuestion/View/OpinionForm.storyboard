@@ -15,9 +15,49 @@
                     <view key="view" contentMode="scaleToFill" id="dYw-Gf-aUP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jZN-Lw-bZJ">
+                                <rect key="frame" x="30" y="348" width="354" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="hcH-OA-Cox"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1Y-PP-VTz">
+                                <rect key="frame" x="131" y="598" width="152" height="48"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="送信ボタン">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="意見ラベル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFU-DI-Ed4">
+                                <rect key="frame" x="163.5" y="297" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.69083395656060931" green="0.92316985236406057" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="P1Y-PP-VTz" firstAttribute="top" secondItem="jZN-Lw-bZJ" secondAttribute="bottom" constant="50" id="8eg-Ka-Xdq"/>
+                            <constraint firstItem="P1Y-PP-VTz" firstAttribute="centerX" secondItem="CFU-DI-Ed4" secondAttribute="centerX" id="FJm-Ga-nTN"/>
+                            <constraint firstItem="jZN-Lw-bZJ" firstAttribute="top" secondItem="CFU-DI-Ed4" secondAttribute="bottom" constant="30" id="ewi-Lm-iFU"/>
+                            <constraint firstItem="jZN-Lw-bZJ" firstAttribute="leading" secondItem="BGS-X1-F0j" secondAttribute="leading" constant="30" id="fba-18-afr"/>
+                            <constraint firstItem="jZN-Lw-bZJ" firstAttribute="centerX" secondItem="CFU-DI-Ed4" secondAttribute="centerX" id="oAF-tk-wuq"/>
+                            <constraint firstItem="jZN-Lw-bZJ" firstAttribute="centerY" secondItem="dYw-Gf-aUP" secondAttribute="centerY" id="sN3-e8-7y9"/>
+                            <constraint firstItem="BGS-X1-F0j" firstAttribute="trailing" secondItem="jZN-Lw-bZJ" secondAttribute="trailing" constant="30" id="sPZ-od-sim"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="BGS-X1-F0j"/>
                     </view>
+                    <connections>
+                        <outlet property="myTextView" destination="jZN-Lw-bZJ" id="qO4-5i-hpx"/>
+                        <outlet property="submitButton" destination="P1Y-PP-VTz" id="nQD-Fe-B8u"/>
+                        <outlet property="titleLabel" destination="CFU-DI-Ed4" id="4Oi-eT-tW0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XqZ-e2-qtK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

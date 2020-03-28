@@ -9,22 +9,28 @@
 import UIKit
 
 class OpinionFormViewController: UIViewController {
-
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var myTextView: UITextView!
+    @IBOutlet weak var submitButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.myTextView.delegate = self
+        layout()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func layout(){
+        self.titleLabel.text = "opinionLabel".localized
+        self.submitButton.setTitle("submitOpiniton".localized, for: .normal)
+        let font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(400))
+        self.submitButton.titleLabel?.font = font
+        submitButton.setTitleColor(UIColor.white, for: .normal)
     }
-    */
+}
 
+extension OpinionFormViewController:UITextViewDelegate{
+    func textFieldShouldReturn(_ textField:UITextField) -> Bool {
+      self.view.endEditing(true)
+      return true
+    }
 }
