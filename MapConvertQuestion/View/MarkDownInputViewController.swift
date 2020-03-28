@@ -4,6 +4,7 @@ import RealmSwift
 class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     
     @IBOutlet weak var customView: MarkDownInput!
+    @IBOutlet weak var opinionFormButton: OpinionFormButton!
     var presenter:MarkDownInputPresenter!
 //    var customView = MarkDownInput()
     var completeLabel = UILabel()
@@ -21,6 +22,7 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     func layout() {
 //        customView = MarkDownInput(frame: CGRect(x: 0, y: 0, width: view.frame.width - 30, height: view.frame.height - 100))
 //        customView.center = self.view.center
+        opinionFormButton.delegate = self
         customView.myDelegate = self
 //        self.view.addSubview(customView)
         completeLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 30, height: 100))
@@ -31,6 +33,7 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
         self.view.addSubview(completeLabel)
         self.completeLabel.isHidden  = true
         self.customView.submitButton.setTitle("submitButtonText".localized, for: .normal)
+        opinionFormButton.layer.zPosition = 10000.0
     }
     
     // Presenter ← View
@@ -91,6 +94,12 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     }
 
     
+}
+
+extension MarkDownInputViewController:OpinionFormButtonDelegate{
+    func opinionFormButtonTapped() {
+        print("opinionFormButtonTapped")
+    }
 }
 
 protocol MarkDownInputViewDelegate {
