@@ -25,17 +25,8 @@ class QuestionPageViewController: UIViewController {
         initializePresenter()
         tableViewSetup()
         layout()
+        setupAdmob()
         getQuestion(mapId:self.questionMapId)
-        
-        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-                addBannerViewToView(bannerView)
-        #if DEBUG
-            bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        #else
-            bannerView.adUnitID = "ca-app-pub-9417520592768746/8305374316"
-        #endif
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
     }
     
     private func initializePresenter() {
@@ -49,6 +40,18 @@ class QuestionPageViewController: UIViewController {
         buttonStackView.abandonButton.setTitle("", for: .normal)
         buttonStackView.abandonButton.isEnabled = false
         buttonStackView.abandonButton.alpha = 0.5
+    }
+    
+    private func setupAdmob(){
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+                addBannerViewToView(bannerView)
+        #if DEBUG
+            bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        #else
+            bannerView.adUnitID = "ca-app-pub-9417520592768746/8305374316"
+        #endif
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
     }
     
     private func getQuestion(mapId:String){
