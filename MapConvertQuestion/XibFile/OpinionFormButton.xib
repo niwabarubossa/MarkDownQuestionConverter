@@ -8,7 +8,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OpinionFormButton" customModule="MapConvertQuestion" customModuleProvider="target">
+            <connections>
+                <outlet property="iconButton" destination="D6n-RK-6mJ" id="ko7-uG-HgR"/>
+                <outlet property="titleLabel" destination="blF-ms-YK0" id="ba1-7p-RiR"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -27,6 +32,9 @@
                         <constraint firstAttribute="height" constant="48" id="MYO-Vt-et3"/>
                     </constraints>
                     <state key="normal" backgroundImage="formIcon"/>
+                    <connections>
+                        <action selector="opinionFormButtonTapped:" destination="-1" eventType="touchUpInside" id="a7I-lW-QVc"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
