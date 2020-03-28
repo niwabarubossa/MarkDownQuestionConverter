@@ -48,6 +48,9 @@ class MyColor : UIColor {
     class var sixthColor: UIColor {
         return UIColor(hex: "#00b7ce")
     }
+    class var progressTintColor: UIColor {
+        return UIColor(hex: "#66FF33")
+    }
 }
 
 extension UIColor {

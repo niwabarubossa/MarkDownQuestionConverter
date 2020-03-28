@@ -44,6 +44,8 @@ class UserDataDisplay: UIView {
         self.howManyTimesAnswered.text = "howManyTimesAnswered".localized
         self.scoreTitleLabel.text = "score".localized
         self.finishTitleLabel.text = "finish".localized
+        self.progressView.transform = progressView.transform.scaledBy(x: 1, y: 7)
+        self.progressView.progressTintColor = MyColor.progressTintColor
     }
 
     @IBAction func reloadButtonTapped(_ sender: Any) {
