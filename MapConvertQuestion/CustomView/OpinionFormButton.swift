@@ -11,9 +11,7 @@ import UIKit
 @IBDesignable class OpinionFormButton: UIView {
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var iconButton: UIButton!
-    var delegate:OpinionFormButtonDelegate?
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
@@ -33,13 +31,5 @@ import UIKit
             titleLabel.font = font
         }
     }
-    
-    @IBAction func opinionFormButtonTapped(_ sender: Any) {
-        self.delegate?.opinionFormButtonTapped()
-    }
 
-}
-
-protocol OpinionFormButtonDelegate:class{
-    func opinionFormButtonTapped()
 }

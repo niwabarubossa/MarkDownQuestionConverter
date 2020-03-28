@@ -10,7 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OpinionFormButton" customModule="MapConvertQuestion" customModuleProvider="target">
             <connections>
-                <outlet property="iconButton" destination="D6n-RK-6mJ" id="ko7-uG-HgR"/>
                 <outlet property="titleLabel" destination="blF-ms-YK0" id="ba1-7p-RiR"/>
             </connections>
         </placeholder>
@@ -20,37 +19,30 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="意見・感想" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blF-ms-YK0">
-                    <rect key="frame" x="6.5" y="15" width="87" height="22"/>
+                    <rect key="frame" x="6.5" y="15" width="87" height="20"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6n-RK-6mJ">
-                    <rect key="frame" x="25" y="42" width="50" height="48"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BnU-js-2AO">
+                    <rect key="frame" x="30" y="50" width="40" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="50" id="8hU-9R-IlJ"/>
-                        <constraint firstAttribute="height" constant="48" id="MYO-Vt-et3"/>
+                        <constraint firstAttribute="width" constant="40" id="8h2-QB-DWe"/>
+                        <constraint firstAttribute="height" constant="40" id="sp8-yn-mLV"/>
                     </constraints>
-                    <state key="normal" backgroundImage="formIcon"/>
-                    <connections>
-                        <action selector="opinionFormButtonTapped:" destination="-1" eventType="touchUpInside" id="a7I-lW-QVc"/>
-                    </connections>
-                </button>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.53056561366399002" green="1" blue="0.97383722136783268" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="D6n-RK-6mJ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="IVL-AN-eKn"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="BnU-js-2AO" secondAttribute="bottom" constant="10" id="BrA-fU-LOe"/>
                 <constraint firstItem="blF-ms-YK0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="Nwk-es-u5S"/>
-                <constraint firstItem="D6n-RK-6mJ" firstAttribute="top" secondItem="blF-ms-YK0" secondAttribute="bottom" constant="5" id="Toj-oo-H9l"/>
+                <constraint firstItem="BnU-js-2AO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="6" id="ShR-XG-exj"/>
                 <constraint firstItem="blF-ms-YK0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gjE-J4-RPV"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="D6n-RK-6mJ" secondAttribute="bottom" constant="10" id="zx5-kG-Xnw"/>
+                <constraint firstItem="BnU-js-2AO" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ojs-3M-KoY"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="139" y="86"/>
+            <point key="canvasLocation" x="137.68115942028987" y="85.714285714285708"/>
         </view>
     </objects>
-    <resources>
-        <image name="formIcon" width="48" height="48"/>
-    </resources>
 </document>
