@@ -4,6 +4,7 @@ import RealmSwift
 class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     
     @IBOutlet weak var customView: MarkDownInput!
+    @IBOutlet weak var opinionFormButton: OpinionFormButton!
     var presenter:MarkDownInputPresenter!
 //    var customView = MarkDownInput()
     var completeLabel = UILabel()
@@ -12,6 +13,7 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
         super.viewDidLoad()
         initializePresenter()
         layout()
+        setOpinionForm()
     }
     
     private func initializePresenter() {
@@ -19,10 +21,7 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     }
     
     func layout() {
-//        customView = MarkDownInput(frame: CGRect(x: 0, y: 0, width: view.frame.width - 30, height: view.frame.height - 100))
-//        customView.center = self.view.center
         customView.myDelegate = self
-//        self.view.addSubview(customView)
         completeLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 30, height: 100))
         completeLabel.backgroundColor = MyColor.fourthColor
         completeLabel.center = self.view.center
@@ -31,6 +30,17 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
         self.view.addSubview(completeLabel)
         self.completeLabel.isHidden  = true
         self.customView.submitButton.setTitle("submitButtonText".localized, for: .normal)
+    }
+    
+    private func setOpinionForm(){
+        opinionFormButton.layer.zPosition = 10000.0
+        let gesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(opinionFormButtonTapped))
+        gesture.numberOfTapsRequired = 1
+        opinionFormButton.isUserInteractionEnabled = true
+        opinionFormButton.addGestureRecognizer(gesture)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            self.opinionFormButton.isHidden = true
+        }
     }
     
     // Presenter ← View
@@ -90,7 +100,13 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
         }
     }
 
-    
+}
+
+extension MarkDownInputViewController{
+    @objc private func opinionFormButtonTapped(_ sender:UIButton){
+        let formVC = R.storyboard.opinionForm.opinionFormViewController()!
+        self.present(formVC, animated: true, completion: nil)
+    }
 }
 
 protocol MarkDownInputViewDelegate {

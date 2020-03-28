@@ -16,6 +16,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9os-k6-zlq" customClass="OpinionFormButton" customModule="MapConvertQuestion" customModuleProvider="target">
+                                <rect key="frame" x="304" y="703" width="100" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="QgD-XF-a4z"/>
+                                    <constraint firstAttribute="height" constant="100" id="fMp-L2-bOB"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4E-Wr-DVz" customClass="InputPageLabel" customModule="MapConvertQuestion" customModuleProvider="target">
                                 <rect key="frame" x="10" y="54" width="394" height="110"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -24,17 +32,19 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pr8-KW-uxZ" customClass="MarkDownInput" customModule="MapConvertQuestion" customModuleProvider="target">
-                                <rect key="frame" x="10" y="194" width="394" height="609"/>
+                                <rect key="frame" x="10" y="194" width="394" height="569"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Pr8-KW-uxZ" firstAttribute="top" secondItem="U4E-Wr-DVz" secondAttribute="bottom" constant="30" id="1Mk-bW-pQe"/>
+                            <constraint firstItem="gJo-SX-kMZ" firstAttribute="bottom" secondItem="9os-k6-zlq" secondAttribute="bottom" constant="10" id="41C-hN-XPG"/>
                             <constraint firstItem="gJo-SX-kMZ" firstAttribute="trailing" secondItem="Pr8-KW-uxZ" secondAttribute="trailing" constant="10" id="FCL-qz-9SB"/>
-                            <constraint firstItem="gJo-SX-kMZ" firstAttribute="bottom" secondItem="Pr8-KW-uxZ" secondAttribute="bottom" constant="10" id="Vk1-Wk-JSS"/>
+                            <constraint firstItem="gJo-SX-kMZ" firstAttribute="bottom" secondItem="Pr8-KW-uxZ" secondAttribute="bottom" constant="50" id="Vk1-Wk-JSS"/>
                             <constraint firstItem="gJo-SX-kMZ" firstAttribute="trailing" secondItem="U4E-Wr-DVz" secondAttribute="trailing" constant="10" id="dTk-zf-G9o"/>
                             <constraint firstItem="U4E-Wr-DVz" firstAttribute="top" secondItem="gJo-SX-kMZ" secondAttribute="top" constant="10" id="ffL-A1-y5Y"/>
+                            <constraint firstItem="gJo-SX-kMZ" firstAttribute="trailing" secondItem="9os-k6-zlq" secondAttribute="trailing" constant="10" id="m3Y-T7-kLZ"/>
                             <constraint firstItem="U4E-Wr-DVz" firstAttribute="leading" secondItem="gJo-SX-kMZ" secondAttribute="leading" constant="10" id="pQT-x8-nga"/>
                             <constraint firstItem="Pr8-KW-uxZ" firstAttribute="leading" secondItem="gJo-SX-kMZ" secondAttribute="leading" constant="10" id="wEG-gc-FBP"/>
                         </constraints>
@@ -44,6 +54,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="customView" destination="Pr8-KW-uxZ" id="ZKW-Pm-djX"/>
+                        <outlet property="opinionFormButton" destination="9os-k6-zlq" id="VLg-68-3rp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4E1-t2-fWY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
