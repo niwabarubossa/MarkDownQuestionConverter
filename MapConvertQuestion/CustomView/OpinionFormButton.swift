@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OpinionFormButton: UIView {
+@IBDesignable class OpinionFormButton: UIView {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var iconButton: UIButton!
@@ -28,6 +28,9 @@ class OpinionFormButton: UIView {
         if let view = Bundle(for: type(of: self)).loadNibNamed(String(describing: type(of: self)), owner: self, options: nil)?.first as? UIView {
             view.frame = self.bounds
             self.addSubview(view)
+            //fontは定数で管理した方が良いのでは？　h1とかh2タグの名前で
+            let font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(300))
+            titleLabel.font = font
         }
     }
     
