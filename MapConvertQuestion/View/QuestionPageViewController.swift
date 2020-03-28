@@ -29,7 +29,6 @@ class QuestionPageViewController: UIViewController {
         
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
                 addBannerViewToView(bannerView)
-        //テストの方　2934735716
         #if DEBUG
             bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         #else
