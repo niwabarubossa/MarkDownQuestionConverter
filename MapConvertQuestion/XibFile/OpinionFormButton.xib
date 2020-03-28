@@ -24,25 +24,28 @@
                     <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BnU-js-2AO">
-                    <rect key="frame" x="30" y="50" width="40" height="40"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="formIcon" translatesAutoresizingMaskIntoConstraints="NO" id="BnU-js-2AO">
+                    <rect key="frame" x="25" y="40" width="50" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="40" id="8h2-QB-DWe"/>
-                        <constraint firstAttribute="height" constant="40" id="sp8-yn-mLV"/>
+                        <constraint firstAttribute="height" constant="50" id="E1D-cb-2L3"/>
+                        <constraint firstAttribute="width" constant="50" id="P9k-rA-0om"/>
                     </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.53056561366399002" green="1" blue="0.97383722136783268" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="BnU-js-2AO" secondAttribute="bottom" constant="10" id="BrA-fU-LOe"/>
+                <constraint firstItem="BnU-js-2AO" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="NP4-CU-cBS"/>
                 <constraint firstItem="blF-ms-YK0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="Nwk-es-u5S"/>
-                <constraint firstItem="BnU-js-2AO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="6" id="ShR-XG-exj"/>
-                <constraint firstItem="blF-ms-YK0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gjE-J4-RPV"/>
-                <constraint firstItem="BnU-js-2AO" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ojs-3M-KoY"/>
+                <constraint firstItem="blF-ms-YK0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="RMz-VW-J83"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="BnU-js-2AO" secondAttribute="bottom" constant="10" id="hIr-gN-XhW"/>
+                <constraint firstItem="BnU-js-2AO" firstAttribute="top" secondItem="blF-ms-YK0" secondAttribute="bottom" constant="5" id="pqr-gM-eto"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="137.68115942028987" y="85.714285714285708"/>
         </view>
     </objects>
+    <resources>
+        <image name="formIcon" width="48" height="48"/>
+    </resources>
 </document>

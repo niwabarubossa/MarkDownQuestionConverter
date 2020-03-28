@@ -13,6 +13,7 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
         super.viewDidLoad()
         initializePresenter()
         layout()
+        setOpinionForm()
     }
     
     private func initializePresenter() {
@@ -29,7 +30,14 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
         self.view.addSubview(completeLabel)
         self.completeLabel.isHidden  = true
         self.customView.submitButton.setTitle("submitButtonText".localized, for: .normal)
+    }
+    
+    private func setOpinionForm(){
         opinionFormButton.layer.zPosition = 10000.0
+        let gesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(opinionFormButtonTapped))
+        gesture.numberOfTapsRequired = 1
+        opinionFormButton.isUserInteractionEnabled = true
+        opinionFormButton.addGestureRecognizer(gesture)
     }
     
     // Presenter ← View
@@ -93,8 +101,10 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
 }
 
 extension MarkDownInputViewController{
-    func opinionFormButtonTapped() {
+    @objc private func opinionFormButtonTapped(_ sender:UIButton){
+            print("opinionFormButtonTapped")
     }
+
 }
 
 protocol MarkDownInputViewDelegate {
