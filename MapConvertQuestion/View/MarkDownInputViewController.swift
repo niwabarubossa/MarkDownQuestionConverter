@@ -38,6 +38,15 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
         gesture.numberOfTapsRequired = 1
         opinionFormButton.isUserInteractionEnabled = true
         opinionFormButton.addGestureRecognizer(gesture)
+        UIView.transition(with: opinionFormButton, // アニメーションさせるview
+                        duration: 4, // アニメーションの秒数
+                          options: [.transitionFlipFromBottom, .curveEaseIn],
+                          animations: {
+                            self.opinionFormButton.isHidden = false
+        },
+                          completion:  { (finished: Bool) in
+                            self.opinionFormButton.isHidden = true
+        })
     }
     
     // Presenter ← View
@@ -102,7 +111,8 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
 
 extension MarkDownInputViewController{
     @objc private func opinionFormButtonTapped(_ sender:UIButton){
-            print("opinionFormButtonTapped")
+        let formVC = R.storyboard.opinionForm.opinionFormViewController()!
+        self.present(formVC, animated: true, completion: nil)
     }
 
 }
