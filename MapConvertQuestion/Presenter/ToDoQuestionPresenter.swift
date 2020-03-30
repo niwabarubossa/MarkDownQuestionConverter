@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,RealmCreateProtocol,RealmNodeJudgeProtocol{
+class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJudgeProtocol{
     let myModel: QuestionModel
     let userModel:UserDataModel
     let questionLogModel: QuestionLogModel
@@ -64,7 +64,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         self.view?.buttonStackView.answerButton.alpha = 0.5
     }
     
-    func answerButtonEnabled(){
+    private func answerButtonEnabled(){
         self.view?.buttonStackView.answerButton.isEnabled = true
         self.view?.buttonStackView.answerButton.alpha = 1
     }
@@ -119,17 +119,9 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         self.notifyToQuestionModelView()
         self.nextQuestionButtonTapped()
     }
-        
-    //removeするやつ
-    func didGetToDoQuestion(questionArray: [RealmMindNodeModel]) {
-        self.setQuestionArray(questionArray: questionArray)
-        if questionArray.count == 0 {
-            self.changeToCompleteMode()
-        }
-    }
     
     func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
-//正解時のアクション //データ更新
+        //正解時のアクション //データ更新
         myModel.leadingSwipeQuestion(swipedAnswer: swipedAnswer)
         self.createQuestionLog(isCorrect:true,swipedAnswer: swipedAnswer)
          //データ更新は終了してる。クイズノルマが全て終わっているか判定
