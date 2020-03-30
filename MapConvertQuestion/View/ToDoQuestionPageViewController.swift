@@ -57,7 +57,7 @@ class ToDoQuestionPageViewController: UIViewController{
         presenter.initializePage()
     }
     
-    func setupLocationManager() {
+    private func setupLocationManager() {
         locationManager = CLLocationManager()
         guard let locationManager = locationManager else { return }
         locationManager.requestWhenInUseAuthorization()
@@ -96,6 +96,7 @@ class ToDoQuestionPageViewController: UIViewController{
         alert.addAction(defaultAction)
         present(alert, animated: true, completion: nil)
     }
+    
     private func tableViewSetup(){
         answerTableView.isHidden = true
         answerTableView.center = view.center
@@ -145,19 +146,16 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
     private func todayQuestion(nextDate:Int64)->Bool{
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
         let todayEnd = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
-        if nextDate >= 0 && nextDate <= todayEnd {
-             return true
-         }
+        if nextDate >= 0 && nextDate <= todayEnd { return true }
         return false
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if presenter.answerNodeArray[indexPath.row].childNodeIdArray.count > 0 {
+            //子ノードを持つ答えの場合は、タップしたら次に進める
             presenter.changeToQuestionMode()
             let tappedNode = presenter.answerNodeArray[indexPath.row]
             presenter.changeToSelectedAnswerQuiz(tappedNode: tappedNode)
-        }else{
-            print("i have no answer")
         }
         self.answerTableView.deselectRow(at: indexPath, animated: true)
     }
@@ -199,11 +197,8 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
         
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
         let questionDate = presenter.answerNodeArray[indexPath.row].nextDate
-        if self.todayQuestion(nextDate: questionDate) == true {
-            return true
-        }
-        //スワイプ　つまり正解にできるのは今日の問題のみ
-        return false
+        if self.todayQuestion(nextDate: questionDate) == true { return true }
+        return false //スワイプ　つまり正解にできるのは今日の問題のみ
     }
     
 }
@@ -222,7 +217,6 @@ extension ToDoQuestionPageViewController:ButtonStackViewDelegate{
         print("nextQuestionButtonTapped")
         presenter.nextQuestionButtonTapped()
     }
-
 }
 
 extension ToDoQuestionPageViewController:UserDataModelViewProtocol{
@@ -239,16 +233,11 @@ extension ToDoQuestionPageViewController:QuestionModelViewProtocol{
     }
 }
 
-extension ToDoQuestionPageViewController: CLLocationManagerDelegate {
-    /// 位置情報が更新された際、位置情報を格納する
+extension ToDoQuestionPageViewController: CLLocationManagerDelegate { /// 位置情報が更新された際、位置情報を格納する
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.first
-        if let latitude = location?.coordinate.latitude {
-            self.latitudeNow = String(latitude)
-        }
-        if let longitude = location?.coordinate.longitude {
-            self.longitudeNow = String(longitude)
-        }
+        if let latitude = location?.coordinate.latitude { self.latitudeNow = String(latitude) }
+        if let longitude = location?.coordinate.longitude { self.longitudeNow = String(longitude) }
     }
 }
 

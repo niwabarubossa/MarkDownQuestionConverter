@@ -77,14 +77,10 @@ class QuestionModel {
         return node
     }
     
-    
-//    trailingSwipeAction  → leading
-    func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
-        //不正解時
+    func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){//不正解時
         let learningIntervalStruct = self.calculateNextDateWhenWrong()
         self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
-        //removeせず　nextDate が今日になったことを反映
-        self.syncDataAndNotifyPresenter()
+        self.syncDataAndNotifyPresenter() //removeせず　nextDate が今日になったことを反映
     }
     
     func convertNodeIdToIndex(node:RealmMindNodeModel)->Int{
@@ -93,11 +89,9 @@ class QuestionModel {
     }
     
     func deleteNodeFromModel(deleteNode: RealmMindNodeModel){
-        print("\(self.allNodeData.count)件数 削除前")
         if let removeIndex = self.allNodeData.firstIndex(of: deleteNode){
             self.allNodeData.remove(at: removeIndex)
         }
-        print("\(self.allNodeData.count)件数 削除後")
         self.syncDataAndNotifyPresenter()
     }
     
@@ -106,8 +100,7 @@ class QuestionModel {
         self.notifyToPresenter()
     }
 
-    func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
-        //正解時
+    func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){ //正解時
         let learningIntervalStruct = self.calculateNextDateWhenCorrect(question: swipedAnswer)
         self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
         self.syncDataAndNotifyPresenter()
@@ -142,7 +135,7 @@ class QuestionModel {
             focusNode?.setValue(learningIntervalStruct.nextLearningDate, forKey: "nextDate")
             focusNode?.setValue(Date().millisecondsSince1970,forKey: "lastAnswerdTime")
         }
-        
+
     }
     
     func updateMapQuestionIsAnswer(updateNode:RealmMindNodeModel,isAnswer:Bool){
@@ -231,9 +224,14 @@ class QuestionModel {
         if let searchResult = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", question.mapId).filter("myNodeId == %@",nodeId).first {
             return searchResult
         }
-        
         return RealmMindNodeModel()
     }
+    
+    func getMapTitle(question:RealmMindNodeModel) -> String {
+        let indexQuestion = self.getNodeByNodeIdAndMapId(question: question,nodeId: 0)
+        return indexQuestion.content == "" ? "no map title" : indexQuestion.content
+    }
+
 
 }
 

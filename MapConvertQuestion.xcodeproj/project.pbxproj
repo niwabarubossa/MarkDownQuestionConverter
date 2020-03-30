@@ -15,7 +15,6 @@
 		542F3FAE240FB32500D92561 /* ToDoQuestionDisplay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 542F3FAD240FB32500D92561 /* ToDoQuestionDisplay.xib */; };
 		542F3FB0240FB3E100D92561 /* ToDoQuestionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542F3FAF240FB3E100D92561 /* ToDoQuestionDisplay.swift */; };
 		542F3FB2240FB54D00D92561 /* ToDoQuestionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542F3FB1240FB54D00D92561 /* ToDoQuestionPresenter.swift */; };
-		542F3FB4240FB58900D92561 /* ToDoQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542F3FB3240FB58900D92561 /* ToDoQuestionModel.swift */; };
 		5433AE562414AF60009877A1 /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5433AE552414AF60009877A1 /* MyColor.swift */; };
 		5439113B242B75FF00C92312 /* MyPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5439113A242B75FF00C92312 /* MyPagePresenter.swift */; };
 		543CC700241DBE950008BDE6 /* InputPageLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 543CC6FF241DBE950008BDE6 /* InputPageLabel.xib */; };
@@ -89,7 +88,6 @@
 		542F3FAD240FB32500D92561 /* ToDoQuestionDisplay.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoQuestionDisplay.xib; sourceTree = "<group>"; };
 		542F3FAF240FB3E100D92561 /* ToDoQuestionDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoQuestionDisplay.swift; sourceTree = "<group>"; };
 		542F3FB1240FB54D00D92561 /* ToDoQuestionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoQuestionPresenter.swift; sourceTree = "<group>"; };
-		542F3FB3240FB58900D92561 /* ToDoQuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoQuestionModel.swift; sourceTree = "<group>"; };
 		5433AE552414AF60009877A1 /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyColor.swift; path = MapConvertQuestion/Model/MyColor.swift; sourceTree = SOURCE_ROOT; };
 		5439113A242B75FF00C92312 /* MyPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPagePresenter.swift; sourceTree = "<group>"; };
 		543CC6FF241DBE950008BDE6 /* InputPageLabel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputPageLabel.xib; sourceTree = "<group>"; };
@@ -298,7 +296,6 @@
 				54BFEE362400F61100B55A8C /* QuestionModel.swift */,
 				54BFEE3A2402701000B55A8C /* RealmMindNodeModel.swift */,
 				543E7FE6240E987D0073C7FF /* LearningIntervalStruct.swift */,
-				542F3FB3240FB58900D92561 /* ToDoQuestionModel.swift */,
 				54A7F0032417CD2F007A7E70 /* UserModel.swift */,
 				54A7F0052417CDA2007A7E70 /* QuestionLogModel.swift */,
 				54C53B3324186547000EE76E /* UserDataModel.swift */,
@@ -550,7 +547,6 @@
 				54FF62C62400E1640009B721 /* MindNodeModel.swift in Sources */,
 				54A462F4242B7731007EA353 /* MyPageViewController.swift in Sources */,
 				54A462F2242B76E8007EA353 /* QuestionLogMyPageModel.swift in Sources */,
-				542F3FB4240FB58900D92561 /* ToDoQuestionModel.swift in Sources */,
 				54F45E3B23F918E6002981C8 /* QuestionDidsplay.swift in Sources */,
 				54A7F0042417CD2F007A7E70 /* UserModel.swift in Sources */,
 				54F45E3D23F918F5002981C8 /* MarkDownInput.swift in Sources */,
