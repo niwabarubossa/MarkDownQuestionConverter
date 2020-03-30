@@ -18,7 +18,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
     var quizDataSource = [RealmMindNodeModel]()
     var displayingQustion:RealmMindNodeModel = RealmMindNodeModel()
     var answerNodeArray = [RealmMindNodeModel]()
-    var experience:Float = Float.random(in: 0.4..<1)
+    var experience:Float = Float.random(in: 0.2..<1)
     var user = User()
     var startQuestionTime:Date = Date()
     var mapTitle:String = ""
@@ -61,14 +61,6 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         return indexQuestion.content == "" ? "no map title" : indexQuestion.content
     }
     
-    func syncUserData(user:User){
-        self.user = user
-    }
-    
-    func syncData(allNodeData: [RealmMindNodeModel]) { //model とpresenter同期
-        self.quizDataSource = allNodeData
-    }
-    
     func answerButtonTapped(){
         self.changeToAnswerMode()
         self.setAnswerNodeArray(question: self.displayingQustion)
@@ -79,6 +71,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         self.view?.buttonStackView.answerButton.isEnabled = false
         self.view?.buttonStackView.answerButton.alpha = 0.5
     }
+    
     func answerButtonEnabled(){
         self.view?.buttonStackView.answerButton.isEnabled = true
         self.view?.buttonStackView.answerButton.alpha = 1
@@ -233,7 +226,12 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
     }
 }
 
+
 extension ToDoQuestionPresenter:UserDataModelDelegate{
+    
+    func syncUserData(user:User){
+        self.user = user
+    }
     
     func didGetUserData(user: User) {
         self.user = user
@@ -241,7 +239,6 @@ extension ToDoQuestionPresenter:UserDataModelDelegate{
     }
 
     @objc func userModelUpdateDone(){
-        print("userに関する情報、今回はuserDisplay情報が更新されました")
         let answerTimesLabel = self.view?.userDataDisplay.answerTimesLabel
         let scoreLabel = self.view?.userDataDisplay.scoreLabel
         UIView.transition(with: answerTimesLabel!,
@@ -329,6 +326,12 @@ extension ToDoQuestionPresenter {
 
 //viewの更新関連
 extension ToDoQuestionPresenter:QuestionModelPresenterProtocol{
+    
+    func syncData(allNodeData: [RealmMindNodeModel]) {
+        //Qmodel → presenter同期
+        self.quizDataSource = allNodeData
+    }
+    
     @objc func notifyToQuestionModelView() {
         print("notify model change update")
         self.buttonEnabledControl()
@@ -337,7 +340,7 @@ extension ToDoQuestionPresenter:QuestionModelPresenterProtocol{
         self.userDisplayReload()
         self.renderingView()
     }
-    
+
     private func userDisplayReload(){  //一番上のユーザーの経験値とかのスコア情報
         let bunboTextLabel = self.view?.userDataDisplay.bunboLabel.text
         if let bunboText = bunboTextLabel {
@@ -347,7 +350,7 @@ extension ToDoQuestionPresenter:QuestionModelPresenterProtocol{
         self.view?.userDataDisplay.levelLabel.text = "level." + String(self.user.level)
         self.view?.userDataDisplay.progressView.setProgress(self.experience, animated: true)
     }
-    
+
     //TODO protocolに準拠させよう viewRenderingなprotocol
     private func renderingView(){
         self.view?.customView.questionLabel.text = self.displayingQustion.content.replacingOccurrences(of:"\t", with:"")
