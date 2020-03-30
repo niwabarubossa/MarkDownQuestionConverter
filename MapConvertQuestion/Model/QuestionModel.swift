@@ -77,14 +77,10 @@ class QuestionModel {
         return node
     }
     
-    
-//    trailingSwipeAction  → leading
-    func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
-        //不正解時
+    func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){//不正解時
         let learningIntervalStruct = self.calculateNextDateWhenWrong()
         self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
-        //removeせず　nextDate が今日になったことを反映
-        self.syncDataAndNotifyPresenter()
+        self.syncDataAndNotifyPresenter() //removeせず　nextDate が今日になったことを反映
     }
     
     func convertNodeIdToIndex(node:RealmMindNodeModel)->Int{
@@ -93,11 +89,9 @@ class QuestionModel {
     }
     
     func deleteNodeFromModel(deleteNode: RealmMindNodeModel){
-        print("\(self.allNodeData.count)件数 削除前")
         if let removeIndex = self.allNodeData.firstIndex(of: deleteNode){
             self.allNodeData.remove(at: removeIndex)
         }
-        print("\(self.allNodeData.count)件数 削除後")
         self.syncDataAndNotifyPresenter()
     }
     
