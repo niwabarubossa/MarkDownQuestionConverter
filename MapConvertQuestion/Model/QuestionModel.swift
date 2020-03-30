@@ -100,8 +100,7 @@ class QuestionModel {
         self.notifyToPresenter()
     }
 
-    func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
-        //正解時
+    func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){ //正解時
         let learningIntervalStruct = self.calculateNextDateWhenCorrect(question: swipedAnswer)
         self.updateMapQuestion(learningIntervalStruct: learningIntervalStruct, focusNode: swipedAnswer)
         self.syncDataAndNotifyPresenter()
@@ -136,7 +135,7 @@ class QuestionModel {
             focusNode?.setValue(learningIntervalStruct.nextLearningDate, forKey: "nextDate")
             focusNode?.setValue(Date().millisecondsSince1970,forKey: "lastAnswerdTime")
         }
-        
+
     }
     
     func updateMapQuestionIsAnswer(updateNode:RealmMindNodeModel,isAnswer:Bool){
@@ -225,7 +224,6 @@ class QuestionModel {
         if let searchResult = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", question.mapId).filter("myNodeId == %@",nodeId).first {
             return searchResult
         }
-        
         return RealmMindNodeModel()
     }
 
