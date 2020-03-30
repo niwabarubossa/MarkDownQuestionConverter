@@ -70,7 +70,7 @@ extension SubmitFirestoreDocProtocol{
     func submitFirestoreDocument(ref_array:[DocumentReference],submit_data:[String:Any]) {
         let db = Firestore.firestore()
         let batch = db.batch()
-        for (index, item) in ref_array.enumerated() {
+        for (index, _) in ref_array.enumerated() {
             batch.setData(submit_data, forDocument: ref_array[index])
         }
         batch.commit() { err in
