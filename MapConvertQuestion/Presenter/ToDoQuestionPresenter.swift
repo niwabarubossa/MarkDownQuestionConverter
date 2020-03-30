@@ -34,33 +34,25 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         userModel.addObserver(self, selector:#selector(self.userModelUpdateDone))
     }
     
-    //初期化時に呼ばれる　from presenter
-    func initializePage(){
+    func initializePage(){ //初期化時に呼ばれる　from presenter
         myModel.getToDoQuestion()
         userModel.getUserData()
         self.view?.customView.questionLabel.isHidden = false
         self.view?.answerTableView.isHidden = true
     }
     
-    func didGetMapQuestion(question: [RealmMindNodeModel]) {
-        //初期化処理
+    func didGetMapQuestion(question: [RealmMindNodeModel]) { //初期化処理 model → presenter
         self.quizDataSource = question
         question.count > 0 ? self.displayingQustion = self.quizDataSource[0] : print("no question")
         let firstQuestion = self.displayingQustion
         self.renderingView()
-        //get map title
         self.reloadQAPair(nextQuestion: firstQuestion)
         self.view?.userDataDisplay.bunboLabel.text = String(self.quizDataSource.count)
         self.view?.userDataDisplay.bunsiLabel.text = String(self.quizDataSource.count)
         self.userDisplayReload()
         self.userModelUpdateDone()
     }
-    
-    private func getMapTitle(question:RealmMindNodeModel) -> String {
-        let indexQuestion = myModel.getNodeByNodeIdAndMapId(question: question,nodeId: 0)
-        return indexQuestion.content == "" ? "no map title" : indexQuestion.content
-    }
-    
+        
     func answerButtonTapped(){
         self.changeToAnswerMode()
         self.setAnswerNodeArray(question: self.displayingQustion)
@@ -263,7 +255,7 @@ extension ToDoQuestionPresenter:UserDataModelDelegate{
 extension ToDoQuestionPresenter {
     func reloadQAPair(nextQuestion:RealmMindNodeModel){
         self.displayingQustion = nextQuestion
-        self.mapTitle = self.getMapTitle(question: nextQuestion) //get map title
+        self.mapTitle = myModel.getMapTitle(question: nextQuestion) //get map title
         self.renderingView()
         self.quizDataSource.count > 0 ? self.changeToQuestionMode() : self.changeToCompleteMode()
         self.buttonEnabledControl()

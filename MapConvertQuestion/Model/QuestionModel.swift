@@ -226,6 +226,12 @@ class QuestionModel {
         }
         return RealmMindNodeModel()
     }
+    
+    func getMapTitle(question:RealmMindNodeModel) -> String {
+        let indexQuestion = self.getNodeByNodeIdAndMapId(question: question,nodeId: 0)
+        return indexQuestion.content == "" ? "no map title" : indexQuestion.content
+    }
+
 
 }
 
