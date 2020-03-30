@@ -65,8 +65,7 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         self.user = user
     }
     
-    //model とpresenter同期
-    func syncData(allNodeData: [RealmMindNodeModel]) {
+    func syncData(allNodeData: [RealmMindNodeModel]) { //model とpresenter同期
         self.quizDataSource = allNodeData
     }
     
@@ -90,7 +89,6 @@ class ToDoQuestionPresenter:ToDoQuestionModelDelegate,QuestionModelDelegate,Real
         if (self.quizDataSource.count < 1) {
             self.view?.noQuestionLabel.isHidden = false
             self.changeToCompleteMode()
-            print("no question ! todays todo question is complete!")
             return
         }
         if self.quizDataSource.count == 1 {
@@ -268,11 +266,8 @@ extension ToDoQuestionPresenter:UserDataModelDelegate{
 extension ToDoQuestionPresenter {
     func reloadQAPair(nextQuestion:RealmMindNodeModel){
         self.displayingQustion = nextQuestion
-        
-        self.mapTitle = self.getMapTitle(question: nextQuestion)
-        
+        self.mapTitle = self.getMapTitle(question: nextQuestion) //get map title
         self.renderingView()
-        //get map title
         self.quizDataSource.count > 0 ? self.changeToQuestionMode() : self.changeToCompleteMode()
         self.buttonEnabledControl()
     }
@@ -287,24 +282,11 @@ extension ToDoQuestionPresenter {
         self.view?.answerTableView.reloadData()
     }
     
-    //TODO protocolに準拠させよう viewRenderingなprotocol
-    private func renderingView(){
-        self.view?.customView.questionLabel.text = self.displayingQustion.content.replacingOccurrences(of:"\t", with:"")
-        self.view?.customView.mapTitleLabel.text = self.mapTitle
-    }
-    
     func decideCellColor(answerNodeData:RealmMindNodeModel) -> UIColor{
         let lastAnswerdTime = answerNodeData.lastAnswerdTime
-        
-        if lastAnswerdTime > self.startQuestionTime.millisecondsSince1970 {
-            //already solved
-            if self.betweenTodayRange(time: answerNodeData.nextDate) { return UIColor.orange }
-            return UIColor.green
-        }else{
-            //まだ説かれていない
-            if self.betweenTodayRange(time: answerNodeData.nextDate) { return UIColor.white }
-            return UIColor.green
-        }
+        if lastAnswerdTime > self.startQuestionTime.millisecondsSince1970 && self.betweenTodayRange(time: answerNodeData.nextDate) { return UIColor.orange } //already solved
+        if lastAnswerdTime <= self.startQuestionTime.millisecondsSince1970 && self.betweenTodayRange(time: answerNodeData.nextDate){ return UIColor.white } //まだ説かれていない
+        return UIColor.green
     }
         
     private func buttonEnabledControl(){
@@ -312,8 +294,6 @@ extension ToDoQuestionPresenter {
             self.view?.buttonStackView.isHidden = true
             self.view?.buttonStackView.answerButton.isEnabled = false
             self.view?.buttonStackView.answerButton.alpha = 0.5
-            //TODO 多くのこと一度にやりすぎているので分割しなきゃいけない
-            print("complete!")
             self.changeToCompleteMode()
         }
     }
@@ -352,21 +332,26 @@ extension ToDoQuestionPresenter:QuestionModelPresenterProtocol{
     @objc func notifyToQuestionModelView() {
         print("notify model change update")
         self.buttonEnabledControl()
-        //状態確認
-        self.view?.reloadQuestionModelView()
+        self.view?.reloadQuestionModelView() //状態確認
         //FIX ここで呼び出すの適切じゃないと思う
         self.userDisplayReload()
+        self.renderingView()
     }
     
-    private func userDisplayReload(){
+    private func userDisplayReload(){  //一番上のユーザーの経験値とかのスコア情報
         let bunboTextLabel = self.view?.userDataDisplay.bunboLabel.text
         if let bunboText = bunboTextLabel {
-            let bunboFloat = NumberFormatter().number(from: bunboText)!.floatValue
             let bunboInt = NumberFormatter().number(from: bunboText)!.intValue
             self.view?.userDataDisplay.bunsiLabel.text = String( bunboInt - self.quizDataSource.count)
         }
         self.view?.userDataDisplay.levelLabel.text = "level." + String(self.user.level)
         self.view?.userDataDisplay.progressView.setProgress(self.experience, animated: true)
+    }
+    
+    //TODO protocolに準拠させよう viewRenderingなprotocol
+    private func renderingView(){
+        self.view?.customView.questionLabel.text = self.displayingQustion.content.replacingOccurrences(of:"\t", with:"")
+        self.view?.customView.mapTitleLabel.text = self.mapTitle
     }
 
 }
