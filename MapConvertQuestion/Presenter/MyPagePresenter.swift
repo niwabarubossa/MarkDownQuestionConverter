@@ -5,16 +5,6 @@
 //  Created by 丹羽遼吾 on 2020/03/25.
 //  Copyright © 2020 ryogo.niwa. All rights reserved.
 //
-
-//1 storyboard作成
-//2 storyboardにカスタムクラスでVCを登録
-//3 customview.swift
-//4 customview.xib を作成して　owner"sfileに３を登録
-//5 ファイル切り分ける
-
-
-//------presenter---------------------------------------------
-
 import Foundation
 import UIKit
 import Charts
@@ -24,10 +14,9 @@ protocol MVPPresenterProtocol{
 }
 
 class MyPagePresenter:QuestionLogModelDelegate{
-    //自分用のモデルの宣言
+
     let model: QuestionLogModel
     var questionLogs = [QuestionLog]()
-    //オリジナルのクラス型にすること
     weak var view:MyPageViewController?
 
     init(view: MyPageViewController) {
@@ -92,20 +81,21 @@ class MyPagePresenter:QuestionLogModelDelegate{
     }
     
     func initializeViewController(){
-        //データ加工
-        //データの流し込み
+        self.setupChart()
+        self.getNotifyFromModel()
+    }
+    
+    private func setupChart(){
         let data = self.convertLogToBarChartData(questionLogs: self.questionLogs)
         self.view?.barChartView.leftAxis.drawAxisLineEnabled = false
         self.view?.barChartView.xAxis.drawGridLinesEnabled = false
         self.view?.barChartView.xAxis.drawAxisLineEnabled = false
         self.view?.barChartView.leftAxis.drawAxisLineEnabled = false
         self.view?.barChartView.data = data
-        self.getNotifyFromModel()
     }
         
     // Presenter → Model 操作する側
     func toModelFromPresenter() {
-//        model.testfunc()
     }
 
     //Presenter → View の操作  操作する側
@@ -115,11 +105,9 @@ class MyPagePresenter:QuestionLogModelDelegate{
 
     // prsenter ← Viewの操作     操作されるやつ
     func presenterFunc() {
-        print("notify from view")
     }
     
     func modelDelegateFunc(){
-        print("model delegate func in presenter")
     }
 
 }
@@ -129,6 +117,3 @@ extension MyPagePresenter:MVPPresenterProtocol{
         self.view?.reloadView()
     }
 }
-
-//------presenter---------------------------------------------
-
