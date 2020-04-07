@@ -13,7 +13,7 @@ class TutorialExplanationUIView: UIView {
     @IBOutlet weak var tutorialTitleLabel: UILabel!
     @IBOutlet weak var tutorialIconImage: UIImageView!
     @IBOutlet weak var tutorialContentLabel: UILabel!
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
