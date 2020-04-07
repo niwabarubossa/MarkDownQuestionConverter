@@ -43,7 +43,6 @@ class QuestionMapSelectPageTableViewController: UIViewController{
             self.opinionFormButton.isHidden = true
         }
     }
-
     
     private func getMapTitleData() -> [Dictionary<String,String>]{
         let realm = try! Realm()
@@ -56,15 +55,11 @@ class QuestionMapSelectPageTableViewController: UIViewController{
         for mapId in mapIdArray {
             let firstNodeResult = realm.objects(RealmMindNodeModel.self).filter("myNodeId == 0").filter("mapId == %@",mapId).first
             if let firstNode = firstNodeResult {
-                print("firstNode")
-                print("\(firstNode)")
                 let data = [
                     "mapId": mapId,
                     "mapFirstNodeContent": firstNode.content
                 ]
                 mapAndTitleData.append(data)
-            }else{
-                print("search result not exist")
             }
         }
         return mapAndTitleData
@@ -74,7 +69,6 @@ class QuestionMapSelectPageTableViewController: UIViewController{
         if segue.identifier == R.segue.questionMapSelectPageTableViewController.goToQuestionPage.identifier {
             let nextVC = segue.destination as! QuestionPageViewController
             nextVC.questionMapId = self.dataSource[didSelectRowAt]["mapId"] ?? "error"
-            print("\(self.dataSource[didSelectRowAt]["mapId"] ?? "error")")
         }
     }
 }
