@@ -6,7 +6,6 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     @IBOutlet weak var customView: MarkDownInput!
     @IBOutlet weak var opinionFormButton: OpinionFormButton!
     var presenter:MarkDownInputPresenter!
-//    var customView = MarkDownInput()
     var completeLabel = UILabel()
     
     override func viewDidLoad(){
@@ -72,31 +71,25 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
             UserDefaults.standard.set(false, forKey: "FirstLaunch")
             let new_uuid = NSUUID().uuidString
             UserDefaults.standard.set(new_uuid, forKey: "uuid")
-             print("new!! \n \(new_uuid) \n\n")
-            print("初回のログインです")
             self.customView.inputTextView.text = "tutorialTextViewContent".localized
             self.createUserData(uuid:new_uuid)
             let howToVC = R.storyboard.settings.howToPage()
             self.present(howToVC!, animated: true, completion: nil)
         }else{
+            //２回目以降
             UserDefaults.standard.set(false, forKey: "FirstLaunch")
-            print("２回目以降のログインです")
         }
     }
     
     private func createUserData(uuid:String){
         do {
             let realm = try Realm()
-            let user = User(value: [
-                "uuid": uuid
-            ])
+            let user = User(value: [ "uuid": uuid])
             try! realm.write {
                 realm.add(user)
-                print("成功", user)
             }
         } catch {
             print("\(error)")
-            print("エラーだよ")
         }
     }
 
