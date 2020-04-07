@@ -160,10 +160,8 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
     
     private func removeSwipedAnswerJudge()->Bool{
         for answerNode in self.answerNodeArray {
-            if isTodayToDoQuestion(question: answerNode) == true {
-                //１つでも今日のやつが残っているならまだ消さない
-                return false
-            }
+            //１つでも今日のやつが残っているならまだ消さない
+            if isTodayToDoQuestion(question: answerNode) == true { return false }
         }
         //全てのanswerが,0~todayの範囲を超えていたらOK,removeする。
         return true
