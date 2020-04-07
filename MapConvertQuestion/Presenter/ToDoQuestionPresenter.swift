@@ -184,14 +184,11 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
     private func isTodayToDoQuestion(question:RealmMindNodeModel) ->Bool{
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
         let todayEnd = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
-        if question.nextDate >= 0 && todayEnd >= question.nextDate {
-            return true
-        }
+        if question.nextDate >= 0 && todayEnd >= question.nextDate { return true }
         return false
     }
     
     func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
-        //不正解
         myModel.trailingSwipeQuestion(swipedAnswer: swipedAnswer)
         self.createQuestionLog(isCorrect:false,swipedAnswer: swipedAnswer)
         if self.goNextQuestionJudge() == true { self.nextQuestionButtonTapped() }

@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 class QuestionPagePresenter:QuestionModelDelegate{
-    //自分用のモデルの宣言
+    
     let questionModel: QuestionModel
     var quizDataSource = [RealmMindNodeModel]()
     var displayingQustion:RealmMindNodeModel = RealmMindNodeModel()
@@ -57,12 +57,10 @@ class QuestionPagePresenter:QuestionModelDelegate{
                 nextQuestionNodeId = nodeId
                 return nextQuestionNodeId
             }
-            if (nodeId == self.quizDataSource.count - 1 ){
-                print("もうクイズはありません。初めに戻ります")
-                return 0
-            }
+            //クイズない状態↓
+            if (nodeId == self.quizDataSource.count - 1 ){ return 0 }
         }
-        print("もうクイズないよ")
+        //クイズない状態↓
         return nextQuestionNodeId
     }
     
@@ -106,14 +104,10 @@ class QuestionPagePresenter:QuestionModelDelegate{
     
     func correctAnswer(row:Int){
         let swipedAnswer = self.answerNodeArray[row]
-        print("swipedAnswer")
-        print("\(swipedAnswer)")
     }
     
     func wrongAnswer(row:Int){
         let swipedAnswer = self.answerNodeArray[row]
-        print("swipedAnswer")
-        print("\(swipedAnswer)")
     }
     
     func syncData(allNodeData: [RealmMindNodeModel]) {
