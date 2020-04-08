@@ -29,6 +29,7 @@ import UIKit
             //fontは定数で管理した方が良いのでは？　h1とかh2タグの名前で
             let font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(300))
             titleLabel.font = font
+            titleLabel.text = "opinion".localized
         }
     }
 

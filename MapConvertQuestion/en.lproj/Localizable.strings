@@ -25,3 +25,4 @@
 "tutorialTextViewContent" = "Tutorial\n\tHowToAnswer??\n\t\tWhen your answer is correct,swipe left to right,then color change to green.！\n\t\tWhen your answer is wrong,swipe right to left,then,color change to red.\n\t\tYou have to answer all white quiz. \n\tLesson2\n\t\tLesson 2 is not quiz....don't want to display..,then tap [no]button!\n\t\tYou can check all quiz in [list] page.\n\tWhere is the capital of Japan? \n\t\tTokyo.\n\t\tAnswer and quiz node has arrow image.↓\n\t\tSo,Tokyo has how many Ward?？　Please tap me!! ！\n\t\t\t23\n\t\t\tLike this,quiz and answer node has arrow image!If you tap,then go to tapped quiz\n";
 "submitOpiniton" = "submit";
 "opinionLabel" = "opinion / suggestions";
+"opinion" = "opinion";
