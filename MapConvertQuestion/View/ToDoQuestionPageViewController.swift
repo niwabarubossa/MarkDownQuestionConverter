@@ -26,7 +26,7 @@ class ToDoQuestionPageViewController: UIViewController{
     var longitudeNow: String = ""
     
     var talker = AVSpeechSynthesizer()
-    var judgeStackCount:Int = 0
+    var isQuestion = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -211,21 +211,20 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
 
 extension ToDoQuestionPageViewController:AVSpeechSynthesizerDelegate{
     
-    func soundPlay(text:String){
-        self.judgeStackCount += 1
+    func soundPlay(text:String,isQuestion:Bool){
+        self.isQuestion = isQuestion
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
         self.talker.speak(utterance)
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        self.judgeStackCount -= 1
-        if self.judgeStackCount == 1 {
-            print("question ondoku finish")
-            presenter.answerButtonTapped()
+        if self.isQuestion == true{
+            self.presenter.answerPlay()
+            self.presenter.answerButtonTapped()
             return
         }
-        presenter.soundModeStart()
+        presenter.nextSoundQuestion()
     }
 }
 

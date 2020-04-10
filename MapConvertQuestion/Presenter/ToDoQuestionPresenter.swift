@@ -312,18 +312,42 @@ extension ToDoQuestionPresenter {
     }
     
     func soundModeStart(){
+        //leadingSwipeQuestion all
         self.nextQuestionButtonTapped()
         self.setAnswerNodeArray(question: self.displayingQustion)
-        self.view?.soundPlay(text: self.displayingQustion.content)
+        self.view?.soundPlay(text: self.displayingQustion.content,isQuestion: true)
+    }
+    
+    func answerPlay(){
         var answerNodeContent:String = ""
         for answerNode in self.answerNodeArray {
             answerNodeContent += answerNode.content
         }
-        self.view?.soundPlay(text: answerNodeContent)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.view?.soundPlay(text: answerNodeContent,isQuestion: false)
+        }
+    }
+    
+    func nextSoundQuestion(){
+        self.correctAllAnswer()
+        self.nextQuestionButtonTapped()
+        self.setAnswerNodeArray(question: self.displayingQustion)
+        if (self.quizDataSource.count < 1) {
+            return
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.view?.soundPlay(text: self.displayingQustion.content,isQuestion: true)
+        }
+    }
+    
+    private func correctAllAnswer(){
+        for answerNode in self.answerNodeArray {
+            self.leadingSwipeQuestion(swipedAnswer: answerNode)
+        }
     }
     
     private func soundModeFinish(){
-        
+        self.view?.talker.stopSpeaking(at: .immediate)
     }
 
 }
