@@ -311,8 +311,15 @@ extension ToDoQuestionPresenter {
         }
     }
     
-    private func soundModeStart(){
-        // 多分question は存在している
+    func soundModeStart(){
+        self.nextQuestionButtonTapped()
+        self.setAnswerNodeArray(question: self.displayingQustion)
+        self.view?.soundPlay(text: self.displayingQustion.content)
+        var answerNodeContent:String = ""
+        for answerNode in self.answerNodeArray {
+            answerNodeContent += answerNode.content
+        }
+        self.view?.soundPlay(text: answerNodeContent)
     }
     
     private func soundModeFinish(){
@@ -320,7 +327,6 @@ extension ToDoQuestionPresenter {
     }
 
 }
-
 //viewの更新関連
 extension ToDoQuestionPresenter:QuestionModelPresenterProtocol{
     

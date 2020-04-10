@@ -8,6 +8,7 @@
 import UIKit
 import CoreLocation
 import GoogleMobileAds
+import AVFoundation
 
 class ToDoQuestionPageViewController: UIViewController{
     
@@ -24,6 +25,9 @@ class ToDoQuestionPageViewController: UIViewController{
     var latitudeNow: String = ""
     var longitudeNow: String = ""
     
+    var talker = AVSpeechSynthesizer()
+    var judgeStackCount:Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializePresenter()
@@ -35,6 +39,7 @@ class ToDoQuestionPageViewController: UIViewController{
     }
         
     private func layout(){
+        self.talker.delegate = self
         self.answerTableView.center = self.view.center
         customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: view.frame.height - 500))
         customView.center = self.view.center
@@ -202,6 +207,26 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
         return false //スワイプ　つまり正解にできるのは今日の問題のみ
     }
     
+}
+
+extension ToDoQuestionPageViewController:AVSpeechSynthesizerDelegate{
+    
+    func soundPlay(text:String){
+        self.judgeStackCount += 1
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
+        self.talker.speak(utterance)
+    }
+    
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        self.judgeStackCount -= 1
+        if self.judgeStackCount == 1 {
+            print("question ondoku finish")
+            presenter.answerButtonTapped()
+            return
+        }
+        presenter.soundModeStart()
+    }
 }
 
 extension ToDoQuestionPageViewController:ButtonStackViewDelegate{
