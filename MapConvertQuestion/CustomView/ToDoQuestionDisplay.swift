@@ -12,6 +12,9 @@ class ToDoQuestionDisplay: UIView {
 
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var mapTitleLabel: UILabel!
+    @IBOutlet weak var soundButton: UIButton!
+    
+    weak var delegate:ToDoQuestionViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,6 +36,19 @@ class ToDoQuestionDisplay: UIView {
 
     private func layout(){
         questionLabel.numberOfLines = 0
+        self.soundButton.setImage(R.image.soundOff(), for: .normal)
     }
     
+    @IBAction func soundButtonTapped(_ sender: Any) {
+        self.delegate?.soundButtonTapped()
+        if self.soundButton.currentImage == R.image.soundOn(){
+            self.soundButton.setImage(R.image.soundOff(), for: .normal)
+            return
+        }
+        self.soundButton.setImage(R.image.soundOn(), for: .normal)
+    }
+}
+
+protocol ToDoQuestionViewDelegate:class{
+    func soundButtonTapped()
 }

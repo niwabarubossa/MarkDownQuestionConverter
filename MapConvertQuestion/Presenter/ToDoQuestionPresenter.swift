@@ -300,9 +300,57 @@ extension ToDoQuestionPresenter {
         view?.buttonStackView.isHidden = true
         view?.noQuestionLabel.isHidden = false
     }
+    
+    func soundButtonTapped(){
+        //judge
+        let soundButtonImage = self.view?.customView.soundButton.currentImage
+        if soundButtonImage == R.image.soundOn() {
+            self.soundModeFinish()
+        }else if soundButtonImage == R.image.soundOff(){
+            self.soundModeStart()
+        }
+    }
+    
+    func soundModeStart(){
+        //leadingSwipeQuestion all
+        self.nextQuestionButtonTapped()
+        self.setAnswerNodeArray(question: self.displayingQustion)
+        self.view?.soundPlay(text: self.displayingQustion.content,isQuestion: true)
+    }
+    
+    func answerPlay(){
+        var answerNodeContent:String = ""
+        for answerNode in self.answerNodeArray {
+            answerNodeContent += answerNode.content
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.view?.soundPlay(text: answerNodeContent,isQuestion: false)
+        }
+    }
+    
+    func nextSoundQuestion(){
+        self.correctAllAnswer()
+        self.nextQuestionButtonTapped()
+        self.setAnswerNodeArray(question: self.displayingQustion)
+        if (self.quizDataSource.count < 1) {
+            return
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.view?.soundPlay(text: self.displayingQustion.content,isQuestion: true)
+        }
+    }
+    
+    private func correctAllAnswer(){
+        for answerNode in self.answerNodeArray {
+            self.leadingSwipeQuestion(swipedAnswer: answerNode)
+        }
+    }
+    
+    private func soundModeFinish(){
+        self.view?.talker.stopSpeaking(at: .immediate)
+    }
 
 }
-
 //viewの更新関連
 extension ToDoQuestionPresenter:QuestionModelPresenterProtocol{
     

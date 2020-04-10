@@ -8,6 +8,7 @@
 import UIKit
 import CoreLocation
 import GoogleMobileAds
+import AVFoundation
 
 class ToDoQuestionPageViewController: UIViewController{
     
@@ -24,6 +25,9 @@ class ToDoQuestionPageViewController: UIViewController{
     var latitudeNow: String = ""
     var longitudeNow: String = ""
     
+    var talker = AVSpeechSynthesizer()
+    var isQuestion = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializePresenter()
@@ -35,9 +39,11 @@ class ToDoQuestionPageViewController: UIViewController{
     }
         
     private func layout(){
+        self.talker.delegate = self
         self.answerTableView.center = self.view.center
         customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: view.frame.height - 500))
         customView.center = self.view.center
+        self.customView.delegate = self
         noQuestionLabel = ToDoQuestionCompleteLabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 200))
         noQuestionLabel.center = self.view.center
         noQuestionLabel.isHidden = true
@@ -203,6 +209,25 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
     
 }
 
+extension ToDoQuestionPageViewController:AVSpeechSynthesizerDelegate{
+    
+    func soundPlay(text:String,isQuestion:Bool){
+        self.isQuestion = isQuestion
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "language".localized)
+        self.talker.speak(utterance)
+    }
+    
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        if self.isQuestion == true{
+            self.presenter.answerPlay()
+            self.presenter.answerButtonTapped()
+            return
+        }
+        presenter.nextSoundQuestion()
+    }
+}
+
 extension ToDoQuestionPageViewController:ButtonStackViewDelegate{
     func answerButtonTapped() {
         print("answerButtonTapped")
@@ -216,6 +241,12 @@ extension ToDoQuestionPageViewController:ButtonStackViewDelegate{
     func nextQuestionButtonTapped(){
         print("nextQuestionButtonTapped")
         presenter.nextQuestionButtonTapped()
+    }
+}
+
+extension ToDoQuestionPageViewController:ToDoQuestionViewDelegate{
+    func soundButtonTapped() {
+        presenter.soundButtonTapped()
     }
 }
 
