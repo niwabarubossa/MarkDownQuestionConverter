@@ -22,7 +22,7 @@ struct TutorialContentModel{
     
     static func createModels() -> [TutorialContentModel]{
         return [
-            TutorialContentModel(title: "tutorialFirstTitle".localized, content: "tutorialFirstContent".localized, imageIcon: R.image.pencil()!),
+            TutorialContentModel(title: "tutorialFirstTitle".localized, content: "tutorialFirstContent".localized, imageIcon: R.image.tutorialMap()!),
             TutorialContentModel(title: "tutorialSecondTitle".localized, content: "tutorialSecondContent".localized, imageIcon: R.image.student()!),
             TutorialContentModel(title: "tutorialThirdTitle".localized, content: "tutorialThirdContent".localized, imageIcon: R.image.books()!)
         ]
