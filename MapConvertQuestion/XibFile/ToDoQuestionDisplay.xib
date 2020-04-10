@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="mapTitleLabel" destination="eNW-ON-h9d" id="yiD-AV-q4y"/>
                 <outlet property="questionLabel" destination="GJh-rN-Xgb" id="cM1-zt-Wv3"/>
+                <outlet property="soundButton" destination="aSy-uz-DQJ" id="4Pe-18-ftY"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -26,10 +27,16 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSy-uz-DQJ">
-                    <rect key="frame" x="223" y="404" width="46" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSy-uz-DQJ">
+                    <rect key="frame" x="241" y="403.5" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="ETz-l8-QJP"/>
+                        <constraint firstAttribute="height" constant="40" id="ov9-pN-rqD"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="soundOff"/>
+                    <connections>
+                        <action selector="soundButtonTapped:" destination="-1" eventType="touchUpInside" id="XRE-nW-UId"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNW-ON-h9d">
                     <rect key="frame" x="10" y="453.5" width="276" height="20.5"/>
@@ -45,7 +52,9 @@
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="eNW-ON-h9d" secondAttribute="bottom" constant="10" id="05X-he-Awv"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="aSy-uz-DQJ" secondAttribute="trailing" constant="15" id="2R2-rb-BTe"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GJh-rN-Xgb" secondAttribute="trailing" constant="10" id="6GH-sS-vOe"/>
+                <constraint firstItem="eNW-ON-h9d" firstAttribute="top" secondItem="aSy-uz-DQJ" secondAttribute="bottom" constant="10" id="G2f-mY-8dx"/>
                 <constraint firstItem="GJh-rN-Xgb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="Gqu-zC-Cgb"/>
                 <constraint firstItem="eNW-ON-h9d" firstAttribute="top" secondItem="GJh-rN-Xgb" secondAttribute="bottom" constant="10" id="NF8-CM-4Bv"/>
                 <constraint firstItem="eNW-ON-h9d" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="ZKd-H0-PMd"/>
@@ -57,4 +66,7 @@
             <point key="canvasLocation" x="55.072463768115945" y="-41.517857142857139"/>
         </view>
     </objects>
+    <resources>
+        <image name="soundOff" width="256" height="256"/>
+    </resources>
 </document>

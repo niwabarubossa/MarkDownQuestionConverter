@@ -12,6 +12,8 @@ class ToDoQuestionDisplay: UIView {
 
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var mapTitleLabel: UILabel!
+    @IBOutlet weak var soundButton: UIButton!
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,4 +37,7 @@ class ToDoQuestionDisplay: UIView {
         questionLabel.numberOfLines = 0
     }
     
+    @IBAction func soundButtonTapped(_ sender: Any) {
+        
+    }
 }
