@@ -33,7 +33,6 @@
                         <constraint firstAttribute="width" constant="40" id="ETz-l8-QJP"/>
                         <constraint firstAttribute="height" constant="40" id="ov9-pN-rqD"/>
                     </constraints>
-                    <state key="normal" backgroundImage="soundOff"/>
                     <connections>
                         <action selector="soundButtonTapped:" destination="-1" eventType="touchUpInside" id="XRE-nW-UId"/>
                     </connections>
@@ -66,7 +65,4 @@
             <point key="canvasLocation" x="55.072463768115945" y="-41.517857142857139"/>
         </view>
     </objects>
-    <resources>
-        <image name="soundOff" width="256" height="256"/>
-    </resources>
 </document>

@@ -38,6 +38,7 @@ class ToDoQuestionPageViewController: UIViewController{
         self.answerTableView.center = self.view.center
         customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: view.frame.height - 500))
         customView.center = self.view.center
+        self.customView.delegate = self
         noQuestionLabel = ToDoQuestionCompleteLabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 200))
         noQuestionLabel.center = self.view.center
         noQuestionLabel.isHidden = true
@@ -216,6 +217,12 @@ extension ToDoQuestionPageViewController:ButtonStackViewDelegate{
     func nextQuestionButtonTapped(){
         print("nextQuestionButtonTapped")
         presenter.nextQuestionButtonTapped()
+    }
+}
+
+extension ToDoQuestionPageViewController:ToDoQuestionViewDelegate{
+    func soundButtonTapped() {
+        print("sound buton tapped")
     }
 }
 
