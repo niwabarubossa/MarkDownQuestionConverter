@@ -222,7 +222,7 @@ extension ToDoQuestionPageViewController:ButtonStackViewDelegate{
 
 extension ToDoQuestionPageViewController:ToDoQuestionViewDelegate{
     func soundButtonTapped() {
-        print("sound buton tapped")
+        presenter.soundButtonTapped()
     }
 }
 

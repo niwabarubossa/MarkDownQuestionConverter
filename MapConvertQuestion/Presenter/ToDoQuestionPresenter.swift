@@ -300,6 +300,24 @@ extension ToDoQuestionPresenter {
         view?.buttonStackView.isHidden = true
         view?.noQuestionLabel.isHidden = false
     }
+    
+    func soundButtonTapped(){
+        //judge
+        let soundButtonImage = self.view?.customView.soundButton.currentImage
+        if soundButtonImage == R.image.soundOn() {
+            self.soundModeFinish()
+        }else if soundButtonImage == R.image.soundOff(){
+            self.soundModeStart()
+        }
+    }
+    
+    private func soundModeStart(){
+        // 多分question は存在している
+    }
+    
+    private func soundModeFinish(){
+        
+    }
 
 }
 
