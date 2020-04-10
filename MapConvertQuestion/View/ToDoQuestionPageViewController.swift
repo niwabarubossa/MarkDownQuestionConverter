@@ -214,7 +214,7 @@ extension ToDoQuestionPageViewController:AVSpeechSynthesizerDelegate{
     func soundPlay(text:String,isQuestion:Bool){
         self.isQuestion = isQuestion
         let utterance = AVSpeechUtterance(string: text)
-        utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
+        utterance.voice = AVSpeechSynthesisVoice(language: "language".localized)
         self.talker.speak(utterance)
     }
     
