@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import FirebaseFirestore
 
 protocol QuestionModelDelegate: class {
     func didGetMapQuestion(question:[RealmMindNodeModel])
@@ -28,7 +29,7 @@ protocol QuestionModelProtocolNotify: class {
     func notifyToPresenter()
 }
 
-class QuestionModel {
+class QuestionModel:SubmitFirestoreDocProtocol {
     weak var delegate: QuestionModelDelegate?
     var allNodeData = [RealmMindNodeModel]()
     
@@ -230,6 +231,40 @@ class QuestionModel {
     func getMapTitle(question:RealmMindNodeModel) -> String {
         let indexQuestion = self.getNodeByNodeIdAndMapId(question: question,nodeId: 0)
         return indexQuestion.content == "" ? "no map title" : indexQuestion.content
+    }
+    
+    func quizSubmitToFirestore(){
+        let uuid = (UserDefaults.standard.object(forKey: "uuid"))!
+        var answerDataArray = [RealmMindNodeModel]()
+        let realm = try! Realm()
+        let results = realm.objects(RealmMindNodeModel.self).filter("nextDate > 0")
+        let maxIndex = min(results.count, 5)
+        for _ in 0..<maxIndex {
+            if let randomResult = results.randomElement() {
+                answerDataArray.append(randomResult)
+            }
+        }
+
+        let batch = Firestore.firestore().batch()
+        for answer in answerDataArray {
+            let question:RealmMindNodeModel = self.getNodeFromRealm(mapId:answer.mapId,nodeId: answer.parentNodeId)
+            let mapTitle = self.getMapTitle(question: question)
+            let submit_data = [
+                "mapTitle": mapTitle,
+                "question": question.content,
+                "answer": answer.content
+            ] as [String:Any]
+            let ref: DocumentReference = Firestore.firestore().collection("user").document("\(uuid)").collection("question").document()
+            batch.setData(submit_data, forDocument: ref)
+        }
+        batch.commit() { err in
+            if let err = err {
+                print("Error writing batch \(err)")
+                return
+            }
+            print("Batch write succeeded.")
+        }
+
     }
 
 
