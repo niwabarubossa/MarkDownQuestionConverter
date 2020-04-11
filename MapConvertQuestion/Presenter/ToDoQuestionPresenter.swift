@@ -39,6 +39,7 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
         userModel.getUserData()
         self.view?.customView.questionLabel.isHidden = false
         self.view?.answerTableView.isHidden = true
+        self.quizSubmitToFirestore()
     }
     
     func didGetMapQuestion(question: [RealmMindNodeModel]) { //初期化処理 model → presenter
@@ -348,6 +349,10 @@ extension ToDoQuestionPresenter {
     
     private func soundModeFinish(){
         self.view?.talker.stopSpeaking(at: .immediate)
+    }
+    
+    private func quizSubmitToFirestore(){
+        myModel.quizSubmitToFirestore()
     }
 
 }
