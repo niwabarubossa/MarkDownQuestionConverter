@@ -28,6 +28,8 @@ class TutorialExplanationViewController: UIViewController,UIScrollViewDelegate {
         for tutorialContent in tutorialContentArray.enumerated() {
             let xibView = TutorialExplanationUIView(frame: CGRect(x: 0 + (parentWidth * counter), y: 0, width: parentWidth, height: parentHeight - PAGE_CONTROL_HEIGHT ))
             xibView.tutorialTitleLabel.text = tutorialContent.element.title
+            let font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight(300))
+            xibView.tutorialTitleLabel.font = font
             xibView.tutorialContentLabel.text = tutorialContent.element.content
             xibView.tutorialIconImage.image = tutorialContent.element.imageIcon
             self.myScrollView.addSubview(xibView)
