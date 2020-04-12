@@ -7,13 +7,27 @@
 //
 //----------model-------------------------------------------
 import Foundation
+import RealmSwift
 
 protocol ToDoDashboardModelDelegate: class {
-    func modelDelegateFunc() -> Void
+    func didInitViewController() -> Void
+    func didGetUserData(user:User) -> Void
 }
 
 class ToDoDashboardModel {
     weak var delegate: ToDoDashboardModelDelegate?
+    
+    func initViewController(){
+        self.delegate?.didInitViewController()
+    }
+    
+    func getUserData(){
+        let realm = try! Realm()
+        if let user = realm.objects(User.self).first{
+            self.delegate?.didGetUserData(user:user)
+        }
+    }
+    
     
     func testfunc(){
         print("test func")
@@ -21,7 +35,6 @@ class ToDoDashboardModel {
     
     func toPresenterFromView(input:String){
         print("test function")
-        self.delegate?.modelDelegateFunc()
     }
 }
 

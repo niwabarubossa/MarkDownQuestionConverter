@@ -13,6 +13,7 @@ import UIKit
 class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
     //自分用のモデルの宣言
     let model: ToDoDashboardModel
+    var user:User = User()
     
     //オリジナルのクラス型にすること
     weak var view:ToDoDashboardViewController?
@@ -22,6 +23,27 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
         self.model = ToDoDashboardModel()
         model.delegate = self
         model.addObserver(self, selector: #selector(self.getNotifyFromModel))
+    }
+    
+    func initViewController(){
+        model.initViewController()
+    }
+    
+    func getUserData(){
+        model.getUserData()
+    }
+    
+    func didGetUserData(user:User){
+        self.setUser(user: user)
+    }
+    
+    func setUser(user:User){
+         
+    }
+    
+    
+    func didInitViewController(){
+        
     }
 
     // Presenter → Model 操作する側
@@ -37,10 +59,6 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
     // prsenter ← Viewの操作     操作されるやつ
     func presenterFunc() {
         print("notify from view")
-    }
-    
-    func modelDelegateFunc(){
-        print("model delegate func in presenter")
     }
 
 }
