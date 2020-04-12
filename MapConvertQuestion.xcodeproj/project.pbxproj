@@ -58,6 +58,8 @@
 		54C53B452418F6C8000EE76E /* TutorialExplanationUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C53B442418F6C7000EE76E /* TutorialExplanationUIView.xib */; };
 		54E010552442AC7100AEB878 /* ToDoDashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54E010542442AC7000AEB878 /* ToDoDashboard.storyboard */; };
 		54E010572442ACB000AEB878 /* ToDoDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E010562442ACB000AEB878 /* ToDoDashboardViewController.swift */; };
+		54E010592442C8A600AEB878 /* ToDoDashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E010582442C8A500AEB878 /* ToDoDashboardModel.swift */; };
+		54E0105B2442C8F500AEB878 /* ToDoDashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E0105A2442C8F500AEB878 /* ToDoDashboardPresenter.swift */; };
 		54EE8B0E23FE337300CF342F /* MarkDownInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EE8B0D23FE337300CF342F /* MarkDownInputModel.swift */; };
 		54F45E2023F90AB5002981C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F45E1F23F90AB5002981C8 /* AppDelegate.swift */; };
 		54F45E2223F90AB5002981C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F45E2123F90AB5002981C8 /* SceneDelegate.swift */; };
@@ -136,6 +138,8 @@
 		54C53B442418F6C7000EE76E /* TutorialExplanationUIView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialExplanationUIView.xib; sourceTree = "<group>"; };
 		54E010542442AC7000AEB878 /* ToDoDashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ToDoDashboard.storyboard; sourceTree = "<group>"; };
 		54E010562442ACB000AEB878 /* ToDoDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoDashboardViewController.swift; sourceTree = "<group>"; };
+		54E010582442C8A500AEB878 /* ToDoDashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoDashboardModel.swift; sourceTree = "<group>"; };
+		54E0105A2442C8F500AEB878 /* ToDoDashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoDashboardPresenter.swift; sourceTree = "<group>"; };
 		54EE8B0D23FE337300CF342F /* MarkDownInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkDownInputModel.swift; sourceTree = "<group>"; };
 		54F45E1C23F90AB5002981C8 /* MapConvertQuestion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapConvertQuestion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F45E1F23F90AB5002981C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 				54A7F0052417CDA2007A7E70 /* QuestionLogModel.swift */,
 				54C53B3324186547000EE76E /* UserDataModel.swift */,
 				54A462F1242B76E8007EA353 /* QuestionLogMyPageModel.swift */,
+				54E010582442C8A500AEB878 /* ToDoDashboardModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				54BFEE342400F58800B55A8C /* QuestionPagePresenter.swift */,
 				542F3FB1240FB54D00D92561 /* ToDoQuestionPresenter.swift */,
 				5439113A242B75FF00C92312 /* MyPagePresenter.swift */,
+				54E0105A2442C8F500AEB878 /* ToDoDashboardPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -521,6 +527,7 @@
 				54C53B402418F361000EE76E /* TutorialExplanationUIView.swift in Sources */,
 				5404BD06240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift in Sources */,
 				5433AE562414AF60009877A1 /* MyColor.swift in Sources */,
+				54E010592442C8A600AEB878 /* ToDoDashboardModel.swift in Sources */,
 				543E7FE7240E987D0073C7FF /* LearningIntervalStruct.swift in Sources */,
 				54B466AA2408BA3C00813800 /* ObjectExtension.swift in Sources */,
 				54A7DC732414BC69009F7229 /* SelectQustionPageThemeView.swift in Sources */,
@@ -551,6 +558,7 @@
 				54769734240E08B1004E8C63 /* IntervalEnum.swift in Sources */,
 				54C53B3424186547000EE76E /* UserDataModel.swift in Sources */,
 				542F3FAC240FB1C300D92561 /* ToDoQuestionPageViewController.swift in Sources */,
+				54E0105B2442C8F500AEB878 /* ToDoDashboardPresenter.swift in Sources */,
 				54F4854923FF781900D7962C /* R.generated.swift in Sources */,
 				54FF62C62400E1640009B721 /* MindNodeModel.swift in Sources */,
 				54A462F4242B7731007EA353 /* MyPageViewController.swift in Sources */,
