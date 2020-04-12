@@ -25,12 +25,18 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
         model.addObserver(self, selector: #selector(self.getNotifyFromModel))
     }
     
+//意味段落-----------------------
     func initViewController(){
         self.getUserData()
         if self.isTodayFirstLogin(user:self.user) == true {
             self.updateUserQuota()
         }
     }
+    
+    func didInitViewController(){
+        
+    }
+//意味段落-----------------------
     
     func getUserData(){
         model.getUserData()
@@ -52,16 +58,9 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
         return false
     }
     
-    
     func setUser(user:User){
-         
+        self.user = user
     }
-    
-    
-    func didInitViewController(){
-        
-    }
-
     // Presenter → Model 操作する側
     func toModelFromPresenter() {
 //        model.testfunc()
@@ -81,7 +80,8 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
 
 extension ToDoDashboardPresenter:MVPPresenterProtocol{
     @objc func getNotifyFromModel(){
-        
+        self.setUser(user: self.user)
+        //reload view..?
     }
 }
 
