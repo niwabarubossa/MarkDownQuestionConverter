@@ -27,6 +27,9 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
     
     func initViewController(){
         self.getUserData()
+        if self.isTodayFirstLogin(user:self.user) == true {
+            self.updateUserQuota()
+        }
     }
     
     func getUserData(){
@@ -38,7 +41,11 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
         //user check
     }
     
-    func isTodayFirstLogin(user:User) -> Bool{
+    private func updateUserQuota(){
+        model.updateUserQuota(user: self.user)
+    }
+    
+    private func isTodayFirstLogin(user:User) -> Bool{
         if LetGroup.todayStartMili > user.lastLogin {
             return true
         }
