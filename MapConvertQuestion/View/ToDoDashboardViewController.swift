@@ -14,6 +14,7 @@ class ToDoDashboardViewController: UIViewController {
     @IBOutlet weak var progressView: MBCircularProgressBarView!
     
     var presenter:ToDoDashboardPresenter!
+    var todayDoneAmount:CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,29 +28,20 @@ class ToDoDashboardViewController: UIViewController {
     }
     
     private func layout(){
-    //        let customView = QuestionDidsplay(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
-    //        customView .center = self.view.center
-    //        customView.delegate = self
-    //        self.view.addSubview(customView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        progressView.value = 0
-        progressView.maxValue = 30
+        progressView.value = todayDoneAmount
+        progressView.maxValue = 0
     }
     
-    func didInitViewController(user:User){
-        print("user")
-        print("\(user)")
+    func didInitViewController(user:User,amount:Int){
         UIView.animate(withDuration: 1.0) {
+            self.progressView.value = CGFloat(amount)
             self.progressView.maxValue = CGFloat(user.todayQuota)
         }
     }
-    
-    
-    
-    
     
     //presenter ← view
     func notifyToPresenter(){

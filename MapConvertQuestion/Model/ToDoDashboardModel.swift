@@ -10,23 +10,43 @@ import Foundation
 import RealmSwift
 
 protocol ToDoDashboardModelDelegate: class {
-    func didInitViewController() -> Void
+    func didInitViewController(user:User,amount:Int) -> Void
     func didGetUserData(user:User) -> Void
+    func didGetTodayLogAmount(amount:Int) -> Void
 }
 
 class ToDoDashboardModel {
     weak var delegate: ToDoDashboardModelDelegate?
     
     func initViewController(){
-        self.getUserData()
-        self.delegate?.didInitViewController()
+        let user = self.getUserData()
+        if self.isTodayFirstLogin(user:user) == true {
+            self.updateUserQuota(user:user)
+        }
+        let amount = self.getTodayLogAmount()
+        self.delegate?.didInitViewController(user:user,amount:amount)
     }
     
-    func getUserData(){
+    func getUserData() -> User{
         let realm = try! Realm()
         if let user = realm.objects(User.self).first{
             self.delegate?.didGetUserData(user:user)
+            return user
         }
+        return User()
+    }
+    
+    private func isTodayFirstLogin(user:User) -> Bool{
+        if LetGroup.todayStartMili > user.lastLogin {
+            return true
+        }
+        return false
+    }
+
+    func getTodayLogAmount() -> Int{
+        let realm = try! Realm()
+        let results = realm.objects(QuestionLog.self).filter(" date BETWEEN {\(LetGroup.todayStartMili), \(LetGroup.todayEndMili)}")
+        return results.count
     }
     
     private func getToDoQuestionAmount() -> Int{

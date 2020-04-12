@@ -30,28 +30,17 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
         model.initViewController()
     }
     
-    func didInitViewController(){
-        if self.isTodayFirstLogin(user:self.user) == true {
-            self.updateUserQuota()
-        }
-        self.view?.didInitViewController(user:self.user)
+    func didInitViewController(user:User,amount:Int){
+        self.view?.didInitViewController(user:self.user,amount:amount)
     }
 //意味段落-----------------------
     
     func didGetUserData(user:User){
         self.setUser(user: user)
-        //user check
     }
     
-    private func updateUserQuota(){
-        model.updateUserQuota(user: self.user)
-    }
-    
-    private func isTodayFirstLogin(user:User) -> Bool{
-        if LetGroup.todayStartMili > user.lastLogin {
-            return true
-        }
-        return false
+    func didGetTodayLogAmount(amount:Int){
+        self.view?.todayDoneAmount = CGFloat(amount)
     }
     
     func setUser(user:User){
