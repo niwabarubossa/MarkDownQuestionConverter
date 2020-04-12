@@ -18,6 +18,7 @@ class ToDoDashboardModel {
     weak var delegate: ToDoDashboardModelDelegate?
     
     func initViewController(){
+        self.getUserData()
         self.delegate?.didInitViewController()
     }
     

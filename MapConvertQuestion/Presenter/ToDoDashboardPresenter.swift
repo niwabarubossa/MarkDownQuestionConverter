@@ -27,20 +27,16 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
     
 //意味段落-----------------------
     func initViewController(){
-        self.getUserData()
-        if self.isTodayFirstLogin(user:self.user) == true {
-            self.updateUserQuota()
-        }
+        model.initViewController()
     }
     
     func didInitViewController(){
-        
+        if self.isTodayFirstLogin(user:self.user) == true {
+            self.updateUserQuota()
+        }
+        self.view?.didInitViewController(user:self.user)
     }
 //意味段落-----------------------
-    
-    func getUserData(){
-        model.getUserData()
-    }
     
     func didGetUserData(user:User){
         self.setUser(user: user)

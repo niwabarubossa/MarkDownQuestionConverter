@@ -19,6 +19,7 @@ class ToDoDashboardViewController: UIViewController {
         super.viewDidLoad()
         initializePresenter()
         layout()
+        presenter.initViewController()
     }
     
     private func initializePresenter() {
@@ -37,14 +38,16 @@ class ToDoDashboardViewController: UIViewController {
         progressView.value = 0
         progressView.maxValue = 30
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+    
+    func didInitViewController(user:User){
+        print("user")
+        print("\(user)")
         UIView.animate(withDuration: 1.0) {
-            self.progressView.value = 15
+            self.progressView.maxValue = CGFloat(user.todayQuota)
         }
-        presenter.initViewController()
     }
+    
+    
     
     
     
