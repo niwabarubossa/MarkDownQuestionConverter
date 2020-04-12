@@ -26,7 +26,7 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
     }
     
     func initViewController(){
-        model.initViewController()
+        self.getUserData()
     }
     
     func getUserData(){
@@ -35,7 +35,16 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
     
     func didGetUserData(user:User){
         self.setUser(user: user)
+        //user check
     }
+    
+    func isTodayFirstLogin(user:User) -> Bool{
+        if LetGroup.todayStartMili > user.lastLogin {
+            return true
+        }
+        return false
+    }
+    
     
     func setUser(user:User){
          

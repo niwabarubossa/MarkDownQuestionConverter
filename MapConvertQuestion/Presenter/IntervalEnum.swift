@@ -18,3 +18,12 @@ enum Interval:Int{
     case fifth = 30
     case sixth = 60
 }
+
+
+struct LetGroup {
+    static let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
+    static let todayEndMili = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
+    static let tomorrowMili = tomorrow?.millisecondsSince1970
+    static let todayStartMili = Calendar.current.startOfDay(for: Date()).millisecondsSince1970
+
+}
