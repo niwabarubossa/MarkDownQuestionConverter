@@ -80,14 +80,6 @@
                                 <rect key="frame" x="20" y="159" width="374" height="534"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kwQ-Gg-7fe" customClass="OpinionFormButton" customModule="MapConvertQuestion" customModuleProvider="target">
-                                <rect key="frame" x="304" y="703" width="100" height="100"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="dT7-HM-OOl"/>
-                                    <constraint firstAttribute="width" constant="100" id="qEB-Gd-rx7"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -96,9 +88,7 @@
                             <constraint firstItem="KNm-WC-tCs" firstAttribute="top" secondItem="G42-Pn-fcC" secondAttribute="top" constant="15" id="3Tl-IG-Gc5"/>
                             <constraint firstItem="KNm-WC-tCs" firstAttribute="leading" secondItem="G42-Pn-fcC" secondAttribute="leading" constant="20" id="7NA-VA-Mm9"/>
                             <constraint firstItem="RXk-oR-61y" firstAttribute="top" secondItem="KNm-WC-tCs" secondAttribute="bottom" constant="20" id="HIE-nT-i7S"/>
-                            <constraint firstItem="G42-Pn-fcC" firstAttribute="trailing" secondItem="kwQ-Gg-7fe" secondAttribute="trailing" constant="10" id="ZsG-JV-FPC"/>
                             <constraint firstItem="G42-Pn-fcC" firstAttribute="trailing" secondItem="RXk-oR-61y" secondAttribute="trailing" constant="20" id="ccF-cZ-s0r"/>
-                            <constraint firstItem="G42-Pn-fcC" firstAttribute="bottom" secondItem="kwQ-Gg-7fe" secondAttribute="bottom" constant="10" id="kwe-iM-eMt"/>
                             <constraint firstItem="G42-Pn-fcC" firstAttribute="trailing" secondItem="KNm-WC-tCs" secondAttribute="trailing" constant="20" id="nRb-Zi-Wpo"/>
                             <constraint firstItem="RXk-oR-61y" firstAttribute="leading" secondItem="G42-Pn-fcC" secondAttribute="leading" constant="20" id="tFi-pJ-YEo"/>
                         </constraints>
@@ -107,7 +97,6 @@
                     <tabBarItem key="tabBarItem" title="List" image="list" id="RNQ-af-OMt"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="opinionFormButton" destination="kwQ-Gg-7fe" id="DkU-a6-q3y"/>
                         <outlet property="tableView" destination="RXk-oR-61y" id="vas-up-7Ym"/>
                         <segue destination="Hw6-0L-hB2" kind="show" identifier="goToQuestionPage" id="dhJ-bk-qkG"/>
                     </connections>
