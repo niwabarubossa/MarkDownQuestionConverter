@@ -53,4 +53,5 @@ extension Notification.Name{
     static let userModelUpdate = Notification.Name("userModelUpdate")
     static let questionModelUpdate = Notification.Name("questionModelUpdate")
     static let questionLogModelUpdate = Notification.Name("questionLogModelUpdate")
+    static let toDoDashboardUpdate = Notification.Name("toDoDashboardUpdate")
 }

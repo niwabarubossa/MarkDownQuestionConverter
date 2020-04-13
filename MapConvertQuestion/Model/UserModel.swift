@@ -14,6 +14,8 @@ class User:Object{
     @objc dynamic var totalCharactersAmount:Int64 = 0
     @objc dynamic var totalAnswerTimes:Int64 = 0
     @objc dynamic var level:Int64 = 0
+    @objc dynamic var lastLogin:Int64 = Date().millisecondsSince1970
+    @objc dynamic var todayQuota:Int = 0
     override static func primaryKey() -> String? {
         return "uuid"
     }
