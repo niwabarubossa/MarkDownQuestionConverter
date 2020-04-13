@@ -17,12 +17,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9s-x5-tVa" customClass="MBCircularProgressBarView">
-                                <rect key="frame" x="82" y="273" width="250" height="250"/>
+                                <rect key="frame" x="82" y="323" width="250" height="250"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="ce9-92-n4r"/>
                                     <constraint firstAttribute="width" constant="250" id="u3y-R5-Ybj"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressRotationAngle">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressAngle">
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIk-NN-uPL">
                                 <rect key="frame" x="82" y="670" width="250" height="68"/>
@@ -37,12 +45,23 @@
                                     <segue destination="1Md-FN-8sz" kind="show" id="qJh-uV-yES"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start studying!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaZ-7i-mOz">
+                                <rect key="frame" x="108.5" y="173" width="197" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5oK-es-znJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="KohinoorBangla-Light" family="Kohinoor Bangla" pointSize="30"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="OaZ-7i-mOz" firstAttribute="centerX" secondItem="Q6V-1w-749" secondAttribute="centerX" id="Gjy-zO-bsF"/>
                             <constraint firstItem="F9s-x5-tVa" firstAttribute="centerX" secondItem="Q6V-1w-749" secondAttribute="centerX" id="KNQ-aS-Q7R"/>
+                            <constraint firstItem="F9s-x5-tVa" firstAttribute="top" secondItem="OaZ-7i-mOz" secondAttribute="bottom" constant="100" id="RFv-ku-qGG"/>
                             <constraint firstItem="ChO-Qq-XhM" firstAttribute="bottom" secondItem="HIk-NN-uPL" secondAttribute="bottom" constant="75" id="Uni-f9-ivV"/>
-                            <constraint firstItem="F9s-x5-tVa" firstAttribute="centerY" secondItem="Q6V-1w-749" secondAttribute="centerY" constant="-50" id="fLv-mK-1WJ"/>
+                            <constraint firstItem="F9s-x5-tVa" firstAttribute="centerY" secondItem="Q6V-1w-749" secondAttribute="centerY" id="fLv-mK-1WJ"/>
                             <constraint firstItem="HIk-NN-uPL" firstAttribute="centerX" secondItem="Q6V-1w-749" secondAttribute="centerX" id="gfB-zn-O6a"/>
                             <constraint firstItem="HIk-NN-uPL" firstAttribute="width" secondItem="F9s-x5-tVa" secondAttribute="width" id="ytG-dL-ybT"/>
                         </constraints>
