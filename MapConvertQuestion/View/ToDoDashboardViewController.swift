@@ -12,6 +12,8 @@ import MBCircularProgressBar
 class ToDoDashboardViewController: UIViewController {
 
     @IBOutlet weak var progressView: MBCircularProgressBarView!
+    @IBOutlet weak var startButton: UIButton!
+    
     
     var presenter:ToDoDashboardPresenter!
     var todayDoneAmount:CGFloat = 0
@@ -28,6 +30,12 @@ class ToDoDashboardViewController: UIViewController {
     }
     
     private func layout(){
+        self.startButton.layer.borderColor = UIColor.cyan.cgColor
+        self.startButton.layer.borderWidth = 1
+        self.startButton.layer.cornerRadius = 5
+        let font = UIFont.systemFont(ofSize: 30)
+        self.startButton.titleLabel?.font = font
+        startButton.setTitleColor(UIColor.white, for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
