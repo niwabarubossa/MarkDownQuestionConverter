@@ -70,7 +70,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2BG-iB-FY4"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Mypage" image="person.crop.circle" catalog="system" id="d4p-7h-aKk"/>
+                    <tabBarItem key="tabBarItem" title="Mypage" image="addressbook" id="d4p-7h-aKk"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="barChartView" destination="CQs-Ie-Or6" id="hNW-fD-bQs"/>
@@ -84,7 +84,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="person.crop.circle" catalog="system" width="64" height="62"/>
+        <image name="addressbook" width="32" height="32"/>
         <image name="question" width="256" height="256"/>
     </resources>
 </document>
