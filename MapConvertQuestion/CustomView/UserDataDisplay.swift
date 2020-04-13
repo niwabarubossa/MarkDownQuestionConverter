@@ -10,8 +10,6 @@ import UIKit
 
 class UserDataDisplay: UIView {
     
-    weak var delegate: UserDataDisplayDelegate?
-    
     @IBOutlet weak var howManyTimesAnswered: UILabel!
     
     @IBOutlet weak var scoreTitleLabel: UILabel!
@@ -47,12 +45,4 @@ class UserDataDisplay: UIView {
         self.progressView.transform = progressView.transform.scaledBy(x: 1, y: 7)
         self.progressView.progressTintColor = MyColor.progressTintColor
     }
-
-    @IBAction func reloadButtonTapped(_ sender: Any) {
-        self.delegate?.reloadButtonTapped()
-    }
-}
-
-protocol UserDataDisplayDelegate:class{
-    func reloadButtonTapped()
 }
