@@ -20,16 +20,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x26-tR-nIQ">
-                    <rect key="frame" x="0.0" y="0.0" width="334" height="243"/>
+                    <rect key="frame" x="0.0" y="0.0" width="334" height="205"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRR-JW-W4x">
-                    <rect key="frame" x="20" y="273" width="294" height="30"/>
-                    <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <state key="normal" title="マインドマップをクイズに変換">
+                    <rect key="frame" x="20" y="235" width="294" height="68"/>
+                    <color key="backgroundColor" red="0.20031357521450907" green="0.51235815787934569" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="68" id="kLg-dQ-wbo"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="KohinoorBangla-Semibold" family="Kohinoor Bangla" pointSize="25"/>
+                    <state key="normal" title="変換">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -37,7 +41,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.75462020019999998" green="0.88821766150000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="gRR-JW-W4x" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="24F-fH-f5C"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="gRR-JW-W4x" secondAttribute="bottom" constant="30" id="8Gm-Ub-Uqw"/>

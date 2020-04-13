@@ -33,8 +33,6 @@ class MarkDownInput: UIView {
         }
         self.inputTextView.delegate = self
         self.submitButton.layer.cornerRadius = 10
-        let font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(200))
-        self.submitButton.titleLabel?.font = font
         
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         toolBar.sizeToFit()

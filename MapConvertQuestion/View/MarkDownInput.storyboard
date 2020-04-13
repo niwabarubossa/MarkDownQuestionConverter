@@ -16,37 +16,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9os-k6-zlq" customClass="OpinionFormButton" customModule="MapConvertQuestion" customModuleProvider="target">
-                                <rect key="frame" x="304" y="703" width="100" height="100"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="QgD-XF-a4z"/>
-                                    <constraint firstAttribute="height" constant="100" id="fMp-L2-bOB"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4E-Wr-DVz" customClass="InputPageLabel" customModule="MapConvertQuestion" customModuleProvider="target">
-                                <rect key="frame" x="10" y="54" width="394" height="110"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="110" id="nbg-lk-j2Q"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pr8-KW-uxZ" customClass="MarkDownInput" customModule="MapConvertQuestion" customModuleProvider="target">
-                                <rect key="frame" x="10" y="194" width="394" height="569"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="30" y="149" width="354" height="614"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please paste, get quizzes!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0z-V2-Knn">
+                                <rect key="frame" x="30" y="84" width="354" height="35"/>
+                                <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.75462020015449427" green="0.8882176614581212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Pr8-KW-uxZ" firstAttribute="top" secondItem="U4E-Wr-DVz" secondAttribute="bottom" constant="30" id="1Mk-bW-pQe"/>
-                            <constraint firstItem="gJo-SX-kMZ" firstAttribute="bottom" secondItem="9os-k6-zlq" secondAttribute="bottom" constant="10" id="41C-hN-XPG"/>
-                            <constraint firstItem="gJo-SX-kMZ" firstAttribute="trailing" secondItem="Pr8-KW-uxZ" secondAttribute="trailing" constant="10" id="FCL-qz-9SB"/>
+                            <constraint firstItem="gJo-SX-kMZ" firstAttribute="trailing" secondItem="Pr8-KW-uxZ" secondAttribute="trailing" constant="30" id="FCL-qz-9SB"/>
+                            <constraint firstItem="gJo-SX-kMZ" firstAttribute="trailing" secondItem="z0z-V2-Knn" secondAttribute="trailing" constant="30" id="H5c-nd-K4S"/>
+                            <constraint firstItem="z0z-V2-Knn" firstAttribute="top" secondItem="gJo-SX-kMZ" secondAttribute="top" constant="40" id="I3d-OE-ThX"/>
+                            <constraint firstItem="z0z-V2-Knn" firstAttribute="leading" secondItem="gJo-SX-kMZ" secondAttribute="leading" constant="30" id="Rxw-55-XmR"/>
+                            <constraint firstItem="Pr8-KW-uxZ" firstAttribute="top" secondItem="z0z-V2-Knn" secondAttribute="bottom" constant="30" id="SNI-8B-vpY"/>
                             <constraint firstItem="gJo-SX-kMZ" firstAttribute="bottom" secondItem="Pr8-KW-uxZ" secondAttribute="bottom" constant="50" id="Vk1-Wk-JSS"/>
-                            <constraint firstItem="gJo-SX-kMZ" firstAttribute="trailing" secondItem="U4E-Wr-DVz" secondAttribute="trailing" constant="10" id="dTk-zf-G9o"/>
-                            <constraint firstItem="U4E-Wr-DVz" firstAttribute="top" secondItem="gJo-SX-kMZ" secondAttribute="top" constant="10" id="ffL-A1-y5Y"/>
-                            <constraint firstItem="gJo-SX-kMZ" firstAttribute="trailing" secondItem="9os-k6-zlq" secondAttribute="trailing" constant="10" id="m3Y-T7-kLZ"/>
-                            <constraint firstItem="U4E-Wr-DVz" firstAttribute="leading" secondItem="gJo-SX-kMZ" secondAttribute="leading" constant="10" id="pQT-x8-nga"/>
-                            <constraint firstItem="Pr8-KW-uxZ" firstAttribute="leading" secondItem="gJo-SX-kMZ" secondAttribute="leading" constant="10" id="wEG-gc-FBP"/>
+                            <constraint firstItem="Pr8-KW-uxZ" firstAttribute="leading" secondItem="gJo-SX-kMZ" secondAttribute="leading" constant="30" id="wEG-gc-FBP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gJo-SX-kMZ"/>
                     </view>
@@ -54,7 +43,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="customView" destination="Pr8-KW-uxZ" id="ZKW-Pm-djX"/>
-                        <outlet property="opinionFormButton" destination="9os-k6-zlq" id="VLg-68-3rp"/>
+                        <outlet property="titleLabel" destination="z0z-V2-Knn" id="urd-pr-Eve"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4E1-t2-fWY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
