@@ -42,7 +42,14 @@ class UserDataDisplay: UIView {
         self.howManyTimesAnswered.text = "howManyTimesAnswered".localized
         self.scoreTitleLabel.text = "score".localized
         self.finishTitleLabel.text = "finish".localized
-        self.progressView.transform = progressView.transform.scaledBy(x: 1, y: 7)
+        self.progressView.transform = progressView.transform.scaledBy(x: 1, y: 3)
         self.progressView.progressTintColor = MyColor.progressTintColor
+        temp()
+    }
+    
+    private func temp(){
+        bunboLabel.isHidden = true
+        bunsiLabel.isHidden = true
+        finishTitleLabel.isHidden = true
     }
 }
