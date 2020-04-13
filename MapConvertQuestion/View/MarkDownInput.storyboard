@@ -50,7 +50,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gJo-SX-kMZ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="create" image="create" id="sSI-2x-yU8"/>
+                    <tabBarItem key="tabBarItem" title="create" image="pen" id="sSI-2x-yU8"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="customView" destination="Pr8-KW-uxZ" id="ZKW-Pm-djX"/>
@@ -63,6 +63,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="create" width="32" height="32"/>
+        <image name="pen" width="32" height="32"/>
     </resources>
 </document>

@@ -51,7 +51,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SAD-gm-bH5"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="その他" image="hammer" catalog="system" id="cNZ-gq-5E8"/>
+                    <tabBarItem key="tabBarItem" title="その他" image="addressbook" id="cNZ-gq-5E8"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="howToLabel" destination="ZNk-ju-zKn" id="QYH-u8-CsW"/>
@@ -118,7 +118,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="hammer" catalog="system" width="64" height="56"/>
+        <image name="addressbook" width="32" height="32"/>
         <image name="question" width="256" height="256"/>
     </resources>
 </document>

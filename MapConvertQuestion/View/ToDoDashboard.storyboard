@@ -67,7 +67,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ChO-Qq-XhM"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Study" image="studentTabBar" id="BIk-P1-8Sk"/>
+                    <tabBarItem key="tabBarItem" title="Study" image="school" id="BIk-P1-8Sk"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="progressView" destination="F9s-x5-tVa" id="pDt-uU-9ws"/>
@@ -90,6 +90,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="studentTabBar" width="32" height="32"/>
+        <image name="school" width="32" height="32"/>
     </resources>
 </document>
