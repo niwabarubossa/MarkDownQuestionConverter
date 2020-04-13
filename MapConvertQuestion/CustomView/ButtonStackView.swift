@@ -30,6 +30,7 @@ class ButtonStackView: UIView {
             view.frame = self.bounds
             self.addSubview(view)
         }
+        
     }
     
     @IBAction func answerButtonTapped(_ sender: Any) {
