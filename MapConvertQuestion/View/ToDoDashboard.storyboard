@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Study-->
         <scene sceneID="3ET-k9-ckj">
             <objects>
                 <viewController id="vgJ-kc-TjB" customClass="ToDoDashboardViewController" customModule="MapConvertQuestion" customModuleProvider="target" sceneMemberID="viewController">
@@ -48,7 +48,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ChO-Qq-XhM"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" selectedImage="pencilTabBar" id="BIk-P1-8Sk"/>
+                    <tabBarItem key="tabBarItem" title="Study" image="studentTabBar" id="BIk-P1-8Sk"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="progressView" destination="F9s-x5-tVa" id="pDt-uU-9ws"/>
@@ -70,6 +70,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pencilTabBar" width="32" height="32"/>
+        <image name="studentTabBar" width="32" height="32"/>
     </resources>
 </document>
