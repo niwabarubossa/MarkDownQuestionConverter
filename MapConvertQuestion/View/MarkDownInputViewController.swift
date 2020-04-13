@@ -3,6 +3,8 @@ import RealmSwift
 
 class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     
+    
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var customView: MarkDownInput!
     @IBOutlet weak var opinionFormButton: OpinionFormButton!
     var presenter:MarkDownInputPresenter!
@@ -28,6 +30,7 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
         self.view.addSubview(completeLabel)
         self.completeLabel.isHidden  = true
         self.customView.submitButton.setTitle("submitButtonText".localized, for: .normal)
+        self.titleLabel.text = "markDownPageTitleLabel".localized
     }
     
     // Presenter ← View

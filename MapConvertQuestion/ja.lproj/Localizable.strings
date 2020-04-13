@@ -5,7 +5,7 @@
   Created by 丹羽遼吾 on 2020/03/20.
   Copyright © 2020 ryogo.niwa. All rights reserved.
 */
-"submitButtonText" = "マインドマップを変換";
+"submitButtonText" = "クイズ作成";
 "PasteAndConvertMap" = "マインドマップをコピーして貼り付け";
 "howManyTimesAnswered" = "総回答数";
 "times" = "回";
@@ -27,3 +27,4 @@
 "opinionLabel" = "意見/感想";
 "opinion" = "ご意見";
 "language" = "ja-JP";
+"markDownPageTitleLabel" = "ペーストしてクイズを作成!";
