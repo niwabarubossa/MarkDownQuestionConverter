@@ -26,9 +26,8 @@ class SelectQuestionMapPageTableViewCell: UITableViewCell {
     
     private func layout(){
         mapTitleLabel.numberOfLines = 0
-        let font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(300))
+        let font = UIFont(name: "KohinoorBangla-Light", size: 15)
         mapTitleLabel.font = font
-        mapTitleLabel.textColor = MyColor.textBlueColor
     }
     
 }

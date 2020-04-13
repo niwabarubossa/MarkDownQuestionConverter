@@ -12,7 +12,6 @@ import RealmSwift
 class QuestionMapSelectPageTableViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var opinionFormButton: OpinionFormButton!
 
     var dataSource = [Dictionary<String,String>]()
     var didSelectRowAt:Int = 0
@@ -24,24 +23,12 @@ class QuestionMapSelectPageTableViewController: UIViewController{
         self.tableView.register(SelectQuestionMapPageTableViewCell.createXib(), forCellReuseIdentifier: SelectQuestionMapPageTableViewCell.className)
         self.dataSource = getMapTitleData()
         self.tableView.reloadData()
-        setOpinionForm()
     }
     
     private func setRefreshReload(){
         let refreshCtl = UIRefreshControl()
         self.tableView.refreshControl = refreshCtl
         refreshCtl.addTarget(self, action: #selector(self.refresh(sender:)), for: .valueChanged)
-    }
-    
-    private func setOpinionForm(){
-        opinionFormButton.layer.zPosition = 10000.0
-        let gesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(opinionFormButtonTapped))
-        gesture.numberOfTapsRequired = 1
-        opinionFormButton.isUserInteractionEnabled = true
-        opinionFormButton.addGestureRecognizer(gesture)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-            self.opinionFormButton.isHidden = true
-        }
     }
     
     private func getMapTitleData() -> [Dictionary<String,String>]{
@@ -145,12 +132,5 @@ extension QuestionMapSelectPageTableViewController:UITableViewDelegate,UITableVi
         self.dataSource = getMapTitleData()
         self.tableView.reloadData()
         self.tableView.refreshControl?.endRefreshing()
-    }
-}
-
-extension QuestionMapSelectPageTableViewController{
-    @objc private func opinionFormButtonTapped(_ sender:UIButton){
-        let formVC = R.storyboard.opinionForm.opinionFormViewController()!
-        self.present(formVC, animated: true, completion: nil)
     }
 }
