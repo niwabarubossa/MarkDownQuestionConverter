@@ -34,9 +34,7 @@ class ToDoDashboardModel {
     }
     
     private func isTodayFirstLogin(user:User) -> Bool{
-        if LetGroup.todayStartMili > user.lastLogin {
-            return true
-        }
+        if LetGroup.todayStartMili > user.lastLogin { return true }
         return false
     }
 

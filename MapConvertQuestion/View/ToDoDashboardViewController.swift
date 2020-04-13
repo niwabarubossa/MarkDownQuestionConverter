@@ -33,16 +33,12 @@ class ToDoDashboardViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         progressView.value = 0
-        progressView.maxValue = presenter.todayQuota
+        progressView.maxValue = 100
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("presenter.todayQuota")
-        print("\(presenter.todayQuota)")
-        print("self.presenter.todayDoneAmount")
-        print("\(self.presenter.todayDoneAmount)")
         UIView.animate(withDuration: 1.0) {
-            self.progressView.value = CGFloat(self.presenter.todayDoneAmount)
+            self.progressView.value = CGFloat( (self.presenter.todayDoneAmount / self.presenter.todayQuota ) * 100)
         }
     }
     
