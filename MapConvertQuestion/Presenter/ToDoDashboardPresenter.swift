@@ -15,6 +15,13 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
     let model: ToDoDashboardModel
     var user:User = User()
     
+    var todayQuota:CGFloat{
+        return CGFloat(model.getUserData().todayQuota)
+    }
+    var todayDoneAmount:CGFloat{
+        return CGFloat(model.getTodayLogAmount())
+    }
+    
     //オリジナルのクラス型にすること
     weak var view:ToDoDashboardViewController?
 
@@ -23,16 +30,10 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
         self.model = ToDoDashboardModel()
         model.delegate = self
         model.addObserver(self, selector: #selector(self.getNotifyFromModel))
+        model.registerUserQuota()
     }
-    
 //意味段落-----------------------
-    func initViewController(){
-        model.initViewController()
-    }
-    
-    func didInitViewController(user:User,amount:Int){
-        self.view?.didInitViewController(user:self.user,amount:amount)
-    }
+
 //意味段落-----------------------
     
     func didGetUserData(user:User){

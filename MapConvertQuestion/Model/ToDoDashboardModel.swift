@@ -10,7 +10,6 @@ import Foundation
 import RealmSwift
 
 protocol ToDoDashboardModelDelegate: class {
-    func didInitViewController(user:User,amount:Int) -> Void
     func didGetUserData(user:User) -> Void
     func didGetTodayLogAmount(amount:Int) -> Void
 }
@@ -18,13 +17,11 @@ protocol ToDoDashboardModelDelegate: class {
 class ToDoDashboardModel {
     weak var delegate: ToDoDashboardModelDelegate?
     
-    func initViewController(){
+    func registerUserQuota(){
         let user = self.getUserData()
         if self.isTodayFirstLogin(user:user) == true {
             self.updateUserQuota(user:user)
         }
-        let amount = self.getTodayLogAmount()
-        self.delegate?.didInitViewController(user:user,amount:amount)
     }
     
     func getUserData() -> User{

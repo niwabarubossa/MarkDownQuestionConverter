@@ -20,7 +20,7 @@ class ToDoDashboardViewController: UIViewController {
         super.viewDidLoad()
         initializePresenter()
         layout()
-        presenter.initViewController()
+//        presenter.initViewController()
     }
     
     private func initializePresenter() {
@@ -32,14 +32,17 @@ class ToDoDashboardViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        progressView.value = todayDoneAmount
-        progressView.maxValue = 0
+        progressView.value = 0
+        progressView.maxValue = presenter.todayQuota
     }
     
-    func didInitViewController(user:User,amount:Int){
+    override func viewDidAppear(_ animated: Bool) {
+        print("presenter.todayQuota")
+        print("\(presenter.todayQuota)")
+        print("self.presenter.todayDoneAmount")
+        print("\(self.presenter.todayDoneAmount)")
         UIView.animate(withDuration: 1.0) {
-            self.progressView.value = CGFloat(amount)
-            self.progressView.maxValue = CGFloat(user.todayQuota)
+            self.progressView.value = CGFloat(self.presenter.todayDoneAmount)
         }
     }
     
