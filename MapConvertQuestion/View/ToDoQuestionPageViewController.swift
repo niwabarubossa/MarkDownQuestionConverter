@@ -40,12 +40,9 @@ class ToDoQuestionPageViewController: UIViewController{
         
     private func layout(){
         self.talker.delegate = self
-        self.answerTableView.center = self.view.center
-        customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: view.frame.height - 500))
-        customView.center = self.view.center
+        customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 100 , width: view.frame.width, height: view.frame.height - 300))
         self.customView.delegate = self
-        noQuestionLabel = ToDoQuestionCompleteLabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 200))
-        noQuestionLabel.center = self.view.center
+        noQuestionLabel = ToDoQuestionCompleteLabel(frame: CGRect(x: 0, y: 60, width: view.frame.width, height: 200))
         noQuestionLabel.isHidden = true
         self.view.addSubview(noQuestionLabel)
         self.view.addSubview(customView)
@@ -54,7 +51,7 @@ class ToDoQuestionPageViewController: UIViewController{
         buttonStackView = ButtonStackView(frame: CGRect(x: 0, y: myHeight - 170 , width: myWidth, height: 80))
         buttonStackView.delegate = self
         self.view.addSubview(buttonStackView)
-        userDataDisplay = UserDataDisplay(frame: CGRect(x: 0, y: 60, width: myWidth, height: 100))
+        userDataDisplay = UserDataDisplay(frame: CGRect(x: 0, y: view.frame.height - 88, width: myWidth, height: 81))
         self.view.addSubview(userDataDisplay)
     }
     
@@ -104,8 +101,6 @@ class ToDoQuestionPageViewController: UIViewController{
     
     private func tableViewSetup(){
         answerTableView.isHidden = true
-        answerTableView.center = view.center
-        self.view.addSubview(answerTableView)
         self.answerTableView.register(QuestionAnswerTableViewCell.createXib(), forCellReuseIdentifier: QuestionAnswerTableViewCell.className)
         self.answerTableView.delegate = self
         self.answerTableView.dataSource = self
