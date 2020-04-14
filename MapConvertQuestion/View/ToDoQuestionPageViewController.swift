@@ -109,6 +109,11 @@ class ToDoQuestionPageViewController: UIViewController{
     func testfunc(){
         print("done from presenter function")
     }
+    
+    @IBAction func dismissButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 
 }
 
@@ -196,6 +201,8 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
         if self.todayQuestion(nextDate: questionDate) == true { return true }
         return false //スワイプ　つまり正解にできるのは今日の問題のみ
     }
+    
+    
     
 }
 

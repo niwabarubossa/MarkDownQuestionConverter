@@ -17,31 +17,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="chM-B4-Bqh">
-                                <rect key="frame" x="0.0" y="104" width="414" height="558"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="509"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xre-EI-qNL" customClass="ToDoQuestionDisplay" customModule="MapConvertQuestion" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="104" width="414" height="557"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="508"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNJ-xp-jIX" customClass="UserDataDisplay" customModule="MapConvertQuestion" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="781" width="414" height="81"/>
+                                <rect key="frame" x="0.0" y="732" width="414" height="81"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="81" id="VAT-Cz-vwq"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gl3-Rn-fcL" customClass="ButtonStackView" customModule="MapConvertQuestion" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="691" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="642" width="414" height="80"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="A8w-5q-YKP"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7g-0C-V4k" customClass="AnswerOrWrongButton" customModule="MapConvertQuestion" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="691" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="642" width="414" height="80"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbV-gs-hSK">
+                                <rect key="frame" x="10" y="44" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Blc-MU-dxP"/>
+                                    <constraint firstAttribute="width" constant="30" id="jLs-aQ-1hu"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="wrong"/>
+                                <connections>
+                                    <action selector="dismissButtonTapped:" destination="gUt-DM-w1x" eventType="touchUpInside" id="iq2-NJ-NaU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -51,12 +62,14 @@
                             <constraint firstItem="chM-B4-Bqh" firstAttribute="top" secondItem="MI4-0y-l7E" secondAttribute="top" constant="60" id="87y-bt-xCT"/>
                             <constraint firstItem="Gl3-Rn-fcL" firstAttribute="leading" secondItem="MI4-0y-l7E" secondAttribute="leading" id="AIE-NQ-z4k"/>
                             <constraint firstItem="xre-EI-qNL" firstAttribute="leading" secondItem="MI4-0y-l7E" secondAttribute="leading" id="B8Q-r7-jM7"/>
+                            <constraint firstItem="TbV-gs-hSK" firstAttribute="top" secondItem="MI4-0y-l7E" secondAttribute="top" id="H8F-10-9i9"/>
                             <constraint firstItem="chM-B4-Bqh" firstAttribute="leading" secondItem="MI4-0y-l7E" secondAttribute="leading" id="JCN-di-cnj"/>
                             <constraint firstItem="MI4-0y-l7E" firstAttribute="bottom" secondItem="chM-B4-Bqh" secondAttribute="bottom" constant="200" id="JGP-pa-lLX"/>
                             <constraint firstItem="TNJ-xp-jIX" firstAttribute="top" secondItem="Gl3-Rn-fcL" secondAttribute="bottom" constant="10" id="NDU-FD-1k1"/>
                             <constraint firstItem="Gl3-Rn-fcL" firstAttribute="leading" secondItem="F7g-0C-V4k" secondAttribute="leading" id="SoQ-xC-Fr7"/>
                             <constraint firstItem="xre-EI-qNL" firstAttribute="top" secondItem="MI4-0y-l7E" secondAttribute="top" constant="60" id="ZyY-Fz-qCF"/>
                             <constraint firstItem="MI4-0y-l7E" firstAttribute="trailing" secondItem="chM-B4-Bqh" secondAttribute="trailing" id="aYw-oI-U6b"/>
+                            <constraint firstItem="TbV-gs-hSK" firstAttribute="leading" secondItem="MI4-0y-l7E" secondAttribute="leading" constant="10" id="cVW-UE-vqi"/>
                             <constraint firstItem="MI4-0y-l7E" firstAttribute="trailing" secondItem="Gl3-Rn-fcL" secondAttribute="trailing" id="gCh-oC-ty1"/>
                             <constraint firstItem="TNJ-xp-jIX" firstAttribute="bottom" secondItem="MI4-0y-l7E" secondAttribute="bottom" id="ix7-YA-D3F"/>
                             <constraint firstItem="Gl3-Rn-fcL" firstAttribute="trailing" secondItem="F7g-0C-V4k" secondAttribute="trailing" id="rEW-T2-oOR"/>
@@ -66,6 +79,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MI4-0y-l7E"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="Correct_WrongStackView" destination="F7g-0C-V4k" id="2Om-zL-YK0"/>
                         <outlet property="answerTableView" destination="chM-B4-Bqh" id="LTW-zo-S5Z"/>
@@ -79,4 +94,7 @@
             <point key="canvasLocation" x="862.31884057971024" y="-231.02678571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="wrong" width="256" height="256"/>
+    </resources>
 </document>
