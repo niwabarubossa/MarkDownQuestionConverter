@@ -29,3 +29,7 @@
 "language" = "en-US";
 "markDownPageTitleLabel" = "Please paste, get quizzes!";
 "mapList" = "Map List";
+//mypage--------
+"totalAnswerTimesLabel" = "Total Answer Times";
+"howToLabel" = "How To Use";
+//mypage--------

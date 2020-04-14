@@ -28,7 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        self.globalUISettings()
         return true
+    }
+    
+    private func globalUISettings(){
+        UILabel.appearance(whenContainedInInstancesOf: [MyPageViewController.self]).font = UIFont(name: "KohinoorBangla-Light", size: 18)
     }
     
     // MARK: UISceneSession Lifecycle

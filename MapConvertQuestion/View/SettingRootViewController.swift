@@ -16,7 +16,7 @@ class SettingRootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.howToLabel.addGestureRecognizer((UITapGestureRecognizer(target: self, action: Selector("howToLabelTapped:"))))
+        self.howToLabel.addGestureRecognizer((UITapGestureRecognizer(target: self, action: Selector(("howToLabelTapped:")))))
         self.howToTitleLabel.text = "howTo".localized
     }
 

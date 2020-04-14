@@ -75,6 +75,7 @@
                     <connections>
                         <outlet property="barChartView" destination="CQs-Ie-Or6" id="hNW-fD-bQs"/>
                         <outlet property="howToLabel" destination="hZL-DU-mMy" id="rTa-b2-x17"/>
+                        <outlet property="howToTextLabel" destination="X6g-CJ-8cQ" id="pJH-g5-lvj"/>
                         <outlet property="totalAnswerTimesLabel" destination="1Jf-8R-mqj" id="M9a-BV-LIZ"/>
                     </connections>
                 </viewController>
