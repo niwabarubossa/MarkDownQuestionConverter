@@ -15,11 +15,11 @@ class ToDoQuestionPageViewController: UIViewController{
     var bannerView: GADBannerView!
     
     var presenter:ToDoQuestionPresenter!
-    var customView = ToDoQuestionDisplay()
+    @IBOutlet weak var customView: ToDoQuestionDisplay!
     @IBOutlet weak var answerTableView: UITableView!
     var noQuestionLabel = ToDoQuestionCompleteLabel()
-    var userDataDisplay = UserDataDisplay()
-    var buttonStackView = ButtonStackView()
+    @IBOutlet weak var userDataDisplay: UserDataDisplay!
+    @IBOutlet weak var buttonStackView: ButtonStackView!
     
     var locationManager: CLLocationManager!
     var latitudeNow: String = ""
@@ -40,22 +40,11 @@ class ToDoQuestionPageViewController: UIViewController{
         
     private func layout(){
         self.talker.delegate = self
-        self.answerTableView.center = self.view.center
-        customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: view.frame.height - 500))
-        customView.center = self.view.center
         self.customView.delegate = self
-        noQuestionLabel = ToDoQuestionCompleteLabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 200))
-        noQuestionLabel.center = self.view.center
+        buttonStackView.delegate = self
+        noQuestionLabel = ToDoQuestionCompleteLabel(frame: CGRect(x: 0, y: 60, width: view.frame.width, height: 200))
         noQuestionLabel.isHidden = true
         self.view.addSubview(noQuestionLabel)
-        self.view.addSubview(customView)
-        let myWidth = view.frame.width
-        let myHeight = view.frame.height
-        buttonStackView = ButtonStackView(frame: CGRect(x: 0, y: myHeight - 170 , width: myWidth, height: 80))
-        buttonStackView.delegate = self
-        self.view.addSubview(buttonStackView)
-        userDataDisplay = UserDataDisplay(frame: CGRect(x: 0, y: 60, width: myWidth, height: 100))
-        self.view.addSubview(userDataDisplay)
     }
     
     private func initializePage(){
@@ -104,8 +93,6 @@ class ToDoQuestionPageViewController: UIViewController{
     
     private func tableViewSetup(){
         answerTableView.isHidden = true
-        answerTableView.center = view.center
-        self.view.addSubview(answerTableView)
         self.answerTableView.register(QuestionAnswerTableViewCell.createXib(), forCellReuseIdentifier: QuestionAnswerTableViewCell.className)
         self.answerTableView.delegate = self
         self.answerTableView.dataSource = self
