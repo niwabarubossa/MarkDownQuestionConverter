@@ -49,7 +49,7 @@ class ToDoDashboardViewController: UIViewController {
         UIView.animate(withDuration: 1.0) {
             self.progressView.value = CGFloat( (self.presenter.todayDoneAmount / self.presenter.todayQuota ) * 100)
         }
-        self.quotqLabel.text = "todayQuotaIs".localized +  String(Int(self.presenter.todayQuota)) + "quizzes".localized
+        self.quotqLabel.text = "todayQuotaIs".localized +  String(Int(self.presenter.todayQuota)) + " " +  "quizzes".localized
     }
     
     //presenter ← view
