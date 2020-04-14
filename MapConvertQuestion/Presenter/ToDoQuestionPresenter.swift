@@ -77,10 +77,6 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
             self.changeToCompleteMode()
             return
         }
-        if self.quizDataSource.count == 1 {
-            self.view?.buttonStackView.nextQuestionButton.isEnabled = false
-            self.view?.buttonStackView.nextQuestionButton.alpha = 0.5
-        }
         let nextQuestion:RealmMindNodeModel = self.getNextQuestion()
         self.reloadQAPair(nextQuestion: nextQuestion)
         self.changeToQuestionMode()
