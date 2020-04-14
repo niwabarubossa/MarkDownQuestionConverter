@@ -30,9 +30,11 @@ class AnswerOrWrongButton: UIView {
     }
     
     @IBAction func correctButtonTapped(_ sender: Any) {
+        self.delegate?.correctButtonTapped()
     }
     
     @IBAction func wrongButtonTapped(_ sender: Any) {
+        self.delegate?.wrongButtonTapped()
     }
 }
 
