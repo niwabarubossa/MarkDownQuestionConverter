@@ -22,6 +22,8 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
     var user = User()
     var startQuestionTime:Date = Date()
     var mapTitle:String = ""
+    
+    var focusAnswerIndex:Int = 0
 
     init(view: ToDoQuestionPageViewController) {
         self.view = view
@@ -58,6 +60,20 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
         self.changeToAnswerMode()
         self.setAnswerNodeArray(question: self.displayingQustion)
         self.answerButtonDisabled()
+        
+        self.focusAnswerIndex = self.getFirstFocusAnswerIndex()
+        self.view?.answerTableView.reloadData()
+        self.view?.answerTableView.selectRow(at: [0,self.focusAnswerIndex], animated: false, scrollPosition: .top)
+    }
+    
+    private func getFirstFocusAnswerIndex() -> Int{
+        for i in 0..<self.answerNodeArray.count{
+            if self.betweenTodayRange(time: self.answerNodeArray[i].nextDate) {
+                self.focusAnswerIndex = i
+                return i
+            }
+        }
+        return 0
     }
     
     private func answerButtonDisabled(){
@@ -119,6 +135,10 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
     
     func leadingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
         //正解時のアクション //データ更新
+        let nextIndex = self.optimizeIndex(answerNode:swipedAnswer)
+        self.view?.answerTableView.reloadData()
+        self.view?.answerTableView.selectRow(at: [0,nextIndex], animated: false, scrollPosition: .top)
+        
         myModel.leadingSwipeQuestion(swipedAnswer: swipedAnswer)
         self.createQuestionLog(isCorrect:true,swipedAnswer: swipedAnswer)
          //データ更新は終了してる。クイズノルマが全て終わっているか判定
@@ -126,6 +146,19 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
         if self.goNextQuestionJudge() == true { self.nextQuestionButtonTapped() }
         userModel.updateUserData(swipedAnswer: swipedAnswer)
         self.getExperience()
+    }
+    
+    private func optimizeIndex(answerNode:RealmMindNodeModel) -> Int{
+        if let index = self.answerNodeArray.firstIndex(of: answerNode){
+            for i in (index + 1)..<self.answerNodeArray.count{
+                if self.betweenTodayRange(time: self.answerNodeArray[i].nextDate) {
+                    self.focusAnswerIndex = i
+                    return i
+                }
+            }
+        }
+        self.focusAnswerIndex = 0
+        return 0
     }
     
     private func getExperience(){
@@ -186,6 +219,10 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
     }
     
     func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){
+        let nextIndex = self.optimizeIndex(answerNode:swipedAnswer)
+        self.view?.answerTableView.reloadData()
+        self.view?.answerTableView.selectRow(at: [0,nextIndex], animated: false, scrollPosition: .top)
+        
         myModel.trailingSwipeQuestion(swipedAnswer: swipedAnswer)
         self.createQuestionLog(isCorrect:false,swipedAnswer: swipedAnswer)
         if self.goNextQuestionJudge() == true { self.nextQuestionButtonTapped() }
@@ -243,6 +280,7 @@ extension ToDoQuestionPresenter {
         self.renderingView()
         self.quizDataSource.count > 0 ? self.changeToQuestionMode() : self.changeToCompleteMode()
         self.buttonEnabledControl()
+        
     }
     
     private func setAnswerNodeArray(question:RealmMindNodeModel){
@@ -279,6 +317,8 @@ extension ToDoQuestionPresenter {
             self.view!.customView.isHidden = false
             self.view!.answerTableView.isHidden = true
         })
+        self.view!.buttonStackView.isHidden = false
+        self.view!.Correct_WrongStackView.isHidden = true
     }
     
     private func changeToAnswerMode(){
@@ -289,6 +329,8 @@ extension ToDoQuestionPresenter {
             self.view!.customView.isHidden = true
             self.view!.answerTableView.isHidden = false
         })
+        self.view!.buttonStackView.isHidden = true
+        self.view!.Correct_WrongStackView.isHidden = false
     }
     
     private func changeToCompleteMode(){

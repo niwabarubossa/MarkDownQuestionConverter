@@ -45,6 +45,7 @@ class ToDoQuestionPageViewController: UIViewController{
         self.customView.delegate = self
         buttonStackView.delegate = self
         Correct_WrongStackView.delegate = self
+        Correct_WrongStackView.isHidden = true
         noQuestionLabel = ToDoQuestionCompleteLabel(frame: CGRect(x: 0, y: 60, width: view.frame.width, height: 200))
         noQuestionLabel.isHidden = true
         self.view.addSubview(noQuestionLabel)
@@ -220,11 +221,11 @@ extension ToDoQuestionPageViewController:AVSpeechSynthesizerDelegate{
 extension ToDoQuestionPageViewController:AnswerOrWrongButtonProtocol{
     
     func correctButtonTapped() {
-        <#code#>
+        presenter.leadingSwipeQuestion(swipedAnswer: presenter.answerNodeArray[presenter.focusAnswerIndex])
     }
 
     func wrongButtonTapped() {
-        <#code#>
+        presenter.trailingSwipeQuestion(swipedAnswer: presenter.answerNodeArray[presenter.focusAnswerIndex])
     }
 
 }
