@@ -20,6 +20,8 @@ class ToDoQuestionPageViewController: UIViewController{
     var noQuestionLabel = ToDoQuestionCompleteLabel()
     @IBOutlet weak var userDataDisplay: UserDataDisplay!
     @IBOutlet weak var buttonStackView: ButtonStackView!
+    @IBOutlet weak var Correct_WrongStackView: AnswerOrWrongButton!
+    
     
     var locationManager: CLLocationManager!
     var latitudeNow: String = ""
@@ -42,6 +44,8 @@ class ToDoQuestionPageViewController: UIViewController{
         self.talker.delegate = self
         self.customView.delegate = self
         buttonStackView.delegate = self
+        Correct_WrongStackView.delegate = self
+        Correct_WrongStackView.isHidden = true
         noQuestionLabel = ToDoQuestionCompleteLabel(frame: CGRect(x: 0, y: 60, width: view.frame.width, height: 200))
         noQuestionLabel.isHidden = true
         self.view.addSubview(noQuestionLabel)
@@ -212,6 +216,18 @@ extension ToDoQuestionPageViewController:AVSpeechSynthesizerDelegate{
         }
         presenter.nextSoundQuestion()
     }
+}
+
+extension ToDoQuestionPageViewController:AnswerOrWrongButtonProtocol{
+    
+    func correctButtonTapped() {
+        presenter.leadingSwipeQuestion(swipedAnswer: presenter.answerNodeArray[presenter.focusAnswerIndex])
+    }
+
+    func wrongButtonTapped() {
+        presenter.trailingSwipeQuestion(swipedAnswer: presenter.answerNodeArray[presenter.focusAnswerIndex])
+    }
+
 }
 
 extension ToDoQuestionPageViewController:ButtonStackViewDelegate{

@@ -38,10 +38,15 @@
                                     <constraint firstAttribute="height" constant="80" id="A8w-5q-YKP"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7g-0C-V4k" customClass="AnswerOrWrongButton" customModule="MapConvertQuestion" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="691" width="414" height="80"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="TNJ-xp-jIX" firstAttribute="leading" secondItem="MI4-0y-l7E" secondAttribute="leading" id="0AI-6t-3Ku"/>
+                            <constraint firstItem="Gl3-Rn-fcL" firstAttribute="top" secondItem="F7g-0C-V4k" secondAttribute="top" id="1F3-SH-hjQ"/>
                             <constraint firstItem="MI4-0y-l7E" firstAttribute="trailing" secondItem="xre-EI-qNL" secondAttribute="trailing" id="5Ii-Ft-6GL"/>
                             <constraint firstItem="chM-B4-Bqh" firstAttribute="top" secondItem="MI4-0y-l7E" secondAttribute="top" constant="60" id="87y-bt-xCT"/>
                             <constraint firstItem="Gl3-Rn-fcL" firstAttribute="leading" secondItem="MI4-0y-l7E" secondAttribute="leading" id="AIE-NQ-z4k"/>
@@ -49,16 +54,20 @@
                             <constraint firstItem="chM-B4-Bqh" firstAttribute="leading" secondItem="MI4-0y-l7E" secondAttribute="leading" id="JCN-di-cnj"/>
                             <constraint firstItem="MI4-0y-l7E" firstAttribute="bottom" secondItem="chM-B4-Bqh" secondAttribute="bottom" constant="200" id="JGP-pa-lLX"/>
                             <constraint firstItem="TNJ-xp-jIX" firstAttribute="top" secondItem="Gl3-Rn-fcL" secondAttribute="bottom" constant="10" id="NDU-FD-1k1"/>
+                            <constraint firstItem="Gl3-Rn-fcL" firstAttribute="leading" secondItem="F7g-0C-V4k" secondAttribute="leading" id="SoQ-xC-Fr7"/>
                             <constraint firstItem="xre-EI-qNL" firstAttribute="top" secondItem="MI4-0y-l7E" secondAttribute="top" constant="60" id="ZyY-Fz-qCF"/>
                             <constraint firstItem="MI4-0y-l7E" firstAttribute="trailing" secondItem="chM-B4-Bqh" secondAttribute="trailing" id="aYw-oI-U6b"/>
                             <constraint firstItem="MI4-0y-l7E" firstAttribute="trailing" secondItem="Gl3-Rn-fcL" secondAttribute="trailing" id="gCh-oC-ty1"/>
                             <constraint firstItem="TNJ-xp-jIX" firstAttribute="bottom" secondItem="MI4-0y-l7E" secondAttribute="bottom" id="ix7-YA-D3F"/>
+                            <constraint firstItem="Gl3-Rn-fcL" firstAttribute="trailing" secondItem="F7g-0C-V4k" secondAttribute="trailing" id="rEW-T2-oOR"/>
                             <constraint firstItem="Gl3-Rn-fcL" firstAttribute="top" secondItem="xre-EI-qNL" secondAttribute="bottom" constant="30" id="vqU-5X-62e"/>
                             <constraint firstItem="MI4-0y-l7E" firstAttribute="trailing" secondItem="TNJ-xp-jIX" secondAttribute="trailing" id="yp6-Jf-DCx"/>
+                            <constraint firstItem="Gl3-Rn-fcL" firstAttribute="bottom" secondItem="F7g-0C-V4k" secondAttribute="bottom" id="zdY-bw-Dr1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MI4-0y-l7E"/>
                     </view>
                     <connections>
+                        <outlet property="Correct_WrongStackView" destination="F7g-0C-V4k" id="2Om-zL-YK0"/>
                         <outlet property="answerTableView" destination="chM-B4-Bqh" id="LTW-zo-S5Z"/>
                         <outlet property="buttonStackView" destination="Gl3-Rn-fcL" id="6X9-nO-T7G"/>
                         <outlet property="customView" destination="xre-EI-qNL" id="3Yu-tj-A3N"/>
