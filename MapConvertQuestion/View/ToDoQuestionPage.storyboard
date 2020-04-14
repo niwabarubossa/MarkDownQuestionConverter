@@ -11,7 +11,7 @@
         <!--To Do Question Page View Controller-->
         <scene sceneID="srd-Xd-DX9">
             <objects>
-                <viewController id="WKq-pV-ALW" customClass="ToDoQuestionPageViewController" customModule="MapConvertQuestion" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="WKq-pV-ALW" customClass="ToDoQuestionPageViewController" customModule="MapConvertQuestion" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DVk-F3-CaT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
