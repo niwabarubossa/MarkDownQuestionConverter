@@ -10,6 +10,8 @@ import UIKit
 
 class AnswerOrWrongButton: UIView {
     
+    weak var delegate:AnswerOrWrongButtonProtocol?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
@@ -26,5 +28,15 @@ class AnswerOrWrongButton: UIView {
             self.addSubview(view)
         }
     }
+    
+    @IBAction func correctButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func wrongButtonTapped(_ sender: Any) {
+    }
+}
 
+protocol AnswerOrWrongButtonProtocol:class{
+    func correctButtonTapped()
+    func wrongButtonTapped()
 }

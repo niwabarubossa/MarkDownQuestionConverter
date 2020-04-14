@@ -21,11 +21,17 @@
                             <rect key="frame" x="0.0" y="0.0" width="207" height="81"/>
                             <color key="backgroundColor" red="0.36477916656130904" green="1" blue="0.16209576765473444" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" image="correct"/>
+                            <connections>
+                                <action selector="correctButtonTapped:" destination="-1" eventType="touchUpInside" id="uuC-lR-GTL"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8I-kI-mMx">
                             <rect key="frame" x="207" y="0.0" width="207" height="81"/>
                             <color key="backgroundColor" red="1" green="0.37199067321625146" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" image="wrong-1"/>
+                            <connections>
+                                <action selector="wrongButtonTapped:" destination="-1" eventType="touchUpInside" id="alA-Cn-YqO"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
