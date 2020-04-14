@@ -103,11 +103,13 @@ class QuestionPagePresenter:QuestionModelDelegate{
     }
     
     func correctAnswer(row:Int){
-        let swipedAnswer = self.answerNodeArray[row]
+        //swiped answer = self.answerNodeArray[row]
+        let _ = self.answerNodeArray[row]
     }
     
     func wrongAnswer(row:Int){
-        let swipedAnswer = self.answerNodeArray[row]
+        //swiped answer = self.answerNodeArray[row]
+        let _ = self.answerNodeArray[row]
     }
     
     func syncData(allNodeData: [RealmMindNodeModel]) {
