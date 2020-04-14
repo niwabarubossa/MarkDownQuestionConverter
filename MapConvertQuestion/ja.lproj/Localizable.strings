@@ -8,7 +8,6 @@
 "submitButtonText" = "クイズ作成";
 "PasteAndConvertMap" = "マインドマップをコピーして貼り付け";
 "howManyTimesAnswered" = "総回答数";
-"times" = "回";
 "score" = "スコア";
 "finish" = "finish!!";
 "answerButtonText" = "答えを見る";
@@ -29,3 +28,4 @@
 "language" = "ja-JP";
 "markDownPageTitleLabel" = "ペーストしてクイズを作成!";
 "mapList" = "マップリスト";
+"dismiss" = "閉じる";
