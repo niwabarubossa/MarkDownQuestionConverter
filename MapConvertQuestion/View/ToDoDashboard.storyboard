@@ -46,7 +46,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start studying!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaZ-7i-mOz">
-                                <rect key="frame" x="108.5" y="173" width="197" height="50"/>
+                                <rect key="frame" x="108.5" y="178" width="197" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5oK-es-znJ"/>
                                 </constraints>
@@ -54,15 +54,26 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start studying!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGn-DJ-GoB">
+                                <rect key="frame" x="108.5" y="243" width="197" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="hND-Zh-wB8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="KohinoorBangla-Light" family="Kohinoor Bangla" pointSize="30"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="OaZ-7i-mOz" firstAttribute="centerX" secondItem="Q6V-1w-749" secondAttribute="centerX" id="Gjy-zO-bsF"/>
+                            <constraint firstItem="aGn-DJ-GoB" firstAttribute="centerX" secondItem="Q6V-1w-749" secondAttribute="centerX" id="Hrc-rq-YO2"/>
                             <constraint firstItem="F9s-x5-tVa" firstAttribute="centerX" secondItem="Q6V-1w-749" secondAttribute="centerX" id="KNQ-aS-Q7R"/>
-                            <constraint firstItem="F9s-x5-tVa" firstAttribute="top" secondItem="OaZ-7i-mOz" secondAttribute="bottom" constant="100" id="RFv-ku-qGG"/>
                             <constraint firstItem="ChO-Qq-XhM" firstAttribute="bottom" secondItem="HIk-NN-uPL" secondAttribute="bottom" constant="75" id="Uni-f9-ivV"/>
+                            <constraint firstItem="F9s-x5-tVa" firstAttribute="top" secondItem="aGn-DJ-GoB" secondAttribute="bottom" constant="30" id="bqd-PZ-H29"/>
                             <constraint firstItem="F9s-x5-tVa" firstAttribute="centerY" secondItem="Q6V-1w-749" secondAttribute="centerY" id="fLv-mK-1WJ"/>
                             <constraint firstItem="HIk-NN-uPL" firstAttribute="centerX" secondItem="Q6V-1w-749" secondAttribute="centerX" id="gfB-zn-O6a"/>
+                            <constraint firstItem="aGn-DJ-GoB" firstAttribute="top" secondItem="OaZ-7i-mOz" secondAttribute="bottom" constant="15" id="wGw-Pd-UMg"/>
                             <constraint firstItem="HIk-NN-uPL" firstAttribute="width" secondItem="F9s-x5-tVa" secondAttribute="width" id="ytG-dL-ybT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ChO-Qq-XhM"/>
@@ -71,6 +82,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="progressView" destination="F9s-x5-tVa" id="pDt-uU-9ws"/>
+                        <outlet property="quotqLabel" destination="aGn-DJ-GoB" id="IBI-wD-Zyt"/>
                         <outlet property="startButton" destination="HIk-NN-uPL" id="Ips-IE-JdR"/>
                     </connections>
                 </viewController>
