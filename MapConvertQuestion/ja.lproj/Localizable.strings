@@ -29,3 +29,7 @@
 "markDownPageTitleLabel" = "ペーストしてクイズを作成!";
 "mapList" = "マップリスト";
 "dismiss" = "閉じる";
+//mypage----------
+"totalAnswerTimesLabel" = "累積回答数";
+"howToLabel" = "使い方";
+//mypage----------

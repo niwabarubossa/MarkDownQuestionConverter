@@ -17,6 +17,7 @@ class MyPageViewController: UIViewController {
     @IBOutlet weak var totalAnswerTimesLabel: UILabel!
     @IBOutlet weak var howToLabel: UIView!
     
+    @IBOutlet weak var howToTextLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +27,10 @@ class MyPageViewController: UIViewController {
     }
     
     private func layout(){
-        let font = UIFont.systemFont(ofSize: 25, weight: UIFont.Weight(300))
-        totalAnswerTimesLabel.font = font
+        totalAnswerTimesLabel.text = "totalAnswerTimesLabel".localized
+        totalAnswerTimesLabel.font = UIFont(name: "KohinoorBangla-Light", size: 25)
+        self.howToTextLabel.text = "howToLabel".localized
+        self.howToTextLabel.font = UIFont(name: "KohinoorBangla-Light", size: 20)
         self.howToLabel.addGestureRecognizer((UITapGestureRecognizer(target: self, action: Selector(("howToLabelTapped:")))))
     }
     
