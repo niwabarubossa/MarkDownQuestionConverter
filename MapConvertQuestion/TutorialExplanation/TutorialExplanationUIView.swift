@@ -29,6 +29,7 @@ class TutorialExplanationUIView: UIView {
             view.frame = self.bounds
             self.addSubview(view)
         }
+        tutorialTitleLabel.font = UIFont(name: LetGroup.boldFontName, size: 30)
     }
 
 }

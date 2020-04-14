@@ -24,4 +24,6 @@ struct LetGroup {
     static let todayEndMili = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
     static let tomorrowMili = tomorrow?.millisecondsSince1970
     static let todayStartMili = Calendar.current.startOfDay(for: Date()).millisecondsSince1970
+    static let baseFontName = "KohinoorBangla-Light"
+    static let boldFontName = "KohinoorBangla-Semibold"
 }

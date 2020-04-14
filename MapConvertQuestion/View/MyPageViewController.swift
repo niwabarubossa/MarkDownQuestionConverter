@@ -28,9 +28,9 @@ class MyPageViewController: UIViewController {
     
     private func layout(){
         totalAnswerTimesLabel.text = "totalAnswerTimesLabel".localized
-        totalAnswerTimesLabel.font = UIFont(name: "KohinoorBangla-Light", size: 25)
+        totalAnswerTimesLabel.font = UIFont(name: LetGroup.baseFontName, size: 25)
         self.howToTextLabel.text = "howToLabel".localized
-        self.howToTextLabel.font = UIFont(name: "KohinoorBangla-Light", size: 20)
+        self.howToTextLabel.font = UIFont(name: LetGroup.baseFontName, size: 20)
         self.howToLabel.addGestureRecognizer((UITapGestureRecognizer(target: self, action: Selector(("howToLabelTapped:")))))
     }
     
