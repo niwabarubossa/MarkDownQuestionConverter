@@ -18,8 +18,8 @@ class ToDoQuestionPageViewController: UIViewController{
     @IBOutlet weak var customView: ToDoQuestionDisplay!
     @IBOutlet weak var answerTableView: UITableView!
     var noQuestionLabel = ToDoQuestionCompleteLabel()
-    var userDataDisplay = UserDataDisplay()
-    var buttonStackView = ButtonStackView()
+    @IBOutlet weak var userDataDisplay: UserDataDisplay!
+    @IBOutlet weak var buttonStackView: ButtonStackView!
     
     var locationManager: CLLocationManager!
     var latitudeNow: String = ""
@@ -41,17 +41,10 @@ class ToDoQuestionPageViewController: UIViewController{
     private func layout(){
         self.talker.delegate = self
         self.customView.delegate = self
+        buttonStackView.delegate = self
         noQuestionLabel = ToDoQuestionCompleteLabel(frame: CGRect(x: 0, y: 60, width: view.frame.width, height: 200))
         noQuestionLabel.isHidden = true
         self.view.addSubview(noQuestionLabel)
-        self.view.addSubview(customView)
-        let myWidth = view.frame.width
-        let myHeight = view.frame.height
-        buttonStackView = ButtonStackView(frame: CGRect(x: 0, y: myHeight - 170 , width: myWidth, height: 80))
-        buttonStackView.delegate = self
-        self.view.addSubview(buttonStackView)
-        userDataDisplay = UserDataDisplay(frame: CGRect(x: 0, y: view.frame.height - 88, width: myWidth, height: 81))
-        self.view.addSubview(userDataDisplay)
     }
     
     private func initializePage(){
