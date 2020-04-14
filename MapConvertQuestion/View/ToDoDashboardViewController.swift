@@ -13,7 +13,7 @@ class ToDoDashboardViewController: UIViewController {
 
     @IBOutlet weak var progressView: MBCircularProgressBarView!
     @IBOutlet weak var startButton: UIButton!
-    
+    @IBOutlet weak var quotqLabel: UILabel!
     
     var presenter:ToDoDashboardPresenter!
     var todayDoneAmount:CGFloat = 0
@@ -42,12 +42,14 @@ class ToDoDashboardViewController: UIViewController {
         super.viewWillAppear(true)
         progressView.value = 0
         progressView.maxValue = 100
+        self.quotqLabel.text = "todayQuotaIs".localized
     }
     
     override func viewDidAppear(_ animated: Bool) {
         UIView.animate(withDuration: 1.0) {
             self.progressView.value = CGFloat( (self.presenter.todayDoneAmount / self.presenter.todayQuota ) * 100)
         }
+        self.quotqLabel.text = "todayQuotaIs".localized +  String(Int(self.presenter.todayQuota)) + "quizzes".localized
     }
     
     //presenter ← view
