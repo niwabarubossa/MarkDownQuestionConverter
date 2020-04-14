@@ -10,6 +10,8 @@
 		5404BD03240A62F100B3C6EC /* QuestionMapSelectPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5404BD02240A62F100B3C6EC /* QuestionMapSelectPageTableViewController.swift */; };
 		5404BD06240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5404BD04240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift */; };
 		5404BD07240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5404BD05240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.xib */; };
+		542355442445DE4600135F0E /* AnswerOrWrongButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 542355432445DE4600135F0E /* AnswerOrWrongButton.xib */; };
+		542355462445DE8400135F0E /* AnswerOrWrongButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542355452445DE8400135F0E /* AnswerOrWrongButton.swift */; };
 		542F3FAA240FAFEC00D92561 /* ToDoQuestionPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 542F3FA9240FAFEC00D92561 /* ToDoQuestionPage.storyboard */; };
 		542F3FAC240FB1C300D92561 /* ToDoQuestionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542F3FAB240FB1C300D92561 /* ToDoQuestionPageViewController.swift */; };
 		542F3FAE240FB32500D92561 /* ToDoQuestionDisplay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 542F3FAD240FB32500D92561 /* ToDoQuestionDisplay.xib */; };
@@ -87,6 +89,8 @@
 		5404BD02240A62F100B3C6EC /* QuestionMapSelectPageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionMapSelectPageTableViewController.swift; sourceTree = "<group>"; };
 		5404BD04240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectQuestionMapPageTableViewCell.swift; sourceTree = "<group>"; };
 		5404BD05240B538600B3C6EC /* SelectQuestionMapPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectQuestionMapPageTableViewCell.xib; sourceTree = "<group>"; };
+		542355432445DE4600135F0E /* AnswerOrWrongButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnswerOrWrongButton.xib; sourceTree = "<group>"; };
+		542355452445DE8400135F0E /* AnswerOrWrongButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerOrWrongButton.swift; sourceTree = "<group>"; };
 		542F3FA9240FAFEC00D92561 /* ToDoQuestionPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ToDoQuestionPage.storyboard; sourceTree = "<group>"; };
 		542F3FAB240FB1C300D92561 /* ToDoQuestionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoQuestionPageViewController.swift; sourceTree = "<group>"; };
 		542F3FAD240FB32500D92561 /* ToDoQuestionDisplay.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoQuestionDisplay.xib; sourceTree = "<group>"; };
@@ -273,6 +277,7 @@
 				543CC6FF241DBE950008BDE6 /* InputPageLabel.xib */,
 				543CC703241DC45E0008BDE6 /* ToDoQuestionCompleteLabel.xib */,
 				54676D94242F179400541EBE /* OpinionFormButton.xib */,
+				542355432445DE4600135F0E /* AnswerOrWrongButton.xib */,
 			);
 			path = XibFile;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 				543CC701241DBEE70008BDE6 /* InputPageLabel.swift */,
 				548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */,
 				54676D96242F1B7600541EBE /* OpinionFormButton.swift */,
+				542355452445DE8400135F0E /* AnswerOrWrongButton.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -429,6 +435,7 @@
 				54A7DC712414BC1E009F7229 /* SelectQustionPageThemeView.xib in Resources */,
 				54A462F6242B7DF5007EA353 /* MyPage.storyboard in Resources */,
 				54E010552442AC7100AEB878 /* ToDoDashboard.storyboard in Resources */,
+				542355442445DE4600135F0E /* AnswerOrWrongButton.xib in Resources */,
 				54F45E2923F90AC3002981C8 /* Assets.xcassets in Resources */,
 				54676D95242F179400541EBE /* OpinionFormButton.xib in Resources */,
 				5447E4EC24245C9C001E3350 /* Localizable.strings in Resources */,
@@ -533,6 +540,7 @@
 				54A7DC732414BC69009F7229 /* SelectQustionPageThemeView.swift in Sources */,
 				5404BD03240A62F100B3C6EC /* QuestionMapSelectPageTableViewController.swift in Sources */,
 				5447E4F324245EFD001E3350 /* StringExtension.swift in Sources */,
+				542355462445DE8400135F0E /* AnswerOrWrongButton.swift in Sources */,
 				542F3FB2240FB54D00D92561 /* ToDoQuestionPresenter.swift in Sources */,
 				54F45E5323FAA263002981C8 /* MarkDownInputPresenter.swift in Sources */,
 				54BFEE3B2402701000B55A8C /* RealmMindNodeModel.swift in Sources */,
