@@ -20,19 +20,28 @@
                                 <rect key="frame" x="0.0" y="104" width="414" height="509"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O5a-IT-txg" customClass="ToDoQuestionDisplay" customModule="MapConvertQuestion" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="104" width="414" height="509"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Q9v-s6-Dc4" firstAttribute="trailing" secondItem="W2k-CZ-7en" secondAttribute="trailing" id="9IM-oY-YGc"/>
+                            <constraint firstItem="Q9v-s6-Dc4" firstAttribute="trailing" secondItem="O5a-IT-txg" secondAttribute="trailing" id="DDh-zo-FDs"/>
+                            <constraint firstItem="Q9v-s6-Dc4" firstAttribute="bottom" secondItem="O5a-IT-txg" secondAttribute="bottom" constant="200" id="Qt7-Jh-7yG"/>
                             <constraint firstItem="Q9v-s6-Dc4" firstAttribute="bottom" secondItem="W2k-CZ-7en" secondAttribute="bottom" constant="200" id="b0V-gf-bDY"/>
+                            <constraint firstItem="O5a-IT-txg" firstAttribute="top" secondItem="Q9v-s6-Dc4" secondAttribute="top" constant="60" id="fd7-2o-tZ6"/>
                             <constraint firstItem="W2k-CZ-7en" firstAttribute="leading" secondItem="Q9v-s6-Dc4" secondAttribute="leading" id="lY8-wf-x6f"/>
                             <constraint firstItem="W2k-CZ-7en" firstAttribute="top" secondItem="Q9v-s6-Dc4" secondAttribute="top" constant="60" id="uZb-xW-nfE"/>
+                            <constraint firstItem="O5a-IT-txg" firstAttribute="leading" secondItem="Q9v-s6-Dc4" secondAttribute="leading" id="xoJ-r3-2dl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q9v-s6-Dc4"/>
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="answerTableView" destination="W2k-CZ-7en" id="gwc-fb-Ags"/>
+                        <outlet property="customView" destination="O5a-IT-txg" id="Rbv-f9-KST"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x8b-BV-evz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -15,7 +15,7 @@ class ToDoQuestionPageViewController: UIViewController{
     var bannerView: GADBannerView!
     
     var presenter:ToDoQuestionPresenter!
-    var customView = ToDoQuestionDisplay()
+    @IBOutlet weak var customView: ToDoQuestionDisplay!
     @IBOutlet weak var answerTableView: UITableView!
     var noQuestionLabel = ToDoQuestionCompleteLabel()
     var userDataDisplay = UserDataDisplay()
@@ -40,7 +40,6 @@ class ToDoQuestionPageViewController: UIViewController{
         
     private func layout(){
         self.talker.delegate = self
-        customView = ToDoQuestionDisplay(frame: CGRect(x: 0, y: 100 , width: view.frame.width, height: view.frame.height - 300))
         self.customView.delegate = self
         noQuestionLabel = ToDoQuestionCompleteLabel(frame: CGRect(x: 0, y: 60, width: view.frame.width, height: 200))
         noQuestionLabel.isHidden = true
