@@ -32,6 +32,10 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
         model.addObserver(self, selector: #selector(self.getNotifyFromModel))
         model.registerUserQuota()
     }
+    
+    func updateUserQuota(){
+        model.updateUserQuotaFromPresenter()
+    }
 //意味段落-----------------------
 
 //意味段落-----------------------

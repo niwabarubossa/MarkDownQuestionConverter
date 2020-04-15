@@ -61,6 +61,11 @@ class ToDoDashboardModel {
         return questionArray.count
     }
     
+    func updateUserQuotaFromPresenter(){
+        let user = self.getUserData()
+        self.updateUserQuota(user: user)
+    }
+    
     func updateUserQuota(user:User){
         let todayQuota = self.getToDoQuestionAmount()
         do{
