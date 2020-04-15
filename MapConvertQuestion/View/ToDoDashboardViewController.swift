@@ -8,6 +8,7 @@
 
 import UIKit
 import MBCircularProgressBar
+import RealmSwift
 
 class ToDoDashboardViewController: UIViewController {
 
@@ -46,14 +47,47 @@ class ToDoDashboardViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.tutorialIfFirstLaunch()
         UIView.animate(withDuration: 1.0) {
             var todayQuota:Int = 1
+            print("\(self.presenter.todayQuota)")
             if self.presenter.todayQuota > 0 {
                 todayQuota = Int(self.presenter.todayQuota)
             }
             self.progressView.value = CGFloat( ( Int(self.presenter.todayDoneAmount) / todayQuota ) * 100)
         }
         self.quotqLabel.text = "todayQuotaIs".localized +  String(Int(self.presenter.todayQuota)) + " " +  "quizzes".localized
+    }
+    
+    private func tutorialIfFirstLaunch(){
+        let defaults = UserDefaults.standard
+        defaults.register(defaults: ["TopPageFirstLaunch" : true])
+        let markDownInputModel = MarkDownInputModel()
+        markDownInputModel.submitInput(input:"tutorialTextViewContent".localized)
+        if defaults.bool(forKey: "TopPageFirstLaunch") == true {
+            //create first tutorial content
+            UserDefaults.standard.set(false, forKey: "TopPageFirstLaunch")
+
+            let new_uuid = NSUUID().uuidString
+            UserDefaults.standard.set(new_uuid, forKey: "uuid")
+            self.createUserData(uuid:new_uuid)
+            let howToVC = R.storyboard.settings.howToPage()
+            self.present(howToVC!, animated: true, completion: nil)
+        }else{
+            UserDefaults.standard.set(false, forKey: "TopPageFirstLaunch")
+        }
+    }
+
+    private func createUserData(uuid:String){
+        do {
+            let realm = try Realm()
+            let user = User(value: [ "uuid": uuid])
+            try! realm.write {
+                realm.add(user)
+            }
+        } catch {
+            print("\(error)")
+        }
     }
     
     //presenter ← view

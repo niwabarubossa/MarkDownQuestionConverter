@@ -46,7 +46,7 @@ class ToDoQuestionPageViewController: UIViewController{
         buttonStackView.delegate = self
         Correct_WrongStackView.delegate = self
         Correct_WrongStackView.isHidden = true
-        noQuestionLabel = ToDoQuestionCompleteLabel(frame: CGRect(x: 0, y: 60, width: view.frame.width, height: 200))
+        noQuestionLabel = ToDoQuestionCompleteLabel(frame: CGRect(x: 0, y: 200, width: view.frame.width, height: 200))
         noQuestionLabel.isHidden = true
         self.view.addSubview(noQuestionLabel)
     }
