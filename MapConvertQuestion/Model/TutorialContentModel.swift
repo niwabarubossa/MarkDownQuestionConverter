@@ -22,9 +22,10 @@ struct TutorialContentModel{
     
     static func createModels() -> [TutorialContentModel]{
         return [
-            TutorialContentModel(title: "tutorialFirstTitle".localized, content: "tutorialFirstContent".localized, imageIcon: R.image.tutorialMap()!),
-            TutorialContentModel(title: "tutorialSecondTitle".localized, content: "tutorialSecondContent".localized, imageIcon: R.image.tutorialPaste()!),
-            TutorialContentModel(title: "tutorialThirdTitle".localized, content: "tutorialThirdContent".localized, imageIcon: R.image.tutorialQuiz()!)
+            TutorialContentModel(title: "tutorialFirstTitle".localized, content: "tutorialFirstContent".localized, imageIcon: R.image.tutorialFirstPage()!),
+            TutorialContentModel(title: "tutorialSecondTitle".localized, content: "tutorialSecondContent".localized, imageIcon: R.image.tutorialSecondPage()!),
+            TutorialContentModel(title: "tutorialThirdTitle".localized, content: "tutorialThirdContent".localized, imageIcon: R.image.tutorialThirdPage()!),
+            TutorialContentModel(title: "tutorialFourthTitle".localized, content: "tutorialFourthContent".localized, imageIcon: R.image.tutorialFourthPage()!)
         ]
     }
 }
