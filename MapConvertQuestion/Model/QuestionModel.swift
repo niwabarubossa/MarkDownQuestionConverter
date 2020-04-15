@@ -238,7 +238,7 @@ class QuestionModel:SubmitFirestoreDocProtocol {
         var answerDataArray = [RealmMindNodeModel]()
         let realm = try! Realm()
         let results = realm.objects(RealmMindNodeModel.self).filter("nextDate > 0")
-        let maxIndex = min(results.count, 5)
+        let maxIndex = min(results.count, 30)
         for _ in 0..<maxIndex {
             if let randomResult = results.randomElement() {
                 answerDataArray.append(randomResult)
