@@ -48,12 +48,14 @@ class ToDoDashboardViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         self.tutorialIfFirstLaunch()
+        self.presenter.updateUserQuota()
         UIView.animate(withDuration: 1.0) {
             var todayQuota:Int = 1
             print("\(self.presenter.todayQuota)")
             if self.presenter.todayQuota > 0 {
                 todayQuota = Int(self.presenter.todayQuota)
             }
+            
             self.progressView.value = CGFloat( ( Int(self.presenter.todayDoneAmount) / todayQuota ) * 100)
         }
         self.quotqLabel.text = "todayQuotaIs".localized +  String(Int(self.presenter.todayQuota)) + " " +  "quizzes".localized
@@ -62,10 +64,10 @@ class ToDoDashboardViewController: UIViewController {
     private func tutorialIfFirstLaunch(){
         let defaults = UserDefaults.standard
         defaults.register(defaults: ["TopPageFirstLaunch" : true])
-        let markDownInputModel = MarkDownInputModel()
-        markDownInputModel.submitInput(input:"tutorialTextViewContent".localized)
         if defaults.bool(forKey: "TopPageFirstLaunch") == true {
             //create first tutorial content
+            let markDownInputModel = MarkDownInputModel()
+            markDownInputModel.submitInput(input:"tutorialTextViewContent".localized)
             UserDefaults.standard.set(false, forKey: "TopPageFirstLaunch")
 
             let new_uuid = NSUUID().uuidString
