@@ -57,30 +57,12 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     
     override func viewDidAppear(_ animated: Bool) {
         let defaults = UserDefaults.standard
-        defaults.register(defaults: ["FirstLaunch" : true])
-        if defaults.bool(forKey: "FirstLaunch") == true {
-            UserDefaults.standard.set(false, forKey: "FirstLaunch")
-            let new_uuid = NSUUID().uuidString
-            UserDefaults.standard.set(new_uuid, forKey: "uuid")
+        defaults.register(defaults: ["InputPageFirstLaunch" : true])
+        if defaults.bool(forKey: "InputPageFirstLaunch") == true {
+            UserDefaults.standard.set(false, forKey: "InputPageFirstLaunch")
             self.customView.inputTextView.text = "tutorialTextViewContent".localized
-            self.createUserData(uuid:new_uuid)
-            let howToVC = R.storyboard.settings.howToPage()
-            self.present(howToVC!, animated: true, completion: nil)
-        }else{
-            //２回目以降
-            UserDefaults.standard.set(false, forKey: "FirstLaunch")
-        }
-    }
-    
-    private func createUserData(uuid:String){
-        do {
-            let realm = try Realm()
-            let user = User(value: [ "uuid": uuid])
-            try! realm.write {
-                realm.add(user)
-            }
-        } catch {
-            print("\(error)")
+        }else{ //２回目以降
+            UserDefaults.standard.set(false, forKey: "InputPageFirstLaunch")
         }
     }
 
