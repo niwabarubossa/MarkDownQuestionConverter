@@ -75,7 +75,6 @@ class MarkDownInputModel {
     }
     
     private func convertMindNodeToRealmDictionary(mindNodeArray: [MindNode],mapId: String) -> [[String: Any]] {
-        
         var dictionaryArray = [[String: Any]]()
         for mindNode in mindNodeArray {
             let dictionary: [String: Any] = [
