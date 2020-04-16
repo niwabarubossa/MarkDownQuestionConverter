@@ -50,13 +50,12 @@ class ToDoDashboardViewController: UIViewController {
         self.tutorialIfFirstLaunch()
         self.presenter.updateUserQuota()
         UIView.animate(withDuration: 1.0) {
-            var todayQuota:Int = 1
-            print("\(self.presenter.todayQuota)")
+            var todayQuota:CGFloat = 1
             if self.presenter.todayQuota > 0 {
-                todayQuota = Int(self.presenter.todayQuota)
+                todayQuota = CGFloat(self.presenter.todayQuota)
             }
-            
-            self.progressView.value = CGFloat( ( Int(self.presenter.todayDoneAmount) / todayQuota ) * 100)
+            let wariai:CGFloat = (self.presenter.todayDoneAmount) / todayQuota
+            self.progressView.value = CGFloat( wariai * 100)
         }
         self.quotqLabel.text = "todayQuotaIs".localized +  String(Int(self.presenter.todayQuota)) + " " +  "quizzes".localized
     }
