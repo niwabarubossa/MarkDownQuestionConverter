@@ -24,6 +24,8 @@ class MarkDownInputModel {
         //realm処理
         let mapId = NSUUID().uuidString
         convertInputToLines(input:input)
+        //FIX ME //調整用としてのappendである。
+        self.inputLineArray.append("this is a tyouseiyou text because i have no tab")
         let parentNodePrimaryKey:String = NSUUID().uuidString
         convertStringLinesToMindNode(myNodeId: 0, myIndent: 0, parentNodeId: 0,parentNodePrimaryKey: parentNodePrimaryKey)
         let realmDataArray = convertMindNodeToRealmDictionary(mindNodeArray: mindNodeArray,mapId: mapId)
@@ -45,6 +47,7 @@ class MarkDownInputModel {
     private func convertStringLinesToMindNode(myNodeId:Int,myIndent:Int,parentNodeId:Int,parentNodePrimaryKey:String){
         var childNodeIdArray = [Int]()
         let myNodePrimaryKey = NSUUID().uuidString
+
         for i in (myNodeId + 1)..<inputLineArray.count{
             if ( !doneNum.contains(i) ){
                 if( myIndent >= getIndent(str: inputLineArray[i]) ){
@@ -53,7 +56,8 @@ class MarkDownInputModel {
                     mindNodeArray.append(myNode)
                     return
                 }
-                convertStringLinesToMindNode(myNodeId: i, myIndent: getIndent(str: inputLineArray[i]), parentNodeId: myNodeId,parentNodePrimaryKey: myNodePrimaryKey)
+                convertStringLinesToMindNode(myNodeId: i, myIndent: getIndent(str: inputLineArray[i]),
+                                             parentNodeId: myNodeId,parentNodePrimaryKey: myNodePrimaryKey)
                 childNodeIdArray.append(i)
             }
         }
@@ -71,6 +75,7 @@ class MarkDownInputModel {
     }
     
     private func convertMindNodeToRealmDictionary(mindNodeArray: [MindNode],mapId: String) -> [[String: Any]] {
+        
         var dictionaryArray = [[String: Any]]()
         for mindNode in mindNodeArray {
             let dictionary: [String: Any] = [
