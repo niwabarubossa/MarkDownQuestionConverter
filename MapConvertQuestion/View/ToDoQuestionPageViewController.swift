@@ -139,9 +139,18 @@ extension ToDoQuestionPageViewController:UITableViewDelegate,UITableViewDataSour
         }else{
             cell.myImageView.isHidden = true
         }
-        
-        cell.backgroundColor = presenter.decideCellColor(answerNodeData: data)
+
+//        cell.backgroundColor =
+        let color = presenter.decideCellColor(answerNodeData: data)
+        changeCellColorWithAnimation(cell:cell,color:color)
+        //animation
          return cell
+    }
+    
+    private func changeCellColorWithAnimation(cell:QuestionAnswerTableViewCell,color:UIColor){
+        UIView.animate(withDuration: 0.5) {
+            cell.backgroundColor = color
+        }
     }
     
     private func todayQuestion(nextDate:Int64)->Bool{
