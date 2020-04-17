@@ -63,7 +63,9 @@ class ToDoDashboardModel {
     
     func updateUserQuotaFromPresenter(){
         let user = self.getUserData()
-        self.updateUserQuota(user: user)
+        if self.isTodayFirstLogin(user: user) == true {
+            self.updateUserQuota(user: user)
+        }
     }
     
     func updateUserQuota(user:User){
