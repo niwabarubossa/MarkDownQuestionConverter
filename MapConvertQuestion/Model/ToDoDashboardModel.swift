@@ -41,7 +41,13 @@ class ToDoDashboardModel {
     func getTodayLogAmount() -> Int{
         let realm = try! Realm()
         let results = realm.objects(QuestionLog.self).filter(" date BETWEEN {\(LetGroup.todayStartMili), \(LetGroup.todayEndMili)}")
-        return results.count
+         var questionNodeIdArray = [String]()
+        for questionLog in results  {
+            if questionNodeIdArray.contains(questionLog.questionNodeId) == false {
+                questionNodeIdArray.append(questionLog.questionNodeId)
+            }
+        }
+        return questionNodeIdArray.count
     }
     
     private func getToDoQuestionAmount() -> Int{
@@ -63,7 +69,9 @@ class ToDoDashboardModel {
     
     func updateUserQuotaFromPresenter(){
         let user = self.getUserData()
-        self.updateUserQuota(user: user)
+        if self.isTodayFirstLogin(user: user) == true {
+            self.updateUserQuota(user: user)
+        }
     }
     
     func updateUserQuota(user:User){
