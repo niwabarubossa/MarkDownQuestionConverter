@@ -10,7 +10,6 @@ import Foundation
 import RealmSwift
 
 protocol ToDoDashboardModelDelegate: class {
-    func didGetUserData(user:User) -> Void
     func didGetTodayLogAmount(amount:Int) -> Void
 }
 

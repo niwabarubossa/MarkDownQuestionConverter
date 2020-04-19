@@ -41,9 +41,6 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
 
 //意味段落-----------------------
     
-    func didGetUserData(user:User){
-    }
-    
     func didGetTodayLogAmount(amount:Int){
         self.view?.todayDoneAmount = CGFloat(amount)
     }
