@@ -17,6 +17,7 @@ class MarkDownInputModel {
     weak var delegate: MarkDownInputModelDelegate?
     var inputLineArray = [String]()
     var doneNum = [Int]()
+    private var questionNodeCount:Int = 0
     //インプットされたマークダウンがmindNodeに変換されている
     var mindNodeArray = [MindNode]()
     
@@ -30,14 +31,32 @@ class MarkDownInputModel {
         convertStringLinesToMindNode(myNodeId: 0, myIndent: 0, parentNodeId: 0,parentNodePrimaryKey: parentNodePrimaryKey)
         let realmDataArray = convertMindNodeToRealmDictionary(mindNodeArray: mindNodeArray,mapId: mapId)
         saveToRealm(realmDataArray: realmDataArray,mapId: mapId)
+        //TODO:realm UserEntityとかを作成する
+        let user = self.getUserData()
+        self.incrementUserQuota(user:user)
         self.delegate?.didSubmitInput()
         initData()
     }
     
+    private func getUserData() -> User{
+        let realm = try! Realm()
+        if let user = realm.objects(User.self).first{
+            return user
+        }
+        return User()
+    }
+    private func incrementUserQuota(user:User){
+        let realm = try! Realm()
+        try! realm.write {
+            user.setValue( user.todayQuota + self.questionNodeCount, forKey: "todayQuota")
+        }
+    }
+
     private func initData(){
         self.inputLineArray.removeAll()
         self.doneNum.removeAll()
         self.mindNodeArray.removeAll()
+        self.questionNodeCount = 0
     }
     
     private func convertInputToLines(input:String){
@@ -87,6 +106,9 @@ class MarkDownInputModel {
                 "parentNodePrimaryKey": mindNode.parentNodePrimaryKey
             ]
             dictionaryArray.append(dictionary)
+            if getChildNodeIdArray(mindNode: mindNode).count > 0  {
+                questionNodeCount += 1
+            }
         }
         return dictionaryArray
     }
