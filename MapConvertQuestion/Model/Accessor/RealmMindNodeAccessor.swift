@@ -32,6 +32,14 @@ class RealmMindNodeAccessor {
          let node:RealmMindNodeModel = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId).filter("myNodeId == %@", nodeId).first ?? RealmMindNodeModel()
          return node
     }
+    
+    func getNodeByNodeIdAndMapId(question:RealmMindNodeModel,nodeId: Int) -> RealmMindNodeModel{
+        let realm = try! Realm()
+        if let searchResult = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", question.mapId).filter("myNodeId == %@",nodeId).first {
+            return searchResult
+        }
+        return RealmMindNodeModel()
+    }
 
     func updateNode(updateKeyValueArray:[String:Any],updateNode:RealmMindNodeModel){
         let realm = try! Realm()

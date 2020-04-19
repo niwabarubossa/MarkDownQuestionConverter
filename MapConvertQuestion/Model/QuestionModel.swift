@@ -193,16 +193,8 @@ class QuestionModel:SubmitFirestoreDocProtocol {
         return LearningIntervalStruct(ifSuccessNextInterval: 1, nextLearningDate: Calendar.current.date(byAdding: .day, value: 0, to: Date())!.millisecondsSince1970)
     }
     
-    func getNodeByNodeIdAndMapId(question:RealmMindNodeModel,nodeId: Int) -> RealmMindNodeModel{
-        let realm = try! Realm()
-        if let searchResult = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", question.mapId).filter("myNodeId == %@",nodeId).first {
-            return searchResult
-        }
-        return RealmMindNodeModel()
-    }
-    
     func getMapTitle(question:RealmMindNodeModel) -> String {
-        let indexQuestion = self.getNodeByNodeIdAndMapId(question: question,nodeId: 0)
+        let indexQuestion = mindNodeShared.getNodeByNodeIdAndMapId(question: question,nodeId: 0)
         return indexQuestion.content == "" ? "no map title" : indexQuestion.content
     }
     
@@ -222,13 +214,15 @@ class QuestionModel:SubmitFirestoreDocProtocol {
         for answer in answerDataArray {
             let question:RealmMindNodeModel = mindNodeShared.getNodeByMapIdAndNodeId(mapId:answer.mapId,nodeId: answer.parentNodeId)
             let mapTitle = self.getMapTitle(question: question)
-            let submit_data = [
-                "mapTitle": mapTitle,
-                "question": question.content,
-                "answer": answer.content
-            ] as [String:Any]
-            let ref: DocumentReference = Firestore.firestore().collection("user").document("\(uuid)").collection("question").document()
-            batch.setData(submit_data, forDocument: ref)
+            if mapTitle != "tutorial".localized {
+                let submit_data = [
+                    "mapTitle": mapTitle,
+                    "question": question.content,
+                    "answer": answer.content
+                ] as [String:Any]
+                let ref: DocumentReference = Firestore.firestore().collection("user").document("\(uuid)").collection("question").document()
+                batch.setData(submit_data, forDocument: ref)
+            }
         }
         batch.commit() { err in
             if let err = err {
@@ -237,7 +231,6 @@ class QuestionModel:SubmitFirestoreDocProtocol {
             }
             print("Batch write succeeded.")
         }
-
     }
 
 
