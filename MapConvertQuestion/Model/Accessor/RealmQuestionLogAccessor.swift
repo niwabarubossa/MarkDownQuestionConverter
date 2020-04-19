@@ -38,4 +38,16 @@ class RealmQuestionLogAccessor {
         }
         return allLogData
     }
+    
+    func getTodayDoneQuestionAmount() -> Int{
+        let realm = try! Realm()
+        let results = realm.objects(QuestionLog.self).filter(" date BETWEEN {\(LetGroup.todayStartMili), \(LetGroup.todayEndMili)}")
+         var questionNodeIdArray = [String]()
+        for questionLog in results  {
+            if questionNodeIdArray.contains(questionLog.questionNodeId) == false {
+                questionNodeIdArray.append(questionLog.questionNodeId)
+            }
+        }
+        return questionNodeIdArray.count
+    }
 }

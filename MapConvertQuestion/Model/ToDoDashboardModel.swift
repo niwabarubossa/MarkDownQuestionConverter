@@ -33,7 +33,7 @@ class ToDoDashboardModel {
     }
 
     func getTodayLogAmount() -> Int{
-        return questionLogShared.getWeeklyQuestionLog().count
+        return questionLogShared.getTodayDoneQuestionAmount()
     }
     
     private func getToDoQuestionAmount() -> Int{
