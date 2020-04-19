@@ -11,7 +11,7 @@ import RealmSwift
 
 class RealmQuestionLogAccessor {
     //使う時
-//     let questionLogAccessorshared = RealmQuestionLogAccessor.sharedInstance
+//     let questionLogShared = RealmQuestionLogAccessor.sharedInstance
     static let sharedInstance = RealmQuestionLogAccessor()
     private init() {
     }
