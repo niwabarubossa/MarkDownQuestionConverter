@@ -52,7 +52,7 @@ class MyPagePresenter:QuestionLogModelDelegate{
         }
 
         var graphData:[Int] = [0, 0, 0, 0, 0, 0, 0]
-        let userTotalAnswerTimes:Int = Int(model.getUserData().totalAnswerTimes)
+        let userTotalAnswerTimes:Int = Int(model.user.totalAnswerTimes)
         for i in 0..<totalMinusDelta.count {
             graphData[i] = userTotalAnswerTimes + totalMinusDelta[i]
         }

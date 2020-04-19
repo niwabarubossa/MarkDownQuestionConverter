@@ -23,7 +23,11 @@ protocol MVPModelProtocol: class {
 
 class QuestionLogModel {
     weak var delegate: QuestionLogModelDelegate?
-    
+    let userShared = RealmUserAccessor.sharedInstance
+    var user:User{
+        userShared.getUserData()
+    }
+
     func getWeeklyQuestionLog(){
         var allLogData = [QuestionLog]()
         let realm = try! Realm()
@@ -35,16 +39,7 @@ class QuestionLogModel {
         }
         self.delegate?.didGetQuestionLog(questionLogs: allLogData)
     }
-    
-    func getUserData() -> User{
-        print("test function")
-        let realm = try! Realm()
-        if let user = realm.objects(User.self).first{
-            return user
-        }
-        return User()
-    }
-    
+        
     func getTodayQuestionLog(){
         var allLogData = [QuestionLog]()
         let realm = try! Realm()
