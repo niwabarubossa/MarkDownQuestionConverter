@@ -108,6 +108,7 @@ PODS:
     - gRPC-Core/Interface (= 1.21.0)
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.21.0)
+  - Instructions (1.4.0)
   - leveldb-library (1.22)
   - MBCircularProgressBar (0.3.5)
   - nanopb (0.3.9011):
@@ -131,6 +132,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Core
   - Firebase/Firestore
+  - Instructions (~> 1.4.0)
   - MBCircularProgressBar
   - R.swift
   - RealmSwift
@@ -154,6 +156,7 @@ SPEC REPOS:
     - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
+    - Instructions
     - leveldb-library
     - MBCircularProgressBar
     - nanopb
@@ -181,6 +184,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: f895fde57977df4e0233edda0dbeac490e3703b6
   "gRPC-C++": 9dfe7b44821e7b3e44aacad2af29d2c21f7cde83
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
+  Instructions: 8986424854e99640665a82cfe56852c52a0c5bdf
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
@@ -190,6 +194,6 @@ SPEC CHECKSUMS:
   Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
   RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
 
-PODFILE CHECKSUM: 75a5ea333d613128e7ab28420058c09742969a19
+PODFILE CHECKSUM: f918c87d178d8edcb18143907a040a85d7ca59b4
 
 COCOAPODS: 1.8.4
