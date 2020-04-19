@@ -41,14 +41,10 @@ class UserDataModel {
     }
     
     func updateUserLevel(){
-        do{
-            let realm = try Realm()
-            try! realm.write {
-                self.user.setValue(user.level + 1, forKey: "level")
-            }
-        }catch{
-            print("\(error)")
-        }
+        let updateKeyValueArray:[String:Any] = [
+            "level": user.level + 1
+        ]
+        userShared.updateUserData(updateKeyValueArray: updateKeyValueArray, updateUser: self.user)
         self.notify()
     }
     
@@ -58,15 +54,11 @@ class UserDataModel {
     
     private func updateUserScore(swipedAnswer:RealmMindNodeModel){
         let charactersCount = Int64(swipedAnswer.content.replacingOccurrences(of:"\t", with:"").count)
-        do{
-            let realm = try Realm()
-            try! realm.write {
-                self.user.setValue(user.totalAnswerTimes + 1, forKey: "totalAnswerTimes")
-                self.user.setValue(user.totalCharactersAmount + charactersCount, forKey: "totalCharactersAmount")
-            }
-        }catch{
-            print("\(error)")
-        }
+        let updateKeyValueArray:[String:Any] = [
+            "totalAnswerTimes": user.totalAnswerTimes + 1,
+            "totalCharactersAmount":user.totalCharactersAmount + charactersCount
+        ]
+        userShared.updateUserData(updateKeyValueArray: updateKeyValueArray, updateUser: self.user)
     }
     
     func fetchControl(){
