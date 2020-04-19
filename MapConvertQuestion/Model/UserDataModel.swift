@@ -29,37 +29,22 @@ protocol ModelProtocolNotify: class {
 
 class UserDataModel {
     weak var delegate: UserDataModelDelegate?
-    var user = User()
-    
-    func setUser(user: User){
-        self.user = user
-    }
-    
-    func getUserData(){
-        print("test function")
-        let realm = try! Realm()
-        if let user = realm.objects(User.self).first{
-            self.delegate?.didGetUserData(user:user)
-            self.user = user
-        }
+    let userShared = RealmUserAccessor.sharedInstance
+    var user:User{
+        userShared.getUserData()
     }
     
     func updateUserData(swipedAnswer:RealmMindNodeModel){
         self.createQuestionLog(swipedAnswer:swipedAnswer)
-        let user = self.updateUserScore(swipedAnswer:swipedAnswer)
-        self.setUser(user: user)
+        self.updateUserScore(swipedAnswer:swipedAnswer)
         self.notify()
     }
     
     func updateUserLevel(){
-        do{
-            let realm = try Realm()
-            try! realm.write {
-                self.user.setValue(user.level + 1, forKey: "level")
-            }
-        }catch{
-            print("\(error)")
-        }
+        let updateKeyValueArray:[String:Any] = [
+            "level": user.level + 1
+        ]
+        userShared.updateUserData(updateKeyValueArray: updateKeyValueArray, updateUser: self.user)
         self.notify()
     }
     
@@ -67,18 +52,13 @@ class UserDataModel {
         print("createQuestionLog")
     }
     
-    private func updateUserScore(swipedAnswer:RealmMindNodeModel) ->User{
+    private func updateUserScore(swipedAnswer:RealmMindNodeModel){
         let charactersCount = Int64(swipedAnswer.content.replacingOccurrences(of:"\t", with:"").count)
-        do{
-            let realm = try Realm()
-            try! realm.write {
-                self.user.setValue(user.totalAnswerTimes + 1, forKey: "totalAnswerTimes")
-                self.user.setValue(user.totalCharactersAmount + charactersCount, forKey: "totalCharactersAmount")
-            }
-        }catch{
-            print("\(error)")
-        }
-        return self.user
+        let updateKeyValueArray:[String:Any] = [
+            "totalAnswerTimes": user.totalAnswerTimes + 1,
+            "totalCharactersAmount":user.totalCharactersAmount + charactersCount
+        ]
+        userShared.updateUserData(updateKeyValueArray: updateKeyValueArray, updateUser: self.user)
     }
     
     func fetchControl(){

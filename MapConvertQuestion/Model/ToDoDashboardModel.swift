@@ -10,27 +10,20 @@ import Foundation
 import RealmSwift
 
 protocol ToDoDashboardModelDelegate: class {
-    func didGetUserData(user:User) -> Void
     func didGetTodayLogAmount(amount:Int) -> Void
 }
 
 class ToDoDashboardModel {
     weak var delegate: ToDoDashboardModelDelegate?
     
+    let mindNodeShared = RealmMindNodeAccessor.sharedInstance
+    let userShared = RealmUserAccessor.sharedInstance
+    
     func registerUserQuota(){
-        let user = self.getUserData()
+        let user = userShared.getUserData()
         if self.isTodayFirstLogin(user:user) == true {
             self.updateUserQuota(user:user)
         }
-    }
-    
-    func getUserData() -> User{
-        let realm = try! Realm()
-        if let user = realm.objects(User.self).first{
-            self.delegate?.didGetUserData(user:user)
-            return user
-        }
-        return User()
     }
     
     private func isTodayFirstLogin(user:User) -> Bool{
@@ -51,12 +44,11 @@ class ToDoDashboardModel {
     }
     
     private func getToDoQuestionAmount() -> Int{
-        let realm = try! Realm()
-        let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(LetGroup.todayEndMili)}").filter("isAnswer == %@",true)
+        let results = mindNodeShared.getTodayAnswer()
         var questionArray = [RealmMindNodeModel]()
         var alreadyExist = [String]()
         for answerNode in results {
-            let question:RealmMindNodeModel = self.getNodeFromRealm(mapId:answerNode.mapId,nodeId: answerNode.parentNodeId)
+            let question:RealmMindNodeModel = mindNodeShared.getNodeByMapIdAndNodeId(mapId:answerNode.mapId,nodeId: answerNode.parentNodeId)
             if question.myNodeId != question.parentNodeId {
                 if alreadyExist.contains(question.nodePrimaryKey) == false{
                     questionArray.append(question)
@@ -68,7 +60,7 @@ class ToDoDashboardModel {
     }
     
     func updateUserQuotaFromPresenter(){
-        let user = self.getUserData()
+        let user = userShared.getUserData()
         if self.isTodayFirstLogin(user: user) == true {
             self.updateUserQuota(user: user)
         }
@@ -76,21 +68,11 @@ class ToDoDashboardModel {
     
     func updateUserQuota(user:User){
         let todayQuota = self.getToDoQuestionAmount()
-        do{
-            let realm = try Realm()
-            try! realm.write {
-                user.setValue(Date().millisecondsSince1970, forKey: "lastLogin")
-                user.setValue(todayQuota, forKey: "todayQuota")
-            }
-        }catch{
-            print("\(error)")
-        }
-    }
-
-    private func getNodeFromRealm(mapId:String,nodeId: Int) -> RealmMindNodeModel{
-        let realm = try! Realm()
-        let node:RealmMindNodeModel = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId).filter("myNodeId == %@", nodeId).first ?? RealmMindNodeModel()
-        return node
+        let updateKeyValueArray:[String:Any] = [
+            "lastLogin":Date().millisecondsSince1970,
+            "todayQuota":todayQuota
+        ]
+        userShared.updateUserData(updateKeyValueArray: updateKeyValueArray, updateUser: user)
     }
     
     func testfunc(){

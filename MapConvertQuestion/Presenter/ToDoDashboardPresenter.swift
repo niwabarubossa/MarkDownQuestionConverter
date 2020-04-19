@@ -13,10 +13,11 @@ import UIKit
 class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
     //自分用のモデルの宣言
     let model: ToDoDashboardModel
-    var user:User = User()
-    
+    var user:User{
+        model.userShared.getUserData()
+    }
     var todayQuota:CGFloat{
-        return CGFloat(model.getUserData().todayQuota)
+        return CGFloat(model.userShared.getUserData().todayQuota)
     }
     var todayDoneAmount:CGFloat{
         return CGFloat(model.getTodayLogAmount())
@@ -33,8 +34,6 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
         model.registerUserQuota()
     }
     
-    
-    
     func updateUserQuota(){
         model.updateUserQuotaFromPresenter()
     }
@@ -42,18 +41,10 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
 
 //意味段落-----------------------
     
-    func didGetUserData(user:User){
-        self.setUser(user: user)
-    }
-    
     func didGetTodayLogAmount(amount:Int){
         self.view?.todayDoneAmount = CGFloat(amount)
     }
-    
-    func setUser(user:User){
-        self.user = user
-    }
-    // Presenter → Model 操作する側
+// Presenter → Model 操作する側
     func toModelFromPresenter() {
 //        model.testfunc()
     }
@@ -72,7 +63,6 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
 
 extension ToDoDashboardPresenter:MVPPresenterProtocol{
     @objc func getNotifyFromModel(){
-        self.setUser(user: self.user)
         //reload view..?
     }
 }
