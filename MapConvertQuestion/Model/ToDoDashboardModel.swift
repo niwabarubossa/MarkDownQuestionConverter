@@ -18,6 +18,7 @@ class ToDoDashboardModel {
     weak var delegate: ToDoDashboardModelDelegate?
     
     let mindNodeShared = RealmMindNodeAccessor.sharedInstance
+    let userShared = RealmUserAccessor.sharedInstance
     
     func registerUserQuota(){
         let user = self.getUserData()
@@ -27,12 +28,7 @@ class ToDoDashboardModel {
     }
     
     func getUserData() -> User{
-        let realm = try! Realm()
-        if let user = realm.objects(User.self).first{
-            self.delegate?.didGetUserData(user:user)
-            return user
-        }
-        return User()
+        return userShared.getUserData()
     }
     
     private func isTodayFirstLogin(user:User) -> Bool{
