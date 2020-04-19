@@ -32,10 +32,7 @@ class MarkDownInputModel {
         let parentNodePrimaryKey:String = NSUUID().uuidString
         convertStringLinesToMindNode(myNodeId: 0, myIndent: 0, parentNodeId: 0,parentNodePrimaryKey: parentNodePrimaryKey)
         let realmDataArray = convertMindNodeToRealmDictionary(mindNodeArray: mindNodeArray,mapId: mapId)
-        
         mindNodeShared.createMindNode(realmDataArray: realmDataArray,mapId: mapId)
-        
-        //TODO:realm UserEntityとかを作成する
         let user = userShared.getUserData()
         self.incrementUserQuota(user:user)
         self.delegate?.didSubmitInput()
