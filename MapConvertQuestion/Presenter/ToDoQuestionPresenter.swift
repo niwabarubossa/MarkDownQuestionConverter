@@ -230,7 +230,7 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
     
     func changeToSelectedAnswerQuiz(tappedNode:RealmMindNodeModel){
         self.answerButtonEnabled()
-        let nextQuestion:RealmMindNodeModel = myModel.getNodeFromRealm(mapId: tappedNode.mapId, nodeId: tappedNode.myNodeId)
+        let nextQuestion:RealmMindNodeModel = myModel.mindNodeShared.getNodeByMapIdAndNodeId(mapId: tappedNode.mapId, nodeId: tappedNode.myNodeId)
         self.reloadQAPair(nextQuestion: nextQuestion)
     }
     
@@ -286,7 +286,7 @@ extension ToDoQuestionPresenter {
     private func setAnswerNodeArray(question:RealmMindNodeModel){
         var tempAnswerNodeArray = [RealmMindNodeModel]()
         for childNodeId in question.childNodeIdArray {
-            let answerNode = myModel.getNodeFromRealm(mapId: question.mapId, nodeId: childNodeId.MindNodeChildId)
+            let answerNode = myModel.mindNodeShared.getNodeByMapIdAndNodeId(mapId: question.mapId, nodeId: childNodeId.MindNodeChildId)
             tempAnswerNodeArray.append(answerNode)
         }
         self.answerNodeArray = tempAnswerNodeArray

@@ -44,18 +44,13 @@ class QuestionModel:SubmitFirestoreDocProtocol {
     }
     
     func getToDoQuestion(){
-        let realm = try! Realm()
-        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
-        let todayEnd = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
-//答えのみ取得。答えに次の復習時間を記録しているので。　答えのparentNodeをクイズデータとして取得
-        let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(todayEnd)}").filter("isAnswer == %@",true).sorted(byKeyPath: "ifSuccessInterval", ascending: false).sorted(byKeyPath: "nextDate", ascending: true)
-        print("\(results.count) 件あります。 これはanswerNode。これを元にquestion 取得します")
+        let results = mindNodeShared.getTodayAnswer()
 //FIX 大元の親は parent0 child0 だから、自分を取得しちゃうので排除しよう
         var questionArray = [RealmMindNodeModel]()
         var alreadyExist = [String]()
         for answerNode in results {
             //get parent node つまりquestionNOde
-            let question:RealmMindNodeModel = self.getNodeFromRealm(mapId:answerNode.mapId,nodeId: answerNode.parentNodeId)
+            let question:RealmMindNodeModel = mindNodeShared.getNodeByMapIdAndNodeId(mapId:answerNode.mapId,nodeId: answerNode.parentNodeId)
             //TODO oukyuushotitosite大元のnodeを省くif２重処理。
             if question.myNodeId != question.parentNodeId {
                 if alreadyExist.contains(question.nodePrimaryKey) == false{
@@ -71,12 +66,6 @@ class QuestionModel:SubmitFirestoreDocProtocol {
     
     private func alreadyExist(array: [RealmMindNodeModel],node:RealmMindNodeModel)->Bool{
         return false
-    }
-    
-    func getNodeFromRealm(mapId:String,nodeId: Int) -> RealmMindNodeModel{
-        let realm = try! Realm()
-        let node:RealmMindNodeModel = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId).filter("myNodeId == %@", nodeId).first ?? RealmMindNodeModel()
-        return node
     }
     
     func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){//不正解時
@@ -180,7 +169,7 @@ class QuestionModel:SubmitFirestoreDocProtocol {
         var localAnswerNodeArray = [RealmMindNodeModel]()
         for answerNodeId in displayingQuestion.childNodeIdArray {
             let nodeId = answerNodeId.MindNodeChildId
-            let answerNode = self.getNodeFromRealm(mapId: displayingQuestion.mapId, nodeId: nodeId)
+            let answerNode = mindNodeShared.getNodeByMapIdAndNodeId(mapId: displayingQuestion.mapId, nodeId: nodeId)
             localAnswerNodeArray.append(answerNode)
         }
         return localAnswerNodeArray
@@ -248,7 +237,7 @@ class QuestionModel:SubmitFirestoreDocProtocol {
 
         let batch = Firestore.firestore().batch()
         for answer in answerDataArray {
-            let question:RealmMindNodeModel = self.getNodeFromRealm(mapId:answer.mapId,nodeId: answer.parentNodeId)
+            let question:RealmMindNodeModel = mindNodeShared.getNodeByMapIdAndNodeId(mapId:answer.mapId,nodeId: answer.parentNodeId)
             let mapTitle = self.getMapTitle(question: question)
             let submit_data = [
                 "mapTitle": mapTitle,

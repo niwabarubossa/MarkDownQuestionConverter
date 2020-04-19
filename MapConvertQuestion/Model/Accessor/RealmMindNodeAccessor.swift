@@ -19,4 +19,17 @@ class RealmMindNodeAccessor {
         let results = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId)
         return results
     }
+    
+    func getTodayAnswer() -> Results<RealmMindNodeModel> {
+        let realm = try! Realm()
+        let todayEnd = LetGroup.todayEndMili
+        let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(todayEnd)}").filter("isAnswer == %@",true).sorted(byKeyPath: "ifSuccessInterval", ascending: false).sorted(byKeyPath: "nextDate", ascending: true)
+        return results
+    }
+    
+    func getNodeByMapIdAndNodeId(mapId:String,nodeId:Int) -> RealmMindNodeModel{
+        let realm = try! Realm()
+         let node:RealmMindNodeModel = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId).filter("myNodeId == %@", nodeId).first ?? RealmMindNodeModel()
+         return node
+    }
 }
