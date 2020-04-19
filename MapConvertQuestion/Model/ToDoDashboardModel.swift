@@ -18,6 +18,7 @@ class ToDoDashboardModel {
     
     let mindNodeShared = RealmMindNodeAccessor.sharedInstance
     let userShared = RealmUserAccessor.sharedInstance
+    let questionLogShared = RealmQuestionLogAccessor.sharedInstance
     
     func registerUserQuota(){
         let user = userShared.getUserData()
@@ -32,15 +33,7 @@ class ToDoDashboardModel {
     }
 
     func getTodayLogAmount() -> Int{
-        let realm = try! Realm()
-        let results = realm.objects(QuestionLog.self).filter(" date BETWEEN {\(LetGroup.todayStartMili), \(LetGroup.todayEndMili)}")
-         var questionNodeIdArray = [String]()
-        for questionLog in results  {
-            if questionNodeIdArray.contains(questionLog.questionNodeId) == false {
-                questionNodeIdArray.append(questionLog.questionNodeId)
-            }
-        }
-        return questionNodeIdArray.count
+        return questionLogShared.getWeeklyQuestionLog().count
     }
     
     private func getToDoQuestionAmount() -> Int{
