@@ -33,8 +33,8 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIk-NN-uPL">
-                                <rect key="frame" x="82" y="670" width="250" height="68"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="82" y="700" width="250" height="68"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="68" id="i02-a7-HYb"/>
                                 </constraints>
@@ -45,15 +45,6 @@
                                     <segue destination="1Md-FN-8sz" kind="show" id="qJh-uV-yES"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start studying!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaZ-7i-mOz">
-                                <rect key="frame" x="108.5" y="128" width="197" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="5oK-es-znJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="KohinoorBangla-Light" family="Kohinoor Bangla" pointSize="30"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日のノルマはあと..20問！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGn-DJ-GoB">
                                 <rect key="frame" x="20" y="193" width="374" height="100"/>
                                 <constraints>
@@ -63,19 +54,28 @@
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1f7-Zn-WmO">
+                                <rect key="frame" x="207" y="620" width="0.0" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="aCL-iB-kcM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="KohinoorBangla-Light" family="Kohinoor Bangla" pointSize="30"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="OaZ-7i-mOz" firstAttribute="centerX" secondItem="Q6V-1w-749" secondAttribute="centerX" id="Gjy-zO-bsF"/>
+                            <constraint firstItem="1f7-Zn-WmO" firstAttribute="centerX" secondItem="Q6V-1w-749" secondAttribute="centerX" id="13s-oy-rZR"/>
+                            <constraint firstItem="HIk-NN-uPL" firstAttribute="top" secondItem="1f7-Zn-WmO" secondAttribute="bottom" constant="30" id="6ud-S8-ZiI"/>
                             <constraint firstItem="aGn-DJ-GoB" firstAttribute="leading" secondItem="ChO-Qq-XhM" secondAttribute="leading" constant="20" id="H3N-WC-4TO"/>
                             <constraint firstItem="aGn-DJ-GoB" firstAttribute="centerX" secondItem="Q6V-1w-749" secondAttribute="centerX" id="Hrc-rq-YO2"/>
                             <constraint firstItem="F9s-x5-tVa" firstAttribute="centerX" secondItem="Q6V-1w-749" secondAttribute="centerX" id="KNQ-aS-Q7R"/>
-                            <constraint firstItem="ChO-Qq-XhM" firstAttribute="bottom" secondItem="HIk-NN-uPL" secondAttribute="bottom" constant="75" id="Uni-f9-ivV"/>
+                            <constraint firstItem="ChO-Qq-XhM" firstAttribute="bottom" secondItem="HIk-NN-uPL" secondAttribute="bottom" constant="45" id="Uni-f9-ivV"/>
                             <constraint firstItem="F9s-x5-tVa" firstAttribute="top" secondItem="aGn-DJ-GoB" secondAttribute="bottom" constant="30" id="bqd-PZ-H29"/>
                             <constraint firstItem="ChO-Qq-XhM" firstAttribute="trailing" secondItem="aGn-DJ-GoB" secondAttribute="trailing" constant="20" id="fDz-7h-kJN"/>
                             <constraint firstItem="F9s-x5-tVa" firstAttribute="centerY" secondItem="Q6V-1w-749" secondAttribute="centerY" id="fLv-mK-1WJ"/>
                             <constraint firstItem="HIk-NN-uPL" firstAttribute="centerX" secondItem="Q6V-1w-749" secondAttribute="centerX" id="gfB-zn-O6a"/>
-                            <constraint firstItem="aGn-DJ-GoB" firstAttribute="top" secondItem="OaZ-7i-mOz" secondAttribute="bottom" constant="15" id="wGw-Pd-UMg"/>
                             <constraint firstItem="HIk-NN-uPL" firstAttribute="width" secondItem="F9s-x5-tVa" secondAttribute="width" id="ytG-dL-ybT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ChO-Qq-XhM"/>
@@ -83,6 +83,7 @@
                     <tabBarItem key="tabBarItem" title="Study" image="school" id="BIk-P1-8Sk"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="doneAmountLabel" destination="1f7-Zn-WmO" id="OXk-FI-Hfu"/>
                         <outlet property="progressView" destination="F9s-x5-tVa" id="pDt-uU-9ws"/>
                         <outlet property="quotqLabel" destination="aGn-DJ-GoB" id="IBI-wD-Zyt"/>
                         <outlet property="startButton" destination="HIk-NN-uPL" id="Ips-IE-JdR"/>

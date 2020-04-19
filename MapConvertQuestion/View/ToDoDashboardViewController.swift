@@ -15,6 +15,7 @@ class ToDoDashboardViewController: UIViewController {
     @IBOutlet weak var progressView: MBCircularProgressBarView!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var quotqLabel: UILabel!
+    @IBOutlet weak var doneAmountLabel: UILabel!
     
     var presenter:ToDoDashboardPresenter!
     var todayDoneAmount:CGFloat = 0
@@ -58,17 +59,16 @@ class ToDoDashboardViewController: UIViewController {
             self.progressView.value = CGFloat( wariai * 100)
         }
         self.quotqLabel.text = "todayQuotaIs".localized +  String(Int(self.presenter.todayQuota)) + " " +  "quizzes".localized
+        self.doneAmountLabel.text = String(Int(self.presenter.todayDoneAmount)) + " / " + String(Int(self.presenter.todayQuota)) + " " + "quiz".localized + " finish!"
     }
     
     private func tutorialIfFirstLaunch(){
         let defaults = UserDefaults.standard
         defaults.register(defaults: ["TopPageFirstLaunch" : true])
         if defaults.bool(forKey: "TopPageFirstLaunch") == true {
-            //create first tutorial content
             let markDownInputModel = MarkDownInputModel()
             markDownInputModel.submitInput(input:"tutorialTextViewContent".localized)
             UserDefaults.standard.set(false, forKey: "TopPageFirstLaunch")
-
             let new_uuid = NSUUID().uuidString
             UserDefaults.standard.set(new_uuid, forKey: "uuid")
             self.createUserData(uuid:new_uuid)
