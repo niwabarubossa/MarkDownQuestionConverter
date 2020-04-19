@@ -9,6 +9,7 @@
 import UIKit
 import MBCircularProgressBar
 import RealmSwift
+import Instructions
 
 class ToDoDashboardViewController: UIViewController {
 
@@ -16,6 +17,9 @@ class ToDoDashboardViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var quotqLabel: UILabel!
     @IBOutlet weak var doneAmountLabel: UILabel!
+    
+    private let coachMarksController = CoachMarksController()
+    private var pointOfInterest:UIView!
     
     var presenter:ToDoDashboardPresenter!
     var todayDoneAmount:CGFloat = 0
@@ -25,6 +29,8 @@ class ToDoDashboardViewController: UIViewController {
         initializePresenter()
         layout()
 //        presenter.initViewController()
+        self.pointOfInterest = self.startButton
+        self.coachMarksController.dataSource = self
     }
     
     private func initializePresenter() {
@@ -48,6 +54,8 @@ class ToDoDashboardViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         self.tutorialIfFirstLaunch()
         self.presenter.updateUserQuota()
         UIView.animate(withDuration: 1.0) {
@@ -60,6 +68,8 @@ class ToDoDashboardViewController: UIViewController {
         }
         self.quotqLabel.text = "todayQuotaIs".localized +  String(Int(self.presenter.todayQuota)) + " " +  "quizzes".localized
         self.doneAmountLabel.text = String(Int(self.presenter.todayDoneAmount)) + " / " + String(Int(self.presenter.todayQuota)) + " " + "quiz".localized + " finish!"
+        
+        self.coachMarksController.start(in: .currentWindow(of: self))
     }
     
     private func tutorialIfFirstLaunch(){
@@ -109,4 +119,22 @@ extension ToDoDashboardViewController:MVPViewProtocol{
     }
 }
 
+extension ToDoDashboardViewController:CoachMarksControllerDataSource, CoachMarksControllerDelegate{
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+        return 1
+    }
 
+    func coachMarksController(_ coachMarksController: CoachMarksController,
+                                  coachMarkAt index: Int) -> CoachMark {
+        return coachMarksController.helper.makeCoachMark(for: pointOfInterest)
+    }
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
+        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, withNextText: true, arrowOrientation: coachMark.arrowOrientation)
+        coachViews.bodyView.hintLabel.text = "チュートリアルメッセージです！"
+        coachViews.bodyView.nextLabel.text = "理解した！"
+        coachViews.bodyView.nextLabel.font = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
+        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
+    }
+
+}
