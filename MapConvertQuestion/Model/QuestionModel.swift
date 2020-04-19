@@ -233,7 +233,6 @@ class QuestionModel:SubmitFirestoreDocProtocol {
         }
     }
 
-
 }
 
 extension QuestionModel:QuestionModelProtocolNotify{
