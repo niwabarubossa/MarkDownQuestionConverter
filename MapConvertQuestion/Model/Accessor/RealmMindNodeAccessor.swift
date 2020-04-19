@@ -27,6 +27,22 @@ class RealmMindNodeAccessor {
         return results
     }
     
+    func getToDoQuestion() -> [RealmMindNodeModel] {
+        let answerNodeArray = self.getTodayAnswer()
+        var questionArray = [RealmMindNodeModel]()
+        var alreadyExist = [String]()
+        for answerNode in answerNodeArray {
+            let question:RealmMindNodeModel = self.getNodeByMapIdAndNodeId(mapId:answerNode.mapId,nodeId: answerNode.parentNodeId)
+            if question.myNodeId != question.parentNodeId {
+                if alreadyExist.contains(question.nodePrimaryKey) == false{
+                    questionArray.append(question)
+                    alreadyExist.append(question.nodePrimaryKey)
+                }
+            }
+        }
+        return questionArray
+    }
+    
     func getNodeByMapIdAndNodeId(mapId:String,nodeId:Int) -> RealmMindNodeModel{
         let realm = try! Realm()
          let node:RealmMindNodeModel = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId).filter("myNodeId == %@", nodeId).first ?? RealmMindNodeModel()
