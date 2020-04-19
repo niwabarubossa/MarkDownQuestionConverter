@@ -33,23 +33,12 @@ class ToDoDashboardModel {
     }
 
     func getTodayLogAmount() -> Int{
-        return questionLogShared.getWeeklyQuestionLog().count
+        return questionLogShared.getTodayDoneQuestionAmount()
     }
     
     private func getToDoQuestionAmount() -> Int{
-        let results = mindNodeShared.getTodayAnswer()
-        var questionArray = [RealmMindNodeModel]()
-        var alreadyExist = [String]()
-        for answerNode in results {
-            let question:RealmMindNodeModel = mindNodeShared.getNodeByMapIdAndNodeId(mapId:answerNode.mapId,nodeId: answerNode.parentNodeId)
-            if question.myNodeId != question.parentNodeId {
-                if alreadyExist.contains(question.nodePrimaryKey) == false{
-                    questionArray.append(question)
-                    alreadyExist.append(question.nodePrimaryKey)
-                }
-            }
-        }
-        return questionArray.count
+        let results = mindNodeShared.getToDoQuestion()
+        return results.count
     }
     
     func updateUserQuotaFromPresenter(){

@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class RealmMindNodeAccessor {
+//     let mindNodeShared = RealmMindNodeAccessor.sharedInstance
     static let sharedInstance = RealmMindNodeAccessor()
     private init() {
     }
@@ -25,6 +26,22 @@ class RealmMindNodeAccessor {
         let todayEnd = LetGroup.todayEndMili
         let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(todayEnd)}").filter("isAnswer == %@",true).sorted(byKeyPath: "ifSuccessInterval", ascending: false).sorted(byKeyPath: "nextDate", ascending: true)
         return results
+    }
+    
+    func getToDoQuestion() -> [RealmMindNodeModel] {
+        let answerNodeArray = self.getTodayAnswer()
+        var questionArray = [RealmMindNodeModel]()
+        var alreadyExist = [String]()
+        for answerNode in answerNodeArray {
+            let question:RealmMindNodeModel = self.getNodeByMapIdAndNodeId(mapId:answerNode.mapId,nodeId: answerNode.parentNodeId)
+            if question.myNodeId != question.parentNodeId {
+                if alreadyExist.contains(question.nodePrimaryKey) == false{
+                    questionArray.append(question)
+                    alreadyExist.append(question.nodePrimaryKey)
+                }
+            }
+        }
+        return questionArray
     }
     
     func getNodeByMapIdAndNodeId(mapId:String,nodeId:Int) -> RealmMindNodeModel{
@@ -57,4 +74,25 @@ class RealmMindNodeAccessor {
         }
         return RealmMindNodeModel()
     }
+    
+    func createMindNode(realmDataArray: [[String: Any]],mapId: String){
+        do {
+            let realm = try Realm()
+            print(Realm.Configuration.defaultConfiguration.fileURL!)
+            let mapGroup = MapGroup()
+            mapGroup.mapId = mapId
+            for item in realmDataArray.enumerated() {
+                let node = RealmMindNodeModel(value: item.element)
+                mapGroup.realmMindNodeModel.append(node)
+            }
+            try! realm.write {
+                realm.add(mapGroup)
+                print("成功だよ", mapGroup)
+            }
+        } catch {
+            print("error",error)
+        }
+    }
+    
+    
 }

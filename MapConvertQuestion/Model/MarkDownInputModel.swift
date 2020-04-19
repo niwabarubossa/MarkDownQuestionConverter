@@ -18,11 +18,13 @@ class MarkDownInputModel {
     var inputLineArray = [String]()
     var doneNum = [Int]()
     private var questionNodeCount:Int = 0
+    
+    private let userShared = RealmUserAccessor.sharedInstance
+    private let mindNodeShared = RealmMindNodeAccessor.sharedInstance
     //インプットされたマークダウンがmindNodeに変換されている
     var mindNodeArray = [MindNode]()
     
     func submitInput(input:String){
-        //realm処理
         let mapId = NSUUID().uuidString
         convertInputToLines(input:input)
         //FIX ME //調整用としてのappendである。
@@ -30,26 +32,21 @@ class MarkDownInputModel {
         let parentNodePrimaryKey:String = NSUUID().uuidString
         convertStringLinesToMindNode(myNodeId: 0, myIndent: 0, parentNodeId: 0,parentNodePrimaryKey: parentNodePrimaryKey)
         let realmDataArray = convertMindNodeToRealmDictionary(mindNodeArray: mindNodeArray,mapId: mapId)
-        saveToRealm(realmDataArray: realmDataArray,mapId: mapId)
+        
+        mindNodeShared.createMindNode(realmDataArray: realmDataArray,mapId: mapId)
+        
         //TODO:realm UserEntityとかを作成する
-        let user = self.getUserData()
+        let user = userShared.getUserData()
         self.incrementUserQuota(user:user)
         self.delegate?.didSubmitInput()
         initData()
     }
     
-    private func getUserData() -> User{
-        let realm = try! Realm()
-        if let user = realm.objects(User.self).first{
-            return user
-        }
-        return User()
-    }
     private func incrementUserQuota(user:User){
-        let realm = try! Realm()
-        try! realm.write {
-            user.setValue( user.todayQuota + self.questionNodeCount, forKey: "todayQuota")
-        }
+        let updateKeyValueArray:[String:Any] = [
+            "todayQuota": user.todayQuota + self.questionNodeCount
+        ]
+        userShared.updateUserData(updateKeyValueArray: updateKeyValueArray, updateUser: user)
     }
 
     private func initData(){
@@ -120,25 +117,5 @@ class MarkDownInputModel {
             childNodeIdArray.append(["MindNodeChildId":childNodeIdInt])
         }
         return childNodeIdArray
-    }
-
-    private func saveToRealm(realmDataArray: [[String: Any]],mapId: String){
-        do {
-            let realm = try Realm()
-            print(Realm.Configuration.defaultConfiguration.fileURL!)
-            let mapGroup = MapGroup()
-            mapGroup.mapId = mapId
-            for item in realmDataArray.enumerated() {
-                let node = RealmMindNodeModel(value: item.element)
-                mapGroup.realmMindNodeModel.append(node)
-            }
-            try! realm.write {
-                realm.add(mapGroup)
-                print("成功だよ", mapGroup)
-            }
-        } catch {
-            print("\(error)")
-            print("エラーだよ")
-        }
     }
 }
