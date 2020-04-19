@@ -7,9 +7,16 @@
 //
 
 import Foundation
+import RealmSwift
 
 class RealmMindNodeAccessor {
     static let sharedInstance = RealmMindNodeAccessor()
     private init() {
+    }
+    
+    func getNodeByMapIdGroup(mapId:String) -> Results<RealmMindNodeModel> {
+        let realm = try! Realm()
+        let results = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId)
+        return results
     }
 }

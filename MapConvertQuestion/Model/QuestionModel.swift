@@ -33,9 +33,10 @@ class QuestionModel:SubmitFirestoreDocProtocol {
     weak var delegate: QuestionModelDelegate?
     var allNodeData = [RealmMindNodeModel]()
     
+    let mindNodeShared = RealmMindNodeAccessor.sharedInstance
+    
     func getMapQuestion(mapId:String){
-        let realm = try! Realm()
-        let results = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId)
+        let results = self.mindNodeShared.getNodeByMapIdGroup(mapId: mapId)
         for node in results {
             self.allNodeData.append(node)
         }
