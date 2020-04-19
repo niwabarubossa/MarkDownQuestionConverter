@@ -78,6 +78,7 @@
 		54F45E5123FAA177002981C8 /* MarkDownInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F45E5023FAA177002981C8 /* MarkDownInputViewController.swift */; };
 		54F45E5323FAA263002981C8 /* MarkDownInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F45E5223FAA263002981C8 /* MarkDownInputPresenter.swift */; };
 		54F4854923FF781900D7962C /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F4854823FF781900D7962C /* R.generated.swift */; };
+		54FE6D97244C075D00477888 /* RealmMindNodeAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FE6D96244C075C00477888 /* RealmMindNodeAccessor.swift */; };
 		54FF62C42400D68F0009B721 /* FirestoreProtocolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FF62C32400D68F0009B721 /* FirestoreProtocolExtension.swift */; };
 		54FF62C62400E1640009B721 /* MindNodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FF62C52400E1640009B721 /* MindNodeModel.swift */; };
 		FDDE9F3D0952D1CA74A46B95 /* Pods_MapConvertQuestion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5910B35456228ADC8D62618F /* Pods_MapConvertQuestion.framework */; };
@@ -162,6 +163,7 @@
 		54F45E5023FAA177002981C8 /* MarkDownInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkDownInputViewController.swift; sourceTree = "<group>"; };
 		54F45E5223FAA263002981C8 /* MarkDownInputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkDownInputPresenter.swift; sourceTree = "<group>"; };
 		54F4854823FF781900D7962C /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		54FE6D96244C075C00477888 /* RealmMindNodeAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMindNodeAccessor.swift; sourceTree = "<group>"; };
 		54FF62C32400D68F0009B721 /* FirestoreProtocolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirestoreProtocolExtension.swift; path = MapConvertQuestion/FirestoreProtocolExtension.swift; sourceTree = SOURCE_ROOT; };
 		54FF62C52400E1640009B721 /* MindNodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindNodeModel.swift; sourceTree = "<group>"; };
 		5910B35456228ADC8D62618F /* Pods_MapConvertQuestion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapConvertQuestion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -305,6 +307,7 @@
 		54F45E3E23F91991002981C8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				54FE6D95244C062D00477888 /* Accessor */,
 				54C53B422418F437000EE76E /* TutorialContentModel.swift */,
 				54F45E4523F91ABB002981C8 /* QuestionStruct.swift */,
 				54EE8B0D23FE337300CF342F /* MarkDownInputModel.swift */,
@@ -357,6 +360,14 @@
 				54FF62C32400D68F0009B721 /* FirestoreProtocolExtension.swift */,
 			);
 			path = ExtensionProtocol;
+			sourceTree = "<group>";
+		};
+		54FE6D95244C062D00477888 /* Accessor */ = {
+			isa = PBXGroup;
+			children = (
+				54FE6D96244C075C00477888 /* RealmMindNodeAccessor.swift */,
+			);
+			path = Accessor;
 			sourceTree = "<group>";
 		};
 		88C1B0F24F55FFD43D421B5D /* Frameworks */ = {
@@ -527,6 +538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54A707E4241E607C00DCEEC5 /* SettingRootViewController.swift in Sources */,
+				54FE6D97244C075D00477888 /* RealmMindNodeAccessor.swift in Sources */,
 				54F45E5123FAA177002981C8 /* MarkDownInputViewController.swift in Sources */,
 				549345ED241DF182009D9483 /* RootTabBarController.swift in Sources */,
 				548FA704241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift in Sources */,

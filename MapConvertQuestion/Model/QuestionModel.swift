@@ -33,9 +33,10 @@ class QuestionModel:SubmitFirestoreDocProtocol {
     weak var delegate: QuestionModelDelegate?
     var allNodeData = [RealmMindNodeModel]()
     
+    let mindNodeShared = RealmMindNodeAccessor.sharedInstance
+    
     func getMapQuestion(mapId:String){
-        let realm = try! Realm()
-        let results = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId)
+        let results = self.mindNodeShared.getNodeByMapIdGroup(mapId: mapId)
         for node in results {
             self.allNodeData.append(node)
         }
@@ -43,18 +44,13 @@ class QuestionModel:SubmitFirestoreDocProtocol {
     }
     
     func getToDoQuestion(){
-        let realm = try! Realm()
-        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
-        let todayEnd = Calendar.current.startOfDay(for: tomorrow!).millisecondsSince1970 - 1
-//答えのみ取得。答えに次の復習時間を記録しているので。　答えのparentNodeをクイズデータとして取得
-        let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(todayEnd)}").filter("isAnswer == %@",true).sorted(byKeyPath: "ifSuccessInterval", ascending: false).sorted(byKeyPath: "nextDate", ascending: true)
-        print("\(results.count) 件あります。 これはanswerNode。これを元にquestion 取得します")
+        let results = mindNodeShared.getTodayAnswer()
 //FIX 大元の親は parent0 child0 だから、自分を取得しちゃうので排除しよう
         var questionArray = [RealmMindNodeModel]()
         var alreadyExist = [String]()
         for answerNode in results {
             //get parent node つまりquestionNOde
-            let question:RealmMindNodeModel = self.getNodeFromRealm(mapId:answerNode.mapId,nodeId: answerNode.parentNodeId)
+            let question:RealmMindNodeModel = mindNodeShared.getNodeByMapIdAndNodeId(mapId:answerNode.mapId,nodeId: answerNode.parentNodeId)
             //TODO oukyuushotitosite大元のnodeを省くif２重処理。
             if question.myNodeId != question.parentNodeId {
                 if alreadyExist.contains(question.nodePrimaryKey) == false{
@@ -70,12 +66,6 @@ class QuestionModel:SubmitFirestoreDocProtocol {
     
     private func alreadyExist(array: [RealmMindNodeModel],node:RealmMindNodeModel)->Bool{
         return false
-    }
-    
-    func getNodeFromRealm(mapId:String,nodeId: Int) -> RealmMindNodeModel{
-        let realm = try! Realm()
-        let node:RealmMindNodeModel = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId).filter("myNodeId == %@", nodeId).first ?? RealmMindNodeModel()
-        return node
     }
     
     func trailingSwipeQuestion(swipedAnswer:RealmMindNodeModel){//不正解時
@@ -126,34 +116,23 @@ class QuestionModel:SubmitFirestoreDocProtocol {
         return nextQuestionNodeId
     }
     
-    
     func updateMapQuestion(learningIntervalStruct:LearningIntervalStruct,focusNode:RealmMindNodeModel){
-        let realm = try! Realm()
-        let focusNode = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", focusNode.mapId).filter("myNodeId == %@", focusNode.myNodeId).first
-        
-        try! realm.write {
-            focusNode?.setValue(learningIntervalStruct.ifSuccessNextInterval, forKey: "ifSuccessInterval")
-            focusNode?.setValue(learningIntervalStruct.nextLearningDate, forKey: "nextDate")
-            focusNode?.setValue(Date().millisecondsSince1970,forKey: "lastAnswerdTime")
-        }
-
+        let focusNode = mindNodeShared.getNodeByMapIdAndNodeId(mapId: focusNode.mapId, nodeId: focusNode.myNodeId)
+        let updateKeyValueArray:[String:Any] = [
+            "ifSuccessInterval": learningIntervalStruct.ifSuccessNextInterval,
+            "nextDate": learningIntervalStruct.nextLearningDate,
+            "lastAnswerdTime":Date().millisecondsSince1970
+            ]
+        mindNodeShared.updateNode(updateKeyValueArray: updateKeyValueArray, updateNode: focusNode)
     }
     
     func updateMapQuestionIsAnswer(updateNode:RealmMindNodeModel,isAnswer:Bool){
-        let answerNode = self
-            .searchByPrimaryKey(node: updateNode)
+        let answerNode = mindNodeShared.searchByPrimaryKey(node: updateNode)
         var questionNode = RealmMindNodeModel()
         if let tempQuesiton = self.allNodeData.filter({ $0.mapId == updateNode.mapId && $0.myNodeId == updateNode.parentNodeId }).first {
             questionNode = tempQuesiton
         }
-        do{
-            let realm = try Realm()
-            try! realm.write {
-                answerNode?.setValue(isAnswer, forKey: "isAnswer")
-            }
-        }catch{
-            print("\(error)")
-        }
+        mindNodeShared.updateNode(updateKeyValueArray: ["isAnswer":isAnswer], updateNode: answerNode)
 //書き換える、データの更新は子供（answer)。allNodeDataにはクイズが入っているので、それを削除
 //FIXME 汎用的にする必要あり。
         if let questionNode = self.allNodeData.filter({ $0.mapId == updateNode.mapId && $0.myNodeId == questionNode.myNodeId  }).first {
@@ -163,13 +142,7 @@ class QuestionModel:SubmitFirestoreDocProtocol {
         }
         self.syncDataAndNotifyPresenter()
     }
-    
-    func searchByPrimaryKey(node:RealmMindNodeModel) -> RealmMindNodeModel?{
-        let realm = try! Realm()
-        let searchResult:RealmMindNodeModel? = realm.objects(RealmMindNodeModel.self).filter("nodePrimaryKey == %@", node.nodePrimaryKey).first
-        return searchResult
-    }
-    
+
     func selectNodeByNodeId(nodeId:Int) -> RealmMindNodeModel{
         let selectedNode:RealmMindNodeModel = self.allNodeData.filter({ $0.myNodeId == nodeId }).first ?? RealmMindNodeModel()
         return selectedNode
@@ -179,7 +152,7 @@ class QuestionModel:SubmitFirestoreDocProtocol {
         var localAnswerNodeArray = [RealmMindNodeModel]()
         for answerNodeId in displayingQuestion.childNodeIdArray {
             let nodeId = answerNodeId.MindNodeChildId
-            let answerNode = self.getNodeFromRealm(mapId: displayingQuestion.mapId, nodeId: nodeId)
+            let answerNode = mindNodeShared.getNodeByMapIdAndNodeId(mapId: displayingQuestion.mapId, nodeId: nodeId)
             localAnswerNodeArray.append(answerNode)
         }
         return localAnswerNodeArray
@@ -220,16 +193,8 @@ class QuestionModel:SubmitFirestoreDocProtocol {
         return LearningIntervalStruct(ifSuccessNextInterval: 1, nextLearningDate: Calendar.current.date(byAdding: .day, value: 0, to: Date())!.millisecondsSince1970)
     }
     
-    func getNodeByNodeIdAndMapId(question:RealmMindNodeModel,nodeId: Int) -> RealmMindNodeModel{
-        let realm = try! Realm()
-        if let searchResult = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", question.mapId).filter("myNodeId == %@",nodeId).first {
-            return searchResult
-        }
-        return RealmMindNodeModel()
-    }
-    
     func getMapTitle(question:RealmMindNodeModel) -> String {
-        let indexQuestion = self.getNodeByNodeIdAndMapId(question: question,nodeId: 0)
+        let indexQuestion = mindNodeShared.getNodeByNodeIdAndMapId(question: question,nodeId: 0)
         return indexQuestion.content == "" ? "no map title" : indexQuestion.content
     }
     
@@ -247,15 +212,17 @@ class QuestionModel:SubmitFirestoreDocProtocol {
 
         let batch = Firestore.firestore().batch()
         for answer in answerDataArray {
-            let question:RealmMindNodeModel = self.getNodeFromRealm(mapId:answer.mapId,nodeId: answer.parentNodeId)
+            let question:RealmMindNodeModel = mindNodeShared.getNodeByMapIdAndNodeId(mapId:answer.mapId,nodeId: answer.parentNodeId)
             let mapTitle = self.getMapTitle(question: question)
-            let submit_data = [
-                "mapTitle": mapTitle,
-                "question": question.content,
-                "answer": answer.content
-            ] as [String:Any]
-            let ref: DocumentReference = Firestore.firestore().collection("user").document("\(uuid)").collection("question").document()
-            batch.setData(submit_data, forDocument: ref)
+            if mapTitle != "tutorial".localized {
+                let submit_data = [
+                    "mapTitle": mapTitle,
+                    "question": question.content,
+                    "answer": answer.content
+                ] as [String:Any]
+                let ref: DocumentReference = Firestore.firestore().collection("user").document("\(uuid)").collection("question").document()
+                batch.setData(submit_data, forDocument: ref)
+            }
         }
         batch.commit() { err in
             if let err = err {
@@ -264,9 +231,7 @@ class QuestionModel:SubmitFirestoreDocProtocol {
             }
             print("Batch write succeeded.")
         }
-
     }
-
 
 }
 

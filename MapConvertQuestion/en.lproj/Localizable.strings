@@ -15,6 +15,7 @@
 "nextQuizButtonText" = "nextQuiz";
 "selectMap" = "select map!";
 "howTo" = "HowTo";
+"tutorial" = "tutorial";
 "tutorialFirstTitle" = "1.Copy";
 "tutorialFirstContent" = "Please copy your mindmaps you want to convert to quiz from Xmind,Ithoughts,and...";
 "tutorialSecondTitle" = "2.Paste";

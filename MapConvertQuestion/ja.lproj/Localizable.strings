@@ -15,6 +15,7 @@
 "nextQuizButtonText" = "次の問題";
 "selectMap" = "マップを選んでください";
 "howTo" = "使い方";
+"tutorial" = "チュートリアル";
 "tutorialFirstTitle" = "1.コピー";
 "tutorialFirstContent" = "クイズにしたい作成済みのマインドマップをコピーして下さい。\nXmind,Ithoughtsなど..";
 "tutorialSecondTitle" = "2.ペースト";
