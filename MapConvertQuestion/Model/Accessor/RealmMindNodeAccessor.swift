@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class RealmMindNodeAccessor {
+//     let mindNodeShared = RealmMindNodeAccessor.sharedInstance
     static let sharedInstance = RealmMindNodeAccessor()
     private init() {
     }
@@ -73,4 +74,25 @@ class RealmMindNodeAccessor {
         }
         return RealmMindNodeModel()
     }
+    
+    func createMindNode(realmDataArray: [[String: Any]],mapId: String){
+        do {
+            let realm = try Realm()
+            print(Realm.Configuration.defaultConfiguration.fileURL!)
+            let mapGroup = MapGroup()
+            mapGroup.mapId = mapId
+            for item in realmDataArray.enumerated() {
+                let node = RealmMindNodeModel(value: item.element)
+                mapGroup.realmMindNodeModel.append(node)
+            }
+            try! realm.write {
+                realm.add(mapGroup)
+                print("成功だよ", mapGroup)
+            }
+        } catch {
+            print("error",error)
+        }
+    }
+    
+    
 }

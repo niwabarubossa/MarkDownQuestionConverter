@@ -18,7 +18,9 @@ class MarkDownInputModel {
     var inputLineArray = [String]()
     var doneNum = [Int]()
     private var questionNodeCount:Int = 0
+    
     private let userShared = RealmUserAccessor.sharedInstance
+    private let mindNodeShared = RealmMindNodeAccessor.sharedInstance
     //インプットされたマークダウンがmindNodeに変換されている
     var mindNodeArray = [MindNode]()
     
@@ -30,7 +32,9 @@ class MarkDownInputModel {
         let parentNodePrimaryKey:String = NSUUID().uuidString
         convertStringLinesToMindNode(myNodeId: 0, myIndent: 0, parentNodeId: 0,parentNodePrimaryKey: parentNodePrimaryKey)
         let realmDataArray = convertMindNodeToRealmDictionary(mindNodeArray: mindNodeArray,mapId: mapId)
-        saveToRealm(realmDataArray: realmDataArray,mapId: mapId)
+        
+        mindNodeShared.createMindNode(realmDataArray: realmDataArray,mapId: mapId)
+        
         //TODO:realm UserEntityとかを作成する
         let user = userShared.getUserData()
         self.incrementUserQuota(user:user)
@@ -113,25 +117,5 @@ class MarkDownInputModel {
             childNodeIdArray.append(["MindNodeChildId":childNodeIdInt])
         }
         return childNodeIdArray
-    }
-
-    private func saveToRealm(realmDataArray: [[String: Any]],mapId: String){
-        do {
-            let realm = try Realm()
-            print(Realm.Configuration.defaultConfiguration.fileURL!)
-            let mapGroup = MapGroup()
-            mapGroup.mapId = mapId
-            for item in realmDataArray.enumerated() {
-                let node = RealmMindNodeModel(value: item.element)
-                mapGroup.realmMindNodeModel.append(node)
-            }
-            try! realm.write {
-                realm.add(mapGroup)
-                print("成功だよ", mapGroup)
-            }
-        } catch {
-            print("\(error)")
-            print("エラーだよ")
-        }
     }
 }
