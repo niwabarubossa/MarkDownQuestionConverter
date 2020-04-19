@@ -18,11 +18,11 @@ class MarkDownInputModel {
     var inputLineArray = [String]()
     var doneNum = [Int]()
     private var questionNodeCount:Int = 0
+    private let userShared = RealmUserAccessor.sharedInstance
     //インプットされたマークダウンがmindNodeに変換されている
     var mindNodeArray = [MindNode]()
     
     func submitInput(input:String){
-        //realm処理
         let mapId = NSUUID().uuidString
         convertInputToLines(input:input)
         //FIX ME //調整用としてのappendである。
@@ -32,24 +32,17 @@ class MarkDownInputModel {
         let realmDataArray = convertMindNodeToRealmDictionary(mindNodeArray: mindNodeArray,mapId: mapId)
         saveToRealm(realmDataArray: realmDataArray,mapId: mapId)
         //TODO:realm UserEntityとかを作成する
-        let user = self.getUserData()
+        let user = userShared.getUserData()
         self.incrementUserQuota(user:user)
         self.delegate?.didSubmitInput()
         initData()
     }
     
-    private func getUserData() -> User{
-        let realm = try! Realm()
-        if let user = realm.objects(User.self).first{
-            return user
-        }
-        return User()
-    }
     private func incrementUserQuota(user:User){
-        let realm = try! Realm()
-        try! realm.write {
-            user.setValue( user.todayQuota + self.questionNodeCount, forKey: "todayQuota")
-        }
+        let updateKeyValueArray:[String:Any] = [
+            "todayQuota": user.todayQuota + self.questionNodeCount
+        ]
+        userShared.updateUserData(updateKeyValueArray: updateKeyValueArray, updateUser: user)
     }
 
     private func initData(){
