@@ -19,7 +19,10 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
     var displayingQustion:RealmMindNodeModel = RealmMindNodeModel()
     var answerNodeArray = [RealmMindNodeModel]()
     var experience:Float = Float.random(in: 0.2..<1)
-    var user = User()
+//    var user = User()
+    var user:User{
+        userModel.user
+    }
     var startQuestionTime:Date = Date()
     var mapTitle:String = ""
     
@@ -38,7 +41,7 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
     
     func initializePage(){ //初期化時に呼ばれる　from presenter
         myModel.getToDoQuestion()
-        userModel.getUserData()
+        // get user
         self.view?.customView.questionLabel.isHidden = false
         self.view?.answerTableView.isHidden = true
         self.quizSubmitToFirestore()
@@ -243,11 +246,9 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
 extension ToDoQuestionPresenter:UserDataModelDelegate{
     
     func syncUserData(user:User){
-        self.user = user
     }
     
     func didGetUserData(user: User) {
-        self.user = user
         self.userDisplayReload()
     }
 

@@ -34,18 +34,9 @@ class UserDataModel {
         userShared.getUserData()
     }
     
-    func getUserData(){
-        print("test function")
-        let realm = try! Realm()
-        if let user = realm.objects(User.self).first{
-            self.delegate?.didGetUserData(user:user)
-            self.user = user
-        }
-    }
-    
     func updateUserData(swipedAnswer:RealmMindNodeModel){
         self.createQuestionLog(swipedAnswer:swipedAnswer)
-        let user = self.updateUserScore(swipedAnswer:swipedAnswer)
+        self.updateUserScore(swipedAnswer:swipedAnswer)
         self.notify()
     }
     
@@ -65,7 +56,7 @@ class UserDataModel {
         print("createQuestionLog")
     }
     
-    private func updateUserScore(swipedAnswer:RealmMindNodeModel) ->User{
+    private func updateUserScore(swipedAnswer:RealmMindNodeModel){
         let charactersCount = Int64(swipedAnswer.content.replacingOccurrences(of:"\t", with:"").count)
         do{
             let realm = try Realm()
@@ -76,7 +67,6 @@ class UserDataModel {
         }catch{
             print("\(error)")
         }
-        return self.user
     }
     
     func fetchControl(){
