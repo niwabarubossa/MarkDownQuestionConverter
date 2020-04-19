@@ -17,6 +17,8 @@ protocol ToDoDashboardModelDelegate: class {
 class ToDoDashboardModel {
     weak var delegate: ToDoDashboardModelDelegate?
     
+    let mindNodeShared = RealmMindNodeAccessor.sharedInstance
+    
     func registerUserQuota(){
         let user = self.getUserData()
         if self.isTodayFirstLogin(user:user) == true {
@@ -51,12 +53,11 @@ class ToDoDashboardModel {
     }
     
     private func getToDoQuestionAmount() -> Int{
-        let realm = try! Realm()
-        let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(LetGroup.todayEndMili)}").filter("isAnswer == %@",true)
+        let results = mindNodeShared.getTodayAnswer()
         var questionArray = [RealmMindNodeModel]()
         var alreadyExist = [String]()
         for answerNode in results {
-            let question:RealmMindNodeModel = self.getNodeFromRealm(mapId:answerNode.mapId,nodeId: answerNode.parentNodeId)
+            let question:RealmMindNodeModel = mindNodeShared.getNodeByMapIdAndNodeId(mapId:answerNode.mapId,nodeId: answerNode.parentNodeId)
             if question.myNodeId != question.parentNodeId {
                 if alreadyExist.contains(question.nodePrimaryKey) == false{
                     questionArray.append(question)
@@ -85,12 +86,6 @@ class ToDoDashboardModel {
         }catch{
             print("\(error)")
         }
-    }
-
-    private func getNodeFromRealm(mapId:String,nodeId: Int) -> RealmMindNodeModel{
-        let realm = try! Realm()
-        let node:RealmMindNodeModel = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId).filter("myNodeId == %@", nodeId).first ?? RealmMindNodeModel()
-        return node
     }
     
     func testfunc(){
