@@ -116,34 +116,23 @@ class QuestionModel:SubmitFirestoreDocProtocol {
         return nextQuestionNodeId
     }
     
-    
     func updateMapQuestion(learningIntervalStruct:LearningIntervalStruct,focusNode:RealmMindNodeModel){
-        let realm = try! Realm()
-        let focusNode = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", focusNode.mapId).filter("myNodeId == %@", focusNode.myNodeId).first
-        
-        try! realm.write {
-            focusNode?.setValue(learningIntervalStruct.ifSuccessNextInterval, forKey: "ifSuccessInterval")
-            focusNode?.setValue(learningIntervalStruct.nextLearningDate, forKey: "nextDate")
-            focusNode?.setValue(Date().millisecondsSince1970,forKey: "lastAnswerdTime")
-        }
-
+        let focusNode = mindNodeShared.getNodeByMapIdAndNodeId(mapId: focusNode.mapId, nodeId: focusNode.myNodeId)
+        let updateKeyValueArray:[String:Any] = [
+            "ifSuccessInterval": learningIntervalStruct.ifSuccessNextInterval,
+            "nextDate": learningIntervalStruct.nextLearningDate,
+            "lastAnswerdTime":Date().millisecondsSince1970
+            ]
+        mindNodeShared.updateNode(updateKeyValueArray: updateKeyValueArray, updateNode: focusNode)
     }
     
     func updateMapQuestionIsAnswer(updateNode:RealmMindNodeModel,isAnswer:Bool){
-        let answerNode = self
-            .searchByPrimaryKey(node: updateNode)
+        let answerNode = mindNodeShared.searchByPrimaryKey(node: updateNode)
         var questionNode = RealmMindNodeModel()
         if let tempQuesiton = self.allNodeData.filter({ $0.mapId == updateNode.mapId && $0.myNodeId == updateNode.parentNodeId }).first {
             questionNode = tempQuesiton
         }
-        do{
-            let realm = try Realm()
-            try! realm.write {
-                answerNode?.setValue(isAnswer, forKey: "isAnswer")
-            }
-        }catch{
-            print("\(error)")
-        }
+        mindNodeShared.updateNode(updateKeyValueArray: ["isAnswer":isAnswer], updateNode: answerNode)
 //書き換える、データの更新は子供（answer)。allNodeDataにはクイズが入っているので、それを削除
 //FIXME 汎用的にする必要あり。
         if let questionNode = self.allNodeData.filter({ $0.mapId == updateNode.mapId && $0.myNodeId == questionNode.myNodeId  }).first {
@@ -153,13 +142,7 @@ class QuestionModel:SubmitFirestoreDocProtocol {
         }
         self.syncDataAndNotifyPresenter()
     }
-    
-    func searchByPrimaryKey(node:RealmMindNodeModel) -> RealmMindNodeModel?{
-        let realm = try! Realm()
-        let searchResult:RealmMindNodeModel? = realm.objects(RealmMindNodeModel.self).filter("nodePrimaryKey == %@", node.nodePrimaryKey).first
-        return searchResult
-    }
-    
+
     func selectNodeByNodeId(nodeId:Int) -> RealmMindNodeModel{
         let selectedNode:RealmMindNodeModel = self.allNodeData.filter({ $0.myNodeId == nodeId }).first ?? RealmMindNodeModel()
         return selectedNode

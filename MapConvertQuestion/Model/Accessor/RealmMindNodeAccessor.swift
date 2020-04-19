@@ -32,4 +32,21 @@ class RealmMindNodeAccessor {
          let node:RealmMindNodeModel = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId).filter("myNodeId == %@", nodeId).first ?? RealmMindNodeModel()
          return node
     }
+
+    func updateNode(updateKeyValueArray:[String:Any],updateNode:RealmMindNodeModel){
+        let realm = try! Realm()
+        try! realm.write {
+            for (key, value) in updateKeyValueArray {
+                updateNode.setValue(value,forKey: key)
+            }
+        }
+    }
+    
+    func searchByPrimaryKey(node:RealmMindNodeModel) -> RealmMindNodeModel{
+        let realm = try! Realm()
+        if let searchResult:RealmMindNodeModel = realm.objects(RealmMindNodeModel.self).filter("nodePrimaryKey == %@", node.nodePrimaryKey).first {
+            return searchResult
+        }
+        return RealmMindNodeModel()
+    }
 }
