@@ -82,7 +82,7 @@ class ToDoDashboardViewController: UIViewController {
     private func createUserData(uuid:String){
         do {
             let realm = try Realm()
-            let user = User(value: [ "uuid": uuid])
+            let user = User(value: ["uuid": uuid])
             try! realm.write {
                 realm.add(user)
             }
