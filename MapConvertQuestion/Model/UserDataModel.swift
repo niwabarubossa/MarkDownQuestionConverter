@@ -29,10 +29,9 @@ protocol ModelProtocolNotify: class {
 
 class UserDataModel {
     weak var delegate: UserDataModelDelegate?
-    var user = User()
-    
-    func setUser(user: User){
-        self.user = user
+    let userShared = RealmUserAccessor.sharedInstance
+    var user:User{
+        userShared.getUserData()
     }
     
     func getUserData(){
@@ -47,7 +46,6 @@ class UserDataModel {
     func updateUserData(swipedAnswer:RealmMindNodeModel){
         self.createQuestionLog(swipedAnswer:swipedAnswer)
         let user = self.updateUserScore(swipedAnswer:swipedAnswer)
-        self.setUser(user: user)
         self.notify()
     }
     

@@ -10,7 +10,8 @@ import Foundation
 import RealmSwift
 
 class RealmUserAccessor {
-//    let userShared = RealmUserAccessor.sharedInstance 使うクラス
+// 使うクラス ↓
+//    let userShared = RealmUserAccessor.sharedInstance
     static let sharedInstance = RealmUserAccessor()
     private init() {
     }
