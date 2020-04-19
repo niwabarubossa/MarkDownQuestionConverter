@@ -21,5 +21,15 @@ class RealmUserAccessor {
         }
         return User()
     }
+
+    func updateUserData(updateKeyValueArray:[String:Any],updateUser:User){
+        let realm = try! Realm()
+        try! realm.write {
+            for (key, value) in updateKeyValueArray {
+                updateUser.setValue(value,forKey: key)
+            }
+        }
+    }
+
     
 }

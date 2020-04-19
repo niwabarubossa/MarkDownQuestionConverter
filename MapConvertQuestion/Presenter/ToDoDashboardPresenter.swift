@@ -14,10 +14,10 @@ class ToDoDashboardPresenter:ToDoDashboardModelDelegate{
     //自分用のモデルの宣言
     let model: ToDoDashboardModel
     var user:User{
-        model.getUserData()
+        model.userShared.getUserData()
     }
     var todayQuota:CGFloat{
-        return CGFloat(model.getUserData().todayQuota)
+        return CGFloat(model.userShared.getUserData().todayQuota)
     }
     var todayDoneAmount:CGFloat{
         return CGFloat(model.getTodayLogAmount())

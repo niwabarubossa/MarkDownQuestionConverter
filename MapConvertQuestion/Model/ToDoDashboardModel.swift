@@ -20,14 +20,10 @@ class ToDoDashboardModel {
     let userShared = RealmUserAccessor.sharedInstance
     
     func registerUserQuota(){
-        let user = self.getUserData()
+        let user = userShared.getUserData()
         if self.isTodayFirstLogin(user:user) == true {
             self.updateUserQuota(user:user)
         }
-    }
-    
-    func getUserData() -> User{
-        return userShared.getUserData()
     }
     
     private func isTodayFirstLogin(user:User) -> Bool{
@@ -64,7 +60,7 @@ class ToDoDashboardModel {
     }
     
     func updateUserQuotaFromPresenter(){
-        let user = self.getUserData()
+        let user = userShared.getUserData()
         if self.isTodayFirstLogin(user: user) == true {
             self.updateUserQuota(user: user)
         }
@@ -72,15 +68,11 @@ class ToDoDashboardModel {
     
     func updateUserQuota(user:User){
         let todayQuota = self.getToDoQuestionAmount()
-        do{
-            let realm = try Realm()
-            try! realm.write {
-                user.setValue(Date().millisecondsSince1970, forKey: "lastLogin")
-                user.setValue(todayQuota, forKey: "todayQuota")
-            }
-        }catch{
-            print("\(error)")
-        }
+        let updateKeyValueArray:[String:Any] = [
+            "lastLogin":Date().millisecondsSince1970,
+            "todayQuota":todayQuota
+        ]
+        userShared.updateUserData(updateKeyValueArray: updateKeyValueArray, updateUser: user)
     }
     
     func testfunc(){
