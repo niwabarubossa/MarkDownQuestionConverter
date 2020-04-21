@@ -78,10 +78,11 @@ class ToDoDashboardViewController: UIViewController {
         print("showTutorialIfNeeded\n\n\n")
         
         let defaults = UserDefaults.standard
-        UserDefaults.standard.set(true, forKey: "TopPageFirstLaunch")
-        UserDefaults.standard.set(true, forKey: "isFirstCoachMarkInToDoDashPage")
+        defaults.register(defaults: ["TopPageFirstLaunch" : true])
+        defaults.register(defaults: ["isFirstCoachMarkInToDoDashPage" : true])
         if defaults.bool(forKey: "TopPageFirstLaunch") == true {
             self.prsentTutorialPage()
+            return
         }
         print("\n\n")
         if defaults.bool(forKey: "isFirstCoachMarkInToDoDashPage") == true && defaults.bool(forKey: "TopPageFirstLaunch") == false {
@@ -98,6 +99,7 @@ class ToDoDashboardViewController: UIViewController {
         UserDefaults.standard.set(new_uuid, forKey: "uuid")
         self.createUserData(uuid:new_uuid)
         let howToVC = R.storyboard.settings.howToPage()
+        howToVC?.modalPresentationStyle = .fullScreen
         self.present(howToVC!, animated: true, completion: {
             UserDefaults.standard.set(false, forKey: "TopPageFirstLaunch")
         })

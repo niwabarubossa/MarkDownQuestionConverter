@@ -41,7 +41,6 @@ class TutorialExplanationViewController: UIViewController,UIScrollViewDelegate {
     @IBAction func dismissButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
 }
 
 extension TutorialExplanationViewController{
