@@ -12,8 +12,9 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     
     private let coachMarksController = CoachMarksController()
     private var pointOfInterest:UIView!
-    private let tutorialContent:[String] = ["first Tutorial","secondTutorial","thirdTutorial"]
-    lazy var tutorialPartsArray = [customView,customView.submitButton]
+    private let tutorialContent:[String] = ["first Tutorial","secondTutorial","startStudy!!"]
+    @IBOutlet weak var dummyStudyTabBar: UIView!
+    lazy var tutorialPartsArray = [customView.inputTextView,customView.submitButton,dummyStudyTabBar]
     
     override func viewDidLoad(){
         super.viewDidLoad()
