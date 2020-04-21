@@ -125,6 +125,9 @@ PODS:
   - Realm/Headers (4.3.2)
   - RealmSwift (4.3.2):
     - Realm (= 4.3.2)
+  - SwiftMessages (7.0.1):
+    - SwiftMessages/App (= 7.0.1)
+  - SwiftMessages/App (7.0.1)
 
 DEPENDENCIES:
   - Charts
@@ -136,6 +139,7 @@ DEPENDENCIES:
   - MBCircularProgressBar
   - R.swift
   - RealmSwift
+  - SwiftMessages
 
 SPEC REPOS:
   trunk:
@@ -165,6 +169,7 @@ SPEC REPOS:
     - R.swift.Library
     - Realm
     - RealmSwift
+    - SwiftMessages
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
@@ -193,7 +198,8 @@ SPEC CHECKSUMS:
   R.swift.Library: fa85ce1e0d0b7e818cd9e080df910ba54d2776cc
   Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
   RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
+  SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
 
-PODFILE CHECKSUM: f918c87d178d8edcb18143907a040a85d7ca59b4
+PODFILE CHECKSUM: 544cac1a6234377e2026f67129ffb7b5a9f0e119
 
 COCOAPODS: 1.8.4

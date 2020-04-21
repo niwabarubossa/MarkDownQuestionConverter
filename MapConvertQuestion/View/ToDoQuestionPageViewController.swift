@@ -10,6 +10,8 @@ import CoreLocation
 import GoogleMobileAds
 import AVFoundation
 
+import SwiftMessages
+
 class ToDoQuestionPageViewController: UIViewController{
     
     var bannerView: GADBannerView!
