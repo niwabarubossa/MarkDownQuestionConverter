@@ -39,3 +39,10 @@
 "todayQuotaIs" = "今日の目標は\n..";
 "quizzes" = "問";
 "quiz" = "問";
+
+//coachMark------
+"todoDashTabCoachMark" = "まずはクイズを作成しましょう！";
+"markdownTextViewCoachMark" = "ここにペーストをしましょう。今はチュートリアルの内容が入っています。";
+"markdownSubmitButtonCoachMark" = "タップしてクイズに変換！タップしてください!";
+"markdownTabCoachMark" = "チュートリアルクイズが作成されました！こちらのタブから学習できます！";
+//coachMark------

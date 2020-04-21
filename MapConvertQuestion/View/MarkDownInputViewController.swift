@@ -12,7 +12,7 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     
     private let coachMarksController = CoachMarksController()
     private var pointOfInterest:UIView!
-    private let tutorialContent:[String] = ["first Tutorial","secondTutorial","startStudy!!"]
+    private let tutorialContent:[String] = ["markdownTextViewCoachMark".localized,"markdownSubmitButtonCoachMark".localized,"markdownTabCoachMark".localized]
     @IBOutlet weak var dummyStudyTabBar: UIView!
     lazy var tutorialPartsArray = [customView.inputTextView,customView.submitButton,dummyStudyTabBar]
     

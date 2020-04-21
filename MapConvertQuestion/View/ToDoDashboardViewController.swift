@@ -147,7 +147,7 @@ extension ToDoDashboardViewController:CoachMarksControllerDataSource, CoachMarks
     
     func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
         let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, withNextText: true, arrowOrientation: coachMark.arrowOrientation)
-        coachViews.bodyView.hintLabel.text = "まずはクイズを作成しよう！"
+        coachViews.bodyView.hintLabel.text = "todoDashTabCoachMark".localized
         coachViews.bodyView.nextLabel.text = "OK"
         coachViews.bodyView.nextLabel.font = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
         return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
