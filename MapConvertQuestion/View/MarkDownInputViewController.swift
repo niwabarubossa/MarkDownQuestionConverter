@@ -12,9 +12,9 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     
     private let coachMarksController = CoachMarksController()
     private var pointOfInterest:UIView!
-    private let tutorialContent:[String] = ["markdownTextViewCoachMark".localized,"markdownSubmitButtonCoachMark".localized,"markdownTabCoachMark".localized]
+    private var tutorialContent:[String] = ["markdownTextViewCoachMark".localized,"markdownSubmitButtonCoachMark".localized]
     @IBOutlet weak var dummyStudyTabBar: UIView!
-    lazy var tutorialPartsArray = [customView.inputTextView,customView.submitButton,dummyStudyTabBar]
+    lazy var tutorialPartsArray = [customView.inputTextView,customView.submitButton]
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -61,6 +61,15 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
             self.completeLabel.isHidden = true
         })
         
+        let defaults = UserDefaults.standard
+        defaults.register(defaults: ["IsFirstSubmit" : true])
+        if defaults.bool(forKey: "IsFirstSubmit") == true{
+            UserDefaults.standard.set(false, forKey: "IsFirstSubmit")
+            self.tutorialPartsArray = [dummyStudyTabBar]
+            self.tutorialContent = ["markdownTabCoachMark".localized]
+        self.coachMarksController.start(in: .currentWindow(of: self))
+        }
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
