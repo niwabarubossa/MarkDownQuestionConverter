@@ -12,6 +12,7 @@ target 'MapConvertQuestion' do
 	pod 'Firebase/AdMob'
 	pod 'Charts'
 	pod "MBCircularProgressBar"
+	pod 'Instructions', '~> 1.4.0'
   # Pods for MapConvertQuestion
 
 end

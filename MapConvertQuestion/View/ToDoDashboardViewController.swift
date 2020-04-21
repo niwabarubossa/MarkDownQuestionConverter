@@ -9,6 +9,7 @@
 import UIKit
 import MBCircularProgressBar
 import RealmSwift
+import Instructions
 
 class ToDoDashboardViewController: UIViewController {
 
@@ -17,6 +18,13 @@ class ToDoDashboardViewController: UIViewController {
     @IBOutlet weak var quotqLabel: UILabel!
     @IBOutlet weak var doneAmountLabel: UILabel!
     
+    @IBOutlet weak var dummyStackView: UIStackView!
+    @IBOutlet weak var dummySecondTabBarItem: UIView!
+    
+    
+    private let coachMarksController = CoachMarksController()
+    private var pointOfInterest:UIView!
+    
     var presenter:ToDoDashboardPresenter!
     var todayDoneAmount:CGFloat = 0
     
@@ -24,7 +32,9 @@ class ToDoDashboardViewController: UIViewController {
         super.viewDidLoad()
         initializePresenter()
         layout()
-//        presenter.initViewController()
+        
+        self.pointOfInterest = self.dummySecondTabBarItem
+        self.coachMarksController.dataSource = self
     }
     
     private func initializePresenter() {
@@ -48,7 +58,9 @@ class ToDoDashboardViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.tutorialIfFirstLaunch()
+        super.viewDidAppear(animated)
+        
+        self.showTutorialIfNeeded()
         self.presenter.updateUserQuota()
         UIView.animate(withDuration: 1.0) {
             var todayQuota:CGFloat = 1
@@ -62,21 +74,35 @@ class ToDoDashboardViewController: UIViewController {
         self.doneAmountLabel.text = String(Int(self.presenter.todayDoneAmount)) + " / " + String(Int(self.presenter.todayQuota)) + " " + "quiz".localized + " finish!"
     }
     
-    private func tutorialIfFirstLaunch(){
+    private func showTutorialIfNeeded(){
+        print("showTutorialIfNeeded\n\n\n")
+        
         let defaults = UserDefaults.standard
         defaults.register(defaults: ["TopPageFirstLaunch" : true])
+        defaults.register(defaults: ["isFirstCoachMarkInToDoDashPage" : true])
         if defaults.bool(forKey: "TopPageFirstLaunch") == true {
-            let markDownInputModel = MarkDownInputModel()
-            markDownInputModel.submitInput(input:"tutorialTextViewContent".localized)
-            UserDefaults.standard.set(false, forKey: "TopPageFirstLaunch")
-            let new_uuid = NSUUID().uuidString
-            UserDefaults.standard.set(new_uuid, forKey: "uuid")
-            self.createUserData(uuid:new_uuid)
-            let howToVC = R.storyboard.settings.howToPage()
-            self.present(howToVC!, animated: true, completion: nil)
-        }else{
-            UserDefaults.standard.set(false, forKey: "TopPageFirstLaunch")
+            self.prsentTutorialPage()
+            return
         }
+        print("\n\n")
+        if defaults.bool(forKey: "isFirstCoachMarkInToDoDashPage") == true && defaults.bool(forKey: "TopPageFirstLaunch") == false {
+            self.coachMarksController.start(in: .currentWindow(of: self))
+            UserDefaults.standard.set(false, forKey: "isFirstCoachMarkInToDoDashPage")
+        }
+        
+    }
+
+    private func prsentTutorialPage(){
+        let markDownInputModel = MarkDownInputModel()
+        markDownInputModel.submitInput(input:"tutorialTextViewContent".localized)
+        let new_uuid = NSUUID().uuidString
+        UserDefaults.standard.set(new_uuid, forKey: "uuid")
+        self.createUserData(uuid:new_uuid)
+        let howToVC = R.storyboard.settings.howToPage()
+        howToVC?.modalPresentationStyle = .fullScreen
+        self.present(howToVC!, animated: true, completion: {
+            UserDefaults.standard.set(false, forKey: "TopPageFirstLaunch")
+        })
     }
 
     private func createUserData(uuid:String){
@@ -109,4 +135,21 @@ extension ToDoDashboardViewController:MVPViewProtocol{
     }
 }
 
+extension ToDoDashboardViewController:CoachMarksControllerDataSource, CoachMarksControllerDelegate{
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+        return 1
+    }
 
+    func coachMarksController(_ coachMarksController: CoachMarksController,
+                                  coachMarkAt index: Int) -> CoachMark {
+        return coachMarksController.helper.makeCoachMark(for: pointOfInterest)
+    }
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
+        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, withNextText: true, arrowOrientation: coachMark.arrowOrientation)
+        coachViews.bodyView.hintLabel.text = "todoDashTabCoachMark".localized
+        coachViews.bodyView.nextLabel.text = "OK"
+        coachViews.bodyView.nextLabel.font = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
+        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
+    }
+}

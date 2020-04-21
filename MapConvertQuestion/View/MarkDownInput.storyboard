@@ -26,15 +26,42 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2W4-ZM-dbF">
+                                <rect key="frame" x="0.0" y="813" width="414" height="83"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4sz-Yt-PZT">
+                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="83"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byu-ha-MEq">
+                                        <rect key="frame" x="103.5" y="0.0" width="103.5" height="83"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HPI-44-MMF">
+                                        <rect key="frame" x="207" y="0.0" width="103.5" height="83"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="85I-wX-dDj">
+                                        <rect key="frame" x="310.5" y="0.0" width="103.5" height="83"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="83" id="AHr-QP-VaL"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.75462020015449427" green="0.8882176614581212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="gJo-SX-kMZ" firstAttribute="trailing" secondItem="2W4-ZM-dbF" secondAttribute="trailing" id="8S4-ly-rsO"/>
                             <constraint firstItem="gJo-SX-kMZ" firstAttribute="trailing" secondItem="Pr8-KW-uxZ" secondAttribute="trailing" constant="30" id="FCL-qz-9SB"/>
                             <constraint firstItem="gJo-SX-kMZ" firstAttribute="trailing" secondItem="z0z-V2-Knn" secondAttribute="trailing" constant="30" id="H5c-nd-K4S"/>
                             <constraint firstItem="z0z-V2-Knn" firstAttribute="top" secondItem="gJo-SX-kMZ" secondAttribute="top" constant="40" id="I3d-OE-ThX"/>
+                            <constraint firstAttribute="bottom" secondItem="2W4-ZM-dbF" secondAttribute="bottom" id="PGo-Z1-Mga"/>
                             <constraint firstItem="z0z-V2-Knn" firstAttribute="leading" secondItem="gJo-SX-kMZ" secondAttribute="leading" constant="30" id="Rxw-55-XmR"/>
                             <constraint firstItem="Pr8-KW-uxZ" firstAttribute="top" secondItem="z0z-V2-Knn" secondAttribute="bottom" constant="30" id="SNI-8B-vpY"/>
                             <constraint firstItem="gJo-SX-kMZ" firstAttribute="bottom" secondItem="Pr8-KW-uxZ" secondAttribute="bottom" constant="50" id="Vk1-Wk-JSS"/>
+                            <constraint firstItem="2W4-ZM-dbF" firstAttribute="leading" secondItem="AGp-xk-ERF" secondAttribute="leading" id="YeO-7x-aLo"/>
                             <constraint firstItem="Pr8-KW-uxZ" firstAttribute="leading" secondItem="gJo-SX-kMZ" secondAttribute="leading" constant="30" id="wEG-gc-FBP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gJo-SX-kMZ"/>
@@ -43,6 +70,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="customView" destination="Pr8-KW-uxZ" id="ZKW-Pm-djX"/>
+                        <outlet property="dummyStudyTabBar" destination="4sz-Yt-PZT" id="eEr-Zd-wJx"/>
                         <outlet property="titleLabel" destination="z0z-V2-Knn" id="urd-pr-Eve"/>
                     </connections>
                 </viewController>

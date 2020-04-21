@@ -34,7 +34,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIk-NN-uPL">
                                 <rect key="frame" x="82" y="700" width="250" height="68"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="68" id="i02-a7-HYb"/>
                                 </constraints>
@@ -63,6 +63,30 @@
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="XFR-FN-R0b">
+                                <rect key="frame" x="0.0" y="813" width="414" height="83"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6EK-sS-UQm">
+                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="83"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DcF-WV-z2g">
+                                        <rect key="frame" x="103.5" y="0.0" width="103.5" height="83"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYP-Kr-vTD">
+                                        <rect key="frame" x="207" y="0.0" width="103.5" height="83"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7eG-EN-DIp">
+                                        <rect key="frame" x="310.5" y="0.0" width="103.5" height="83"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="83" id="cZW-eA-wVJ"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -71,11 +95,14 @@
                             <constraint firstItem="aGn-DJ-GoB" firstAttribute="leading" secondItem="ChO-Qq-XhM" secondAttribute="leading" constant="20" id="H3N-WC-4TO"/>
                             <constraint firstItem="aGn-DJ-GoB" firstAttribute="centerX" secondItem="Q6V-1w-749" secondAttribute="centerX" id="Hrc-rq-YO2"/>
                             <constraint firstItem="F9s-x5-tVa" firstAttribute="centerX" secondItem="Q6V-1w-749" secondAttribute="centerX" id="KNQ-aS-Q7R"/>
+                            <constraint firstAttribute="trailing" secondItem="XFR-FN-R0b" secondAttribute="trailing" id="MnE-i9-OpB"/>
                             <constraint firstItem="ChO-Qq-XhM" firstAttribute="bottom" secondItem="HIk-NN-uPL" secondAttribute="bottom" constant="45" id="Uni-f9-ivV"/>
+                            <constraint firstItem="XFR-FN-R0b" firstAttribute="leading" secondItem="ChO-Qq-XhM" secondAttribute="leading" id="VJK-ej-5tt"/>
                             <constraint firstItem="F9s-x5-tVa" firstAttribute="top" secondItem="aGn-DJ-GoB" secondAttribute="bottom" constant="30" id="bqd-PZ-H29"/>
                             <constraint firstItem="ChO-Qq-XhM" firstAttribute="trailing" secondItem="aGn-DJ-GoB" secondAttribute="trailing" constant="20" id="fDz-7h-kJN"/>
                             <constraint firstItem="F9s-x5-tVa" firstAttribute="centerY" secondItem="Q6V-1w-749" secondAttribute="centerY" id="fLv-mK-1WJ"/>
                             <constraint firstItem="HIk-NN-uPL" firstAttribute="centerX" secondItem="Q6V-1w-749" secondAttribute="centerX" id="gfB-zn-O6a"/>
+                            <constraint firstAttribute="bottom" secondItem="XFR-FN-R0b" secondAttribute="bottom" id="hLf-qp-6Mu"/>
                             <constraint firstItem="HIk-NN-uPL" firstAttribute="width" secondItem="F9s-x5-tVa" secondAttribute="width" id="ytG-dL-ybT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ChO-Qq-XhM"/>
@@ -84,6 +111,8 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="doneAmountLabel" destination="1f7-Zn-WmO" id="OXk-FI-Hfu"/>
+                        <outlet property="dummySecondTabBarItem" destination="DcF-WV-z2g" id="EnY-RO-Ycv"/>
+                        <outlet property="dummyStackView" destination="XFR-FN-R0b" id="RHv-1d-kxp"/>
                         <outlet property="progressView" destination="F9s-x5-tVa" id="pDt-uU-9ws"/>
                         <outlet property="quotqLabel" destination="aGn-DJ-GoB" id="IBI-wD-Zyt"/>
                         <outlet property="startButton" destination="HIk-NN-uPL" id="Ips-IE-JdR"/>
