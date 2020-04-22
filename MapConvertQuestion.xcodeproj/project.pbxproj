@@ -50,6 +50,8 @@
 		54BFEE372400F61100B55A8C /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BFEE362400F61100B55A8C /* QuestionModel.swift */; };
 		54BFEE392400F7E400B55A8C /* QuestionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BFEE382400F7E400B55A8C /* QuestionPageViewController.swift */; };
 		54BFEE3B2402701000B55A8C /* RealmMindNodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BFEE3A2402701000B55A8C /* RealmMindNodeModel.swift */; };
+		54C24710245013F6003E8A0F /* UserStatusViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54C2470F245013F6003E8A0F /* UserStatusViewController.storyboard */; };
+		54C247122450141A003E8A0F /* UserStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C247112450141A003E8A0F /* UserStatusViewController.swift */; };
 		54C53B3424186547000EE76E /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C53B3324186547000EE76E /* UserDataModel.swift */; };
 		54C53B3624188385000EE76E /* UserDataDisplay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C53B3524188385000EE76E /* UserDataDisplay.xib */; };
 		54C53B38241883D4000EE76E /* UserDataDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C53B37241883D4000EE76E /* UserDataDisplay.swift */; };
@@ -135,6 +137,8 @@
 		54BFEE362400F61100B55A8C /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		54BFEE382400F7E400B55A8C /* QuestionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPageViewController.swift; sourceTree = "<group>"; };
 		54BFEE3A2402701000B55A8C /* RealmMindNodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMindNodeModel.swift; sourceTree = "<group>"; };
+		54C2470F245013F6003E8A0F /* UserStatusViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserStatusViewController.storyboard; sourceTree = "<group>"; };
+		54C247112450141A003E8A0F /* UserStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatusViewController.swift; sourceTree = "<group>"; };
 		54C53B3324186547000EE76E /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		54C53B3524188385000EE76E /* UserDataDisplay.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDataDisplay.xib; sourceTree = "<group>"; };
 		54C53B37241883D4000EE76E /* UserDataDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataDisplay.swift; sourceTree = "<group>"; };
@@ -264,6 +268,8 @@
 				54676D90242F16AD00541EBE /* OpinionForm.storyboard */,
 				54E010542442AC7000AEB878 /* ToDoDashboard.storyboard */,
 				54E010562442ACB000AEB878 /* ToDoDashboardViewController.swift */,
+				54C2470F245013F6003E8A0F /* UserStatusViewController.storyboard */,
+				54C247112450141A003E8A0F /* UserStatusViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -470,6 +476,7 @@
 				542F3FAE240FB32500D92561 /* ToDoQuestionDisplay.xib in Resources */,
 				54F45E4A23F944DB002981C8 /* QuestionPage.storyboard in Resources */,
 				54C53B452418F6C8000EE76E /* TutorialExplanationUIView.xib in Resources */,
+				54C24710245013F6003E8A0F /* UserStatusViewController.storyboard in Resources */,
 				54F45E3623F9111B002981C8 /* QuestionDidsplay.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -586,6 +593,7 @@
 				54769734240E08B1004E8C63 /* IntervalEnum.swift in Sources */,
 				54C53B3424186547000EE76E /* UserDataModel.swift in Sources */,
 				542F3FAC240FB1C300D92561 /* ToDoQuestionPageViewController.swift in Sources */,
+				54C247122450141A003E8A0F /* UserStatusViewController.swift in Sources */,
 				54E0105B2442C8F500AEB878 /* ToDoDashboardPresenter.swift in Sources */,
 				54F4854923FF781900D7962C /* R.generated.swift in Sources */,
 				54FF62C62400E1640009B721 /* MindNodeModel.swift in Sources */,
