@@ -10,7 +10,6 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     @IBOutlet weak var customView: MarkDownInput!
     @IBOutlet weak var opinionFormButton: OpinionFormButton!
     var presenter:MarkDownInputPresenter!
-    var completeLabel = UILabel()
     
     private let coachMarksController = CoachMarksController()
     private var pointOfInterest:UIView!
@@ -72,13 +71,6 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     
     func layout() {
         customView.myDelegate = self
-        completeLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 30, height: 100))
-        completeLabel.backgroundColor = MyColor.fourthColor
-        completeLabel.center = self.view.center
-        completeLabel.textAlignment = .center
-        completeLabel.text = "complete!!!!!!"
-        self.view.addSubview(completeLabel)
-        self.completeLabel.isHidden  = true
         self.customView.submitButton.setTitle("submitButtonText".localized, for: .normal)
         self.titleLabel.text = "markDownPageTitleLabel".localized
     }
@@ -90,34 +82,22 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     func submitAction(text:String) {
         presenter.submitButtonDisabled()
         var lines = [String]()
-        
         text.enumerateLines { (line, stop) -> () in
             lines.append(line)
         }
         presenter.submitButtonTapped(input: text)
-//        UIView.animate(withDuration: 1.0, delay: 0.0, options: .autoreverse, animations: {
-//            self.completeLabel.isHidden = false
-//            self.completeLabel.center.y += 10.0
-//            self.completeLabel.text = "finished!!"
-//        }, completion: { (finished:Bool) in
-//            self.completeLabel.isHidden = true
-//        })
-        
         self.showFinishPopUP()
-        
         let defaults = UserDefaults.standard
         defaults.register(defaults: ["IsFirstSubmit" : true])
         if defaults.bool(forKey: "IsFirstSubmit") == true{
             UserDefaults.standard.set(false, forKey: "IsFirstSubmit")
             self.tutorialPartsArray = [dummyStudyTabBar]
             self.tutorialContent = ["markdownTabCoachMark".localized]
-        self.coachMarksController.start(in: .currentWindow(of: self))
+            self.coachMarksController.start(in: .currentWindow(of: self))
         }
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        self.showFinish()
         let defaults = UserDefaults.standard
         defaults.register(defaults: ["InputPageFirstLaunch" : true])
         if defaults.bool(forKey: "InputPageFirstLaunch") == true {
