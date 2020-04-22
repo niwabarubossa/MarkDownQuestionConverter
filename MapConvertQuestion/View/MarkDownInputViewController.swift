@@ -1,6 +1,8 @@
 import UIKit
 import RealmSwift
 import Instructions
+import SwiftMessages
+import SwiftEntryKit
 
 class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     
@@ -8,7 +10,6 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     @IBOutlet weak var customView: MarkDownInput!
     @IBOutlet weak var opinionFormButton: OpinionFormButton!
     var presenter:MarkDownInputPresenter!
-    var completeLabel = UILabel()
     
     private let coachMarksController = CoachMarksController()
     private var pointOfInterest:UIView!
@@ -20,56 +21,7 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
         super.viewDidLoad()
         initializePresenter()
         layout()
-
         self.coachMarksController.dataSource = self
-    }
-    
-    private func initializePresenter() {
-       presenter = MarkDownInputPresenter(view: self)
-    }
-    
-    func layout() {
-        customView.myDelegate = self
-        completeLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 30, height: 100))
-        completeLabel.backgroundColor = MyColor.fourthColor
-        completeLabel.center = self.view.center
-        completeLabel.textAlignment = .center
-        completeLabel.text = "complete!!!!!!"
-        self.view.addSubview(completeLabel)
-        self.completeLabel.isHidden  = true
-        self.customView.submitButton.setTitle("submitButtonText".localized, for: .normal)
-        self.titleLabel.text = "markDownPageTitleLabel".localized
-    }
-    
-    // Presenter ← View
-    private func signUpButtonTapped() {
-    }
-    
-    func submitAction(text:String) {
-        presenter.submitButtonDisabled()
-        var lines = [String]()
-        
-        text.enumerateLines { (line, stop) -> () in
-            lines.append(line)
-        }
-        presenter.submitButtonTapped(input: text)
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: .autoreverse, animations: {
-            self.completeLabel.isHidden = false
-            self.completeLabel.center.y += 10.0
-            self.completeLabel.text = "finished!!"
-        }, completion: { (finished:Bool) in
-            self.completeLabel.isHidden = true
-        })
-        
-        let defaults = UserDefaults.standard
-        defaults.register(defaults: ["IsFirstSubmit" : true])
-        if defaults.bool(forKey: "IsFirstSubmit") == true{
-            UserDefaults.standard.set(false, forKey: "IsFirstSubmit")
-            self.tutorialPartsArray = [dummyStudyTabBar]
-            self.tutorialContent = ["markdownTabCoachMark".localized]
-        self.coachMarksController.start(in: .currentWindow(of: self))
-        }
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -83,7 +35,62 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
             UserDefaults.standard.set(false, forKey: "InputPageFirstLaunch")
         }
     }
-
+    
+    private func initializePresenter() {
+       presenter = MarkDownInputPresenter(view: self)
+    }
+    
+    func layout() {
+        customView.myDelegate = self
+        self.customView.submitButton.setTitle("submitButtonText".localized, for: .normal)
+        self.titleLabel.text = "markDownPageTitleLabel".localized
+    }
+    
+    // Presenter ← View
+    private func signUpButtonTapped() {
+    }
+    
+    func submitAction(text:String) {
+        presenter.submitButtonDisabled()
+        var lines = [String]()
+        text.enumerateLines { (line, stop) -> () in
+            lines.append(line)
+        }
+        presenter.submitButtonTapped(input: text)
+        self.showFinishPopUP()
+        let defaults = UserDefaults.standard
+        defaults.register(defaults: ["IsFirstSubmit" : true])
+        if defaults.bool(forKey: "IsFirstSubmit") == true{
+            UserDefaults.standard.set(false, forKey: "IsFirstSubmit")
+            self.tutorialPartsArray = [dummyStudyTabBar]
+            self.tutorialContent = ["markdownTabCoachMark".localized]
+            self.coachMarksController.start(in: .currentWindow(of: self))
+        }
+    }
+    
+    private func showFinishPopUP(){
+         let titleText = "Finish"
+         let descText = "let's start study!"
+         let textColor = EKColor.white
+         let titleFont = UIFont(name: LetGroup.boldFontName, size: 35)!
+         let descFont = UIFont(name: LetGroup.boldFontName, size: 20)!
+         let myImage = R.image.done()!
+         var attributes = EKAttributes.centerFloat
+         attributes.entryBackground = .color(color: EKColor.init(.green))
+         attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.1), scale: .init(from: 1, to: 0.7, duration: 0.3)))
+         attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
+         attributes.statusBar = .dark
+         let minEdge = min(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height)
+         attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
+         attributes.positionConstraints.maxSize = .init(width: .constant(value: minEdge), height: .intrinsic)
+         let title = EKProperty.LabelContent(text: titleText, style: .init(font: titleFont, color: textColor))
+         let description = EKProperty.LabelContent(text: descText, style: .init(font: descFont, color: textColor))
+         let image = EKProperty.ImageContent(image: myImage, size: CGSize(width: 35, height: 35))
+         let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
+         let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
+         let contentView = EKNotificationMessageView(with: notificationMessage)
+         SwiftEntryKit.display(entry: contentView, using: attributes)
+     }
 }
 
 extension MarkDownInputViewController{

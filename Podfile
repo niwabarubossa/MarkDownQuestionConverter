@@ -13,6 +13,8 @@ target 'MapConvertQuestion' do
 	pod 'Charts'
 	pod "MBCircularProgressBar"
 	pod 'Instructions', '~> 1.4.0'
+	pod 'SwiftMessages'
+	pod 'SwiftEntryKit', '1.2.3'
   # Pods for MapConvertQuestion
 
 end

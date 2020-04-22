@@ -117,6 +117,7 @@ PODS:
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
   - Protobuf (3.10.0)
+  - QuickLayout (3.0.0)
   - R.swift (5.1.0):
     - R.swift.Library (~> 5.1.0)
   - R.swift.Library (5.1.0)
@@ -125,6 +126,11 @@ PODS:
   - Realm/Headers (4.3.2)
   - RealmSwift (4.3.2):
     - Realm (= 4.3.2)
+  - SwiftEntryKit (1.2.3):
+    - QuickLayout (= 3.0.0)
+  - SwiftMessages (7.0.1):
+    - SwiftMessages/App (= 7.0.1)
+  - SwiftMessages/App (7.0.1)
 
 DEPENDENCIES:
   - Charts
@@ -136,6 +142,8 @@ DEPENDENCIES:
   - MBCircularProgressBar
   - R.swift
   - RealmSwift
+  - SwiftEntryKit (= 1.2.3)
+  - SwiftMessages
 
 SPEC REPOS:
   trunk:
@@ -161,10 +169,13 @@ SPEC REPOS:
     - MBCircularProgressBar
     - nanopb
     - Protobuf
+    - QuickLayout
     - R.swift
     - R.swift.Library
     - Realm
     - RealmSwift
+    - SwiftEntryKit
+    - SwiftMessages
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
@@ -189,11 +200,14 @@ SPEC CHECKSUMS:
   MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
+  QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
   R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9
   R.swift.Library: fa85ce1e0d0b7e818cd9e080df910ba54d2776cc
   Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
   RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
+  SwiftEntryKit: 340713c2e4a6662c5149629990bf1088bf5f0389
+  SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
 
-PODFILE CHECKSUM: f918c87d178d8edcb18143907a040a85d7ca59b4
+PODFILE CHECKSUM: 3fe49f4511276725a878e85c446daf9ac454857f
 
 COCOAPODS: 1.8.4
