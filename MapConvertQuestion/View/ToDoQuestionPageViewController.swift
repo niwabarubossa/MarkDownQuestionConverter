@@ -54,11 +54,11 @@ class ToDoQuestionPageViewController: UIViewController{
         attributes.entranceAnimation = .none
         attributes.exitAnimation = .translation
         attributes.screenInteraction = .dismiss
-        let customView = UserStatusViewController()
-//        let widthConstraint = customView.widthAnchor.constraint(equalToConstant: view.frame.width)
-//        widthConstraint.isActive = true
-//        let heightConstraint = customView.heightAnchor.constraint(equalToConstant: 300)
-//        heightConstraint.isActive = true
+        var customView = R.storyboard.userStatusViewController().instantiateInitialViewController()!
+        let widthConstraint = customView.view.widthAnchor.constraint(equalToConstant: view.frame.width)
+        widthConstraint.isActive = true
+        let heightConstraint = customView.view.heightAnchor.constraint(equalToConstant: 300)
+        heightConstraint.isActive = true
         customView.view.backgroundColor = .orange
         SwiftEntryKit.display(entry: customView, using: attributes)
     }
