@@ -24,28 +24,22 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
         layout()
 
         self.coachMarksController.dataSource = self
-        self.showFinish()
     }
     
     private func showFinish(){
-//        let customView = UserDataDisplay(frame: CGRect(x: 0, y: 0 , width: view.frame.width - 200, height: 300))
-        let title = EKProperty.LabelContent(text: "title", style: .init(font: UIFont(), color: .white))
-        let description = EKProperty.LabelContent(text: "body", style: .init(font: UIFont(), color: .white))
-        let label = EKProperty.LabelContent(text: "OK", style: .init(font: UIFont(), color: .black))
-        let button = EKProperty.ButtonContent(label: label, backgroundColor: .white, highlightedBackgroundColor: .standardBackground) {
-            // dismissを自分で呼ばないとビューが消えない
-            SwiftEntryKit.dismiss()
-        }
-        let content = EKProperty.ButtonBarContent(with: [button], separatorColor: EKColor(UIColor.black), expandAnimatedly: true)
-        let alertMessage = EKAlertMessage(simpleMessage: EKSimpleMessage(image: nil, title: title, description: description), buttonBarContent: content)
-        let customView = EKAlertMessageView(with: alertMessage)
-        
-        var attributes = EKAttributes.topFloat
+        var attributes = EKAttributes.centerFloat
+        attributes.position = .center
         attributes.displayDuration = .infinity
-        attributes.entryBackground = .gradient(gradient: .init(colors: [EKColor(UIColor.purple), EKColor(UIColor.blue)], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
-        attributes.screenBackground = .visualEffect(style: .prominent)
-        attributes.positionConstraints.maxSize = .init(width: .constant(value: UIScreen.main.bounds.width), height: .intrinsic)
-        attributes.entryInteraction = .dismiss
+        attributes.entryBackground = .color(color: .white)
+        attributes.entranceAnimation = .none
+        attributes.exitAnimation = .translation
+        attributes.screenInteraction = .dismiss
+        let customView = UIView(frame: CGRect(x: 0, y: 0 , width: 300, height: 200))
+        let widthConstraint = customView.widthAnchor.constraint(equalToConstant: 100)
+        widthConstraint.isActive = true
+        let heightConstraint = customView.heightAnchor.constraint(equalToConstant: 300)
+        heightConstraint.isActive = true
+        customView.backgroundColor = .orange
         SwiftEntryKit.display(entry: customView, using: attributes)
     }
     
@@ -101,6 +95,9 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        self.showFinish()
+        
         let defaults = UserDefaults.standard
         defaults.register(defaults: ["InputPageFirstLaunch" : true])
         if defaults.bool(forKey: "InputPageFirstLaunch") == true {
