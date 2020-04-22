@@ -18,13 +18,13 @@ class UserStatusViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        testScoreLabel.text = "0"
+//        testScoreLabel.text = "0"
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         UIView.animate(withDuration: 1.0) {
-            testScoreLabel.text = "asd"
+//            self.testScoreLabel.text = "asd"
         }
     }
 

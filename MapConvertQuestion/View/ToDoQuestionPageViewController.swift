@@ -9,6 +9,7 @@ import UIKit
 import CoreLocation
 import GoogleMobileAds
 import AVFoundation
+import SwiftEntryKit
 
 class ToDoQuestionPageViewController: UIViewController{
     
@@ -38,6 +39,28 @@ class ToDoQuestionPageViewController: UIViewController{
         initializePage()
         self.setupLocationManager()
         self.setupAdmob()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.showFinish()
+    }
+    
+    private func showFinish(){
+        var attributes = EKAttributes.centerFloat
+        attributes.position = .center
+        attributes.displayDuration = .infinity
+        attributes.entryBackground = .color(color: .white)
+        attributes.entranceAnimation = .none
+        attributes.exitAnimation = .translation
+        attributes.screenInteraction = .dismiss
+        let customView = UserStatusViewController()
+//        let widthConstraint = customView.widthAnchor.constraint(equalToConstant: view.frame.width)
+//        widthConstraint.isActive = true
+//        let heightConstraint = customView.heightAnchor.constraint(equalToConstant: 300)
+//        heightConstraint.isActive = true
+        customView.view.backgroundColor = .orange
+        SwiftEntryKit.display(entry: customView, using: attributes)
     }
         
     private func layout(){
