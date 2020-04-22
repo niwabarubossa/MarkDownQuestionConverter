@@ -22,8 +22,31 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
         super.viewDidLoad()
         initializePresenter()
         layout()
-
         self.coachMarksController.dataSource = self
+    }
+    
+    private func showFinishPopUP(){
+        let titleText = "Finish"
+        let descText = "let's start study!"
+        let textColor = EKColor.white
+        let titleFont = UIFont(name: LetGroup.boldFontName, size: 35)!
+        let descFont = UIFont(name: LetGroup.boldFontName, size: 20)!
+        let myImage = R.image.done()!
+        var attributes = EKAttributes.centerFloat
+        attributes.entryBackground = .color(color: EKColor.init(.green))
+        attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.1), scale: .init(from: 1, to: 0.7, duration: 0.3)))
+        attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
+        attributes.statusBar = .dark
+        let minEdge = min(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height)
+        attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
+        attributes.positionConstraints.maxSize = .init(width: .constant(value: minEdge), height: .intrinsic)
+        let title = EKProperty.LabelContent(text: titleText, style: .init(font: titleFont, color: textColor))
+        let description = EKProperty.LabelContent(text: descText, style: .init(font: descFont, color: textColor))
+        let image = EKProperty.ImageContent(image: myImage, size: CGSize(width: 35, height: 35))
+        let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
+        let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
+        let contentView = EKNotificationMessageView(with: notificationMessage)
+        SwiftEntryKit.display(entry: contentView, using: attributes)
     }
     
     private func showFinish(){
@@ -80,8 +103,7 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
 //            self.completeLabel.isHidden = true
 //        })
         
-        
-        
+        self.showFinishPopUP()
         
         let defaults = UserDefaults.standard
         defaults.register(defaults: ["IsFirstSubmit" : true])
@@ -95,9 +117,7 @@ class MarkDownInputViewController: UIViewController,MarkDownInputViewDelegate{
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        self.showFinish()
-        
+//        self.showFinish()
         let defaults = UserDefaults.standard
         defaults.register(defaults: ["InputPageFirstLaunch" : true])
         if defaults.bool(forKey: "InputPageFirstLaunch") == true {
