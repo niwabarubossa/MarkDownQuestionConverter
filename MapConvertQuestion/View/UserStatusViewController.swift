@@ -10,21 +10,25 @@ import UIKit
 
 class UserStatusViewController: UIViewController {
 
-    @IBOutlet weak var testScoreLabel: UILabel!
+    var experienceDelta = 0.01
+    @IBOutlet weak var progressView: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.progressView.progress = 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        testScoreLabel.text = "0"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.progressView.setProgress(Float(0.00 + self.experienceDelta), animated: true)
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        UIView.animate(withDuration: 1.0) {
-//            self.testScoreLabel.text = "asd"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.progressView.setProgress(Float(0.00 + self.experienceDelta), animated: true)
         }
     }
 

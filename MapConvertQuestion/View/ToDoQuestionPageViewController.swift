@@ -54,7 +54,9 @@ class ToDoQuestionPageViewController: UIViewController{
         attributes.entranceAnimation = .none
         attributes.exitAnimation = .translation
         attributes.screenInteraction = .dismiss
-        var customView = R.storyboard.userStatusViewController().instantiateInitialViewController()!
+//        let customView = R.storyboard.userStatusViewController().instantiateInitialViewController()!
+        let customView = R.storyboard.userStatusViewController.instantiateInitialViewController()!
+        customView.experienceDelta = 0.99
         let widthConstraint = customView.view.widthAnchor.constraint(equalToConstant: view.frame.width)
         widthConstraint.isActive = true
         let heightConstraint = customView.view.heightAnchor.constraint(equalToConstant: 300)
