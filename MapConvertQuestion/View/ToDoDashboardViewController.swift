@@ -77,7 +77,11 @@ class ToDoDashboardViewController: UIViewController {
     }
     
     private func setTabbarItemBadge(){
-        studyTabBar.badgeValue = String(Int(self.presenter.todayQuota) -  Int(self.presenter.todayDoneAmount))
+        if ( Int(self.presenter.todayQuota) -  Int(self.presenter.todayDoneAmount) ) > 0 {
+            studyTabBar.badgeValue = String(Int(self.presenter.todayQuota) -  Int(self.presenter.todayDoneAmount))
+            return
+        }
+        studyTabBar.badgeValue = nil
     }
     
     private func showTutorialIfNeeded(){
