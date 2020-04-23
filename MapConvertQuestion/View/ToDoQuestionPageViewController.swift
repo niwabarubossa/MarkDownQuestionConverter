@@ -43,7 +43,7 @@ class ToDoQuestionPageViewController: UIViewController{
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        self.showFinish()
+//        self.showFinish()
     }
     
     private func showFinish(){
