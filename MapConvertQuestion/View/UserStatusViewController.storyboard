@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v9m-SV-Ena">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--User Status View Controller-->
+        <scene sceneID="KL3-oV-hPl">
+            <objects>
+                <viewController id="v9m-SV-Ena" customClass="UserStatusViewController" customModule="MapConvertQuestion" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cMx-Je-1Fr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ywl-Eg-5k6">
+                                <rect key="frame" x="0.0" y="44" width="414" height="256"/>
+                                <subviews>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UTU-9s-4Ro">
+                                        <rect key="frame" x="10" y="10" width="394" height="2"/>
+                                    </progressView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="UTU-9s-4Ro" secondAttribute="trailing" constant="10" id="SBc-xt-fPC"/>
+                                    <constraint firstItem="UTU-9s-4Ro" firstAttribute="leading" secondItem="Ywl-Eg-5k6" secondAttribute="leading" constant="10" id="l2x-Fm-XRS"/>
+                                    <constraint firstItem="UTU-9s-4Ro" firstAttribute="top" secondItem="Ywl-Eg-5k6" secondAttribute="top" constant="10" id="lzt-Zi-cXg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ywl-Eg-5k6" firstAttribute="top" secondItem="gyH-Y4-3wU" secondAttribute="top" id="ArR-t8-DZf"/>
+                            <constraint firstItem="Ywl-Eg-5k6" firstAttribute="leading" secondItem="gyH-Y4-3wU" secondAttribute="leading" id="Izi-Md-Fvm"/>
+                            <constraint firstItem="Ywl-Eg-5k6" firstAttribute="top" secondItem="gyH-Y4-3wU" secondAttribute="top" id="JkS-PD-ow4"/>
+                            <constraint firstItem="Ywl-Eg-5k6" firstAttribute="leading" secondItem="gyH-Y4-3wU" secondAttribute="leading" id="cFS-jm-AFZ"/>
+                            <constraint firstItem="gyH-Y4-3wU" firstAttribute="bottom" secondItem="Ywl-Eg-5k6" secondAttribute="bottom" id="rhu-b4-qZf"/>
+                            <constraint firstItem="gyH-Y4-3wU" firstAttribute="trailing" secondItem="Ywl-Eg-5k6" secondAttribute="trailing" id="spk-Ii-isq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gyH-Y4-3wU"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="300"/>
+                    <connections>
+                        <outlet property="progressView" destination="UTU-9s-4Ro" id="37a-DD-8dL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZCa-Pr-xpc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-117" y="11"/>
+        </scene>
+    </scenes>
+</document>

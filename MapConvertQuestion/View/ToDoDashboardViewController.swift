@@ -18,9 +18,10 @@ class ToDoDashboardViewController: UIViewController {
     @IBOutlet weak var quotqLabel: UILabel!
     @IBOutlet weak var doneAmountLabel: UILabel!
     
+    
+    @IBOutlet weak var studyTabBar: UITabBarItem!
     @IBOutlet weak var dummyStackView: UIStackView!
     @IBOutlet weak var dummySecondTabBarItem: UIView!
-    
     
     private let coachMarksController = CoachMarksController()
     private var pointOfInterest:UIView!
@@ -72,6 +73,15 @@ class ToDoDashboardViewController: UIViewController {
         }
         self.quotqLabel.text = "todayQuotaIs".localized +  String(Int(self.presenter.todayQuota)) + " " +  "quizzes".localized
         self.doneAmountLabel.text = String(Int(self.presenter.todayDoneAmount)) + " / " + String(Int(self.presenter.todayQuota)) + " " + "quiz".localized + " finish!"
+        self.setTabbarItemBadge()
+    }
+    
+    private func setTabbarItemBadge(){
+        if ( Int(self.presenter.todayQuota) -  Int(self.presenter.todayDoneAmount) ) > 0 {
+            studyTabBar.badgeValue = String(Int(self.presenter.todayQuota) -  Int(self.presenter.todayDoneAmount))
+            return
+        }
+        studyTabBar.badgeValue = nil
     }
     
     private func showTutorialIfNeeded(){
