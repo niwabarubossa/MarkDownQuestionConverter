@@ -34,7 +34,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIk-NN-uPL">
                                 <rect key="frame" x="82" y="700" width="250" height="68"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="68" id="i02-a7-HYb"/>
                                 </constraints>
@@ -116,6 +116,7 @@
                         <outlet property="progressView" destination="F9s-x5-tVa" id="pDt-uU-9ws"/>
                         <outlet property="quotqLabel" destination="aGn-DJ-GoB" id="IBI-wD-Zyt"/>
                         <outlet property="startButton" destination="HIk-NN-uPL" id="Ips-IE-JdR"/>
+                        <outlet property="studyTabBar" destination="BIk-P1-8Sk" id="A5Z-ph-hoM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eeg-FV-t3j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
