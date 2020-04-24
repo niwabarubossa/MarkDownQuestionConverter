@@ -19,15 +19,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ywl-Eg-5k6">
                                 <rect key="frame" x="0.0" y="44" width="414" height="256"/>
                                 <subviews>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UTU-9s-4Ro">
-                                        <rect key="frame" x="10" y="10" width="394" height="2"/>
-                                    </progressView>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="njn-j8-hFi">
+                                        <rect key="frame" x="10" y="62" width="394" height="10"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="RPH-6M-PC3"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="UTU-9s-4Ro" secondAttribute="trailing" constant="10" id="SBc-xt-fPC"/>
-                                    <constraint firstItem="UTU-9s-4Ro" firstAttribute="leading" secondItem="Ywl-Eg-5k6" secondAttribute="leading" constant="10" id="l2x-Fm-XRS"/>
-                                    <constraint firstItem="UTU-9s-4Ro" firstAttribute="top" secondItem="Ywl-Eg-5k6" secondAttribute="top" constant="10" id="lzt-Zi-cXg"/>
+                                    <constraint firstAttribute="trailing" secondItem="njn-j8-hFi" secondAttribute="trailing" constant="10" id="5rE-qD-xoa"/>
+                                    <constraint firstItem="njn-j8-hFi" firstAttribute="leading" secondItem="Ywl-Eg-5k6" secondAttribute="leading" constant="10" id="gkb-7R-SgF"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -45,7 +48,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="300"/>
                     <connections>
-                        <outlet property="progressView" destination="UTU-9s-4Ro" id="37a-DD-8dL"/>
+                        <outlet property="timeBarBaseView" destination="njn-j8-hFi" id="HdZ-5n-OHc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZCa-Pr-xpc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

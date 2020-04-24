@@ -11,48 +11,35 @@ import UIKit
 class UserStatusViewController: UIViewController {
     typealias CompletionClosure = ((_ result:Int) -> Void)
     var experienceDelta = 0.01
-    @IBOutlet weak var progressView: UIProgressView!
+    
+    @IBOutlet weak var timeBarBaseView: UIView!
+    var timeBarView = UIView()
+    private var timeBarViewWidth: CGFloat = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.progressView.progress = 0
+        timeBarView.frame = CGRect(x: 0, y: 0, width: 0, height: timeBarBaseView.frame.size.height)
+        timeBarView.backgroundColor = UIColor.blue
+        timeBarViewWidth = self.timeBarView.frame.size.width
+        timeBarBaseView.addSubview(self.timeBarView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-//            self.progressView.setProgress(Float(0.00 + self.experienceDelta), animated: true)
-            for _ in 0..<2{
-                self.levelUpAnimation()
+        for i in 1..<4 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) ) {
+                self.levelUpUI(count:i)
             }
         }
     }
-}
-
-extension UserStatusViewController{
-    func levelUpAnimation() {
-        // ①
-        oneLevelUp(completionClosure: { (result:Int) in
-            // ⑥ 10が返ってくる
-            self.progressView.setProgress(Float(0.0), animated: false)
-        })
-
-        // ④
-    }
-    func oneLevelUp(completionClosure:@escaping CompletionClosure) {
-        // ②
-
-        UIView.animate(withDuration: 0.3, animations: {
-          self.progressView.setProgress(Float(0.99), animated: true)
-        }, completion: { (finished) in
-            // ⑤
-            // 終了した時、10という値を返す
-            completionClosure(10)
-        })
-        // ③
+    
+    private func levelUpUI(count:Int){
+        self.timeBarView.frame = CGRect(x: 0, y: 0, width: 0, height: self.timeBarBaseView.frame.size.height)
+        UIView.animate(withDuration: 0.8, delay: 0.0 , options: [.curveLinear], animations: {
+            self.timeBarView.frame = CGRect(x: self.timeBarView.frame.minX, y:  self.timeBarView.frame.minY, width: self.timeBarBaseView.frame.size.width, height: self.timeBarView.frame.size.height)
+            },
+            completion: nil
+        )
     }
 }
+
