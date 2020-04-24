@@ -40,9 +40,9 @@ class UserDataModel {
         self.notify()
     }
     
-    func updateUserLevel(){
+    func updateUserLevel(level:Int64){
         let updateKeyValueArray:[String:Any] = [
-            "level": user.level + 1
+            "level": level
         ]
         userShared.updateUserData(updateKeyValueArray: updateKeyValueArray, updateUser: self.user)
         self.notify()

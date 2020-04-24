@@ -22,8 +22,7 @@ class ToDoQuestionPageViewController: UIViewController{
     @IBOutlet weak var userDataDisplay: UserDataDisplay!
     @IBOutlet weak var buttonStackView: ButtonStackView!
     @IBOutlet weak var Correct_WrongStackView: AnswerOrWrongButton!
-    
-    
+        
     var locationManager: CLLocationManager!
     var latitudeNow: String = ""
     var longitudeNow: String = ""
@@ -56,12 +55,13 @@ class ToDoQuestionPageViewController: UIViewController{
         attributes.screenInteraction = .dismiss
 //        let customView = R.storyboard.userStatusViewController().instantiateInitialViewController()!
         let customView = R.storyboard.userStatusViewController.instantiateInitialViewController()!
-        customView.experienceDelta = 0.99
         let widthConstraint = customView.view.widthAnchor.constraint(equalToConstant: view.frame.width)
         widthConstraint.isActive = true
         let heightConstraint = customView.view.heightAnchor.constraint(equalToConstant: 300)
         heightConstraint.isActive = true
         customView.view.backgroundColor = .orange
+        customView.expDelta = self.presenter.expDelta //代入される
+        
         SwiftEntryKit.display(entry: customView, using: attributes)
     }
         
