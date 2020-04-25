@@ -28,6 +28,8 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
     
     var focusAnswerIndex:Int = 0
 
+    var expDelta:Int = 0 //代入される
+
     init(view: ToDoQuestionPageViewController) {
         self.view = view
         self.myModel = QuestionModel()
@@ -142,13 +144,19 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
         self.view?.answerTableView.reloadData()
         self.view?.answerTableView.selectRow(at: [0,nextIndex], animated: false, scrollPosition: .top)
         
+
+        
         myModel.leadingSwipeQuestion(swipedAnswer: swipedAnswer)
         self.createQuestionLog(isCorrect:true,swipedAnswer: swipedAnswer)
          //データ更新は終了してる。クイズノルマが全て終わっているか判定
         if self.removeSwipedAnswerJudge() == true { myModel.deleteNodeFromModel(deleteNode: self.displayingQustion) }
         if self.goNextQuestionJudge() == true { self.nextQuestionButtonTapped() }
         userModel.updateUserData(swipedAnswer: swipedAnswer)
+        
+        expDelta += swipedAnswer.content.replacingOccurrences(of:"\t", with:"").count
+        
         self.getExperience()
+        
     }
     
     private func optimizeIndex(answerNode:RealmMindNodeModel) -> Int{
@@ -165,14 +173,14 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
     }
     
     private func getExperience(){
-        let probability:Float = Float.random(in: 0...1)
-        if probability < 0.2 { return }
-        self.experience = self.experience + self.calcLevelDelta()
-        if self.experience > 1.0 {
-            print("levelup")
-            // experience % 1 と同じ意味
-            self.experience = self.experience.truncatingRemainder(dividingBy: 1)
-            userModel.updateUserLevel()
+//        self.experience = self.experience + self.calcLevelDelta()
+//        self.experience = self.experience.truncatingRemainder(dividingBy: 1)
+        
+        let updatedLevel = self.getLevel(exp: Double(self.user.totalCharactersAmount))
+        if self.user.level != updatedLevel {
+            print("updatedLevel")
+            print("\(updatedLevel)")
+            userModel.updateUserLevel(level:Int64(updatedLevel))
         }
     }
     
@@ -181,6 +189,17 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
         let perExperience:Float = 1 / 8
         return randomDelta + perExperience
     }
+    
+    func getLevel(exp:Double) -> Int{
+        var temp:Double = (exp + 300.0) / 330.0
+        var level:Int = 0
+        while temp >= 1.0 {
+            temp = temp / 1.10
+            level += 1
+        }
+      return level
+    }
+
     
     private func goNextQuestionJudge()->Bool{
         for answerNode in self.answerNodeArray {
