@@ -60,7 +60,7 @@ class ToDoQuestionPageViewController: UIViewController{
         let heightConstraint = customView.view.heightAnchor.constraint(equalToConstant: 300)
         heightConstraint.isActive = true
         customView.view.backgroundColor = .orange
-        customView.expDelta = self.presenter.expDelta //代入される
+        customView.expDelta = Double(self.presenter.expDelta) //代入される
         
         SwiftEntryKit.display(entry: customView, using: attributes)
     }

@@ -176,7 +176,7 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
 //        self.experience = self.experience + self.calcLevelDelta()
 //        self.experience = self.experience.truncatingRemainder(dividingBy: 1)
         
-        let updatedLevel = self.getLevel(exp: Int(self.user.totalCharactersAmount))
+        let updatedLevel = self.getLevel(exp: Double(self.user.totalCharactersAmount))
         if self.user.level != updatedLevel {
             print("updatedLevel")
             print("\(updatedLevel)")
@@ -190,13 +190,13 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
         return randomDelta + perExperience
     }
     
-    func getLevel(exp:Int) -> Int{
-      var level:Int = 0
-        var totalExp:Double = Double(exp)
-        while totalExp > 30.0 {
-            totalExp = totalExp / 1.1
-        level += 1
-      }
+    func getLevel(exp:Double) -> Int{
+        var temp:Double = (exp + 300.0) / 330.0
+        var level:Int = 0
+        while temp >= 1.0 {
+            temp = temp / 1.10
+            level += 1
+        }
       return level
     }
 
