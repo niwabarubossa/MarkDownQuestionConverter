@@ -11,11 +11,9 @@ import UIKit
 class MapGroupAllQuestionViewController: UINavigationController {
 
     let mindNodeShared = RealmMindNodeAccessor.sharedInstance
-    var dataSource:[Dictionary<String,String>] = [
-        ["test":"test"],
-        ["test":"test"],
-        ["test":"test"],
-    ]
+    var dataSource:[Dictionary<String,String>]{
+        return mindNodeShared.getAllTitle()
+    }
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -31,6 +29,7 @@ extension MapGroupAllQuestionViewController: UITableViewDataSource,UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SimpleTableViewCell.className, for: indexPath ) as! SimpleTableViewCell
         cell.selectionStyle = .none
+        cell.titleLabel.text = self.dataSource[indexPath.row]["title"]
         return cell
     }
     

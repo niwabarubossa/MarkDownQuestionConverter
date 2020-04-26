@@ -96,3 +96,26 @@ class RealmMindNodeAccessor {
     
     
 }
+
+extension RealmMindNodeAccessor{
+    func getAllMapGroup() -> Results<MapGroup> {
+        let realm = try! Realm()
+        let results = realm.objects(MapGroup.self)
+        return results
+    }
+    
+    func getAllTitle() -> [Dictionary<String,String>]{
+        let allMapIdArray = self.getAllMapGroup()
+        var allTitleAndMapIdArray = [Dictionary<String,String>]()
+        for item in allMapIdArray {
+            let node = self.getNodeByMapIdAndNodeId(mapId: item.mapId, nodeId: 0)
+            let data:Dictionary<String,String> = [
+                "mapId": item.mapId,
+                "title": node.content
+            ]
+            allTitleAndMapIdArray.append(data)
+        }
+        return allTitleAndMapIdArray
+    }
+
+}
