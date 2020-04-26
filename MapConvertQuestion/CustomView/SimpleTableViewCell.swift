@@ -24,6 +24,6 @@ class SimpleTableViewCell: UITableViewCell {
     }
     
     private func setUpCell(){
-        titleLabel.font = LetGroup.baseFontName
+        self.titleLabel.font = UIFont(name: LetGroup.baseFontName, size: 20)
     }
 }
