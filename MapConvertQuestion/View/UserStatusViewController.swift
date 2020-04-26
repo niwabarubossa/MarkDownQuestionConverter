@@ -44,6 +44,8 @@ class UserStatusViewController: UIViewController {
         timeBarView.isHidden = true
         
         timeBarView.frame = CGRect(x: 0, y: 0, width: timeBarViewWidth, height: timeBarBaseView.frame.size.height)
+        timeBarBaseView.layer.cornerRadius = 15 / 2
+        timeBarView.layer.cornerRadius = 15 / 2
         
         timeBarView.backgroundColor = UIColor.blue
         timeBarViewWidth = self.timeBarView.frame.size.width
