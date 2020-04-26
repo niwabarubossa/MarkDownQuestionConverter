@@ -27,6 +27,8 @@
 		5447E4F324245EFD001E3350 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5447E4F224245EFD001E3350 /* StringExtension.swift */; };
 		545247242455172A0002AED8 /* MapGroupAllQuestion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 545247232455172A0002AED8 /* MapGroupAllQuestion.storyboard */; };
 		54524728245518400002AED8 /* MapGroupAllQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54524727245518400002AED8 /* MapGroupAllQuestionViewController.swift */; };
+		5452472B2455428D0002AED8 /* SimpleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545247292455428D0002AED8 /* SimpleTableViewCell.swift */; };
+		5452472C2455428D0002AED8 /* SimpleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5452472A2455428D0002AED8 /* SimpleTableViewCell.xib */; };
 		54676D91242F16AD00541EBE /* OpinionForm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54676D90242F16AD00541EBE /* OpinionForm.storyboard */; };
 		54676D93242F16DA00541EBE /* OpinionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54676D92242F16DA00541EBE /* OpinionFormViewController.swift */; };
 		54676D95242F179400541EBE /* OpinionFormButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54676D94242F179400541EBE /* OpinionFormButton.xib */; };
@@ -116,6 +118,8 @@
 		5447E4F224245EFD001E3350 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = MapConvertQuestion/StringExtension.swift; sourceTree = SOURCE_ROOT; };
 		545247232455172A0002AED8 /* MapGroupAllQuestion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapGroupAllQuestion.storyboard; sourceTree = "<group>"; };
 		54524727245518400002AED8 /* MapGroupAllQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapGroupAllQuestionViewController.swift; sourceTree = "<group>"; };
+		545247292455428D0002AED8 /* SimpleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableViewCell.swift; sourceTree = "<group>"; };
+		5452472A2455428D0002AED8 /* SimpleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleTableViewCell.xib; sourceTree = "<group>"; };
 		54676D90242F16AD00541EBE /* OpinionForm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpinionForm.storyboard; sourceTree = "<group>"; };
 		54676D92242F16DA00541EBE /* OpinionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpinionFormViewController.swift; sourceTree = "<group>"; };
 		54676D94242F179400541EBE /* OpinionFormButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpinionFormButton.xib; sourceTree = "<group>"; };
@@ -296,6 +300,7 @@
 				543CC703241DC45E0008BDE6 /* ToDoQuestionCompleteLabel.xib */,
 				54676D94242F179400541EBE /* OpinionFormButton.xib */,
 				542355432445DE4600135F0E /* AnswerOrWrongButton.xib */,
+				5452472A2455428D0002AED8 /* SimpleTableViewCell.xib */,
 			);
 			path = XibFile;
 			sourceTree = "<group>";
@@ -316,6 +321,7 @@
 				548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */,
 				54676D96242F1B7600541EBE /* OpinionFormButton.swift */,
 				542355452445DE8400135F0E /* AnswerOrWrongButton.swift */,
+				545247292455428D0002AED8 /* SimpleTableViewCell.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -459,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54F45E3823F917C5002981C8 /* MarkDownInput.xib in Resources */,
+				5452472C2455428D0002AED8 /* SimpleTableViewCell.xib in Resources */,
 				54F45E2C23F90AC3002981C8 /* LaunchScreen.storyboard in Resources */,
 				54C53B412418F361000EE76E /* Settings.storyboard in Resources */,
 				54A7DC712414BC1E009F7229 /* SelectQustionPageThemeView.xib in Resources */,
@@ -572,6 +579,7 @@
 				543E7FE7240E987D0073C7FF /* LearningIntervalStruct.swift in Sources */,
 				54B466AA2408BA3C00813800 /* ObjectExtension.swift in Sources */,
 				54A7DC732414BC69009F7229 /* SelectQustionPageThemeView.swift in Sources */,
+				5452472B2455428D0002AED8 /* SimpleTableViewCell.swift in Sources */,
 				5404BD03240A62F100B3C6EC /* QuestionMapSelectPageTableViewController.swift in Sources */,
 				5447E4F324245EFD001E3350 /* StringExtension.swift in Sources */,
 				542355462445DE8400135F0E /* AnswerOrWrongButton.swift in Sources */,
