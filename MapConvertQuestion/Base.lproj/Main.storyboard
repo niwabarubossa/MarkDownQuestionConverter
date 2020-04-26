@@ -16,12 +16,12 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Sf-rD-aPP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1825" y="-295"/>
+            <point key="canvasLocation" x="1809" y="-133"/>
         </scene>
-        <!--QuestionPage-->
+        <!--MapGroupAllQuestion-->
         <scene sceneID="6eZ-zh-sej">
             <objects>
-                <viewControllerPlaceholder storyboardName="QuestionPage" id="54S-re-5Cb" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="MapGroupAllQuestion" id="54S-re-5Cb" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="IC4-fO-evc"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDx-Is-6qZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -36,7 +36,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="osj-w0-iyY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1818" y="277"/>
+            <point key="canvasLocation" x="1782" y="-219"/>
         </scene>
         <!--MyPage-->
         <scene sceneID="j0f-0T-9m6">
@@ -46,7 +46,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k1E-YO-Vbj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1817" y="437"/>
+            <point key="canvasLocation" x="1817" y="86"/>
         </scene>
         <!--Root Tab Bar Controller-->
         <scene sceneID="GxP-Ba-LtK">
