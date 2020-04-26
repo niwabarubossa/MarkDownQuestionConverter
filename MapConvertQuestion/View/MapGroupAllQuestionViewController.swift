@@ -8,11 +8,11 @@
 
 import UIKit
 
-class MapGroupAllQuestionViewController: UIViewController {
+class MapGroupAllQuestionViewController: UINavigationController {
 
+    @IBOutlet weak var tableVIew: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
+    
 }

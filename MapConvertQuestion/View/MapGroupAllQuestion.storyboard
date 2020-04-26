@@ -8,27 +8,52 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map Group All Question View Controller-->
-        <scene sceneID="UHL-Lc-5oK">
+        <!--Navigation Controller-->
+        <scene sceneID="fEG-nh-eB7">
             <objects>
-                <viewController id="ntl-Xk-6ti" customClass="MapGroupAllQuestionViewController" customModule="MapConvertQuestion" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="SXx-Fr-V0n">
+                <navigationController id="5YZ-qe-j5c" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="v3x-R8-qNj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="GPv-ly-bap" kind="relationship" relationship="rootViewController" id="4mm-BQ-PB2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m3m-RK-hnP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="511" y="-84"/>
+        </scene>
+        <!--Map Group All Question View Controller-->
+        <scene sceneID="NGF-nY-4L6">
+            <objects>
+                <viewController id="GPv-ly-bap" customClass="MapGroupAllQuestionViewController" customModule="MapConvertQuestion" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eNM-EC-r69">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wnd-Ik-6OB">
-                                <rect key="frame" x="87" y="155" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lix-wj-Pzh">
+                                <rect key="frame" x="50" y="188" width="314" height="574"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="xUW-F2-52E"/>
+                        <constraints>
+                            <constraint firstItem="Lix-wj-Pzh" firstAttribute="top" secondItem="GV0-6L-Pbs" secondAttribute="top" constant="100" id="9Lt-ka-WQa"/>
+                            <constraint firstItem="GV0-6L-Pbs" firstAttribute="bottom" secondItem="Lix-wj-Pzh" secondAttribute="bottom" constant="100" id="9hA-CE-jNG"/>
+                            <constraint firstItem="GV0-6L-Pbs" firstAttribute="trailing" secondItem="Lix-wj-Pzh" secondAttribute="trailing" constant="50" id="RKi-8y-3ha"/>
+                            <constraint firstItem="Lix-wj-Pzh" firstAttribute="leading" secondItem="GV0-6L-Pbs" secondAttribute="leading" constant="50" id="Zhj-cn-hIc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GV0-6L-Pbs"/>
                     </view>
+                    <navigationItem key="navigationItem" id="icL-M2-F24"/>
+                    <connections>
+                        <outlet property="tableVIew" destination="Lix-wj-Pzh" id="WAo-L4-zwj"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rzk-P6-GfI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5h7-sz-Msu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-175" y="-74"/>
+            <point key="canvasLocation" x="1638" y="-85"/>
         </scene>
     </scenes>
 </document>
