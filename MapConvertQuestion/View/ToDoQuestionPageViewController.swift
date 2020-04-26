@@ -267,7 +267,10 @@ extension ToDoQuestionPageViewController:AnswerOrWrongButtonProtocol{
     func wrongButtonTapped() {
         presenter.trailingSwipeQuestion(swipedAnswer: presenter.answerNodeArray[presenter.focusAnswerIndex])
     }
-
+    
+    func abandonButtonTapped(){
+        presenter.abandonQuestionButtonTapped()
+    }
 }
 
 extension ToDoQuestionPageViewController:ButtonStackViewDelegate{

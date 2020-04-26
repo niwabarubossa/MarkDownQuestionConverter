@@ -36,9 +36,15 @@ class AnswerOrWrongButton: UIView {
     @IBAction func wrongButtonTapped(_ sender: Any) {
         self.delegate?.wrongButtonTapped()
     }
+    
+    @IBAction func abandonButtonTapped(_ sender: Any) {
+        self.delegate?.abandonButtonTapped()
+    }
+    
 }
 
 protocol AnswerOrWrongButtonProtocol:class{
     func correctButtonTapped()
     func wrongButtonTapped()
+    func abandonButtonTapped()
 }
