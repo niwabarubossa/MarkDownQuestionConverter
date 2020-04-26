@@ -18,15 +18,24 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="81"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNw-vc-BQz">
-                            <rect key="frame" x="0.0" y="0.0" width="207" height="81"/>
+                            <rect key="frame" x="0.0" y="0.0" width="136.5" height="81"/>
                             <color key="backgroundColor" red="0.36477916656130904" green="1" blue="0.16209576765473444" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" image="correct"/>
                             <connections>
                                 <action selector="correctButtonTapped:" destination="-1" eventType="touchUpInside" id="uuC-lR-GTL"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kug-0B-abr">
+                            <rect key="frame" x="136.5" y="0.0" width="141" height="81"/>
+                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="23"/>
+                            <state key="normal" title="Not Quiz"/>
+                            <connections>
+                                <action selector="abandonButtonTapped:" destination="-1" eventType="touchUpInside" id="Z43-pX-cU4"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8I-kI-mMx">
-                            <rect key="frame" x="207" y="0.0" width="207" height="81"/>
+                            <rect key="frame" x="277.5" y="0.0" width="136.5" height="81"/>
                             <color key="backgroundColor" red="1" green="0.37199067321625146" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" image="wrong-1"/>
                             <connections>
@@ -35,8 +44,8 @@
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="XNw-vc-BQz" firstAttribute="width" secondItem="umE-8T-CQf" secondAttribute="width" multiplier="0.5" id="N3H-84-tEb"/>
-                        <constraint firstItem="T8I-kI-mMx" firstAttribute="width" secondItem="umE-8T-CQf" secondAttribute="width" multiplier="0.5" id="ac2-57-IAt"/>
+                        <constraint firstItem="XNw-vc-BQz" firstAttribute="width" secondItem="umE-8T-CQf" secondAttribute="width" multiplier="0.33" id="N3H-84-tEb"/>
+                        <constraint firstItem="T8I-kI-mMx" firstAttribute="width" secondItem="umE-8T-CQf" secondAttribute="width" multiplier="0.33" id="ac2-57-IAt"/>
                     </constraints>
                 </stackView>
             </subviews>

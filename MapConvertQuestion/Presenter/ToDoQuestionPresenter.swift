@@ -134,6 +134,7 @@ class ToDoQuestionPresenter:QuestionModelDelegate,RealmCreateProtocol,RealmNodeJ
         if let removeIndex =  self.quizDataSource.firstIndex(of: removeQuestion) {
             self.quizDataSource.remove(at: removeIndex)
         }
+        self.userModel.userShared.updateUserData(updateKeyValueArray: ["todayQuota": self.user.todayQuota - 1], updateUser: self.user)
         self.notifyToQuestionModelView()
         self.nextQuestionButtonTapped()
     }
