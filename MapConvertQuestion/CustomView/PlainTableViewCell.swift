@@ -1,5 +1,5 @@
 //
-//  SimpleTableViewCell.swift
+//  PlainTableViewCell.swift
 //  MapConvertQuestion
 //
 //  Created by 丹羽遼吾 on 2020/04/26.
@@ -8,23 +8,19 @@
 
 import UIKit
 
-class SimpleTableViewCell: UITableViewCell {
+class PlainTableViewCell: UITableViewCell {
 
-//    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var myLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-//        self.setUpCell()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-//        self.setUpCell()
+
+        // Configure the view for the selected state
     }
-    
-    private func setUpCell(){
-//        self.titleLabel.font = UIFont(name: LetGroup.baseFontName, size: 20)
-    }
+
 }

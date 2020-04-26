@@ -16,21 +16,21 @@ class MapGroupAllQuestionViewController: UIViewController {
     }
     @IBOutlet weak var myTableView: UITableView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         //viewdidload内部
         self.myTableView.delegate = self
         self.myTableView.dataSource = self
-        self.myTableView.register(SimpleTableViewCell.createXib(), forCellReuseIdentifier: SimpleTableViewCell.className)
+        self.myTableView.register(PlainTableViewCell.createXib(), forCellReuseIdentifier: PlainTableViewCell.className)
     }
 }
 
 extension MapGroupAllQuestionViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = myTableView.dequeueReusableCell(withIdentifier: SimpleTableViewCell.className, for: indexPath ) as! SimpleTableViewCell
+        let cell = myTableView.dequeueReusableCell(withIdentifier: PlainTableViewCell.className, for: indexPath ) as! PlainTableViewCell
         cell.selectionStyle = .none
-//        cell.titleLabel.text = self.dataSource[indexPath.row]["title"]
+//        cell.contentLabel.text = self.dataSource[indexPath.row]["title"]
+        cell.contentLabel.text = self.dataSource[indexPath.row]["title"]
         return cell
     }
     
