@@ -301,6 +301,7 @@
 				54676D94242F179400541EBE /* OpinionFormButton.xib */,
 				542355432445DE4600135F0E /* AnswerOrWrongButton.xib */,
 				5408502A2455A29900FAAF3E /* PlainTableViewCell.xib */,
+				540850282455A1F900FAAF3E /* PlainTableViewCell.swift */,
 			);
 			path = XibFile;
 			sourceTree = "<group>";
@@ -321,7 +322,6 @@
 				548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */,
 				54676D96242F1B7600541EBE /* OpinionFormButton.swift */,
 				542355452445DE8400135F0E /* AnswerOrWrongButton.swift */,
-				540850282455A1F900FAAF3E /* PlainTableViewCell.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";

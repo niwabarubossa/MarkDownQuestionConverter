@@ -30,7 +30,8 @@ extension MapGroupAllQuestionViewController: UITableViewDataSource,UITableViewDe
         let cell = myTableView.dequeueReusableCell(withIdentifier: PlainTableViewCell.className, for: indexPath ) as! PlainTableViewCell
         cell.selectionStyle = .none
 //        cell.contentLabel.text = self.dataSource[indexPath.row]["title"]
-        cell.contentLabel.text = self.dataSource[indexPath.row]["title"]
+        cell.contentLabelText = self.dataSource[indexPath.row]["title"] ?? "no title"
+//        cell.contentLabel.text = self.dataSource[indexPath.row]["title"]
         return cell
     }
     
