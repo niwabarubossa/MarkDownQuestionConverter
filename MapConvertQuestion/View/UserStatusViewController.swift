@@ -38,7 +38,7 @@ class UserStatusViewController: UIViewController {
         timeBarView.frame = CGRect(x: 0, y: 0, width: 0.0, height: timeBarBaseView.frame.size.height)
         timeBarBaseView.layer.cornerRadius = 15 / 2
         timeBarView.layer.cornerRadius = 15 / 2
-        timeBarView.backgroundColor = UIColor.blue
+        timeBarView.backgroundColor = UIColor.orange
         timeBarBaseView.addSubview(self.timeBarView)
     }
     

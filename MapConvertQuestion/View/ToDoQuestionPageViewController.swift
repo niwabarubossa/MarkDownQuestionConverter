@@ -57,7 +57,7 @@ class ToDoQuestionPageViewController: UIViewController{
         let customView = R.storyboard.userStatusViewController.instantiateInitialViewController()!
         let widthConstraint = customView.view.widthAnchor.constraint(equalToConstant: view.frame.width)
         widthConstraint.isActive = true
-        let heightConstraint = customView.view.heightAnchor.constraint(equalToConstant: 230)
+        let heightConstraint = customView.view.heightAnchor.constraint(equalToConstant: 250)
         heightConstraint.isActive = true
         customView.view.backgroundColor = .white
         customView.expDelta = Double(self.presenter.expDelta) //代入される
