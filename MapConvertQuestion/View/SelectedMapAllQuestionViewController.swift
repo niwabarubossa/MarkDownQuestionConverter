@@ -12,7 +12,9 @@ class SelectedMapAllQuestionViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     let mindNodeShared = RealmMindNodeAccessor.sharedInstance
-    var dataSource = [RealmMindNodeModel]()
+    var quizDataSource = [RealmMindNodeModel]()
+    var tableViewDataSource = [Dictionary<String,Any>]()
+    var answerNodeArray = [RealmMindNodeModel]()
     var mapID:String = ""
     
     override func viewDidLoad() {
@@ -22,9 +24,14 @@ class SelectedMapAllQuestionViewController: UIViewController {
     }
     
     private func getMapGroupQuestion(){
-        let questionNodeArray = mindNodeShared.getNodeByMapIdGroup(mapId: self.mapID)
-        for question in questionNodeArray {
-            self.dataSource.append(question)
+        self.quizDataSource = mindNodeShared.getNodeByMapIdGroup(mapId: self.mapID)
+        self.answerNodeArray = mindNodeShared.getMapGroupAnswer(mapId:self.mapID)
+        for node in quizDataSource {
+            let data = [
+                "content": "Q." + node.content.replacingOccurrences(of:"\t", with:""),
+                "isAlreadAnswerGet":false
+                ] as [String : Any]
+            self.tableViewDataSource.append(data)
         }
         self.tableView.reloadData()
     }
@@ -41,22 +48,25 @@ extension SelectedMapAllQuestionViewController: UITableViewDataSource,UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionAndAnswerTableViewCell.className, for: indexPath ) as! QuestionAndAnswerTableViewCell
-        cell.selectionStyle = .none
-        cell.contentLabel.text = self.dataSource[indexPath.row].content.replacingOccurrences(of:"\t", with:"")
+        cell.contentLabel.text = self.tableViewDataSource[indexPath.row]["content"] as? String
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return tableViewDataSource.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let tappedNode = self.dataSource[indexPath.row]
-        for childNodeId in tappedNode.childNodeIdArray {
-            let answerNode = mindNodeShared.searchByPrimaryKey(node: <#T##RealmMindNodeModel#>)
-            self.dataSource[indexPath.row].content += "\n" + answerNode.content.replacingOccurrences(of:"\t", with:"")
+        let tappedNode = self.quizDataSource[indexPath.row]
+        let parentNodePrimaryKey = tappedNode.nodePrimaryKey
+        let answerNodeContent =  self.answerNodeArray.filter({ $0.parentNodePrimaryKey == parentNodePrimaryKey })
+        if self.tableViewDataSource[indexPath.row]["isAlreadAnswerGet"] as! Bool == false {
+            self.tableViewDataSource[indexPath.row]["isAlreadAnswerGet"] = true
+            for answerNodeContent in answerNodeContent {
+                self.tableViewDataSource[indexPath.row]["content"] = (self.tableViewDataSource[indexPath.row]["content"] as! String ) + "\n" + "A." + answerNodeContent.content.replacingOccurrences(of:"\t", with:"")
+            }
         }
-        self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        self.tableView.reloadRows(at: [indexPath], with: .bottom)
     }
     
 }

@@ -15,10 +15,24 @@ class RealmMindNodeAccessor {
     private init() {
     }
     
-    func getNodeByMapIdGroup(mapId:String) -> Results<RealmMindNodeModel> {
+    func getNodeByMapIdGroup(mapId:String) -> [RealmMindNodeModel] {
+        let answerArray = self.getMapGroupAnswer(mapId:mapId)
+        var questionArray = [RealmMindNodeModel]()
+        for answerNode in answerArray {
+            let questionNode = self.searchNodeByPrimaryKey(primaryKey: answerNode.parentNodePrimaryKey)
+            questionArray.append(questionNode)
+        }
+        return questionArray
+    }
+    
+    func getMapGroupAnswer(mapId:String) -> [RealmMindNodeModel]{
         let realm = try! Realm()
-        let results = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId)
-        return results
+        let answerArray = realm.objects(RealmMindNodeModel.self).filter("mapId == %@", mapId).filter("isAnswer == %@",true)
+        var returnAnswerArray = [RealmMindNodeModel]()
+        for answerNode in answerArray {
+            returnAnswerArray.append(answerNode)
+        }
+        return returnAnswerArray
     }
     
     func getTodayAnswer() -> Results<RealmMindNodeModel> {
@@ -27,6 +41,16 @@ class RealmMindNodeAccessor {
         let results = realm.objects(RealmMindNodeModel.self).filter("nextDate BETWEEN {0, \(todayEnd)}").filter("isAnswer == %@",true).sorted(byKeyPath: "ifSuccessInterval", ascending: false).sorted(byKeyPath: "nextDate", ascending: true)
         return results
     }
+    
+    func getNodeByParentNodeId(parentNodeId:String) -> RealmMindNodeModel {
+        let realm = try! Realm()
+        let todayEnd = LetGroup.todayEndMili
+        if let result = realm.objects(RealmMindNodeModel.self).filter("parentNodeId == %@",parentNodeId).first{
+            return result
+        }
+        return RealmMindNodeModel()
+    }
+
     
     func getToDoQuestion() -> [RealmMindNodeModel] {
         let answerNodeArray = self.getTodayAnswer()
