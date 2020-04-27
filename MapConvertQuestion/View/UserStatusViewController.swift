@@ -28,6 +28,7 @@ class UserStatusViewController: UIViewController {
 
     @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var timeBarBaseView: UIView!
+    @IBOutlet weak var experienceLabel: UILabel!
     var timeBarView = UIView()
     private var timeBarViewWidth: CGFloat = 0.0
     
@@ -37,12 +38,13 @@ class UserStatusViewController: UIViewController {
         timeBarView.frame = CGRect(x: 0, y: 0, width: 0.0, height: timeBarBaseView.frame.size.height)
         timeBarBaseView.layer.cornerRadius = 15 / 2
         timeBarView.layer.cornerRadius = 15 / 2
-        timeBarView.backgroundColor = UIColor.blue
+        timeBarView.backgroundColor = UIColor.orange
         timeBarBaseView.addSubview(self.timeBarView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        self.experienceLabel.text = String(self.user.totalCharactersAmount) + "(+" + String(self.expDelta) + ")"
         self.displayLevel = Int(self.user.level) - self.howManyLevelUp
         self.displayLabel.text = String(self.displayLevel)
         let bunboExpDesu = CGFloat(getNeedExpAmount(level: Int(user.level) + 1))  - CGFloat(getNeedExpAmount(level: Int(user.level)))
@@ -105,6 +107,10 @@ class UserStatusViewController: UIViewController {
             }
         )
     }
+    @IBAction func dismissButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 extension UserStatusViewController{
@@ -142,4 +148,6 @@ extension UserStatusViewController{
             completion: nil
         )
     }
+    
+    
 }

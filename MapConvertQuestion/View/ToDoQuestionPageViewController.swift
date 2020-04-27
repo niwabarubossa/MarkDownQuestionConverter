@@ -52,14 +52,14 @@ class ToDoQuestionPageViewController: UIViewController{
         attributes.entryBackground = .color(color: .white)
         attributes.entranceAnimation = .none
         attributes.exitAnimation = .translation
-        attributes.screenInteraction = .dismiss
+        attributes.screenInteraction = .absorbTouches
 //        let customView = R.storyboard.userStatusViewController().instantiateInitialViewController()!
         let customView = R.storyboard.userStatusViewController.instantiateInitialViewController()!
         let widthConstraint = customView.view.widthAnchor.constraint(equalToConstant: view.frame.width)
         widthConstraint.isActive = true
-        let heightConstraint = customView.view.heightAnchor.constraint(equalToConstant: 300)
+        let heightConstraint = customView.view.heightAnchor.constraint(equalToConstant: 250)
         heightConstraint.isActive = true
-        customView.view.backgroundColor = .orange
+        customView.view.backgroundColor = .white
         customView.expDelta = Double(self.presenter.expDelta) //代入される
         
         SwiftEntryKit.display(entry: customView, using: attributes)
