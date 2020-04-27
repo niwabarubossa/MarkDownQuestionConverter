@@ -17,16 +17,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lix-wj-Pzh">
-                                <rect key="frame" x="50" y="188" width="314" height="525"/>
+                                <rect key="frame" x="20" y="183" width="374" height="610"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Your Map" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxX-aL-a8b">
+                                <rect key="frame" x="136.5" y="118" width="141" height="35"/>
+                                <fontDescription key="fontDescription" name="KohinoorTelugu-Light" family="Kohinoor Telugu" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Lix-wj-Pzh" firstAttribute="top" secondItem="GV0-6L-Pbs" secondAttribute="top" constant="100" id="9Lt-ka-WQa"/>
-                            <constraint firstItem="GV0-6L-Pbs" firstAttribute="bottom" secondItem="Lix-wj-Pzh" secondAttribute="bottom" constant="100" id="9hA-CE-jNG"/>
-                            <constraint firstItem="GV0-6L-Pbs" firstAttribute="trailing" secondItem="Lix-wj-Pzh" secondAttribute="trailing" constant="50" id="RKi-8y-3ha"/>
-                            <constraint firstItem="Lix-wj-Pzh" firstAttribute="leading" secondItem="GV0-6L-Pbs" secondAttribute="leading" constant="50" id="Zhj-cn-hIc"/>
+                            <constraint firstItem="GV0-6L-Pbs" firstAttribute="bottom" secondItem="Lix-wj-Pzh" secondAttribute="bottom" constant="20" id="3If-vP-KqJ"/>
+                            <constraint firstItem="LxX-aL-a8b" firstAttribute="centerX" secondItem="eNM-EC-r69" secondAttribute="centerX" id="AOT-Hh-t6B"/>
+                            <constraint firstItem="GV0-6L-Pbs" firstAttribute="trailing" secondItem="Lix-wj-Pzh" secondAttribute="trailing" constant="20" id="Diw-Ky-Utl"/>
+                            <constraint firstItem="Lix-wj-Pzh" firstAttribute="top" secondItem="LxX-aL-a8b" secondAttribute="bottom" constant="30" id="XbZ-5p-tuL"/>
+                            <constraint firstItem="Lix-wj-Pzh" firstAttribute="leading" secondItem="GV0-6L-Pbs" secondAttribute="leading" constant="20" id="ZCb-Ax-umJ"/>
+                            <constraint firstItem="LxX-aL-a8b" firstAttribute="top" secondItem="GV0-6L-Pbs" secondAttribute="top" constant="30" id="ch7-g8-emj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GV0-6L-Pbs"/>
                     </view>
@@ -50,16 +58,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QSk-bM-m3o">
-                                <rect key="frame" x="50" y="138" width="314" height="625"/>
+                                <rect key="frame" x="20" y="176" width="374" height="700"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Question! Get Answer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BX8-l6-OyK">
+                                <rect key="frame" x="88.5" y="118" width="237" height="28"/>
+                                <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="QSk-bM-m3o" firstAttribute="leading" secondItem="t8d-ay-xra" secondAttribute="leading" constant="50" id="9Pr-NG-Tiz"/>
-                            <constraint firstItem="QSk-bM-m3o" firstAttribute="top" secondItem="t8d-ay-xra" secondAttribute="top" constant="50" id="SUU-FS-IzC"/>
-                            <constraint firstItem="t8d-ay-xra" firstAttribute="trailing" secondItem="QSk-bM-m3o" secondAttribute="trailing" constant="50" id="Xcb-tI-r4t"/>
-                            <constraint firstItem="t8d-ay-xra" firstAttribute="bottom" secondItem="QSk-bM-m3o" secondAttribute="bottom" constant="50" id="YNa-pM-rFk"/>
+                            <constraint firstItem="QSk-bM-m3o" firstAttribute="leading" secondItem="t8d-ay-xra" secondAttribute="leading" constant="20" id="1VZ-hG-QJh"/>
+                            <constraint firstItem="BX8-l6-OyK" firstAttribute="centerX" secondItem="3Cf-VM-AXB" secondAttribute="centerX" id="8Dn-Kf-soW"/>
+                            <constraint firstItem="t8d-ay-xra" firstAttribute="trailing" secondItem="QSk-bM-m3o" secondAttribute="trailing" constant="20" id="9kY-NF-HmW"/>
+                            <constraint firstAttribute="bottom" secondItem="QSk-bM-m3o" secondAttribute="bottom" constant="20" id="a4k-Xm-CSQ"/>
+                            <constraint firstItem="BX8-l6-OyK" firstAttribute="top" secondItem="t8d-ay-xra" secondAttribute="top" constant="30" id="oeW-uI-Z13"/>
+                            <constraint firstItem="QSk-bM-m3o" firstAttribute="top" secondItem="BX8-l6-OyK" secondAttribute="bottom" constant="30" id="qHU-BP-dGH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="t8d-ay-xra"/>
                     </view>
