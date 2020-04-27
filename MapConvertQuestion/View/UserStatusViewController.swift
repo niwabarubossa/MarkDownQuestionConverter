@@ -28,6 +28,7 @@ class UserStatusViewController: UIViewController {
 
     @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var timeBarBaseView: UIView!
+    @IBOutlet weak var experienceLabel: UILabel!
     var timeBarView = UIView()
     private var timeBarViewWidth: CGFloat = 0.0
     
@@ -43,6 +44,7 @@ class UserStatusViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        self.experienceLabel.text = String(self.user.totalCharactersAmount) + "(+" + String(self.expDelta) + ")"
         self.displayLevel = Int(self.user.level) - self.howManyLevelUp
         self.displayLabel.text = String(self.displayLevel)
         let bunboExpDesu = CGFloat(getNeedExpAmount(level: Int(user.level) + 1))  - CGFloat(getNeedExpAmount(level: Int(user.level)))
