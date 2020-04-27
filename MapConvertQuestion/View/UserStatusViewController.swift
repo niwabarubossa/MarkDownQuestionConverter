@@ -22,57 +22,43 @@ class UserStatusViewController: UIViewController {
     
     private var updatedUserLevel = 68 //代入される
     private var beforeLevel = 30 // user.level - howManyLevelUp
+    private var displayLevel = 0
+    private var tempLebel = 0
     private var user:User = RealmUserAccessor.sharedInstance.getUserData()
 
-    
+    @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var timeBarBaseView: UIView!
     var timeBarView = UIView()
     private var timeBarViewWidth: CGFloat = 0.0
     
     override func viewDidLoad() {
-        //FIXME accessor直接操作は良くない
         super.viewDidLoad()
-         
-        let beforeLevel = Int(self.user.level) - self.howManyLevelUp
-        let bunboExp:CGFloat = CGFloat(self.getNeedExpAmount(level: beforeLevel)) -  CGFloat(self.getNeedExpAmount(level: beforeLevel - 1))
-        let tempUserAllExp = CGFloat(self.user.totalCharactersAmount)
-        let tempbeforeExp:CGFloat = tempUserAllExp - CGFloat(self.expDelta)
-        let tempbunsiExp:CGFloat = tempbeforeExp - CGFloat(self.getNeedExpAmount(level: beforeLevel - 1))
-        let startPercent:CGFloat = CGFloat((tempbunsiExp / bunboExp))
-//        timeBarViewWidth = startPercent * self.timeBarBaseView.frame.size.width
-        timeBarViewWidth = 0.0
         timeBarView.isHidden = true
-        
-        timeBarView.frame = CGRect(x: 0, y: 0, width: timeBarViewWidth, height: timeBarBaseView.frame.size.height)
+        timeBarView.frame = CGRect(x: 0, y: 0, width: 0.0, height: timeBarBaseView.frame.size.height)
         timeBarBaseView.layer.cornerRadius = 15 / 2
         timeBarView.layer.cornerRadius = 15 / 2
-        
         timeBarView.backgroundColor = UIColor.blue
-        timeBarViewWidth = self.timeBarView.frame.size.width
         timeBarBaseView.addSubview(self.timeBarView)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-//        timeBarViewWidth = CGFloat((bunsiExp / bunboExp)) * self.timeBarBaseView.frame.size.width
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        let bunboExpDesu = CGFloat(getNeedExpAmount(level: Int(user.level)))  - CGFloat(getNeedExpAmount(level: Int(user.level) - 1))
-        let endPercent:CGFloat = CGFloat( ( CGFloat(self.nowExp) - CGFloat(getNeedExpAmount(level: Int(user.level) - 1)) ) / bunboExpDesu )
-        
-        let beforeLevel = Int(self.user.level) - self.howManyLevelUp
-        let bunboExp:CGFloat = CGFloat(self.getNeedExpAmount(level: beforeLevel)) -  CGFloat(self.getNeedExpAmount(level: beforeLevel - 1))
+        self.displayLevel = Int(self.user.level) - self.howManyLevelUp
+        self.displayLabel.text = String(self.displayLevel)
+        let bunboExpDesu = CGFloat(getNeedExpAmount(level: Int(user.level) + 1))  - CGFloat(getNeedExpAmount(level: Int(user.level)))
+        let endPercent:CGFloat = CGFloat( ( CGFloat(self.nowExp) - CGFloat(getNeedExpAmount(level: Int(user.level))) ) / bunboExpDesu )
+                
+        self.beforeLevel = Int(self.user.level) - self.howManyLevelUp
+        let bunboExp:CGFloat = CGFloat(self.getNeedExpAmount(level: beforeLevel + 1)) -  CGFloat(self.getNeedExpAmount(level: beforeLevel))
         let tempUserAllExp = CGFloat(self.user.totalCharactersAmount)
         let beforeExp:CGFloat = tempUserAllExp - CGFloat(self.expDelta)
-        let bunsiExp:CGFloat = beforeExp - CGFloat(self.getNeedExpAmount(level: beforeLevel - 1))
+        let bunsiExp:CGFloat = beforeExp - CGFloat(self.getNeedExpAmount(level: beforeLevel))
         let startPercent:CGFloat = CGFloat((bunsiExp / bunboExp))
+        self.setupExpBar(startPercent:startPercent)
 
         if howManyLevelUp > 1 {
             var totalTime:Int = 0
-            for i in 1..<howManyLevelUp {
+            for i in 1...howManyLevelUp {
                 totalTime += i
                 timeBarView.isHidden = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) ) {
@@ -100,6 +86,12 @@ class UserStatusViewController: UIViewController {
         }
     }
     
+    private func setupExpBar(startPercent:CGFloat){
+        timeBarViewWidth = startPercent * timeBarBaseView.frame.size.width
+        timeBarView.isHidden = false
+        timeBarView.frame = CGRect(x: 0, y: 0, width: timeBarViewWidth, height: timeBarBaseView.frame.size.height)
+    }
+    
     private func levelUpUI(count:Int,start: CGFloat){
         let startWidth = start * self.timeBarBaseView.frame.size.width
         self.timeBarView.frame = CGRect(x: 0, y: 0, width: startWidth, height: self.timeBarBaseView.frame.size.height)
@@ -108,6 +100,8 @@ class UserStatusViewController: UIViewController {
             },
             completion: { (finished) in
                 self.timeBarView.frame = CGRect(x: self.timeBarView.frame.minX, y:  self.timeBarView.frame.minY, width: 0, height: self.timeBarView.frame.size.height)
+                self.displayLevel += 1
+                self.displayLabel.text = String(self.displayLevel)
             }
         )
     }
@@ -124,18 +118,19 @@ extension UserStatusViewController{
       return level
     }
 
+    
     func getNeedExpAmount(level:Int) -> Int{
-        if level - 1  == 1 { return 30 }
-        if level - 1 <= 0 { return 0 }
+        if level <= 0 { return 0 }
+        if level == 1 { return 30 }
         var nextExpAmount = 30.0
-        var ruijou_1_1 = 1.1
+        var ruijou_1_1 = 1.0
         for _ in 1..<level {
             ruijou_1_1 = ruijou_1_1 * 1.1 // 1.1^n-1
             nextExpAmount = (330 * ruijou_1_1) - 270
         }
         return Int(nextExpAmount)
     }
-    
+
     private func progressAnimationFromTo(start:CGFloat,end:CGFloat){
         let baseView = self.timeBarBaseView
         let startWidth =  start * (baseView?.frame.size.width ?? 0)

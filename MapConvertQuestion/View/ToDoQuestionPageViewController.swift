@@ -36,7 +36,7 @@ class ToDoQuestionPageViewController: UIViewController{
         tableViewSetup()
         layout()
         initializePage()
-        self.setupLocationManager()
+//        self.setupLocationManager()
         self.setupAdmob()
     }
     
