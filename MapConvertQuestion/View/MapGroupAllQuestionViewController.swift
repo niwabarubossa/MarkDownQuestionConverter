@@ -14,6 +14,7 @@ class MapGroupAllQuestionViewController: UIViewController {
     var dataSource:[Dictionary<String,String>]{
         return mindNodeShared.getAllTitle()
     }
+    var selectedData:Dictionary<String,String> = [:]
     @IBOutlet weak var myTableView: UITableView!
     
     override func viewDidLoad() {
@@ -29,13 +30,24 @@ extension MapGroupAllQuestionViewController: UITableViewDataSource,UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myTableView.dequeueReusableCell(withIdentifier: PlainTableViewCell.className, for: indexPath ) as! PlainTableViewCell
         cell.selectionStyle = .none
-//        cell.contentLabel.text = self.dataSource[indexPath.row]["title"]
         cell.contentLabelText = self.dataSource[indexPath.row]["title"] ?? "no title"
-//        cell.contentLabel.text = self.dataSource[indexPath.row]["title"]
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedData = self.dataSource[indexPath.row]
+        performSegue(withIdentifier: R.segue.mapGroupAllQuestionViewController.showDetailSegue.identifier, sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == R.segue.mapGroupAllQuestionViewController.showDetailSegue.identifier {
+            let vc = segue.destination as! SelectedMapAllQuestionViewController
+            vc.mapID = self.selectedData["mapId"] ?? "errorMapId"
+        }
+    }
+    
 }

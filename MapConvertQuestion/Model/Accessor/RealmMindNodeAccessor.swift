@@ -75,6 +75,15 @@ class RealmMindNodeAccessor {
         return RealmMindNodeModel()
     }
     
+    func searchNodeByPrimaryKey(primaryKey:String) -> RealmMindNodeModel{
+        let realm = try! Realm()
+        if let searchResult:RealmMindNodeModel = realm.objects(RealmMindNodeModel.self).filter("nodePrimaryKey == %@", primaryKey).first {
+            return searchResult
+        }
+        return RealmMindNodeModel()
+    }
+
+    
     func createMindNode(realmDataArray: [[String: Any]],mapId: String){
         do {
             let realm = try Realm()

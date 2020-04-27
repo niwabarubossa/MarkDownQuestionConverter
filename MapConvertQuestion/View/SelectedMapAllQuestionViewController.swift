@@ -11,16 +11,22 @@ import UIKit
 class SelectedMapAllQuestionViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var dataSource:[Dictionary<String,String>] = [
-        ["test":"test"],
-        ["test":"test"],
-        ["test":"test"]
-    ]
+    let mindNodeShared = RealmMindNodeAccessor.sharedInstance
+    var dataSource = [RealmMindNodeModel]()
+    var mapID:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableViewSetup()
-
+        self.getMapGroupQuestion()
+    }
+    
+    private func getMapGroupQuestion(){
+        let questionNodeArray = mindNodeShared.getNodeByMapIdGroup(mapId: self.mapID)
+        for question in questionNodeArray {
+            self.dataSource.append(question)
+        }
+        self.tableView.reloadData()
     }
 
 }
@@ -36,12 +42,21 @@ extension SelectedMapAllQuestionViewController: UITableViewDataSource,UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionAndAnswerTableViewCell.className, for: indexPath ) as! QuestionAndAnswerTableViewCell
         cell.selectionStyle = .none
-        cell.contentLabel.text = self.dataSource[indexPath.row]["test"]
+        cell.contentLabel.text = self.dataSource[indexPath.row].content.replacingOccurrences(of:"\t", with:"")
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let tappedNode = self.dataSource[indexPath.row]
+        for childNodeId in tappedNode.childNodeIdArray {
+            let answerNode = mindNodeShared.searchByPrimaryKey(node: <#T##RealmMindNodeModel#>)
+            self.dataSource[indexPath.row].content += "\n" + answerNode.content.replacingOccurrences(of:"\t", with:"")
+        }
+        self.tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
 }
