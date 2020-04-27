@@ -105,6 +105,10 @@ class UserStatusViewController: UIViewController {
             }
         )
     }
+    @IBAction func dismissButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 extension UserStatusViewController{
@@ -142,4 +146,6 @@ extension UserStatusViewController{
             completion: nil
         )
     }
+    
+    
 }

@@ -52,7 +52,7 @@ class ToDoQuestionPageViewController: UIViewController{
         attributes.entryBackground = .color(color: .white)
         attributes.entranceAnimation = .none
         attributes.exitAnimation = .translation
-        attributes.screenInteraction = .dismiss
+        attributes.screenInteraction = .absorbTouches
 //        let customView = R.storyboard.userStatusViewController().instantiateInitialViewController()!
         let customView = R.storyboard.userStatusViewController.instantiateInitialViewController()!
         let widthConstraint = customView.view.widthAnchor.constraint(equalToConstant: view.frame.width)
