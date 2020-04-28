@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map Group All Question View Controller-->
+        <!--List-->
         <scene sceneID="NGF-nY-4L6">
             <objects>
                 <viewController id="GPv-ly-bap" customClass="MapGroupAllQuestionViewController" customModule="MapConvertQuestion" customModuleProvider="target" sceneMemberID="viewController">
@@ -38,6 +38,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GV0-6L-Pbs"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="List" image="list" id="xPW-xy-Byi"/>
                     <navigationItem key="navigationItem" id="icL-M2-F24"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -108,4 +109,7 @@
             <point key="canvasLocation" x="1637.68115942029" y="-85.044642857142847"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="list" width="32" height="32"/>
+    </resources>
 </document>
