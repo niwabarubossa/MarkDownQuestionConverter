@@ -13,6 +13,10 @@ class NotifyTimeDecideView: UIView {
     weak var delegate: NotifyTimeDecideViewDelegate?
     @IBOutlet weak var timePicker: UIDatePicker!
     
+    @IBOutlet weak var firstButton: UIButton!
+    @IBOutlet weak var secondButton: UIButton!
+    @IBOutlet weak var thirdButton: UIButton!
+    @IBOutlet weak var fourthButton: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,15 +33,56 @@ class NotifyTimeDecideView: UIView {
             view.frame = self.bounds
             self.addSubview(view)
          }
-        timePicker.locale = Locale.autoupdatingCurrent
+        self.setupTimePicker()
     }
     
+    private func setupTimePicker(){
+        timePicker.locale = Locale.autoupdatingCurrent
+        timePicker.timeZone = NSTimeZone.local
+        timePicker.minuteInterval = 10
+        timePicker.addTarget(self, action: #selector(dateChange), for: .valueChanged)
+        self.timePicker.isHidden = true
+    }
+    
+    @objc func dateChange(){
+        print("date change")
+    }
+
     private func getLocalDateTimeString(_ date:Date? = Date() )->String {
         if date == nil {return "--/--"}
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale.autoupdatingCurrent
         dateFormatter.dateFormat = "HH/mm"
         return dateFormatter.string(from: date!) as String
+    }
+    
+    private func isRaddioButtonControl(selectedButton:UIButton){
+        let btnArray = [firstButton,secondButton,thirdButton,fourthButton]
+        for button in btnArray {
+            self.buttonInactivate(button:button!)
+        }
+        self.buttonActivate(button:selectedButton)
+    }
+    
+    private func buttonInactivate(button:UIButton){
+        button.alpha = 0.3
+    }
+    
+    private func buttonActivate(button:UIButton){
+        button.alpha = 0.0
+    }
+    
+    @IBAction func firstButtonTapped(_ sender: Any) {
+        self.isRaddioButtonControl(selectedButton: firstButton)
+    }
+    @IBAction func secondButtonTapped(_ sender: Any) {
+        self.isRaddioButtonControl(selectedButton: secondButton)
+    }
+    @IBAction func thirdButtonTapped(_ sender: Any) {
+        self.isRaddioButtonControl(selectedButton: thirdButton)
+    }
+    @IBAction func fourthButtonTapped(_ sender: Any) {
+        self.isRaddioButtonControl(selectedButton: fourthButton)
     }
     
     
