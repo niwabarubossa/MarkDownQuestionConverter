@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c4y-eK-BOK">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Decide Notify Time View Controller-->
+        <scene sceneID="Iux-Ln-JEm">
+            <objects>
+                <viewController id="c4y-eK-BOK" customClass="DecideNotifyTimeViewController" customModule="MapConvertQuestion" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kHn-nA-jCd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="utf-sC-bta" customClass="NotifyTimeDecideView" customModule="MapConvertQuestion" customModuleProvider="target">
+                                <rect key="frame" x="30" y="273" width="354" height="350"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="n3B-ye-b85"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="utf-sC-bta" firstAttribute="centerY" secondItem="kHn-nA-jCd" secondAttribute="centerY" id="Ftz-ri-lpn"/>
+                            <constraint firstItem="utf-sC-bta" firstAttribute="centerX" secondItem="kHn-nA-jCd" secondAttribute="centerX" id="LrI-k7-oxv"/>
+                            <constraint firstItem="Zf8-jS-XaK" firstAttribute="trailing" secondItem="utf-sC-bta" secondAttribute="trailing" constant="30" id="RDM-CZ-F0X"/>
+                            <constraint firstItem="utf-sC-bta" firstAttribute="leading" secondItem="Zf8-jS-XaK" secondAttribute="leading" constant="30" id="UWu-5X-BVU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Zf8-jS-XaK"/>
+                    </view>
+                    <connections>
+                        <outlet property="decideNotifyTimeView" destination="utf-sC-bta" id="GzN-sd-gWE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xVf-k0-8hu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-83" y="-14"/>
+        </scene>
+    </scenes>
+</document>

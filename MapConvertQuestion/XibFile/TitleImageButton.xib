@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="pid-HP-9f8">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hfs-d9-94D">
+                    <rect key="frame" x="0.0" y="100" width="100" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="jvB-tt-l2m"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ank-ir-1EC">
+                    <rect key="frame" x="0.0" y="44" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="yYC-Xc-Bo8"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="ank-ir-1EC" firstAttribute="top" secondItem="SxZ-DO-VTE" secondAttribute="top" id="Rp9-Al-YIG"/>
+                <constraint firstItem="Hfs-d9-94D" firstAttribute="leading" secondItem="SxZ-DO-VTE" secondAttribute="leading" id="dkv-PE-BHB"/>
+                <constraint firstItem="ank-ir-1EC" firstAttribute="leading" secondItem="SxZ-DO-VTE" secondAttribute="leading" id="e30-2X-UZg"/>
+                <constraint firstItem="SxZ-DO-VTE" firstAttribute="trailing" secondItem="ank-ir-1EC" secondAttribute="trailing" id="eaq-au-mCJ"/>
+                <constraint firstItem="SxZ-DO-VTE" firstAttribute="trailing" secondItem="Hfs-d9-94D" secondAttribute="trailing" id="rXA-RR-4wY"/>
+                <constraint firstItem="SxZ-DO-VTE" firstAttribute="bottom" secondItem="Hfs-d9-94D" secondAttribute="bottom" id="wFd-o5-6zy"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="SxZ-DO-VTE"/>
+            <point key="canvasLocation" x="28" y="-120"/>
+        </view>
+    </objects>
+</document>
