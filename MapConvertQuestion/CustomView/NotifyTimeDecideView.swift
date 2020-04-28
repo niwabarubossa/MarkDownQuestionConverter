@@ -10,6 +10,7 @@ import UIKit
 
 class NotifyTimeDecideView: UIView {
     
+    private var localTimeZoneIdentifier: String { return TimeZone.current.identifier }
     weak var delegate: NotifyTimeDecideViewDelegate?
     @IBOutlet weak var timePicker: UIDatePicker!
     
@@ -39,23 +40,17 @@ class NotifyTimeDecideView: UIView {
     }
     
     private func setupTimePicker(){
+        print("\n\nlocalTimeZoneIdentifier")
+        print("\(localTimeZoneIdentifier)")
         timePicker.locale = Locale.autoupdatingCurrent
-        timePicker.timeZone = NSTimeZone.local
-        timePicker.minuteInterval = 10
+        timePicker.timeZone = TimeZone(identifier: self.localTimeZoneIdentifier)
+        timePicker.minuteInterval = 1
         timePicker.addTarget(self, action: #selector(dateChange), for: .valueChanged)
         self.timePicker.isHidden = true
     }
     
     @objc func dateChange(){
         print("date change")
-    }
-
-    private func getLocalDateTimeString(_ date:Date? = Date() )->String {
-        if date == nil {return "--/--"}
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.autoupdatingCurrent
-        dateFormatter.dateFormat = "HH/mm"
-        return dateFormatter.string(from: date!) as String
     }
     
     private func isRaddioButtonControl(selectedButton:UIButton){
@@ -91,14 +86,19 @@ class NotifyTimeDecideView: UIView {
     
     
     @IBAction func submitButtonTapped(_ sender: Any) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH/mm"
-        print("\(formatter.string(from: timePicker.date))")
-        self.delegate?.submitButtonTapped()
+        var calendar = Calendar(identifier: .gregorian)
+        if let timezone = TimeZone(identifier: self.localTimeZoneIdentifier){
+            calendar.timeZone = timezone
+        }
+        let pickerDate = self.timePicker.date
+        var dateComponent = DateComponents()
+        dateComponent.hour = calendar.component(.hour, from: pickerDate)
+        dateComponent.minute = calendar.component(.minute, from: pickerDate)
+        self.delegate?.submitButtonTapped(dateComponent:dateComponent)
     }
 }
 
 protocol NotifyTimeDecideViewDelegate:class{
-    func submitButtonTapped()
+    func submitButtonTapped(dateComponent:DateComponents)
 }
 

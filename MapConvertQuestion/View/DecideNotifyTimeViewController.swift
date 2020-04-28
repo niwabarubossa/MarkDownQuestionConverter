@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class DecideNotifyTimeViewController: UIViewController {
 
@@ -29,7 +30,6 @@ extension DecideNotifyTimeViewController:UNUserNotificationCenterDelegate{
                   print("通知許可")
                   let center = UNUserNotificationCenter.current()
                   center.delegate = self
-                    self.testNotify()
               } else { print("通知拒否") }
           })
       } else { // iOS 9以下
@@ -38,20 +38,26 @@ extension DecideNotifyTimeViewController:UNUserNotificationCenterDelegate{
       }
     }
     
-    private func testNotify(){
-        var notificationTime = DateComponents()
-        var trigger: UNNotificationTrigger
+    private func testNotify(dateComponent:DateComponents){
         let content = UNMutableNotificationContent()
-        content.title = "お知らせ"
-        content.body = "ボタンを押しました。"
         content.sound = UNNotificationSound.default
-        let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        content.title = "ローカル通知テスト"
+        content.subtitle = "日時指定"
+        content.body = "日時指定によるタイマー通知です"
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
+        let identifier = NSUUID().uuidString
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request){ (error : Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 
 extension DecideNotifyTimeViewController:NotifyTimeDecideViewDelegate{
-    func submitButtonTapped() {
-        self.getNotificationGrant()
+    func submitButtonTapped(dateComponent:DateComponents) {
+//        self.getNotificationGrant()
+        self.testNotify(dateComponent:dateComponent)
     }
 }
