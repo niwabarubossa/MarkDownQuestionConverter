@@ -108,7 +108,7 @@ class ToDoDashboardViewController: UIViewController {
         let new_uuid = NSUUID().uuidString
         UserDefaults.standard.set(new_uuid, forKey: "uuid")
         self.createUserData(uuid:new_uuid)
-        let howToVC = R.storyboard.settings.howToPage()
+        let howToVC = R.storyboard.tutorialExplanation.howToPage()
         howToVC?.modalPresentationStyle = .fullScreen
         self.present(howToVC!, animated: true, completion: {
             UserDefaults.standard.set(false, forKey: "TopPageFirstLaunch")

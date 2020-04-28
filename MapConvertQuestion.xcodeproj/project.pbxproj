@@ -46,7 +46,6 @@
 		54A462F2242B76E8007EA353 /* QuestionLogMyPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A462F1242B76E8007EA353 /* QuestionLogMyPageModel.swift */; };
 		54A462F4242B7731007EA353 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A462F3242B7731007EA353 /* MyPageViewController.swift */; };
 		54A462F6242B7DF5007EA353 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54A462F5242B7DF5007EA353 /* MyPage.storyboard */; };
-		54A707E4241E607C00DCEEC5 /* SettingRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A707E3241E607C00DCEEC5 /* SettingRootViewController.swift */; };
 		54A707E6241F477E00DCEEC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54A707E5241F477D00DCEEC5 /* GoogleService-Info.plist */; };
 		54A7DC712414BC1E009F7229 /* SelectQustionPageThemeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A7DC702414BC1E009F7229 /* SelectQustionPageThemeView.xib */; };
 		54A7DC732414BC69009F7229 /* SelectQustionPageThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7DC722414BC69009F7229 /* SelectQustionPageThemeView.swift */; };
@@ -66,7 +65,7 @@
 		54C53B38241883D4000EE76E /* UserDataDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C53B37241883D4000EE76E /* UserDataDisplay.swift */; };
 		54C53B3F2418F361000EE76E /* TutorialExplanationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C53B3C2418F361000EE76E /* TutorialExplanationViewController.swift */; };
 		54C53B402418F361000EE76E /* TutorialExplanationUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C53B3D2418F361000EE76E /* TutorialExplanationUIView.swift */; };
-		54C53B412418F361000EE76E /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54C53B3E2418F361000EE76E /* Settings.storyboard */; };
+		54C53B412418F361000EE76E /* TutorialExplanation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54C53B3E2418F361000EE76E /* TutorialExplanation.storyboard */; };
 		54C53B432418F438000EE76E /* TutorialContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C53B422418F437000EE76E /* TutorialContentModel.swift */; };
 		54C53B452418F6C8000EE76E /* TutorialExplanationUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C53B442418F6C7000EE76E /* TutorialExplanationUIView.xib */; };
 		54E010552442AC7100AEB878 /* ToDoDashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54E010542442AC7000AEB878 /* ToDoDashboard.storyboard */; };
@@ -142,7 +141,6 @@
 		54A462F1242B76E8007EA353 /* QuestionLogMyPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionLogMyPageModel.swift; sourceTree = "<group>"; };
 		54A462F3242B7731007EA353 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		54A462F5242B7DF5007EA353 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
-		54A707E3241E607C00DCEEC5 /* SettingRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRootViewController.swift; sourceTree = "<group>"; };
 		54A707E5241F477D00DCEEC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54A7DC702414BC1E009F7229 /* SelectQustionPageThemeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectQustionPageThemeView.xib; sourceTree = "<group>"; };
 		54A7DC722414BC69009F7229 /* SelectQustionPageThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectQustionPageThemeView.swift; sourceTree = "<group>"; };
@@ -162,7 +160,7 @@
 		54C53B37241883D4000EE76E /* UserDataDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataDisplay.swift; sourceTree = "<group>"; };
 		54C53B3C2418F361000EE76E /* TutorialExplanationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialExplanationViewController.swift; path = ../TutorialExplanation/TutorialExplanationViewController.swift; sourceTree = "<group>"; };
 		54C53B3D2418F361000EE76E /* TutorialExplanationUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialExplanationUIView.swift; path = ../TutorialExplanation/TutorialExplanationUIView.swift; sourceTree = "<group>"; };
-		54C53B3E2418F361000EE76E /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = ../TutorialExplanation/Settings.storyboard; sourceTree = "<group>"; };
+		54C53B3E2418F361000EE76E /* TutorialExplanation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TutorialExplanation.storyboard; path = ../TutorialExplanation/TutorialExplanation.storyboard; sourceTree = "<group>"; };
 		54C53B422418F437000EE76E /* TutorialContentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialContentModel.swift; sourceTree = "<group>"; };
 		54C53B442418F6C7000EE76E /* TutorialExplanationUIView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialExplanationUIView.xib; sourceTree = "<group>"; };
 		54E010542442AC7000AEB878 /* ToDoDashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ToDoDashboard.storyboard; sourceTree = "<group>"; };
@@ -271,7 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				54C53B3C2418F361000EE76E /* TutorialExplanationViewController.swift */,
-				54C53B3E2418F361000EE76E /* Settings.storyboard */,
+				54C53B3E2418F361000EE76E /* TutorialExplanation.storyboard */,
 				54F45E4723F9437F002981C8 /* MarkDownInput.storyboard */,
 				54F45E4923F944DB002981C8 /* QuestionPage.storyboard */,
 				54F45E5023FAA177002981C8 /* MarkDownInputViewController.swift */,
@@ -279,7 +277,6 @@
 				5404BD02240A62F100B3C6EC /* QuestionMapSelectPageTableViewController.swift */,
 				542F3FA9240FAFEC00D92561 /* ToDoQuestionPage.storyboard */,
 				542F3FAB240FB1C300D92561 /* ToDoQuestionPageViewController.swift */,
-				54A707E3241E607C00DCEEC5 /* SettingRootViewController.swift */,
 				54A462F3242B7731007EA353 /* MyPageViewController.swift */,
 				54A462F5242B7DF5007EA353 /* MyPage.storyboard */,
 				54676D92242F16DA00541EBE /* OpinionFormViewController.swift */,
@@ -481,7 +478,7 @@
 			files = (
 				54F45E3823F917C5002981C8 /* MarkDownInput.xib in Resources */,
 				54F45E2C23F90AC3002981C8 /* LaunchScreen.storyboard in Resources */,
-				54C53B412418F361000EE76E /* Settings.storyboard in Resources */,
+				54C53B412418F361000EE76E /* TutorialExplanation.storyboard in Resources */,
 				54A7DC712414BC1E009F7229 /* SelectQustionPageThemeView.xib in Resources */,
 				542DB1642456A92C0078D870 /* QuestionAndAnswerTableViewCell.xib in Resources */,
 				54A462F6242B7DF5007EA353 /* MyPage.storyboard in Resources */,
@@ -581,7 +578,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54A707E4241E607C00DCEEC5 /* SettingRootViewController.swift in Sources */,
 				54FE6D97244C075D00477888 /* RealmMindNodeAccessor.swift in Sources */,
 				54F45E5123FAA177002981C8 /* MarkDownInputViewController.swift in Sources */,
 				54FE6D9B244C550500477888 /* RealmQuestionLogAccessor.swift in Sources */,

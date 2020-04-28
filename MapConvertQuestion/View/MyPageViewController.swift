@@ -49,7 +49,7 @@ class MyPageViewController: UIViewController {
     }
 
     @objc private func howToLabelTapped(_ sender:UIButton){
-        let howToVC = R.storyboard.settings.howToPage()
+        let howToVC = R.storyboard.tutorialExplanation.howToPage()
         self.present(howToVC!, animated: true, completion: nil)
     }
     
