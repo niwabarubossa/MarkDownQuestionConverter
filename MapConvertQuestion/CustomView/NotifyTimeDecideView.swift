@@ -40,8 +40,6 @@ class NotifyTimeDecideView: UIView {
     }
     
     private func setupTimePicker(){
-        print("\n\nlocalTimeZoneIdentifier")
-        print("\(localTimeZoneIdentifier)")
         timePicker.locale = Locale.autoupdatingCurrent
         timePicker.timeZone = TimeZone(identifier: self.localTimeZoneIdentifier)
         timePicker.minuteInterval = 1
