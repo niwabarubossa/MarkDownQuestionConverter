@@ -10,7 +10,9 @@ import UIKit
 
 class NotifyTimeDecideView: UIView {
     
-    weak var delegate: NotifyTimeButtonStackViewDelegate?
+    weak var delegate: NotifyTimeDecideViewDelegate?
+    @IBOutlet weak var timePicker: UIDatePicker!
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,6 +29,15 @@ class NotifyTimeDecideView: UIView {
             view.frame = self.bounds
             self.addSubview(view)
          }
+        timePicker.locale = Locale.autoupdatingCurrent
+    }
+    
+    private func getLocalDateTimeString(_ date:Date? = Date() )->String {
+        if date == nil {return "--/--"}
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.autoupdatingCurrent
+        dateFormatter.dateFormat = "HH/mm"
+        return dateFormatter.string(from: date!) as String
     }
     
     

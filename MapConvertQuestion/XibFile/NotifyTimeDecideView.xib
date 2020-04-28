@@ -8,7 +8,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotifyTimeDecideView" customModule="MapConvertQuestion" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotifyTimeDecideView" customModule="MapConvertQuestion" customModuleProvider="target">
+            <connections>
+                <outlet property="timePicker" destination="Fhe-JZ-o2k" id="4JK-m0-mDX"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="4SJ-9Y-Odl">
             <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
@@ -40,6 +44,10 @@
                         <constraint firstAttribute="height" constant="80" id="qQZ-nS-NUT"/>
                     </constraints>
                 </stackView>
+                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Fhe-JZ-o2k">
+                    <rect key="frame" x="10" y="141" width="384" height="139"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                </datePicker>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
@@ -49,7 +57,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="5Sg-fa-Cqo"/>
-            <point key="canvasLocation" x="71" y="-84"/>
+            <point key="canvasLocation" x="69.565217391304358" y="-84.375"/>
         </view>
     </objects>
 </document>
