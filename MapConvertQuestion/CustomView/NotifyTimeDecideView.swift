@@ -36,7 +36,26 @@ class NotifyTimeDecideView: UIView {
             view.frame = self.bounds
             self.addSubview(view)
          }
+        self.layout()
         self.setupTimePicker()
+    }
+    
+    private func layout(){
+        let btnArray = [firstButton,secondButton,thirdButton,fourthButton]
+        let imageArray:[UIImage?] = [
+            R.image.morning(),R.image.afternoon(),R.image.evening()
+        ]
+        for i in 0..<btnArray.count - 1 {
+            btnArray[i]?.backgroundColor = .clear
+            btnArray[i]?.setTitle("", for: .normal)
+            if let image = imageArray[i]{
+                btnArray[i]?.setImage(image, for: .normal)
+            }
+        }
+        self.fourthButton.backgroundColor = .clear
+        self.fourthButton.titleLabel?.font = UIFont(name: LetGroup.boldFontName, size: 22)
+        self.fourthButton.setTitle("Custom".localized, for: .normal)
+        self.isRaddioButtonControl(selectedButton: self.fourthButton)
     }
     
     private func setupTimePicker(){
@@ -44,7 +63,6 @@ class NotifyTimeDecideView: UIView {
         timePicker.timeZone = TimeZone(identifier: self.localTimeZoneIdentifier)
         timePicker.minuteInterval = 1
         timePicker.addTarget(self, action: #selector(dateChange), for: .valueChanged)
-        self.timePicker.isHidden = true
     }
     
     @objc func dateChange(){
