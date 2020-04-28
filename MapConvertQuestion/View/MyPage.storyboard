@@ -17,52 +17,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQs-Ie-Or6" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="20" y="283" width="374" height="200"/>
+                                <rect key="frame" x="20" y="179.33333333333337" width="374" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="Ch9-FY-Fy7"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="累計解答数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Jf-8R-mqj">
-                                <rect key="frame" x="163.66666666666666" y="119" width="87" height="124"/>
+                                <rect key="frame" x="163.66666666666666" y="118.99999999999999" width="87" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZL-DU-mMy">
-                                <rect key="frame" x="80" y="583" width="254" height="130"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="使い方" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6g-CJ-8cQ">
-                                        <rect key="frame" x="82" y="53" width="62" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="question" translatesAutoresizingMaskIntoConstraints="NO" id="FvZ-iL-4tM">
-                                        <rect key="frame" x="184" y="40" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="zHX-PL-oiW"/>
-                                            <constraint firstAttribute="height" constant="50" id="zZq-ks-J0e"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="FvZ-iL-4tM" secondAttribute="trailing" constant="20" id="0q6-By-knu"/>
-                                    <constraint firstItem="FvZ-iL-4tM" firstAttribute="centerY" secondItem="hZL-DU-mMy" secondAttribute="centerY" id="4sQ-sK-Kpf"/>
-                                    <constraint firstItem="X6g-CJ-8cQ" firstAttribute="centerY" secondItem="hZL-DU-mMy" secondAttribute="centerY" id="6Fa-lv-c6p"/>
-                                    <constraint firstItem="FvZ-iL-4tM" firstAttribute="leading" secondItem="X6g-CJ-8cQ" secondAttribute="trailing" constant="40" id="CqX-o2-BGP"/>
-                                    <constraint firstAttribute="height" constant="130" id="PYL-aF-mTR"/>
-                                </constraints>
-                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="58p-M9-P9A">
+                                <rect key="frame" x="70" y="577" width="200" height="110"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seg-K8-xWi">
+                                <rect key="frame" x="46" y="445" width="60" height="59.999999999999943"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="question"/>
+                                <connections>
+                                    <action selector="howToButtonTapped:" destination="6wm-qE-uwN" eventType="touchUpInside" id="fc1-Jc-GZq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="hZL-DU-mMy" firstAttribute="leading" secondItem="2BG-iB-FY4" secondAttribute="leading" constant="80" id="2T8-FN-xeH"/>
-                            <constraint firstItem="2BG-iB-FY4" firstAttribute="trailing" secondItem="hZL-DU-mMy" secondAttribute="trailing" constant="80" id="57f-xC-JHP"/>
-                            <constraint firstItem="2BG-iB-FY4" firstAttribute="bottom" secondItem="hZL-DU-mMy" secondAttribute="bottom" constant="100" id="5Ug-Lv-9KO"/>
                             <constraint firstItem="CQs-Ie-Or6" firstAttribute="top" secondItem="1Jf-8R-mqj" secondAttribute="bottom" constant="40" id="7d0-NK-lpY"/>
-                            <constraint firstItem="hZL-DU-mMy" firstAttribute="top" secondItem="CQs-Ie-Or6" secondAttribute="bottom" constant="100" id="AaP-Ux-rXG"/>
                             <constraint firstItem="2BG-iB-FY4" firstAttribute="trailing" secondItem="CQs-Ie-Or6" secondAttribute="trailing" constant="20" id="HLM-KR-QRp"/>
                             <constraint firstItem="CQs-Ie-Or6" firstAttribute="leading" secondItem="2BG-iB-FY4" secondAttribute="leading" constant="20" id="c59-9u-57d"/>
                             <constraint firstItem="1Jf-8R-mqj" firstAttribute="top" secondItem="2BG-iB-FY4" secondAttribute="top" constant="75" id="fGq-Yj-yD4"/>
@@ -74,8 +56,6 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="barChartView" destination="CQs-Ie-Or6" id="hNW-fD-bQs"/>
-                        <outlet property="howToLabel" destination="hZL-DU-mMy" id="rTa-b2-x17"/>
-                        <outlet property="howToTextLabel" destination="X6g-CJ-8cQ" id="pJH-g5-lvj"/>
                         <outlet property="totalAnswerTimesLabel" destination="1Jf-8R-mqj" id="M9a-BV-LIZ"/>
                     </connections>
                 </viewController>
