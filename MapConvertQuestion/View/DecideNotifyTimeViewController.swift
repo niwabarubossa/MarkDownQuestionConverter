@@ -10,8 +10,11 @@ import UIKit
 
 class DecideNotifyTimeViewController: UIViewController {
 
+    @IBOutlet weak var decideNotifyTimeView: NotifyTimeDecideView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.decideNotifyTimeView.delegate = self
     }
 }
 
@@ -26,6 +29,7 @@ extension DecideNotifyTimeViewController:UNUserNotificationCenterDelegate{
                   print("通知許可")
                   let center = UNUserNotificationCenter.current()
                   center.delegate = self
+                    self.testNotify()
               } else { print("通知拒否") }
           })
       } else { // iOS 9以下
@@ -33,7 +37,17 @@ extension DecideNotifyTimeViewController:UNUserNotificationCenterDelegate{
           UIApplication.shared.registerUserNotificationSettings(settings)
       }
     }
-
+    
+    private func testNotify(){
+        var notificationTime = DateComponents()
+        var trigger: UNNotificationTrigger
+        let content = UNMutableNotificationContent()
+        content.title = "お知らせ"
+        content.body = "ボタンを押しました。"
+        content.sound = UNNotificationSound.default
+        let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
 }
 
 extension DecideNotifyTimeViewController:NotifyTimeDecideViewDelegate{

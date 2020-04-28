@@ -33,6 +33,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zf8-jS-XaK"/>
                     </view>
+                    <connections>
+                        <outlet property="decideNotifyTimeView" destination="utf-sC-bta" id="GzN-sd-gWE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVf-k0-8hu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
