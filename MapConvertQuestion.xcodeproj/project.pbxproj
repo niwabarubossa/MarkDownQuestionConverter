@@ -36,6 +36,8 @@
 		54676D93242F16DA00541EBE /* OpinionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54676D92242F16DA00541EBE /* OpinionFormViewController.swift */; };
 		54676D95242F179400541EBE /* OpinionFormButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54676D94242F179400541EBE /* OpinionFormButton.xib */; };
 		54676D97242F1B7600541EBE /* OpinionFormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54676D96242F1B7600541EBE /* OpinionFormButton.swift */; };
+		546D2EF92457C0880085A2F5 /* NotifyTimeDecideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546D2EF82457C0880085A2F5 /* NotifyTimeDecideView.swift */; };
+		546D2EFB2457C1BA0085A2F5 /* NotifyTimeDecideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546D2EFA2457C1BA0085A2F5 /* NotifyTimeDecideView.xib */; };
 		54769734240E08B1004E8C63 /* IntervalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54769733240E08B1004E8C63 /* IntervalEnum.swift */; };
 		548FA704241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */; };
 		5492009D2415D71200F01C7D /* ButtonStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5492009C2415D71200F01C7D /* ButtonStackView.xib */; };
@@ -130,6 +132,8 @@
 		54676D92242F16DA00541EBE /* OpinionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpinionFormViewController.swift; sourceTree = "<group>"; };
 		54676D94242F179400541EBE /* OpinionFormButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpinionFormButton.xib; sourceTree = "<group>"; };
 		54676D96242F1B7600541EBE /* OpinionFormButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpinionFormButton.swift; sourceTree = "<group>"; };
+		546D2EF82457C0880085A2F5 /* NotifyTimeDecideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyTimeDecideView.swift; sourceTree = "<group>"; };
+		546D2EFA2457C1BA0085A2F5 /* NotifyTimeDecideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotifyTimeDecideView.xib; sourceTree = "<group>"; };
 		54769733240E08B1004E8C63 /* IntervalEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IntervalEnum.swift; path = MapConvertQuestion/Presenter/IntervalEnum.swift; sourceTree = SOURCE_ROOT; };
 		548FA703241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoQuestionCompleteLabel.swift; sourceTree = "<group>"; };
 		5492009C2415D71200F01C7D /* ButtonStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonStackView.xib; sourceTree = "<group>"; };
@@ -310,6 +314,7 @@
 				5408502A2455A29900FAAF3E /* PlainTableViewCell.xib */,
 				540850282455A1F900FAAF3E /* PlainTableViewCell.swift */,
 				542DB1632456A92C0078D870 /* QuestionAndAnswerTableViewCell.xib */,
+				546D2EFA2457C1BA0085A2F5 /* NotifyTimeDecideView.xib */,
 			);
 			path = XibFile;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 				54676D96242F1B7600541EBE /* OpinionFormButton.swift */,
 				542355452445DE8400135F0E /* AnswerOrWrongButton.swift */,
 				542DB1612456A91D0078D870 /* QuestionAndAnswerTableViewCell.swift */,
+				546D2EF82457C0880085A2F5 /* NotifyTimeDecideView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -482,6 +488,7 @@
 				54E010552442AC7100AEB878 /* ToDoDashboard.storyboard in Resources */,
 				5408502B2455A29900FAAF3E /* PlainTableViewCell.xib in Resources */,
 				542355442445DE4600135F0E /* AnswerOrWrongButton.xib in Resources */,
+				546D2EFB2457C1BA0085A2F5 /* NotifyTimeDecideView.xib in Resources */,
 				54F45E2923F90AC3002981C8 /* Assets.xcassets in Resources */,
 				54676D95242F179400541EBE /* OpinionFormButton.xib in Resources */,
 				5447E4EC24245C9C001E3350 /* Localizable.strings in Resources */,
@@ -578,6 +585,7 @@
 				54FE6D97244C075D00477888 /* RealmMindNodeAccessor.swift in Sources */,
 				54F45E5123FAA177002981C8 /* MarkDownInputViewController.swift in Sources */,
 				54FE6D9B244C550500477888 /* RealmQuestionLogAccessor.swift in Sources */,
+				546D2EF92457C0880085A2F5 /* NotifyTimeDecideView.swift in Sources */,
 				549345ED241DF182009D9483 /* RootTabBarController.swift in Sources */,
 				542DB1622456A91D0078D870 /* QuestionAndAnswerTableViewCell.swift in Sources */,
 				548FA704241DC95C00DCF77A /* ToDoQuestionCompleteLabel.swift in Sources */,
