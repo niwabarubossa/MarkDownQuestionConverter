@@ -54,8 +54,6 @@
                     <tabBarItem key="tabBarItem" title="その他" image="addressbook" id="cNZ-gq-5E8"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="howToLabel" destination="ZNk-ju-zKn" id="QYH-u8-CsW"/>
-                        <outlet property="howToTitleLabel" destination="Chd-Ys-h2F" id="pU7-ya-SgT"/>
                         <segue destination="ZBR-ZL-CFf" kind="show" identifier="goToHowToPage" id="baD-NC-LjZ"/>
                     </connections>
                 </viewController>
