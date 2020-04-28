@@ -17,6 +17,8 @@ class NotifyTimeDecideView: UIView {
     @IBOutlet weak var secondButton: UIButton!
     @IBOutlet weak var thirdButton: UIButton!
     @IBOutlet weak var fourthButton: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,6 +60,7 @@ class NotifyTimeDecideView: UIView {
     
     private func isRaddioButtonControl(selectedButton:UIButton){
         let btnArray = [firstButton,secondButton,thirdButton,fourthButton]
+        self.timePicker.isHidden = true
         for button in btnArray {
             self.buttonInactivate(button:button!)
         }
@@ -69,7 +72,7 @@ class NotifyTimeDecideView: UIView {
     }
     
     private func buttonActivate(button:UIButton){
-        button.alpha = 0.0
+        button.alpha = 1.0
     }
     
     @IBAction func firstButtonTapped(_ sender: Any) {
@@ -83,10 +86,15 @@ class NotifyTimeDecideView: UIView {
     }
     @IBAction func fourthButtonTapped(_ sender: Any) {
         self.isRaddioButtonControl(selectedButton: fourthButton)
+        self.timePicker.isHidden = false
     }
     
     
-    
+    @IBAction func submitButtonTapped(_ sender: Any) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH/mm"
+        print("\(formatter.string(from: timePicker.date))")
+    }
 }
 
 protocol NotifyTimeDecideViewDelegate:class{

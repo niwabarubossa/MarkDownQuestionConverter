@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="utf-sC-bta" customClass="NotifyTimeDecideView" customModule="MapConvertQuestion" customModuleProvider="target">
-                                <rect key="frame" x="30" y="348" width="354" height="200"/>
+                                <rect key="frame" x="30" y="273" width="354" height="350"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="n3B-ye-b85"/>
+                                    <constraint firstAttribute="height" constant="350" id="n3B-ye-b85"/>
                                 </constraints>
                             </view>
                         </subviews>
