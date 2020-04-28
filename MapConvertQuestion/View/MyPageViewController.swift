@@ -45,7 +45,11 @@ class MyPageViewController: UIViewController {
     @IBAction func howToButtonTapped(_ sender: Any) {
         let howToVC = R.storyboard.tutorialExplanation.howToPage()
         self.present(howToVC!, animated: true, completion: nil)
-
+    }
+    
+    @IBAction func notifyBellButtonTapped(_ sender: Any) {
+        let notifyDecideVC = R.storyboard.decideNotifyTime.instantiateInitialViewController()
+        self.present(notifyDecideVC!, animated: true, completion: nil)
     }
     //presenter → view
     func viewFunc(){

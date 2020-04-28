@@ -33,10 +33,18 @@
                                 <rect key="frame" x="70" y="577" width="200" height="110"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seg-K8-xWi">
-                                <rect key="frame" x="46" y="445" width="60" height="59.999999999999943"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDU-V2-stm">
+                                <rect key="frame" x="162" y="465" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="question"/>
+                                <state key="normal" backgroundImage="notifyBell"/>
+                                <connections>
+                                    <action selector="notifyBellButtonTapped:" destination="6wm-qE-uwN" eventType="touchUpInside" id="ZsJ-wt-avC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seg-K8-xWi">
+                                <rect key="frame" x="70" y="460" width="44" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" backgroundImage="questionMono"/>
                                 <connections>
                                     <action selector="howToButtonTapped:" destination="6wm-qE-uwN" eventType="touchUpInside" id="fc1-Jc-GZq"/>
                                 </connections>
@@ -66,6 +74,7 @@
     </scenes>
     <resources>
         <image name="addressbook" width="32" height="32"/>
-        <image name="question" width="256" height="256"/>
+        <image name="notifyBell" width="48" height="48"/>
+        <image name="questionMono" width="48" height="48"/>
     </resources>
 </document>
