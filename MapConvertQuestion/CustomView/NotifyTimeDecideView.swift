@@ -28,6 +28,9 @@ class NotifyTimeDecideView: UIView {
             self.addSubview(view)
          }
     }
+    
+    
+    
 }
 
 protocol NotifyTimeDecideViewDelegate:class{
