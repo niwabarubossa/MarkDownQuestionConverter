@@ -94,12 +94,11 @@ class NotifyTimeDecideView: UIView {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH/mm"
         print("\(formatter.string(from: timePicker.date))")
+        self.delegate?.submitButtonTapped()
     }
 }
 
 protocol NotifyTimeDecideViewDelegate:class{
-    func answerButtonTapped()
-    func nextQuestionButtonTapped()
-    func abandonQuestionButtonTapped()
+    func submitButtonTapped()
 }
 
